@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Registro</title>
+    </head>
+    <body>
+        <nav>
+      
+            <ul>
+              <li><a href="">Home</a></li>
+            </ul>
+          </nav>
+          <figure>
+            <img src="" alt="" width="200">
+            <figcaption>
+              Logo
+            </figcaption>
+          </figure>
+
+
+        <form action="/search" method="GET">
+            <label>
+              <input type="search" placeholder = "Explora experiencias"required name="query">
+            </label>
+            <button>Buscar</button>
+          </form>
+          <main>
+              <article>
+                <section id="Experiencias">
+                    <h3>Experiencias</h3>
+                
+                    <h3>Cuentanos tu historia</h3>
+
+                    <form action="/guardar-comentario" method="POST">
+                      <fieldset>
+                        <p>
+                          <label for="comment-email">Nombre de usuario</label><br>
+                          <input name="usuario" type="text" required>
+                          Foto
+                            <input type="file" 
+                            name= "foto"/>
+                        </p>
+                        <p>
+                          <label for="comment-text">Cuentanos tu experiencia</label><br>
+                          <textarea name="text" id="comment-text" required></textarea>
+                        </p>
+                      </fieldset>
+                      <div class ="pop up"
+                      onclick="my function()">
+                      <span class="popuptext" id="myPopup"> Registrate!, pop up, falta CSS y Js
+                      </span>
+                    </div>
+                </article>
+                      <button>Enviar comentario</button> botón , me gusta, con js
+                    </form>
+          </main>
+    </body>

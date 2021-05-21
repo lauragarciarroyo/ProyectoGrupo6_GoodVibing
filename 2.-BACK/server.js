@@ -34,7 +34,7 @@ app.get("/api/users/:id", UsersController.getUser);
 app.put("/api/users/:id", validateAuthorization, UsersController.editUser);
 
 // Cambia contraseña
-// app.post("/api/users/change-password", UsersController.changePassword);
+// app.post("/api/users/change-password", validateAuthorization, UsersController.changePassword);
 
 // Borrar un usuario
 // app.delete("/api/users/:id", validateAuthorization, UsersController.deleteUser);

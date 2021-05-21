@@ -3,50 +3,42 @@ CREATE DATABASE IF NOT EXISTS goodvibing_app;
 USE goodvibing_app;
 
 CREATE TABLE users (
-  id int NOT NULL AUTO_INCREMENT,
-  completeName VARCHAR(255) NOT NULL,
-  email VARCHAR(255) NOT NULL,
-  passwordUser VARCHAR(255) NOT NULL,
-  avatarUser,
-  residenceUser VARCHAR(255),
-  bornUser VARCHAR(255),
-  PRIMARY KEY (id)
-);
-
-CREATE TABLE images ( 
   id INT NOT NULL AUTO_INCREMENT,
-  completeName VARCHAR(255) NOT NULL,
-  idStories VARCHAR(255) NOT NULL,
-  idUser INT,
-  PRIMARY KEY (id),
-  FOREIGN KEY (user_id)
-    REFERENCES users(id)
-    ON DELETE SET NULL
+  name VARCHAR(255) NOT NULL,
+  email VARCHAR(255) UNIQUE NOT NULL,
+  password VARCHAR(255) NOT NULL,
+  avatar VARCHAR(255),
+  bio TEXT,
+  residence VARCHAR(255),
+  birthdate DATETIME,
+  PRIMARY KEY (id)
 );
 
 CREATE TABLE stories ( 
   id INT NOT NULL AUTO_INCREMENT,
-  titleStories VARCHAR(255) NOT NULL,
-  completeName VARCHAR(255) NOT NULL,
-  idUser INT,
-  dateStories VARCHAR(255) NOT NULL,
-  textStories VARCHAR(255) NOT NULL,
-  tagsStories VARCHAR(255) NOT NULL,
+  title VARCHAR(255) NOT NULL,
+  body TEXT NOT NULL,
+  user_id INT NOT NULL,
+  date DATETIME NOT NULL,
   PRIMARY KEY (id),
-  FOREIGN KEY (user_id)
-    REFERENCES users(id)
-    ON DELETE SET NULL
+  FOREIGN KEY (user_id) REFERENCES users(id)
+);
+
+CREATE TABLE images ( 
+  id INT NOT NULL AUTO_INCREMENT,
+  filename VARCHAR(255) NOT NULL,
+  story_id INT NOT NULL,
+  PRIMARY KEY (id),
+  FOREIGN KEY (story_id) REFERENCES stories(id)
 );
 
 CREATE TABLE comments ( 
   id INT NOT NULL AUTO_INCREMENT,
-  titleStories VARCHAR(255) NOT NULL,
-  idUserComments VARCHAR(255) NOT NULL,
-  idUser INT,
-  textComment VARCHAR(255) NOT NULL
+  text TEXT NOT NULL,
+  user_id INT NOT NULL,
+  story_id INT NOT NULL,
   PRIMARY KEY (id),
-  FOREIGN KEY (user_id)
-    REFERENCES users(id)
-    ON DELETE SET NULL
+  FOREIGN KEY (user_id) REFERENCES users(id),
+  FOREIGN KEY (story_id) REFERENCES stories(id)
 );
 

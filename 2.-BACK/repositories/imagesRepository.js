@@ -1,31 +1,27 @@
-const {database} = require ('../Infrastructure');
+const { database } = require("../Infrastructure");
 
 async function addImages(dataimages) {
-    
-    const query = 'INSERT INTO images(storiesId, userId) VALUES (?,?)';
-    const [result] = await database.pool.query (query,[storiesId, userID]);
+  const query = "INSERT INTO images(storiesId, userId) VALUES (?,?)";
+  const [result] = await database.pool.query(query, [storiesId, userID]);
 
-    return findStoriesById (result.insertId);
-
+  return findStoriesById(result.insertId);
 }
 
 async function deleteImages(id) {
-    
-    const query = 'DELETE FROM images WHERE id = ?';
-    return database.pool.query(query, id);
+  const query = "DELETE FROM images WHERE id = ?";
+  return database.pool.query(query, id);
 }
 
 async function addAvatar(userId) {
-    const query = 'INSERT INTO images WHERE id = ?';
-    const [result] = await database.pool.query(query, [userId]);
-  
-    return (result.insertId);
+  const query = "INSERT INTO images WHERE id = ?";
+  const [result] = await database.pool.query(query, [userId]);
+
+  return result.insertId;
 }
 
 async function deleteAvatar(userid) {
-    const query = 'DELETE FROM images WHERE id = ?';
-    return await database.pool.query(query, [userId]);
-  
+  const query = "DELETE FROM images WHERE id = ?";
+  return await database.pool.query(query, [userId]);
 }
 
-module.exports = {addImages, deleteImages, addAvatar, deleteAvatar}
+module.exports = { addImages, deleteImages, addAvatar, deleteAvatar };

@@ -1,38 +1,47 @@
-const {database} = require ('../Infrastructure');
+const { database } = require("../infrastructure");
 
-async function getUserByEmail(email) {
-    const query = 'SELECT * FROM users WHERE email = ?';
-    const [users] = await database.pool.query(query, email);
-  
-    return users[0];
-  
+async function findUserById({ id }) {
+  const query = "SELECT * FROM users WHERE id = ?";
+  const [users] = await database.pool.query(query, [id]);
+
+  return users[0];
 }
 
-async function createUser(params) {
-    const {role,name,email,passwordHash} = data;
-    
-    const insertQuery = 'INSERT INTO users (role, name, email, password) VALUES (?, ?, ?, ?)';
-    const [rows] = await database.pool.query(insertQuery, [role, name, email, passwordHash]);
-    const createdId = rows.insertId;
-    const selectQuery = 'SELECT * FROM users WHERE id = ?';
-    const [selectRows] = await database.pool.query(selectQuery, createdId);
-    
-    return selectRows[0];
-    
-    
+async function findUserByEmail({ email }) {
+  const query = "SELECT * FROM users WHERE email = ?";
+  const [users] = await database.pool.query(query, [email]);
+
+  return users[0];
 }
 
-async function findUserById(id) {
-    const query = 'SELECT * FROM users WHERE id = ?';
-    const [users] = await database.pool.query(query, id);
-  
-    return users[0];
+async function createUser({ name, email, passwordHash }) {
+  const insertQuery =
+    "INSERT INTO users (name, email, password) VALUES (?, ?, ?)";
+
+  const [created] = await database.pool.query(insertQuery, [
+    name,
+    email,
+    passwordHash,
+  ]);
+
+  const createdId = created.insertId;
+
+  const newUser = await findUserById({ id: createdId });
+
+  return newUser;
 }
 
-async function deleteUser(id) {
-    const query = 'DELETE FROM users WHERE id = ?';
+async function deleteUser({ id }) {
+  const query = "DELETE FROM users WHERE id = ?";
 
-    return database.pool.query(query, id);
+  await database.pool.query(query, id);
+
+  return;
 }
 
-module.exports = {getUserByEmail, createUser, findUserById, deleteUser}
+module.exports = {
+  findUserById,
+  findUserByEmail,
+  createUser,
+  deleteUser,
+};

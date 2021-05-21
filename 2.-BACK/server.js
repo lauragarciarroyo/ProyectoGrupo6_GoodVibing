@@ -10,7 +10,7 @@ const {
   // VotesController,
 } = require("./controllers");
 
-// const { validateAuthorization } = require("./middlewares");
+const { validateAuthorization } = require("./middlewares");
 
 const { PORT } = process.env;
 
@@ -25,16 +25,16 @@ app.use(express.static(staticPath));
 app.post("/api/users", UsersController.createUser);
 
 // Hace login, devuelve token
-// app.post("/api/users/login", UsersController.login);
+app.post("/api/users/login", UsersController.loginUser);
 
 // Ver información de un usuario
 app.get("/api/users/:id", UsersController.getUser);
 
+// Cambiar datos de un usuario
+app.put("/api/users/:id", validateAuthorization, UsersController.editUser);
+
 // Cambia contraseña
 // app.post("/api/users/change-password", UsersController.changePassword);
-
-// Cambiar datos de un usuario
-// app.put("/api/users/:id", validateAuthorization, UsersController.editUser);
 
 // Borrar un usuario
 // app.delete("/api/users/:id", validateAuthorization, UsersController.deleteUser);

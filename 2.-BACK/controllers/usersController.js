@@ -1,6 +1,6 @@
 const Joi = require("joi");
 const bcrypt = require("bcryptjs");
-// const jwt = require("jsonwebtoken");
+const jwt = require("jsonwebtoken");
 
 const { usersRepository } = require("../repositories");
 
@@ -9,8 +9,8 @@ async function createUser(req, res, next) {
     const { name, email, password } = req.body;
 
     const registerSchema = Joi.object({
-      name: Joi.string().required(),
-      email: Joi.string().email().required(),
+      name: Joi.string().required().max(255),
+      email: Joi.string().email().required().max(255),
       password: Joi.string().min(6).max(100).required(),
     });
 
@@ -35,9 +35,12 @@ async function createUser(req, res, next) {
 
     res.status(201);
     res.send({
-      id: createdUser.id,
-      name: createdUser.name,
-      email: createdUser.email,
+      status: "ok",
+      data: {
+        id: createdUser.id,
+        name: createdUser.name,
+        email: createdUser.email,
+      },
     });
   } catch (err) {
     next(err);
@@ -57,57 +60,103 @@ async function getUser(req, res, next) {
     }
 
     res.send({
-      id: user.id,
-      name: user.name,
-      email: user.email,
-      avatar: user.avatar,
-      bio: user.bio,
-      residence: user.residence,
-      birthdate: user.birthdate,
+      status: "ok",
+      data: {
+        id: user.id,
+        name: user.name,
+        email: user.email,
+        avatar: user.avatar,
+        bio: user.bio,
+        residence: user.residence,
+        birthdate: user.birthdate,
+      },
     });
   } catch (err) {
     next(err);
   }
 }
 
-// async function loginUser(req, res, next) {
-//   try {
-//     const { email, password } = req.body;
+async function loginUser(req, res, next) {
+  try {
+    const { email, password } = req.body;
 
-//     const schema = Joi.object({
-//       email: Joi.string().email().required(),
-//       password: Joi.string().min(6).max(10).required(),
-//     });
+    const schema = Joi.object({
+      email: Joi.string().email().required(),
+      password: Joi.string().min(6).max(100).required(),
+    });
 
-//     await schema.validateAsync({ email, password });
+    await schema.validateAsync({ email, password });
 
-//     const user = await userRepository.getUserByEmail(email);
+    const user = await usersRepository.findUserByEmail({ email });
 
-//     if (!user) {
-//       const error = new Error("No existe el usuario");
-//       error.code = 404;
-//       throw error;
-//     }
+    if (!user) {
+      const error = new Error("No existe el usuario");
+      error.code = 404;
+      throw error;
+    }
 
-//     const isValidPassword = await bcrypt.compare(password, user.password);
+    const isValidPassword = await bcrypt.compare(password, user.password);
 
-//     if (!isValidPassword) {
-//       const error = new Error("La contraseña  no es válida");
-//       error.code = 401;
-//       throw error;
-//     }
+    if (!isValidPassword) {
+      const error = new Error("La contraseña no es válida");
+      error.code = 401;
+      throw error;
+    }
 
-//     const tokenPayload = { id: user.id, role: user.role };
+    const tokenPayload = { id: user.id };
 
-//     const token = jwt.sign(tokenPayload, process.env.JWT_SECRET, {
-//       expiresIn: "30d",
-//     });
+    const token = jwt.sign(tokenPayload, process.env.JWT_SECRET, {
+      expiresIn: "30d",
+    });
 
-//     res.send({ userId: user.id, token });
-//   } catch (err) {
-//     next(err);
-//   }
-// }
+    res.send({ status: "ok", data: { userId: user.id, token } });
+  } catch (err) {
+    next(err);
+  }
+}
+
+async function editUser(req, res, next) {
+  try {
+    const { id } = req.params;
+
+    // La fecha en formato iso podéis encontrarla aquí: https://www.utctime.net/ (es la ISO-8601)
+    const { name, email, bio, residence, birthdate } = req.body;
+
+    const schema = Joi.object({
+      name: Joi.string().required().max(255),
+      email: Joi.string().email().required().max(255),
+      bio: Joi.string(),
+      residence: Joi.string().max(255),
+      birthdate: Joi.date().iso(),
+    });
+
+    await schema.validateAsync({ name, email, bio, residence, birthdate });
+
+    const user = await usersRepository.findUserById({ id });
+
+    if (!user) {
+      const error = new Error("No existe el usuario");
+      error.code = 401;
+      throw error;
+    }
+
+    const updatedUser = await usersRepository.editUser({
+      id,
+      name,
+      email,
+      bio,
+      residence,
+      birthdate,
+    });
+
+    res.send({
+      status: "ok",
+      data: updatedUser,
+    });
+  } catch (err) {
+    next(err);
+  }
+}
 
 // async function changePassword(req, res, next) {
 //   try {
@@ -126,30 +175,6 @@ async function getUser(req, res, next) {
 //     }
 
 //     //Se devolvería un correo con url para introducir una contraseña nueva
-//   } catch (err) {
-//     next(err);
-//   }
-// }
-
-// async function editUser(req, res, next) {
-//   try {
-//     const { id } = req.params;
-//     const { password, biografia, avatar, lugarResidencia } = req.body;
-
-//     const schema = Joi.object({
-//       id: Joi.number().positive(),
-//       password: Joi.string().min(6).max(10).required(),
-//       biografia: Joi.string().max(250),
-//     });
-//     await schema.validateAsync({ id, password, biografia });
-
-//     const user = await userRepository.findUserByEmail(email);
-
-//     if (!user) {
-//       const error = new Error("No existe el usuario");
-//       error.code = 401;
-//       throw error;
-//     }
 //   } catch (err) {
 //     next(err);
 //   }
@@ -178,8 +203,8 @@ async function getUser(req, res, next) {
 module.exports = {
   createUser,
   getUser,
-  // editUser,
-  // loginUser,
+  loginUser,
+  editUser,
   // changePassword,
   // deleteUser,
 };

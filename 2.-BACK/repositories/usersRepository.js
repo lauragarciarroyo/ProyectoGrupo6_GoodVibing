@@ -39,9 +39,31 @@ async function deleteUser({ id }) {
   return;
 }
 
+async function editUser({ id, name, email, bio, residence, birthdate }) {
+  const query = `
+    UPDATE users
+    SET name = ?, email = ?, bio = ?, residence = ?, birthdate = STR_TO_DATE(?, '%Y-%m-%dT%H:%i:%s+0000')
+    WHERE id = ?
+  `;
+
+  await database.pool.query(query, [
+    name,
+    email,
+    bio,
+    residence,
+    birthdate,
+    id,
+  ]);
+
+  const updatedUser = await findUserById({ id });
+
+  return updatedUser;
+}
+
 module.exports = {
   findUserById,
   findUserByEmail,
   createUser,
   deleteUser,
+  editUser,
 };

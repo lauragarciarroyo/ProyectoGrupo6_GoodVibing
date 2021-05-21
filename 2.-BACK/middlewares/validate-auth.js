@@ -29,8 +29,7 @@ async function validateAuthorization(req, res, next) {
     req.auth = decodedToken;
     next();
   } catch (err) {
-    res.status(err.status || 500);
-    res.send({ error: err.message });
+    next(err);
   }
 }
 

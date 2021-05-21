@@ -1,4 +1,4 @@
-const { database } = require("../Infrastructure");
+const { database } = require("../");
 
 async function addVotes() {
   const query = "INSERT INTO votes (stories_id user_id) VALUES (?, ?)";

@@ -1,4 +1,4 @@
-const { database } = require("../Infrastructure");
+const { database } = require("../infrastructure");
 
 async function addImages(dataimages) {
   const query = "INSERT INTO images(storiesId, userId) VALUES (?,?)";

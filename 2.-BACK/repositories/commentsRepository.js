@@ -1,4 +1,4 @@
-const { database } = require("../Infrastructure");
+const { database } = require("../infrastructure");
 
 async function findComments() {
   const query = "SELECT * FROM comments";

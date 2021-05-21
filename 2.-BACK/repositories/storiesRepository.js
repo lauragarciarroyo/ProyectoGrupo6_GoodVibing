@@ -1,4 +1,4 @@
-const { database } = require("../Infrastructure");
+const { database } = require("../infrastructure");
 
 async function findStoriesById(id) {
   const query = "SELECT * FROM stories WHERE id = ?";

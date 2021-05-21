@@ -18,6 +18,7 @@ async function createUser(req, res, next) {
 
     const user = await usersRepository.findUserByEmail({ email });
 
+    //si ya hay un usuario con el mismo email generamos un error
     if (user) {
       const err = new Error("Ya existe un usuario con ese email");
       err.status = 409;

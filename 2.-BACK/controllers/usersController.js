@@ -158,27 +158,30 @@ async function editUser(req, res, next) {
   }
 }
 
-// async function changePassword(req, res, next) {
-//   try {
-//     const { email } = req.body;
+async function changePassword(req, res, next) {
+  try {
+    const { email } = req.body;
+    const { id } = req.params;
 
-//     const schema = Joi.object({
-//       email: Joi.string().email().required(),
-//     });
+    const schema = Joi.object({
+      email: Joi.string().email().required(),
+    });
 
-//     await schema.validateAsync({ email });
+    await schema.validateAsync({ email });
 
-//     if (!user) {
-//       const error = new Error("No existe el usuario");
-//       error.code = 404;
-//       throw error;
-//     }
+    const user = await usersRepository.findUserById({ id });
 
-//     //Se devolvería un correo con url para introducir una contraseña nueva
-//   } catch (err) {
-//     next(err);
-//   }
-// }
+    if (!user) {
+      const error = new Error("No existe el usuario");
+      error.code = 404;
+      throw error;
+    }
+
+    //Se devolvería un correo con url para introducir una contraseña nueva
+  } catch (err) {
+    next(err);
+  }
+}
 
 // async function deleteUser(req, res, next) {
 //   try {
@@ -205,6 +208,6 @@ module.exports = {
   getUser,
   loginUser,
   editUser,
-  // changePassword,
+  changePassword,
   // deleteUser,
 };

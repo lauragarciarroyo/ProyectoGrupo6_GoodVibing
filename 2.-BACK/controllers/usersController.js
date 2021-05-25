@@ -159,6 +159,7 @@ async function editUser(req, res, next) {
 }
 
 async function changePassword(req, res, next) {
+  ////////////////////////////////////////////////////////////////////////////////////preguntar
   try {
     const { email } = req.body;
     const { id } = req.params;
@@ -176,6 +177,9 @@ async function changePassword(req, res, next) {
       error.code = 404;
       throw error;
     }
+    await usersRepository.changePassword({ id });
+    res.status(204);
+    res.send();
 
     //Se devolvería un correo con url para introducir una contraseña nueva
   } catch (err) {

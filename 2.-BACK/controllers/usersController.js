@@ -195,7 +195,7 @@ async function deleteUser(req, res, next) {
       throw err;
     }
 
-    await usersRepository.deleteUser(id);
+    await usersRepository.deleteUser({ id });
     res.status(204);
     res.send();
   } catch (err) {

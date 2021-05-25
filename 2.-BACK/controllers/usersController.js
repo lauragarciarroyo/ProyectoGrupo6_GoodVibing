@@ -183,25 +183,25 @@ async function changePassword(req, res, next) {
   }
 }
 
-// async function deleteUser(req, res, next) {
-//   try {
-//     const { id } = req.params;
+async function deleteUser(req, res, next) {
+  try {
+    const { id } = req.params;
 
-//     const user = await userRepository.findUserById(id);
+    const user = await usersRepository.findUserById({ id });
 
-//     if (!user) {
-//       const err = new Error("No tiene permiso para borrar");
-//       err.status = 404;
-//       throw err;
-//     }
+    if (!user) {
+      const err = new Error("No tiene permiso para borrar");
+      err.status = 404;
+      throw err;
+    }
 
-//     await userRepository.deleteUser(id);
-//     res.status(204);
-//     res.send();
-//   } catch (err) {
-//     next(err);
-//   }
-// }
+    await usersRepository.deleteUser(id);
+    res.status(204);
+    res.send();
+  } catch (err) {
+    next(err);
+  }
+}
 
 module.exports = {
   createUser,
@@ -209,5 +209,5 @@ module.exports = {
   loginUser,
   editUser,
   changePassword,
-  // deleteUser,
+  deleteUser,
 };

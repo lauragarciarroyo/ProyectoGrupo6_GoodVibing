@@ -6,7 +6,7 @@ const {
   UsersController,
   // ImagesController,
   // CommentsController,
-  // StoriesController,
+  StoriesController,
   // VotesController,
 } = require("./controllers");
 
@@ -60,24 +60,29 @@ app.delete("/api/users/:id", validateAuthorization, UsersController.deleteUser);
 //   CommentsController.deleteComments
 // );
 
-// //Stories
-// app.get("/api/stories", StoriesController.homeStories);
-// app.get("/api/stories/search", StoriesController.searchStories);
-// app.get(
-//   "/api/users/:id/stories",
-//   validateAuthorization,
-//   StoriesController.getMySpace
-// );
+//Stories
+//app.get("/api/stories", StoriesController.homeStories);
+app.get("/api/stories/search", StoriesController.searchStories);
+
+//Ver mis historias
+app.get(
+  "/api/users/:id/mystories",
+  validateAuthorization,
+  StoriesController.getMySpace
+);
 // app.get(
 //   "/api/stories/:id",
 //   validateAuthorization,
 //   StoriesController.viewStories
 // );
-// app.post(
-//   "/api/users/:id/stories/:id",
-//   validateAuthorization,
-//   StoriesController.createStories
-// );
+
+//Crear una historia
+app.post(
+  "/api/users/:id/stories",
+  validateAuthorization,
+  StoriesController.createStories
+);
+
 // app.put(
 //   "/api/users/:id/stories/:id",
 //   validateAuthorization,

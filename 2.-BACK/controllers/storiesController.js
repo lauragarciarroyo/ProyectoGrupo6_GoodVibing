@@ -2,18 +2,22 @@ const Joi = require("joi");
 
 const { storiesRepository, usersRepository } = require("../repositories");
 
-async function homeStories(req, res, next) {
-  try {
-    const stories = await storiesRepository.findStoriesById();
-    res.send(stories);
-  } catch (err) {
-    next(err);
-  }
-}
+//async function homeStories(req, res, next) {
+//try {
+
+//const stories = await storiesRepository.findStoriesById();
+//res.send(stories);
+// } catch (err) {
+//  next(err);
+// }
+//}
 
 async function searchStories(req, res, next) {
+  const { id } = req.params;
+  const { tittle, body } = req.body;
+
   try {
-    const stories = await storiesRepository.searchStory();
+    const stories = await storiesRepository.searchStory({ id, tittle, body });
     res.send(stories);
   } catch (err) {
     next(err);
@@ -64,16 +68,15 @@ async function viewStories(req, res, next) {
 async function createStories(req, res, next) {
   try {
     const { id } = req.auth;
-    const { text } = req.body;
-    const { userId } = req.params;
+    const { body } = req.body;
 
     const schema = Joi.object({
-      text: Joi.string().max(1500),
+      body: Joi.string().max(1500),
     });
 
-    await schema.validateAsync({ text });
+    await schema.validateAsync({ body });
 
-    const user = await usersRepository.findUserById({ userId });
+    const user = await usersRepository.findUserById({ id });
 
     if (!user) {
       const err = new Error("El usuario no existe");
@@ -82,7 +85,7 @@ async function createStories(req, res, next) {
       throw err;
     }
 
-    const createdStory = await storiesRepository.createdStory({ text, id });
+    const createdStory = await storiesRepository.createdStory({ body, id });
     res.status(201);
     res.send(createdStory);
   } catch (err) {
@@ -157,7 +160,7 @@ async function deleteStories(req, res, next) {
 }
 
 module.exports = {
-  homeStories,
+  //homeStories,
   searchStories,
   viewStories,
   createStories,

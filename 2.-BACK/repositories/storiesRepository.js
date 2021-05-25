@@ -7,16 +7,16 @@ async function findStoriesById({ id }) {
   return stories && stories[0];
 }
 
-async function searchStory({ id }) {
+async function searchStory({ id, tittle, body }) {
   const query = "SELECT * FROM stories WHERE id = ?";
-  const [stories] = await database.pool.query(query, id);
+  const [stories] = await database.pool.query(query, [id, tittle, body]);
 
   return [stories];
 }
 
-async function createdStory({ text, userId }) {
-  const query = "INSERT INTO stories (text, userId) VALUES (?,?)";
-  const [result] = await database.pool.query(query, [userId, text]);
+async function createdStory({ body, id }) {
+  const query = "INSERT INTO stories (body, id) VALUES (?,?)";
+  const [result] = await database.pool.query(query, [id, body]);
 
   return findStoriesById(result.insertId);
 }

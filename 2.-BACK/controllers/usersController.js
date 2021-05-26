@@ -117,7 +117,7 @@ async function loginUser(req, res, next) {
 
 async function editUser(req, res, next) {
   try {
-    const { id } = req.params;
+    const { id } = req.auth.id;
 
     // La fecha en formato iso podéis encontrarla aquí: https://www.utctime.net/ (es la ISO-8601)
     const { name, email, bio, residence, birthdate } = req.body;
@@ -161,25 +161,47 @@ async function editUser(req, res, next) {
 async function changePassword(req, res, next) {
   ////////////////////////////////////////////////////////////////////////////////////preguntar
   try {
-    const { email } = req.body;
-    const { id } = req.params;
+    const { id } = req.auth;
 
-    const schema = Joi.object({
-      email: Joi.string().email().required(),
-    });
+    const { password, newPassword } = req.body;
 
-    await schema.validateAsync({ email });
-
+    // Sacamos el usuario de la base de datos por la id del req.auth
     const user = await usersRepository.findUserById({ id });
 
     if (!user) {
       const error = new Error("No existe el usuario");
-      error.code = 404;
+      error.status = 404;
       throw error;
     }
-    await usersRepository.changePassword({ id });
-    res.status(204);
-    res.send();
+
+    // Comprobamos que la contraseña actual que manda es correcta
+
+    const isValidPassword = await bcrypt.compare(password, user.password);
+
+    if (!isValidPassword) {
+      const error = new Error("La contraseña actual no es correcta");
+      error.status = 401;
+      throw error;
+    }
+
+    // Validamos que la nueva contraseña proporcionada pasa los requerimientos
+    const schema = Joi.object({
+      newPassword: Joi.string().min(6).max(100).required(),
+    });
+
+    await schema.validateAsync({ newPassword });
+
+    // Cambiamos la contraseña
+    const passwordHash = await bcrypt.hash(newPassword, 10);
+    const updatedUser = await usersRepository.changePassword({
+      id,
+      passwordHash,
+    });
+
+    res.send({
+      status: "ok",
+      data: updatedUser,
+    });
 
     //Se devolvería un correo con url para introducir una contraseña nueva
   } catch (err) {
@@ -189,19 +211,22 @@ async function changePassword(req, res, next) {
 
 async function deleteUser(req, res, next) {
   try {
-    const { id } = req.params;
+    const { id } = req.auth;
 
     const user = await usersRepository.findUserById({ id });
 
     if (!user) {
-      const err = new Error("No tiene permiso para borrar");
+      const err = new Error("El usuario no existe");
       err.status = 404;
       throw err;
     }
 
     await usersRepository.deleteUser({ id });
-    res.status(204);
-    res.send();
+
+    res.send({
+      status: "ok",
+      message: `El usuario con id ${id} fue borrado`,
+    });
   } catch (err) {
     next(err);
   }

@@ -60,10 +60,25 @@ async function editUser({ id, name, email, bio, residence, birthdate }) {
   return updatedUser;
 }
 
+async function changePassword({ id, passwordHash }) {
+  const query = `
+    UPDATE users
+    SET password = ?
+    WHERE id = ?
+  `;
+
+  await database.pool.query(query, [passwordHash, id]);
+
+  const updatedUser = await findUserById({ id });
+
+  return updatedUser;
+}
+
 module.exports = {
   findUserById,
   findUserByEmail,
   createUser,
   deleteUser,
   editUser,
+  changePassword,
 };

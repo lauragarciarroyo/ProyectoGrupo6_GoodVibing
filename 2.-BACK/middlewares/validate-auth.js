@@ -27,6 +27,7 @@ async function validateAuthorization(req, res, next) {
     }
 
     req.auth = decodedToken;
+    // req.auth = {id: 5} - esto es lo que valdría req.auth para el token del usuario con id 5
     next();
   } catch (err) {
     next(err);

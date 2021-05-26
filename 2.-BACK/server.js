@@ -31,7 +31,7 @@ app.post("/api/users/login", UsersController.loginUser);
 app.get("/api/users/:id", UsersController.getUser);
 
 // Cambiar datos de un usuario
-app.put("/api/users/:id", validateAuthorization, UsersController.editUser);
+app.put("/api/users/", validateAuthorization, UsersController.editUser);
 
 // Cambia contraseña
 app.post(
@@ -41,7 +41,7 @@ app.post(
 );
 
 // Borrar un usuario
-app.delete("/api/users/:id", validateAuthorization, UsersController.deleteUser);
+app.delete("/api/users/", validateAuthorization, UsersController.deleteUser);
 
 // //Comments
 // app.get("/api/users/:id/stories/:id/comments", CommentsController.getComments);

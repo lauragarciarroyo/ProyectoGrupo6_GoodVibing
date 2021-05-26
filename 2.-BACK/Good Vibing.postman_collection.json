@@ -6,93 +6,161 @@
 	},
 	"item": [
 		{
-			"name": "New User",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n    \"name\": \"Pruebas\",\n    \"email\": \"pruebas@hackaboss.com\",\n    \"password\": \"loremipsum\"\n}",
-					"options": {
-						"raw": {
-							"language": "json"
+			"name": "Users",
+			"item": [
+				{
+					"name": "New User",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Pruebas\",\n    \"email\": \"pruebas@hackaboss.com\",\n    \"password\": \"loremipsum\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/users",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"users"
+							]
 						}
-					}
+					},
+					"response": []
 				},
-				"url": {
-					"raw": "http://localhost:3000/api/users",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "3000",
-					"path": [
-						"api",
-						"users"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Get User",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "http://localhost:3000/api/users/5",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "3000",
-					"path": [
-						"api",
-						"users",
-						"5"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Login User",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n    \"email\": \"pruebas@hackaboss.com\",\n    \"password\":\"loremipsum\"\n}",
-					"options": {
-						"raw": {
-							"language": "json"
+				{
+					"name": "Edit User",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NSwiaWF0IjoxNjIxNTk1NTkwLCJleHAiOjE2MjQxODc1OTB9.JAO3ggndKUjpBqKFAh4TpRFbGgG03_BDr3U4eP-I528",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Prueba editada\",\n    \"email\": \"prueba@hackaboss.com\",\n    \"bio\": \"Esta es mi biografía 👻\",\n    \"residence\": \"A Coruña\",\n    \"birthdate\": \"2021-05-21T11:23:53+0000\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/users/5",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"users",
+								"5"
+							]
 						}
-					}
+					},
+					"response": []
 				},
-				"url": {
-					"raw": "http://localhost:3000/api/users/login",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "3000",
-					"path": [
-						"api",
-						"users",
-						"login"
-					]
+				{
+					"name": "Get User",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/users/5",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"users",
+								"5"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login User",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"pruebas@hackaboss.com\",\n    \"password\":\"loremipsum\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/users/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"users",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Change Password User",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": null
+					},
+					"response": []
 				}
-			},
-			"response": []
+			]
 		},
 		{
-			"name": "Edit User",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": null
-			},
-			"response": []
+			"name": "Stories",
+			"item": [
+				{
+					"name": "New Story",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": null
+					},
+					"response": []
+				},
+				{
+					"name": "Get User Stories",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": null
+					},
+					"response": []
+				}
+			]
 		}
 	]
 }

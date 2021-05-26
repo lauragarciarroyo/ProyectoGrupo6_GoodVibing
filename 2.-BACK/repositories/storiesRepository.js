@@ -2,9 +2,9 @@ const { database } = require("../infrastructure");
 
 async function findStoriesById({ id }) {
   const query = "SELECT * FROM stories WHERE id = ?";
-  const [stories] = await database.pool.query(query, id);
+  const [stories] = await database.pool.query(query, [id]);
 
-  return stories && stories[0];
+  return stories[0];
 }
 
 async function searchStory({ id, tittle, body }) {
@@ -14,11 +14,20 @@ async function searchStory({ id, tittle, body }) {
   return [stories];
 }
 
-async function createdStory({ body, id }) {
-  const query = "INSERT INTO stories (body, id) VALUES (?,?)";
-  const [result] = await database.pool.query(query, [id, body]);
+async function createdStory({ user_id, title, body }) {
+  const query = `
+    INSERT INTO stories (title, body, user_id, date) 
+    VALUES (?, ?, ?, ?)
+    `;
 
-  return findStoriesById(result.insertId);
+  const [result] = await database.pool.query(query, [
+    title,
+    body,
+    user_id,
+    new Date(),
+  ]);
+
+  return findStoriesById({ id: result.insertId });
 }
 
 async function updateStories({ storiesId, id, text }) {
@@ -31,7 +40,19 @@ async function updateStories({ storiesId, id, text }) {
 async function deleteStories({ id }) {
   const query = "DELETE FROM stories WHERE id = ?";
 
-  return database.pool.query(query, id);
+  return await database.pool.query(query, id);
+}
+
+async function getUserStories({ id }) {
+  const query = `
+    SELECT *
+    FROM stories
+    WHERE user_id = ?
+  `;
+
+  const [result] = await database.pool.query(query, [id]);
+
+  return result;
 }
 
 module.exports = {
@@ -40,4 +61,5 @@ module.exports = {
   createdStory,
   updateStories,
   deleteStories,
+  getUserStories,
 };

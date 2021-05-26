@@ -61,27 +61,21 @@ app.delete("/api/users/", validateAuthorization, UsersController.deleteUser);
 // );
 
 //Stories
-//app.get("/api/stories", StoriesController.homeStories);
-app.get("/api/stories/search", StoriesController.searchStories);
 
-//Ver mis historias
-app.get(
-  "/api/users/:id/mystories",
-  validateAuthorization,
-  StoriesController.getMySpace
-);
+//Crear una historia
+app.post("/api/stories", validateAuthorization, StoriesController.createStory);
+
+//Ver las historias de un usuario
+app.get("/api/users/:id/stories", StoriesController.getUserStories);
+
+//app.get("/api/stories", StoriesController.homeStories);
+// app.get("/api/stories/search", StoriesController.searchStories);
+
 // app.get(
 //   "/api/stories/:id",
 //   validateAuthorization,
 //   StoriesController.viewStories
 // );
-
-//Crear una historia
-app.post(
-  "/api/users/:id/stories",
-  validateAuthorization,
-  StoriesController.createStories
-);
 
 // app.put(
 //   "/api/users/:id/stories/:id",

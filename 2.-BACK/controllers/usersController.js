@@ -159,7 +159,6 @@ async function editUser(req, res, next) {
 }
 
 async function changePassword(req, res, next) {
-  ////////////////////////////////////////////////////////////////////////////////////preguntar
   try {
     const { id } = req.auth;
 

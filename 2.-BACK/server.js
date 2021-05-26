@@ -71,22 +71,25 @@ app.get("/api/users/:id/stories", StoriesController.getUserStories);
 //app.get("/api/stories", StoriesController.homeStories);
 // app.get("/api/stories/search", StoriesController.searchStories);
 
-// app.get(
-//   "/api/stories/:id",
-//   validateAuthorization,
-//   StoriesController.viewStories
-// );
+//Ver una historia
+app.get(
+  "/api/stories/:id",
+  validateAuthorization,
+  StoriesController.viewStories
+);
 
-// app.put(
-//   "/api/users/:id/stories/:id",
-//   validateAuthorization,
-//   StoriesController.editStories
-// );
-// app.delete(
-//   "/api/users/:id/stories/:id",
-//   validateAuthorization,
-//   StoriesController.deleteStories
-// );
+//Editar historia
+app.put(
+  "/api/stories/:id",
+  validateAuthorization,
+  StoriesController.editStories
+);
+
+app.delete(
+  "/api/users/stories/:id",
+  validateAuthorization,
+  StoriesController.deleteStories
+);
 
 // //Images
 // app.post(

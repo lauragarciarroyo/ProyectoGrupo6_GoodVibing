@@ -94,19 +94,21 @@ async function getUserStories(req, res, next) {
 //Ver una historia
 async function viewStories(req, res, next) {
   try {
-    const { userId } = req.params;
-    const { storiesId } = req.params;
+    const { id } = req.params;
 
-    if (Number({ userId }) !== req.auth.id) {
-      const err = new Error("El usuario no tiene permiso");
-      err.status = 401;
+    // if (Number({ id }) !== req.auth.id) {
+    //   const err = new Error("El usuario no tiene permiso");
+    //  err.status = 401;
+    //  throw err;
+    // }
+    const story = await storiesRepository.findStoriesById({ id });
+
+    if (!story) {
+      const err = new Error("La historia no existe");
+      err.status = 404;
       throw err;
     }
 
-    const story = await storiesRepository.findStoriesById({
-      userId,
-      storiesId,
-    });
     res.send({ story });
   } catch (err) {
     next(err);
@@ -114,17 +116,18 @@ async function viewStories(req, res, next) {
 }
 
 async function editStories(req, res, next) {
+  ///////////////////////NO FUNCIONA
   try {
-    const { id } = req.params;
-    const { text } = req.body;
-    const { userId } = req.params;
-    const { storiesId } = req.params;
+    const { body, title, date } = req.body;
+    const { id } = req.auth;
 
     const schema = Joi.object({
-      text: Joi.string().max(1500),
+      body: Joi.string().max(1500),
+      title: Joi.string().max(255).required(),
+      date: Joi.date().iso(),
     });
 
-    await schema.validateAsync({ text });
+    await schema.validateAsync({ body, title, date });
 
     const story = await storiesRepository.findStoriesById({ id });
 
@@ -134,18 +137,22 @@ async function editStories(req, res, next) {
       throw err;
     }
 
-    if (Number({ userId }) !== req.auth.id) {
-      const err = new Error("El usuario no tiene permiso");
-      err.status = 401;
-      throw err;
-    }
+    //if (Number({ user_id_ }) !== req.auth.id) {
+    // const err = new Error("El usuario no tiene permiso");
+    //err.status = 401;
+    //throw err;
+    //}
 
     const updatedStory = await storiesRepository.updateStories({
-      storiesId,
-      userId,
+      body,
+      title,
+      date,
     });
 
-    res.send(updatedStory);
+    res.send({
+      status: "ok",
+      data: updatedStory,
+    });
   } catch (err) {
     next(err);
   }
@@ -154,7 +161,6 @@ async function editStories(req, res, next) {
 async function deleteStories(req, res, next) {
   try {
     const { id } = req.params;
-    const { id: userId } = req.auth;
 
     const story = await storiesRepository.findStoriesById({ id });
 
@@ -165,15 +171,18 @@ async function deleteStories(req, res, next) {
       throw err;
     }
 
-    if (Number({ userId }) !== req.auth.id) {
-      const err = new Error("El usuario no tiene permiso");
-      err.status = 401;
-      throw err;
-    }
+    //if (Number({ userId }) !== req.auth.id) {
+    // const err = new Error("El usuario no tiene permiso");
+    // err.status = 401;
+    // throw err;
+    //}
 
     await storiesRepository.deleteStories({ id });
 
-    res.status(204);
+    res.send({
+      status: "ok",
+      message: `La historia con id ${id} fue borrada`,
+    });
   } catch (err) {
     next(err);
   }

@@ -30,9 +30,9 @@ async function createdStory({ user_id, title, body }) {
   return findStoriesById({ id: result.insertId });
 }
 
-async function updateStories({ storiesId, id, text }) {
-  const query = "UPDATE stories SET storiesId = ?, text = ? WHERE id = ?";
-  await database.pool.query(query[(storiesId, text, id)]);
+async function updateStories({ body, title, date, id }) {
+  const query = "UPDATE stories SET body = ?, title = ?, date = ? WHERE id = ?";
+  await database.pool.query(query[(body, title, date, id)]);
 
   return findStoriesById(id);
 }

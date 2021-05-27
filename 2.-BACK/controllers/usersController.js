@@ -2,7 +2,7 @@ const Joi = require("joi");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 
-const { usersRepository } = require("../repositories");
+const { usersRepository, storiesRepository } = require("../repositories");
 
 async function createUser(req, res, next) {
   try {
@@ -49,9 +49,10 @@ async function createUser(req, res, next) {
 
 async function getUser(req, res, next) {
   try {
-    const { id } = req.params;
+    const { user_id } = req.params;
+    const { id } = req.auth;
 
-    const user = await usersRepository.findUserById({ id });
+    const user = await usersRepository.findUserById({ id: user_id });
 
     if (!user) {
       const error = new Error("No existe el usuario");
@@ -59,17 +60,28 @@ async function getUser(req, res, next) {
       throw error;
     }
 
+    const userInfo = {
+      id: user.id,
+      name: user.name,
+      email: user.email,
+      avatar: user.avatar,
+      bio: user.bio,
+      residence: user.residence,
+      birthdate: user.birthdate,
+    };
+
+    if (user.id === id) {
+      // yo soy el usuario del que que estoy viendo la información
+      const stories = await storiesRepository.getUserStories({ id: user.id });
+
+      userInfo.stories = stories;
+
+      // hacer lo mismo para comentarios
+    }
+
     res.send({
       status: "ok",
-      data: {
-        id: user.id,
-        name: user.name,
-        email: user.email,
-        avatar: user.avatar,
-        bio: user.bio,
-        residence: user.residence,
-        birthdate: user.birthdate,
-      },
+      data: userInfo,
     });
   } catch (err) {
     next(err);

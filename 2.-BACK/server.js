@@ -28,8 +28,8 @@ app.post("/api/users", UsersController.createUser);
 // Hace login, devuelve token
 app.post("/api/users/login", UsersController.loginUser);
 
-// Ver información de un usuario
-app.get("/api/users/:id", UsersController.getUser);
+// Ver información de un usuario (PENDIENTE: mostrar los comentarios del usuario SI SOY YO)
+app.get("/api/users/:user_id", validateAuthorization, UsersController.getUser);
 
 // Cambiar datos de un usuario
 app.put("/api/users/", validateAuthorization, UsersController.editUser);
@@ -50,7 +50,6 @@ app.delete("/api/users/", validateAuthorization, UsersController.deleteUser);
 app.post("/api/stories", validateAuthorization, StoriesController.createStory);
 
 // Ver últimas historias
-
 app.get("/api/stories", StoriesController.getStories);
 
 //Ver las historias de un usuario
@@ -70,6 +69,7 @@ app.put(
   StoriesController.editStories
 );
 
+//Borrar una historia
 app.delete(
   "/api/stories/:id",
   validateAuthorization,
@@ -78,25 +78,34 @@ app.delete(
 
 // Comments
 
-//Listar comentarios
-app.get(
-  "/api/stories/:id/comments",
+//Crear un comentario
+app.post(
+  "/api/stories/:story_id/comments",
   validateAuthorization,
-  CommentsController.getComments
+  CommentsController.createComments
 );
-//Crear  un comentario
-app.post("/api/stories/:id/newcomments", CommentsController.createComments);
-app.put(
-  "/api/users/:id/stories/:id/newcomments",
-  validateAuthorization,
-  CommentsController.editComments
-);
-//Eliminar un comentario
+
+// Eliminar un comentario
 app.delete(
-  "/api/users/:id/stories/:id/comments/:id",
+  "/api/comments/:comment_id",
   validateAuthorization,
   CommentsController.deleteComments
 );
+
+// //Votes
+// app.post(
+//   "/api/stories/:id/vote",
+//   validateAuthorization,
+//   VotesController.createVotes
+// );
+
+// IMPORTANTE: Comprobar que no exista previamente un voto
+
+// app.delete(
+//   "/api/stories/:id/vote",
+//   validateAuthorization,
+//   VotesController.deleteVotes
+// );
 
 // //Images
 // app.post(
@@ -119,20 +128,6 @@ app.delete(
 //   validateAuthorization,
 //   ImagesController.deleteAvatar
 // );
-
-// //Votes
-
-// app.post(
-//   "/api/users/:id/stories/:id/vote",
-//   validateAuthorization,
-//   VotesController.createVotes
-// );
-// app.delete(
-//   "/api/users/:id/:story/images/:id/:vote",
-//   validateAuthorization,
-//   VotesController.deleteVotes
-// );
-
 app.use((err, req, res, next) => {
   const status = err.isJoi ? 400 : err.status || 500;
   res.status(status);

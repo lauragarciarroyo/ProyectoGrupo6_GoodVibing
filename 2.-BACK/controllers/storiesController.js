@@ -1,6 +1,10 @@
 const Joi = require("joi");
 
-const { storiesRepository, usersRepository } = require("../repositories");
+const {
+  storiesRepository,
+  usersRepository,
+  commentsRepository,
+} = require("../repositories");
 
 async function getStories(req, res, next) {
   try {
@@ -106,11 +110,6 @@ async function viewStories(req, res, next) {
   try {
     const { id } = req.params;
 
-    // if (Number({ id }) !== req.auth.id) {
-    //   const err = new Error("El usuario no tiene permiso");
-    //  err.status = 401;
-    //  throw err;
-    // }
     const story = await storiesRepository.findStoriesById({ id });
 
     if (!story) {
@@ -118,6 +117,12 @@ async function viewStories(req, res, next) {
       err.status = 404;
       throw err;
     }
+
+    const comments = await commentsRepository.getStoryComments({
+      story_id: id,
+    });
+
+    story.comments = comments;
 
     res.send({ status: "ok", data: story });
   } catch (err) {

@@ -37,8 +37,17 @@ CREATE TABLE comments (
   text TEXT NOT NULL,
   user_id INT NOT NULL,
   story_id INT NOT NULL,
+  date DATETIME NOT NULL,
   PRIMARY KEY (id),
   FOREIGN KEY (user_id) REFERENCES users(id),
   FOREIGN KEY (story_id) REFERENCES stories(id)
 );
 
+CREATE TABLE votes (
+  id INT NOT NULL AUTO_INCREMENT,
+  user_id INT NOT NULL,
+  story_id INT NOT NULL,
+  PRIMARY KEY (id),
+  FOREIGN KEY (user_id) REFERENCES users(id),
+  FOREIGN KEY (story_id) REFERENCES stories(id)
+);

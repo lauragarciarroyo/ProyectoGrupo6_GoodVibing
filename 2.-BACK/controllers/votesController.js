@@ -1,5 +1,3 @@
-const Joi = require("joi");
-
 const {
   storiesRepository,
   usersRepository,
@@ -8,17 +6,10 @@ const {
 
 async function createVotes(req, res, next) {
   try {
-    const { storiesId } = req.params;
-    const { usersId } = req.auth;
-    const { votes } = req.votes;
+    const { story_id } = req.params;
+    const { id } = req.auth;
 
-    //const schema = Joi.objetc ({
-    //   votes: Joi.number().max(1),
-    // })
-
-    //await schema.validateAsync ({votes});
-
-    const story = await storiesRepository.findStoriesById(id);
+    const story = await storiesRepository.findStoriesById({ id: story_id });
 
     if (!story) {
       const err = new Error("No existe la historia");
@@ -27,17 +18,27 @@ async function createVotes(req, res, next) {
       throw err;
     }
 
-    const user = await usersRepository.findUserId(usersId);
+    const user = await usersRepository.findUserById({ id });
     if (!user) {
       const err = new Error("El usuario no existe");
       err.code = 404;
       throw err;
     }
+    const vote = await votesRepository.findVotesById({ id });
 
-    const data = { usersId: id, storiesId, votes };
-    const rating = await votesRepository.addVotes(data);
+    if (vote) {
+      const err = new Error("No puedes votar dos veces");
+      err.code = 400;
+      throw err;
+    }
 
-    res.status(201);
+    const data = { user_id: id, story_id, vote };
+    await votesRepository.createVotes(data);
+
+    res.send({
+      status: "ok",
+      data,
+    });
   } catch (err) {
     next(err);
   }

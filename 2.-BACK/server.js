@@ -21,6 +21,7 @@ app.use(express.json());
 app.use(express.static(staticPath));
 
 // //Users
+
 // Crea un usuario
 app.post("/api/users", UsersController.createUser);
 
@@ -43,7 +44,36 @@ app.post(
 // Borrar un usuario
 app.delete("/api/users/", validateAuthorization, UsersController.deleteUser);
 
-// //Comments
+//Stories
+
+//Crear una historia
+app.post("/api/stories", validateAuthorization, StoriesController.createStory);
+
+//Ver las historias de un usuario
+app.get("/api/users/:id/stories", StoriesController.getUserStories);
+
+//Ver una historia
+app.get(
+  "/api/stories/:id",
+  validateAuthorization,
+  StoriesController.viewStories
+);
+
+//Editar historia
+app.put(
+  "/api/stories/:id_story",
+  validateAuthorization,
+  StoriesController.editStories
+);
+
+app.delete(
+  "/api/stories/:id",
+  validateAuthorization,
+  StoriesController.deleteStories
+);
+
+// Comments
+
 //Listar comentarios
 app.get(
   "/api/stories/:id/comments",
@@ -62,37 +92,6 @@ app.delete(
   "/api/users/:id/stories/:id/comments/:id",
   validateAuthorization,
   CommentsController.deleteComments
-);
-
-//Stories
-
-//Crear una historia
-app.post("/api/stories", validateAuthorization, StoriesController.createStory);
-
-//Ver las historias de un usuario
-app.get("/api/users/:id/stories", StoriesController.getUserStories);
-
-//app.get("/api/stories", StoriesController.homeStories);
-// app.get("/api/stories/search", StoriesController.searchStories);
-
-//Ver una historia
-app.get(
-  "/api/stories/:id",
-  validateAuthorization,
-  StoriesController.viewStories
-);
-
-//Editar historia
-app.put(
-  "/api/stories/:id",
-  validateAuthorization,
-  StoriesController.editStories
-);
-
-app.delete(
-  "/api/users/stories/:id",
-  validateAuthorization,
-  StoriesController.deleteStories
 );
 
 // //Images

@@ -2,15 +2,25 @@ const Joi = require("joi");
 
 const { storiesRepository, usersRepository } = require("../repositories");
 
-//async function homeStories(req, res, next) {
-//try {
+async function getStories(req, res, next) {
+  try {
+    const { q } = req.query;
 
-//const stories = await storiesRepository.findStoriesById();
-//res.send(stories);
-// } catch (err) {
-//  next(err);
-// }
-//}
+    const stories = await storiesRepository.getStories({ search: q });
+
+    const publicStories = stories.map((story) => {
+      story.body = story.body.slice(0, 200) + "...";
+      return story;
+    });
+
+    res.send({
+      status: "ok",
+      data: publicStories,
+    });
+  } catch (error) {
+    next(error);
+  }
+}
 
 async function createStory(req, res, next) {
   try {
@@ -116,7 +126,6 @@ async function viewStories(req, res, next) {
 }
 
 async function editStories(req, res, next) {
-  ///////////////////////NO FUNCIONA
   try {
     const { id_story } = req.params; //Id de la historia que queremos editar
     const { id } = req.auth; //Id del usuario que viene del token
@@ -200,4 +209,5 @@ module.exports = {
   editStories,
   deleteStories,
   getUserStories,
+  getStories,
 };

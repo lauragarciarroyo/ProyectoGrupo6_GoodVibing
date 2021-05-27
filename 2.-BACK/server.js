@@ -49,6 +49,10 @@ app.delete("/api/users/", validateAuthorization, UsersController.deleteUser);
 //Crear una historia
 app.post("/api/stories", validateAuthorization, StoriesController.createStory);
 
+// Ver últimas historias
+
+app.get("/api/stories", StoriesController.getStories);
+
 //Ver las historias de un usuario
 app.get("/api/users/:id/stories", StoriesController.getUserStories);
 

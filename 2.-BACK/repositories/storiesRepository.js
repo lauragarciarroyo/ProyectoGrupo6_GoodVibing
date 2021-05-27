@@ -1,5 +1,22 @@
 const { database } = require("../infrastructure");
 
+async function getStories({ search }) {
+  let query;
+  if (!search) {
+    query = "SELECT * FROM stories";
+  } else {
+    query = `
+      SELECT *
+      FROM stories
+      WHERE title LIKE CONCAT('%', ?,  '%')
+      OR body LIKE CONCAT('%', ?,  '%')
+    `;
+  }
+  const [stories] = await database.pool.query(query, [search, search]);
+
+  return stories;
+}
+
 async function findStoriesById({ id }) {
   const query = "SELECT * FROM stories WHERE id = ?";
   const [stories] = await database.pool.query(query, [id]);
@@ -62,4 +79,5 @@ module.exports = {
   updateStories,
   deleteStories,
   getUserStories,
+  getStories,
 };

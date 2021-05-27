@@ -109,7 +109,7 @@ async function viewStories(req, res, next) {
       throw err;
     }
 
-    res.send({ story });
+    res.send({ status: "ok", data: story });
   } catch (err) {
     next(err);
   }
@@ -118,18 +118,13 @@ async function viewStories(req, res, next) {
 async function editStories(req, res, next) {
   ///////////////////////NO FUNCIONA
   try {
+    const { id_story } = req.params; //Id de la historia que queremos editar
+    const { id } = req.auth; //Id del usuario que viene del token
     const { body, title, date } = req.body;
-    const { id } = req.auth;
 
-    const schema = Joi.object({
-      body: Joi.string().max(1500),
-      title: Joi.string().max(255).required(),
-      date: Joi.date().iso(),
-    });
+    console.log(id_story);
 
-    await schema.validateAsync({ body, title, date });
-
-    const story = await storiesRepository.findStoriesById({ id });
+    const story = await storiesRepository.findStoriesById({ id: id_story });
 
     if (!story) {
       const err = new Error("La historia no existe");
@@ -137,16 +132,25 @@ async function editStories(req, res, next) {
       throw err;
     }
 
-    //if (Number({ user_id_ }) !== req.auth.id) {
-    // const err = new Error("El usuario no tiene permiso");
-    //err.status = 401;
-    //throw err;
-    //}
+    if (story.user_id !== id) {
+      const err = new Error("No puedes editar una historia de otro usuario");
+      err.status = 401;
+      throw err;
+    }
+
+    const schema = Joi.object({
+      title: Joi.string().max(255).required(),
+      body: Joi.string().max(1500).required(),
+      date: Joi.date().iso(),
+    });
+
+    await schema.validateAsync({ body, title, date });
 
     const updatedStory = await storiesRepository.updateStories({
       body,
       title,
       date,
+      id: id_story,
     });
 
     res.send({
@@ -171,11 +175,11 @@ async function deleteStories(req, res, next) {
       throw err;
     }
 
-    //if (Number({ userId }) !== req.auth.id) {
-    // const err = new Error("El usuario no tiene permiso");
-    // err.status = 401;
-    // throw err;
-    //}
+    if (story.user_id !== req.auth.id) {
+      const err = new Error("No puedes borrar una historia que no creaste tu");
+      err.status = 401;
+      throw err;
+    }
 
     await storiesRepository.deleteStories({ id });
 

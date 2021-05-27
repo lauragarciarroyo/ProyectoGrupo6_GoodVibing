@@ -32,7 +32,7 @@ async function createdStory({ user_id, title, body }) {
 
 async function updateStories({ body, title, date, id }) {
   const query = "UPDATE stories SET body = ?, title = ?, date = ? WHERE id = ?";
-  await database.pool.query(query[(body, title, date, id)]);
+  await database.pool.query(query, [body, title, new Date(date), id]);
 
   return findStoriesById({ id });
 }
@@ -40,7 +40,7 @@ async function updateStories({ body, title, date, id }) {
 async function deleteStories({ id }) {
   const query = "DELETE FROM stories WHERE id = ?";
 
-  return await database.pool.query(query, id);
+  return await database.pool.query(query, [id]);
 }
 
 async function getUserStories({ id }) {

@@ -42,7 +42,7 @@ async function deleteUser({ id }) {
 async function editUser({ id, name, email, bio, residence, birthdate }) {
   const query = `
     UPDATE users
-    SET name = ?, email = ?, bio = ?, residence = ?, birthdate = STR_TO_DATE(?, '%Y-%m-%dT%H:%i:%s+0000')
+    SET name = ?, email = ?, bio = ?, residence = ?, birthdate = ?
     WHERE id = ?
   `;
 
@@ -51,7 +51,7 @@ async function editUser({ id, name, email, bio, residence, birthdate }) {
     email,
     bio,
     residence,
-    birthdate,
+    new Date(birthdate),
     id,
   ]);
 

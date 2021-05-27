@@ -1,30 +1,26 @@
 const { database } = require("../infrastructure");
 
-async function findComments() {
-  const query = "SELECT * FROM comments";
-  const [comments] = await database.pool.query(query);
+async function findCommentsById({ id }) {
+  const query = "SELECT * FROM comments WHERE id = ?";
+  const [comments] = await database.pool.query(query, [id]);
 
-  return comments;
+  return comments[0];
 }
 
-async function addWriteComments(dataComments, userId) {
+async function createComments({ user_id, story_id, text }) {
   const query =
-    "INSERT INTO comments (user_id, stories_id, text) VALUES (?, ?, ?)";
+    "INSERT INTO comments (user_id, story_id, text) VALUES (?, ?, ?)";
 
-  const [result] = await database.pool.query(query, [
-    userId,
-    data.storiesId,
-    data.text,
-  ]);
+  const [result] = await database.pool.query(query, [user_id, story_id, text]);
 
-  return findStoriesById(result.insertId);
+  return findCommentsById({ id: result.insertId });
 }
 
-async function editWriteComments(dataComments, userId, text) {
+async function editComments({ text, id }) {
   const query = "UPDATE comments SET  text = ? WHERE id = ?";
   await database.pool.query(query, [text, id]);
 
-  return findStoriesById(id);
+  return findCommentsById({ id });
 }
 
 async function deleteComments(id) {
@@ -34,8 +30,8 @@ async function deleteComments(id) {
 }
 
 module.exports = {
-  findComments,
-  addWriteComments,
-  editWriteComments,
+  findCommentsById,
+  createComments,
+  editComments,
   deleteComments,
 };

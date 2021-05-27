@@ -34,7 +34,7 @@ async function updateStories({ body, title, date, id }) {
   const query = "UPDATE stories SET body = ?, title = ?, date = ? WHERE id = ?";
   await database.pool.query(query[(body, title, date, id)]);
 
-  return findStoriesById(id);
+  return findStoriesById({ id });
 }
 
 async function deleteStories({ id }) {

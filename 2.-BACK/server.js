@@ -5,7 +5,7 @@ const express = require("express");
 const {
   UsersController,
   // ImagesController,
-  // CommentsController,
+  CommentsController,
   StoriesController,
   // VotesController,
 } = require("./controllers");
@@ -44,21 +44,25 @@ app.post(
 app.delete("/api/users/", validateAuthorization, UsersController.deleteUser);
 
 // //Comments
-// app.get("/api/users/:id/stories/:id/comments", CommentsController.getComments);
-// app.post(
-//   "/api/users/:id/stories/:id/newcomments",
-//   CommentsController.createcomments
-// );
-// app.put(
-//   "/api/users/:id/stories/:id/newcomments",
-//   validateAuthorization,
-//   CommentsController.editComments
-// );
-// app.delete(
-//   "/api/users/:id/stories/:id/comments/:id",
-//   validateAuthorization,
-//   CommentsController.deleteComments
-// );
+//Listar comentarios
+app.get(
+  "/api/stories/:id/comments",
+  validateAuthorization,
+  CommentsController.getComments
+);
+//Crear  un comentario
+app.post("/api/stories/:id/newcomments", CommentsController.createComments);
+app.put(
+  "/api/users/:id/stories/:id/newcomments",
+  validateAuthorization,
+  CommentsController.editComments
+);
+//Eliminar un comentario
+app.delete(
+  "/api/users/:id/stories/:id/comments/:id",
+  validateAuthorization,
+  CommentsController.deleteComments
+);
 
 //Stories
 

@@ -95,7 +95,7 @@ app.delete(
 // //Votes
 //Votar
 app.post(
-  "/api/stories/:id/vote",
+  "/api/stories/:story_id/vote",
   validateAuthorization,
   VotesController.createVotes
 );
@@ -104,7 +104,7 @@ app.post(
 
 //Eliminar voto
 app.delete(
-  "/api/stories/:id/vote",
+  "/api/stories/:story_id/vote",
   validateAuthorization,
   VotesController.deleteVotes
 );

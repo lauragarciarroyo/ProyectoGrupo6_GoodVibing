@@ -3,14 +3,21 @@ const { database } = require("../infrastructure");
 async function getStories({ search }) {
   let query;
   if (!search) {
-    query = "SELECT * FROM stories";
+    query = `
+      SELECT stories.*, COUNT(votes.id) as votes
+      FROM stories
+      LEFT JOIN votes ON stories.id = votes.story_id
+      GROUP BY stories.id
+      `;
   } else {
     query = `
-      SELECT *
+      SELECT stories.*, COUNT(votes.id) as votes
       FROM stories
+      LEFT JOIN votes ON stories.id = votes.story_id
       WHERE title LIKE CONCAT('%', ?,  '%')
       OR body LIKE CONCAT('%', ?,  '%')
-    `;
+      GROUP BY stories.id    
+      `;
   }
   const [stories] = await database.pool.query(query, [search, search]);
 
@@ -18,7 +25,13 @@ async function getStories({ search }) {
 }
 
 async function findStoriesById({ id }) {
-  const query = "SELECT * FROM stories WHERE id = ?";
+  const query = `
+    SELECT stories.*, COUNT(votes.id) as votes 
+    FROM stories 
+    LEFT JOIN votes ON stories.id = votes.story_id
+    WHERE stories.id = ?
+    GROUP BY stories.id
+    `;
   const [stories] = await database.pool.query(query, [id]);
 
   return stories[0];
@@ -62,9 +75,11 @@ async function deleteStories({ id }) {
 
 async function getUserStories({ id }) {
   const query = `
-    SELECT *
+    SELECT stories.*, COUNT(votes.id) as votes
     FROM stories
-    WHERE user_id = ?
+    LEFT JOIN votes ON stories.id = votes.story_id
+    WHERE stories.user_id = ?
+    GROUP BY stories.id
   `;
 
   const [result] = await database.pool.query(query, [id]);

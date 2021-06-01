@@ -1,22 +1,25 @@
 const { database } = require("../infrastructure");
+const storiesRepository = require("./storiesRepository");
 
-async function createVotes({ user_id, story_id, id }) {
-  const query = "INSERT INTO votes (user_id, story_id , id VALUES (?, ?, ?)";
-  const [result] = await database.pool.query(query, [user_id, story_id, id]);
-  return findVotesById({ id: result.insertId });
+async function createVotes({ user_id, story_id }) {
+  const query = "INSERT INTO votes (user_id, story_id) VALUES (?, ?)";
+  await database.pool.query(query, [user_id, story_id]);
+  return await storiesRepository.findStoriesById({ id: story_id });
 }
 
-async function findVotesById({ id }) {
-  const query = "SELECT * FROM votes WHERE id = ?";
-  const votes = await database.pool.query(query, [id]);
+async function findVote({ user_id, story_id }) {
+  const query = "SELECT * FROM votes WHERE user_id = ? AND story_id = ?";
+  const [votes] = await database.pool.query(query, [user_id, story_id]);
 
   return votes;
 }
 
-async function deleteVotes({ id }) {
-  const query = "DELETE FROM votes WHERE id = ?";
+async function deleteVotes({ user_id, story_id }) {
+  const query = "DELETE FROM votes WHERE user_id = ? AND story_id = ?";
 
-  return await database.pool.query(query, [id]);
+  await database.pool.query(query, [user_id, story_id]);
+
+  return await storiesRepository.findStoriesById({ id: story_id });
 }
 
-module.exports = { createVotes, deleteVotes, findVotesById };
+module.exports = { createVotes, deleteVotes, findVote };

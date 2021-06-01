@@ -12,7 +12,7 @@ async function uploadImages(req, res, next) {
     const { id } = req.auth;
     //validación imagen con Joi
 
-    const story = await storiesRepository.findStoriesById({story_id)};
+    const story = await storiesRepository.findStoriesById({ story_id });
 
     if (!story) {
       const err = new Error("La historia no existe");

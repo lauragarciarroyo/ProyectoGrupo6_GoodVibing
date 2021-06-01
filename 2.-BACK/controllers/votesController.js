@@ -6,39 +6,45 @@ const {
 
 async function createVotes(req, res, next) {
   try {
-    const { vote_id } = req.body;
     const { id } = req.auth;
     const { story_id } = req.params;
 
+    //Comprobamos que existe la historia
     const story = await storiesRepository.findStoriesById({ id: story_id });
 
     if (!story) {
       const err = new Error("No existe la historia");
-      err.code = 404;
+      err.status = 404;
 
       throw err;
     }
+
+    //Comprobamos que existe el usuario
     const user = await usersRepository.findUserById({ id });
+
     if (!user) {
       const err = new Error("El usuario no existe");
-      err.code = 404;
+      err.status = 404;
       throw err;
     }
 
-    const voteUser = await votesRepository.findUserById({ id });
+    //Comprobamos el el usuario no votó previamente la historia
+    const voteUser = await votesRepository.findVote({ user_id: id, story_id });
 
-    if (user === voteUser.id) {
-      const err = new Error("Aún no has votado");
-      err.code = 401;
+    if (voteUser.length > 0) {
+      const err = new Error("Ya has votado a esta historia");
+      err.status = 401;
       throw err;
     }
 
-    const data = { id, story_id, vote_id };
-    const dataVotes = await votesRepository.createVotes(data);
+    const votedStory = await votesRepository.createVotes({
+      user_id: id,
+      story_id,
+    });
 
     res.send({
       status: "ok",
-      data: dataVotes,
+      data: votedStory,
     });
   } catch (err) {
     next(err);
@@ -49,37 +55,34 @@ async function deleteVotes(req, res, next) {
   try {
     const { story_id } = req.params;
     const { id } = req.auth;
-    const { vote_id } = req.body;
 
-    const story = await storiesRepository.findStoriesById({ story_id });
+    //Comprobamos que existe la historia
+    const story = await storiesRepository.findStoriesById({ id: story_id });
 
     if (!story) {
       const err = new Error("No existe la historia");
-      err.code = 404;
+      err.status = 404;
 
       throw err;
     }
+
+    //Comprobamos que existe el usuario
     const user = await usersRepository.findUserById({ id });
+
     if (!user) {
       const err = new Error("El usuario no existe");
-      err.code = 404;
+      err.status = 404;
       throw err;
     }
 
-    const voteUser = await votesRepository.findUserById({ id });
-
-    if (user !== voteUser.id) {
-      const err = new Error("Aún no has votado");
-      err.code = 401;
-      throw err;
-    }
-
-    const data = { id, story_id, vote_id };
-    await votesRepository.deleteVotes(data);
+    const votedStory = await votesRepository.deleteVotes({
+      story_id,
+      user_id: id,
+    });
 
     res.send({
       status: "ok",
-      message: "Voto borrado",
+      data: votedStory,
     });
   } catch (err) {
     next(err);

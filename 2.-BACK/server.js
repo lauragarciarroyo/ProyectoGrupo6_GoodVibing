@@ -7,7 +7,7 @@ const {
   // ImagesController,
   CommentsController,
   StoriesController,
-  // VotesController,
+  VotesController,
 } = require("./controllers");
 
 const { validateAuthorization } = require("./middlewares");
@@ -93,19 +93,21 @@ app.delete(
 );
 
 // //Votes
-// app.post(
-//   "/api/stories/:id/vote",
-//   validateAuthorization,
-//   VotesController.createVotes
-// );
+//Votar
+app.post(
+  "/api/stories/:id/vote",
+  validateAuthorization,
+  VotesController.createVotes
+);
 
 // IMPORTANTE: Comprobar que no exista previamente un voto
 
-// app.delete(
-//   "/api/stories/:id/vote",
-//   validateAuthorization,
-//   VotesController.deleteVotes
-// );
+//Eliminar voto
+app.delete(
+  "/api/stories/:id/vote",
+  validateAuthorization,
+  VotesController.deleteVotes
+);
 
 // //Images
 // app.post(

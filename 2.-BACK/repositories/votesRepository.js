@@ -1,10 +1,9 @@
 const { database } = require("../infrastructure");
 
-async function createVotes({ user_id, story_id, vote }) {
-  const query =
-    "INSERT INTO votes (user_id, stories_id , vote) VALUES (?, ?, ?)";
-  const [result] = await database.pool.query(query, [user_id, story_id, vote]);
-  return findVotesById(result.insertId);
+async function createVotes({ user_id, story_id, id }) {
+  const query = "INSERT INTO votes (user_id, story_id , id VALUES (?, ?, ?)";
+  const [result] = await database.pool.query(query, [user_id, story_id, id]);
+  return findVotesById({ id: result.insertId });
 }
 
 async function findVotesById({ id }) {

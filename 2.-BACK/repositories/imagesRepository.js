@@ -1,27 +1,27 @@
 const { database } = require("../infrastructure");
 
-async function addImages(dataimages) {
-  const query = "INSERT INTO images(storiesId, userId) VALUES (?,?)";
-  const [result] = await database.pool.query(query, [storiesId, userID]);
+async function addImages() {
+  const query = "INSERT INTO images(story_id, filename) VALUES (?,?)";
+  const [result] = await database.pool.query(query, [story_id]);
 
-  return findStoriesById(result.insertId);
+  return findStoriesById({ id: result.insertId });
 }
 
-async function deleteImages(id) {
+async function deleteImages({ id }) {
   const query = "DELETE FROM images WHERE id = ?";
   return database.pool.query(query, id);
 }
 
-async function addAvatar(userId) {
+async function addAvatar({ id }) {
   const query = "INSERT INTO images WHERE id = ?";
-  const [result] = await database.pool.query(query, [userId]);
+  const [result] = await database.pool.query(query, [id]);
 
   return result.insertId;
 }
 
-async function deleteAvatar(userid) {
+async function deleteAvatar({ id }) {
   const query = "DELETE FROM images WHERE id = ?";
-  return await database.pool.query(query, [userId]);
+  return await database.pool.query(query, [id]);
 }
 
 module.exports = { addImages, deleteImages, addAvatar, deleteAvatar };

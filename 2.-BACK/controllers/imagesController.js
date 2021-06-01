@@ -8,11 +8,11 @@ const {
 
 async function uploadImages(req, res, next) {
   try {
-    const { storiesId } = req.params;
+    const { story_id } = req.body;
     const { id } = req.auth;
     //validación imagen con Joi
 
-    const story = await storiesRepository.findStoriesById(storiesId);
+    const story = await storiesRepository.findStoriesById({story_id)};
 
     if (!story) {
       const err = new Error("La historia no existe");
@@ -20,7 +20,7 @@ async function uploadImages(req, res, next) {
       throw err;
     }
 
-    const dataImages = { storiesId, usersId: id, images };
+    const dataImages = { story_id, id, filename };
     const upImages = await imagesRepository.addimages(dataImages);
 
     res.status(201);
@@ -43,7 +43,7 @@ async function deleteImages(req, res, next) {
       throw err;
     }
 
-    const { userImages } = req.params; //////////////////////////////////////REVISAR///////////////////////////////////////////
+    const { userImages } = req.body;
 
     if (user !== userImages) {
       const err = new Error("El usuario no tiene permiso");
@@ -51,7 +51,7 @@ async function deleteImages(req, res, next) {
       throw err;
     }
 
-    const dataImages = { storiesId, usersId: id, images };
+    const dataImages = { storiesId, usersId: id, filename };
     const upImages = await imagesRepository.deleteImages(dataImages);
 
     res.status(201);

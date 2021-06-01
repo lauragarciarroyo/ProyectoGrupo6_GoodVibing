@@ -111,12 +111,12 @@ app.delete(
 
 // //Images
 // app.post(
-//   "/api/users/:id/stories/images",
+//   "/api/images",
 //   validateAuthorization,
 //   ImagesController.uploadImages
 // );
 // app.delete(
-//   "/api/users/:id/:story/images/:id",
+//   "/api/images/:id",
 //   validateAuthorization,
 //   ImagesController.deleteImages
 // );

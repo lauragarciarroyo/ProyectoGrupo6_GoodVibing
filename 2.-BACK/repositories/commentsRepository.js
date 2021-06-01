@@ -41,9 +41,22 @@ async function deleteComments({ id }) {
   return;
 }
 
+async function getUserComments({ id }) {
+  const query = `
+    SELECT *
+    FROM comments
+    WHERE user_id = ?
+  `;
+
+  const [result] = await database.pool.query(query, [id]);
+
+  return result;
+}
+
 module.exports = {
   findCommentsById,
   createComments,
   deleteComments,
   getStoryComments,
+  getUserComments,
 };

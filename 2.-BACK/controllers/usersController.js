@@ -2,7 +2,11 @@ const Joi = require("joi");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 
-const { usersRepository, storiesRepository } = require("../repositories");
+const {
+  usersRepository,
+  storiesRepository,
+  commentsRepository,
+} = require("../repositories");
 
 async function createUser(req, res, next) {
   try {
@@ -77,6 +81,14 @@ async function getUser(req, res, next) {
       userInfo.stories = stories;
 
       // hacer lo mismo para comentarios
+    }
+
+    if (user.id === id) {
+      const comments = await commentsRepository.getUserComments({
+        id: user.id,
+      });
+
+      userInfo.comments = comments;
     }
 
     res.send({

@@ -8,6 +8,8 @@ CREATE TABLE users (
   email VARCHAR(255) UNIQUE NOT NULL,
   password VARCHAR(255) NOT NULL,
   avatar VARCHAR(255),
+  background VARCHAR(255),
+  font VARCHAR(255),
   bio TEXT,
   residence VARCHAR(255),
   birthdate DATETIME,
@@ -18,18 +20,11 @@ CREATE TABLE stories (
   id INT NOT NULL AUTO_INCREMENT,
   title VARCHAR(255) NOT NULL,
   body TEXT NOT NULL,
+  image VARCHAR(255),
   user_id INT NOT NULL,
   date DATETIME NOT NULL,
   PRIMARY KEY (id),
   FOREIGN KEY (user_id) REFERENCES users(id)
-);
-
-CREATE TABLE images ( 
-  id INT NOT NULL AUTO_INCREMENT,
-  filename VARCHAR(255) NOT NULL,
-  story_id INT NOT NULL,
-  PRIMARY KEY (id),
-  FOREIGN KEY (story_id) REFERENCES stories(id)
 );
 
 CREATE TABLE comments ( 

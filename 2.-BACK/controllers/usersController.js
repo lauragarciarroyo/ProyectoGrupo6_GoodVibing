@@ -1,6 +1,7 @@
 const Joi = require("joi");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
+const { saveImage } = require("../helpers");
 
 const {
   usersRepository,
@@ -144,7 +145,7 @@ async function editUser(req, res, next) {
     const { id } = req.auth.id;
 
     // La fecha en formato iso podéis encontrarla aquí: https://www.utctime.net/ (es la ISO-8601)
-    const { name, email, bio, residence, birthdate } = req.body;
+    const { name, email, bio, residence, birthdate, font } = req.body;
 
     const schema = Joi.object({
       name: Joi.string().required().max(255),
@@ -152,9 +153,17 @@ async function editUser(req, res, next) {
       bio: Joi.string(),
       residence: Joi.string().max(255),
       birthdate: Joi.date().iso(),
+      font: Joi.string().max(255),
     });
 
-    await schema.validateAsync({ name, email, bio, residence, birthdate });
+    await schema.validateAsync({
+      name,
+      email,
+      bio,
+      residence,
+      birthdate,
+      font,
+    });
 
     const user = await usersRepository.findUserById({ id });
 
@@ -171,6 +180,7 @@ async function editUser(req, res, next) {
       bio,
       residence,
       birthdate,
+      font,
     });
 
     res.send({
@@ -255,6 +265,36 @@ async function deleteUser(req, res, next) {
   }
 }
 
+async function setAvatar(req, res, next) {
+  try {
+    const { id } = req.auth;
+
+    //Comprobar que realmente se envió un fichero y si no dar un error
+    if (!req.files || !req.files.avatar) {
+      const error = new Error("No se envió ningún fichero");
+      error.status = 400;
+      throw error;
+    }
+
+    //Procesar el fichero y guardarlo en un directorio con un nombre único
+    const savedImage = await saveImage({ data: req.files.avatar.data });
+
+    //Guardar ese nombre de fichero en la tabla de usuarios
+    const user = await usersRepository.setUserAvatar({
+      id,
+      avatar: savedImage,
+    });
+
+    //Dar una respuesta
+    res.send({
+      status: "ok",
+      data: user,
+    });
+  } catch (err) {
+    next(err);
+  }
+}
+
 module.exports = {
   createUser,
   getUser,
@@ -262,4 +302,5 @@ module.exports = {
   editUser,
   changePassword,
   deleteUser,
+  setAvatar,
 };

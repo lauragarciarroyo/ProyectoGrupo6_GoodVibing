@@ -39,10 +39,10 @@ async function deleteUser({ id }) {
   return;
 }
 
-async function editUser({ id, name, email, bio, residence, birthdate }) {
+async function editUser({ id, name, email, bio, residence, birthdate, font }) {
   const query = `
     UPDATE users
-    SET name = ?, email = ?, bio = ?, residence = ?, birthdate = ?
+    SET name = ?, email = ?, bio = ?, residence = ?, birthdate = ?, font = ?
     WHERE id = ?
   `;
 
@@ -52,6 +52,7 @@ async function editUser({ id, name, email, bio, residence, birthdate }) {
     bio,
     residence,
     new Date(birthdate),
+    font,
     id,
   ]);
 
@@ -74,6 +75,18 @@ async function changePassword({ id, passwordHash }) {
   return updatedUser;
 }
 
+async function setUserAvatar({ id, avatar }) {
+  const query = `
+    UPDATE users
+    SET avatar = ?
+    WHERE id = ?
+  `;
+
+  await database.pool.query(query, [avatar, id]);
+
+  return await findUserById({ id });
+}
+
 module.exports = {
   findUserById,
   findUserByEmail,
@@ -81,4 +94,5 @@ module.exports = {
   deleteUser,
   editUser,
   changePassword,
+  setUserAvatar,
 };

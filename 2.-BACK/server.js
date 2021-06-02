@@ -1,6 +1,8 @@
 require("dotenv").config();
 const path = require("path");
 const express = require("express");
+const cors = require("cors");
+const fileupload = require("express-fileupload");
 
 const {
   UsersController,
@@ -18,7 +20,9 @@ const staticPath = path.resolve(__dirname, "static");
 
 const app = express();
 app.use(express.json());
-app.use(express.static(staticPath));
+app.use("/images", express.static(staticPath));
+app.use(cors());
+app.use(fileupload());
 
 // //Users
 
@@ -33,6 +37,9 @@ app.get("/api/users/:user_id", validateAuthorization, UsersController.getUser);
 
 // Cambiar datos de un usuario
 app.put("/api/users/", validateAuthorization, UsersController.editUser);
+
+// Cambiar avatar de un usuario
+app.post("/api/users/avatar", validateAuthorization, UsersController.setAvatar);
 
 // Cambia contraseña
 app.post(
@@ -76,6 +83,10 @@ app.delete(
   StoriesController.deleteStories
 );
 
+// Añadir imagen a una historia
+// IMPORTANTE: tener en cuenta que solo el usuario que creó la historia puede añadir una imagen
+// app.post("/api/stories/:id/image", validateAuthorization, StoriesController.addStoryImage);
+
 // Comments
 
 //Crear un comentario
@@ -109,27 +120,6 @@ app.delete(
   VotesController.deleteVotes
 );
 
-// //Images
-// app.post(
-//   "/api/images",
-//   validateAuthorization,
-//   ImagesController.uploadImages
-// );
-// app.delete(
-//   "/api/images/:id",
-//   validateAuthorization,
-//   ImagesController.deleteImages
-// );
-// app.post(
-//   "/api/users/:id",
-//   validateAuthorization,
-//   ImagesController.uploadAvatar
-// );
-// app.delete(
-//   "/api/users/:id",
-//   validateAuthorization,
-//   ImagesController.deleteAvatar
-// );
 app.use((err, req, res, next) => {
   const status = err.isJoi ? 400 : err.status || 500;
   res.status(status);

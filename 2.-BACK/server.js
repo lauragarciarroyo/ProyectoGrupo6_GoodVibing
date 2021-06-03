@@ -6,7 +6,6 @@ const fileupload = require("express-fileupload");
 
 const {
   UsersController,
-  // ImagesController,
   CommentsController,
   StoriesController,
   VotesController,

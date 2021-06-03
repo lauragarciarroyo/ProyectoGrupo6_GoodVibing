@@ -102,7 +102,7 @@ async function setStoryPhoto({ image, id }) {
 async function deleteStoryPhoto({ image, id }) {
   const query = "DELETE FROM stories SET image =? WHERE id = ?";
 
-  await database.pool.query(query, [id, image]);
+  await database.pool.query(query, [image, id]);
 
   return;
 }

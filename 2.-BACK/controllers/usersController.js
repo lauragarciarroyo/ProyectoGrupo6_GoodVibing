@@ -295,6 +295,33 @@ async function setAvatar(req, res, next) {
   }
 }
 
+async function deleteAvatar(req, res, next) {
+  try {
+    const { id } = req.auth;
+    const { avatar } = req.files;
+
+    if (!avatar) {
+      const error = new Error("No puedes borrar el avatar");
+      error.status = 400;
+      throw error;
+    }
+
+    const deleteImage = await deleteImage({ data: req.files.avatar.data });
+
+    const user = await usersRepository.deleteUserAvatar({
+      id,
+      avatar: deleteImage,
+    });
+
+    res.send({
+      status: "El avatar ha sido borrado",
+      data: user,
+    });
+  } catch (err) {
+    next(err);
+  }
+}
+
 module.exports = {
   createUser,
   getUser,
@@ -303,4 +330,5 @@ module.exports = {
   changePassword,
   deleteUser,
   setAvatar,
+  deleteAvatar,
 };

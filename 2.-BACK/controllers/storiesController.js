@@ -206,8 +206,66 @@ async function deleteStories(req, res, next) {
   }
 }
 
+async function setPhoto(req, res, next) {
+  try {
+    const { id } = req.auth;
+    const { story_id } = req.body;
+
+    //Comprobar que realmente se envió un fichero y si no dar un error
+    if (!req.files || !req.files.image) {
+      const error = new Error("No se envió ningún fichero");
+      error.status = 400;
+      throw error;
+    }
+
+    //Procesar el fichero y guardarlo en un directorio con un nombre único
+    const savedPhoto = await savedPhoto({ data: req.files.image.data });
+
+    //Guardar ese nombre de fichero en la tabla de historias
+    const story = await storiesRepository.setStoryPhoto({
+      id,
+      story_id,
+      image: savedPhoto,
+    });
+
+    //Dar una respuesta
+    res.send({
+      status: "ok",
+      data: story,
+    });
+  } catch (err) {
+    next(err);
+  }
+}
+
+async function deletePhoto(req, res, next) {
+  try {
+    const { id } = req.auth;
+    const { avatar } = req.files;
+
+    if (!avatar) {
+      const error = new Error("No puedes borrar el avatar");
+      error.status = 400;
+      throw error;
+    }
+
+    const deleteImage = await deleteImage({ data: req.files.avatar.data });
+
+    const user = await usersRepository.deleteUserAvatar({
+      id,
+      avatar: deleteImage,
+    });
+
+    res.send({
+      status: "El avatar ha sido borrado",
+      data: user,
+    });
+  } catch (err) {
+    next(err);
+  }
+}
+
 module.exports = {
-  //homeStories,
   searchStories,
   viewStories,
   createStory,

@@ -87,6 +87,14 @@ async function setUserAvatar({ id, avatar }) {
   return await findUserById({ id });
 }
 
+async function deleteUserAvatar({ id, avatar }) {
+  const query = "DELETE FROM users WHERE id = ?";
+
+  await database.pool.query(query, [id, avatar]);
+
+  return;
+}
+
 module.exports = {
   findUserById,
   findUserByEmail,
@@ -95,4 +103,5 @@ module.exports = {
   editUser,
   changePassword,
   setUserAvatar,
+  deleteUserAvatar,
 };

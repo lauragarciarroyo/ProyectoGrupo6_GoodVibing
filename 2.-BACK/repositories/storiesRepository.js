@@ -87,6 +87,8 @@ async function getUserStories({ id }) {
   return result;
 }
 
+async function setStoryPhoto(params) {}
+
 module.exports = {
   findStoriesById,
   searchStory,

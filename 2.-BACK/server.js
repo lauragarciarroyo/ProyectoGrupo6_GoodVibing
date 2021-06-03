@@ -50,6 +50,14 @@ app.post(
 // Borrar un usuario
 app.delete("/api/users/", validateAuthorization, UsersController.deleteUser);
 
+//Eliminar avatar
+
+app.delete(
+  "/api/users/avatar",
+  validateAuthorization,
+  UsersController.deleteAvatar
+);
+
 //Stories
 
 //Crear una historia
@@ -83,8 +91,20 @@ app.delete(
 );
 
 // Añadir imagen a una historia
-// IMPORTANTE: tener en cuenta que solo el usuario que creó la historia puede añadir una imagen
-// app.post("/api/stories/:id/image", validateAuthorization, StoriesController.addStoryImage);
+
+app.post(
+  "/api/stories/:id/image",
+  validateAuthorization,
+  StoriesController.addStoryImage
+);
+
+// Eliminar imagen de una historia
+
+app.delete(
+  "/api/stories/:id/image/:image_id",
+  validateAuthorization,
+  StoriesController.deleteStoryImage
+);
 
 // Comments
 

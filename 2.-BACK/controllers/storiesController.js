@@ -206,10 +206,22 @@ async function deleteStories(req, res, next) {
   }
 }
 
-async function setPhoto(req, res, next) {
+async function addStoryImage(req, res, next) {
   try {
     const { id } = req.auth;
-    const { story_id } = req.body;
+    const { story_id } = req.params;
+
+    //Comprobar que el usuario que intenta subir la foto es el que creó la historia
+
+    const story = await storiesRepository.findStoriesById({ id });
+
+    if (story.user_id !== req.auth.id) {
+      const err = new Error(
+        "No puedes subir una foto a una historia que no es tuya"
+      );
+      err.status = 401;
+      throw err;
+    }
 
     //Comprobar que realmente se envió un fichero y si no dar un error
     if (!req.files || !req.files.image) {
@@ -222,7 +234,7 @@ async function setPhoto(req, res, next) {
     const savedPhoto = await savedPhoto({ data: req.files.image.data });
 
     //Guardar ese nombre de fichero en la tabla de historias
-    const story = await storiesRepository.setStoryPhoto({
+    const storyPhoto = await storiesRepository.setStoryPhoto({
       id,
       story_id,
       image: savedPhoto,
@@ -231,17 +243,17 @@ async function setPhoto(req, res, next) {
     //Dar una respuesta
     res.send({
       status: "ok",
-      data: story,
+      data: storyPhoto,
     });
   } catch (err) {
     next(err);
   }
 }
 
-async function deletePhoto(req, res, next) {
+async function deleteStoryImage(req, res, next) {
   try {
     const { id } = req.auth;
-    const { story_id } = req.body;
+    const { story_id, image_id } = req.params;
     const { image } = req.files;
 
     if (!image) {
@@ -255,6 +267,7 @@ async function deletePhoto(req, res, next) {
     const story = await storiesRepository.deleteStoryPhoto({
       id,
       story_id,
+      image_id,
       image: deleteImage,
     });
 
@@ -275,6 +288,6 @@ module.exports = {
   deleteStories,
   getUserStories,
   getStories,
-  setPhoto,
-  deletePhoto,
+  addStoryImage,
+  deleteStoryImage,
 };

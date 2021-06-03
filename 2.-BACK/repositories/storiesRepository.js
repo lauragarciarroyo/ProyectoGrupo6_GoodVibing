@@ -87,7 +87,25 @@ async function getUserStories({ id }) {
   return result;
 }
 
-async function setStoryPhoto(params) {}
+async function setStoryPhoto({ image, id }) {
+  const query = `
+  UPDATE stories
+  SET image = ?
+  WHERE id = ?
+  `;
+
+  await database.pool.query(query, [image, id]);
+
+  return await findStoriesById({ id });
+}
+
+async function deleteStoryPhoto({ image, id }) {
+  const query = "DELETE FROM stories SET image =? WHERE id = ?";
+
+  await database.pool.query(query, [id, image]);
+
+  return;
+}
 
 module.exports = {
   findStoriesById,
@@ -97,4 +115,6 @@ module.exports = {
   deleteStories,
   getUserStories,
   getStories,
+  setStoryPhoto,
+  deleteStoryPhoto,
 };

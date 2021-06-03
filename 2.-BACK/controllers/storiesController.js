@@ -241,24 +241,26 @@ async function setPhoto(req, res, next) {
 async function deletePhoto(req, res, next) {
   try {
     const { id } = req.auth;
-    const { avatar } = req.files;
+    const { story_id } = req.body;
+    const { image } = req.files;
 
-    if (!avatar) {
-      const error = new Error("No puedes borrar el avatar");
+    if (!image) {
+      const error = new Error("No puedes borrar la foto");
       error.status = 400;
       throw error;
     }
 
-    const deleteImage = await deleteImage({ data: req.files.avatar.data });
+    const deleteImage = await deleteImage({ data: req.files.image.data });
 
-    const user = await usersRepository.deleteUserAvatar({
+    const story = await storiesRepository.deleteStoryPhoto({
       id,
-      avatar: deleteImage,
+      story_id,
+      image: deleteImage,
     });
 
     res.send({
-      status: "El avatar ha sido borrado",
-      data: user,
+      status: "La foto ha sido borrada",
+      data: story,
     });
   } catch (err) {
     next(err);
@@ -273,4 +275,6 @@ module.exports = {
   deleteStories,
   getUserStories,
   getStories,
+  setPhoto,
+  deletePhoto,
 };

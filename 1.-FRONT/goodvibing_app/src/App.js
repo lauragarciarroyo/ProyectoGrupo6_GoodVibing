@@ -6,11 +6,8 @@ function App() {
     <div className="App">
       <main>
         <Switch>
-          <Route path="/home1" exact>
-            <Home1 />
-          </Route>
-          <Route path="/home2" exact>
-            <Home2 />
+          <Route path="/home" exact>
+            <Home />
           </Route>
           <Route path="/search" exact>
             <Search />

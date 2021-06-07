@@ -231,13 +231,13 @@ async function addStoryImage(req, res, next) {
     }
 
     //Procesar el fichero y guardarlo en un directorio con un nombre único
-    const savedPhoto = await savedPhoto({ data: req.files.image.data });
+    const savedImage = await savedImage({ data: req.files.image.data });
 
     //Guardar ese nombre de fichero en la tabla de historias
     const storyPhoto = await storiesRepository.setStoryPhoto({
       id,
       story_id,
-      image: savedPhoto,
+      image: savedImage,
     });
 
     //Dar una respuesta

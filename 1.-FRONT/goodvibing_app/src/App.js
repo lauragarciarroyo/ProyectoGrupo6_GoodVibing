@@ -1,11 +1,11 @@
 import logo from "./goodvibing_logo_ps02.png";
-import "./App.css";
+//import "./App.css";
 
-function App() {
-  return (
-    <div className="App">
-      <main>
-        <Switch>
+/*/function App() {
+//  return (
+//    <div className="App">
+//      <main>
+ //       <Switch>
           <Route path="/home" exact>
             <Home />
           </Route>

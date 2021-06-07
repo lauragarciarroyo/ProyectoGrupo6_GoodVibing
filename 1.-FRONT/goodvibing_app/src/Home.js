@@ -27,9 +27,9 @@ function Home() {
         </NavLink>
       </div>
       <div className="bottom">
-        {!user && <Link to="/login">Log in</Link>}
+        {!user && <Link to="/registrologin">Log in</Link>}
         {user && (
-          <Link className="user-info" to="/profile">
+          <Link className="user-info" to="/home">
             <div
               className="avatar"
               style={{ backgroundImage: `url(${user.avatar})` }}

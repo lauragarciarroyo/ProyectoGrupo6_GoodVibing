@@ -1,23 +1,45 @@
-import logo from './logo.svg';
-import './App.css';
+import logo from "./goodvibing_logo_ps02.png";
+import "./App.css";
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <main>
+        <Switch>
+          <Route path="/home1" exact>
+            <Home1 />
+          </Route>
+          <Route path="/home2" exact>
+            <Home2 />
+          </Route>
+          <Route path="/search" exact>
+            <Search />
+          </Route>
+          <Route path="/registrologin" exact>
+            <Registrologin />
+          </Route>
+          <Route path="/contact" exact>
+            <Contact />
+          </Route>
+          <Route path="/profile" exact>
+            <Profile />
+          </Route>
+          <Route path="/createstory">
+            <Createstory />
+          </Route>
+          <Route path="story" exact>
+            <Story />
+          </Route>
+          <Route path="/user" exact>
+            <User />
+          </Route>
+          <Route path="/mystories" exact>
+            <Mystories />
+            <Route />
+          </Route>
+          <Route path="/">Not Found</Route>
+        </Switch>
+      </main>
     </div>
   );
 }

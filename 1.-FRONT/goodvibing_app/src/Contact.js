@@ -1,41 +1,49 @@
-import Helmet from "react-helmet";
+import { useState } from "react";
 
 function Contact() {
+  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
+  const [message, setMessage] = useState("");
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log(username, email, message);
+  };
+
   return (
-    <div className="contact">
-      <h1>Conócenos, ¿hablamos?</h1>
-      <Helmet>
-        <title></title>
-      </Helmet>
-      
-    </div>
+    <form className="contact" onSubmit={handleSubmit}>
+      <label>
+        Username:
+        <input
+          placeholder="User..."
+          value={username}
+          onChange={(e) => setUsername(e.target.value)}
+        />
+      </label>
+      <br />
+      <label>
+        Email:
+        <input
+          placeholder="Email..."
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          type="email"
+        />
+      </label>
+      <br />
+      <label>
+        Message:
+        <input
+          placeholder="Escribe tu mensaje..."
+          value={text}
+          onChange={(e) => setMessage(e.target.value)}
+          type="text"
+        />
+      </label>
+      <br />
+      <button>Enviar</button>
+    </form>
   );
 }
 
 export default Contact;
-
-
-<section class="containerWe">
-<div class="cajaBea"> <img src="BeaUnicornRedi3.png"> Bea Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras vel neque eget lectus mollis varius interdum at nunc. In tristique sem vitae eleifend maximus. Nunc gravida eu urna vitae facilisis. Fusce scelerisque neque eu orci commodo, sed placerat felis dapibus. Mauris molestie, turpis id pretium porta, odio nisl pharetra nunc, nec ornare tortor enim sed mauris.</div>
-<div class="cajaLaura"><img src="LauraCupcakeRedi3.png"> Laura Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras vel neque eget lectus mollis varius interdum at nunc. In tristique sem vitae eleifend maximus. Nunc gravida eu urna vitae facilisis. Fusce scelerisque neque eu orci commodo, sed placerat felis dapibus. Mauris molestie, turpis id pretium porta, odio nisl pharetra nunc, nec ornare tortor enim sed mauris.</div>
-</section>
-
-<section class="formContact">
-<form action="Formulario de Contacto" method="POST">
-    <ul>
-        <li>
-            <label for="name">Tu nombre</label>
-            <input type="text" id="name" name="user_name">
-        </li>
-        <li>
-            <label for="mail">Tu mail</label>
-            <input type="email" id="mail" name="user_mail">
-         </li>
-         <li>
-             <label for="msg">Tu mensaje</label>
-             <textarea id="msg" name="user_message"></textarea>
-         </li>
-    </ul>
-    <a class="botonEnvia"><button>Envía</button></a>
-</form>
-</section>

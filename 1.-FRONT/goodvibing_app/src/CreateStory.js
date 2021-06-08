@@ -17,7 +17,7 @@ function CreateStory() {
         Título:
         <input
           placeholder="Escribe el título de tu historia..."
-          value={text}
+          value={title}
           onChange={(e) => setTitle(e.target.value)}
         />
       </label>
@@ -34,7 +34,7 @@ function CreateStory() {
       <label>
         Usuario:
         <input
-          value={user}
+          value={authorName}
           onChange={(e) => setAuthorName(e.target.value)}
           type="text"
         />
@@ -44,7 +44,7 @@ function CreateStory() {
         Historia:
         <input
           placeholder="Cuéntanos tu experiencia..."
-          value={text}
+          value={story}
           onChange={(e) => setStory(e.target.value)}
           type="text"
         />

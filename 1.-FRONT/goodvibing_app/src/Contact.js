@@ -35,7 +35,7 @@ function Contact() {
         Message:
         <input
           placeholder="Escribe tu mensaje..."
-          value={text}
+          value={message}
           onChange={(e) => setMessage(e.target.value)}
           type="text"
         />

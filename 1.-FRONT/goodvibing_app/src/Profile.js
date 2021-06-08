@@ -69,7 +69,7 @@ function Profile() {
         Biografía:
         <input
           placeholder="Escribe algo sobre ti..."
-          value={text}
+          value={biography}
           onChange={(e) => setBiography(e.target.value)}
           type="text"
         />
@@ -79,7 +79,7 @@ function Profile() {
         Fecha de nacimiento:
         <input
           placeholder="00/00/0000..."
-          value={date}
+          value={birthdate}
           onChange={(e) => setBirthdate(e.target.value)}
           type="date"
         />
@@ -89,7 +89,7 @@ function Profile() {
         Residencia:
         <input
           placeholder="¿Dónde vives?"
-          value={text}
+          value={residence}
           onChange={(e) => setResidence(e.target.value)}
           type="text"
         />

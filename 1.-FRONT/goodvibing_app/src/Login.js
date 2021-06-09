@@ -1,5 +1,5 @@
-import { useState } from "React";
-//import React, { useState } from "react";
+//import { useState } from "React";
+import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect } from "react-router-dom";
 
@@ -11,7 +11,7 @@ function Login() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const res = await fetch("http://poi-api.trek-quest.com/login", {
+    const res = await fetch("http://", {
       method: "POST",
       body: JSON.stringify({ username, password }),
       headers: { "Content-Type": "application/json" },

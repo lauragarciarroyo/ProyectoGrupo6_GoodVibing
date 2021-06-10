@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 //import Profile from "./Profile";
 //import Stories from "./Stories";
 //import Messages from "./Message";
-//import "./Menu.css";
+import "./Menu.css";
 
 function Menu() {
   const [open, setOpen] = useState(false);
@@ -47,3 +47,5 @@ function Menu() {
 }
 
 export default Menu;
+
+//En vez de hola mundo, tenemos que poner los navlink de: tus datos, tus historias, mensajes y cerrar sesión

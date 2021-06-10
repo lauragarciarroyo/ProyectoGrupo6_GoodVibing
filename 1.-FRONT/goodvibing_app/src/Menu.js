@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 //import Profile from "./Profile";
 //import Stories from "./Stories";
 //import Messages from "./Message";
-import "./Menu.css";
+//import "./Menu.css";
 
 function Menu() {
   const [open, setOpen] = useState(false);

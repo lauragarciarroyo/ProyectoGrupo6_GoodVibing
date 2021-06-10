@@ -4,27 +4,14 @@ function Profile() {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [avatar, setAvatar] = useState("");
   const [biography, setBiography] = useState("");
   const [birthdate, setBirthdate] = useState("");
   const [residence, setResidence] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(
-      username,
-      email,
-      password,
-      avatar,
-      biography,
-      birthdate,
-      residence
-    );
+    console.log(username, email, password, biography, birthdate, residence);
   };
-
-  const isLoggedIn = useSelector((s) => !!s.user);
-
-  if (!isLoggedIn) return <Redirect to="/login" />;
 
   return (
     <form className="edituser" onSubmit={handleSubmit}>
@@ -57,13 +44,6 @@ function Profile() {
         />
       </label>
       <br />
-      <label>
-        <div
-          className="avatar"
-          style={preview && { backgroundImage: `url(${preview})` }}
-        />
-        <input onChange={handleFile} type="file" />
-      </label>
       <br />
       <label>
         Biografía:
@@ -96,6 +76,7 @@ function Profile() {
       </label>
 
       <button>Guardar cambios</button>
+      <button>Eliminar cuenta</button>
     </form>
   );
 }

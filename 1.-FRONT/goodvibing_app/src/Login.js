@@ -1,51 +1,36 @@
-//import { useState } from "React";
 import React, { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { Redirect } from "react-router-dom";
 
 function Login() {
-  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const isLoggedIn = useSelector((s) => !!s.user);
-  const dispatch = useDispatch();
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    const res = await fetch("http://", {
-      method: "POST",
-      body: JSON.stringify({ username, password }),
-      headers: { "Content-Type": "application/json" },
-    });
-    if (res.ok) {
-      const data = await res.json();
-      dispatch({ type: "LOGIN", user: data });
-    }
+    console.log(email, password);
   };
-
-  if (isLoggedIn) {
-    return <Redirect to="/" />;
-  }
-
   return (
-    <div className="login">
-      <h1>Login</h1>
-      <form onSubmit={handleSubmit}>
+    <form className="Login" onSubmit={handleSubmit}>
+      <label>
+        Email:
         <input
-          name="username"
-          placeholder="Username..."
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
+          placeholder="Email..."
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
         />
+      </label>
+      <br />
+      <label>
+        Password:
         <input
-          name="password"
-          type="password"
           placeholder="Password..."
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
-        <button>Log in</button>
-      </form>
-    </div>
+      </label>
+      <br />
+      <button>Entrar</button>
+      <button>Seguir como invitado</button>
+    </form>
   );
 }
 

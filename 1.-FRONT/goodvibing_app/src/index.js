@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import thunk from "redux-thunk";
+//import thunk from "redux-thunk";
 import "./index.css";
 import { BrowserRouter as Router } from "react-router-dom";
 import App from "./App";

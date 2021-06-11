@@ -18,7 +18,7 @@ function Register() {
       },
     });
     if (res.ok) {
-      const data = await res.json();
+      await res.json();
     }
   };
 

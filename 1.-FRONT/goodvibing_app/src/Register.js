@@ -1,14 +1,25 @@
-//import { useState } from "react";
 import React, { useState } from "react";
+import { useSelector } from "react-redux";
 
 function Register() {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const token = useSelector((s) => s.user?.token);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(username, email, password);
+    const res = await fetch("http:/localhost:4000/api/users", {
+      method: "POST",
+      body: JSON.stringify({ username, email, password }),
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + token,
+      },
+    });
+    if (res.ok) {
+      const data = await res.json();
+    }
   };
 
   return (

@@ -1,13 +1,25 @@
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
 
 function Register() {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const dispatch = useDispatch();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(username, email, password);
+    const res = await fetch("http://localhost:4000/api/users", {
+      method: "POST",
+      body: JSON.stringify({ username, email, password }),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    if (res.ok) {
+      const data = await res.json();
+      dispatch({ type: "REGISTER", user: data });
+    }
   };
 
   return (

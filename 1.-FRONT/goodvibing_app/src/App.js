@@ -14,6 +14,7 @@ import RandomStories from "./RandomStories";
 import MyStory from "./MyStory";
 import EditStory from "./EditStory";
 import DeleteStory from "./DeleteStory";
+import CreateComment from "./CreateComment";
 
 function App() {
   return (
@@ -62,6 +63,9 @@ function App() {
           </Route>
           <Route path="/deletestory" exact>
             <DeleteStory />
+          </Route>
+          <Route path="/createcomment" exact>
+            <CreateComment />
           </Route>
         </Switch>
       </main>

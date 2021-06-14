@@ -1,60 +1,62 @@
 import { useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { Redirect } from "react-router-dom";
 
 function CreateStory() {
   const [title, setTitle] = useState("");
-  const [date, setDate] = useState("");
   const [story, setStory] = useState("");
-  const [authorName, setAuthorName] = useState("");
+  const token = useSelector((s) => s.user?.token);
+  const dispatch = useDispatch();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(title, date, story, authorName);
+    const res = await fetch("https://localhost:4000/api/stories", {
+      method: "POST",
+      body: JSON.stringify({
+        title,
+        story,
+      }),
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + token,
+      },
+    });
+    if (res.ok) {
+      const data = await res.json();
+      dispatch({ type: "CREATE", story: data });
+    }
   };
+  if (!token) {
+    return <Redirect to="/loginregister" />;
+  }
 
   return (
-    <form className="Título" onSubmit={handleSubmit}>
-      <label>
-        Título:
-        <input
-          placeholder="Escribe el título de tu historia..."
-          value={title}
-          onChange={(e) => setTitle(e.target.value)}
-        />
-      </label>
-      <br />
-      <label>
-        Fecha:
-        <input
-          value={date}
-          onChange={(e) => setDate(e.target.value)}
-          type="date"
-        />
-      </label>
-      <br />
-      <label>
-        Usuario:
-        <input
-          value={authorName}
-          onChange={(e) => setAuthorName(e.target.value)}
-          type="text"
-        />
-      </label>
-      <br />
-      <label>
-        Historia:
-        <input
-          placeholder="Cuéntanos tu experiencia..."
-          value={story}
-          onChange={(e) => setStory(e.target.value)}
-          type="text"
-        />
-      </label>
-      <br />
-      <button>Publica</button>
-    </form>
+    <div className="historias">
+      <h1>{title}</h1>
+      <form className="edituser" onSubmit={handleSubmit}>
+        <label>
+          Título
+          <input
+            placeholder="Escribe el título..."
+            value={title}
+            onChange={(e) => setTitle(e.target.value)}
+          />
+        </label>
+        <br />
+        <label>
+          Historia
+          <input
+            placeholder="Escribe tu historia.."
+            value={story}
+            onChange={(e) => setStory(e.target.value)}
+          />
+        </label>
+        <br />
+        <button>Guardar historia</button>
+      </form>
+    </div>
   );
 }
-
 export default CreateStory;
 
 // Petición de crear historia

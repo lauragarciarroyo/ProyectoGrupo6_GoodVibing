@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { Redirect, NavLink } from "react-router-dom";
 
 function Profile() {
   const [username, setUsername] = useState("");
@@ -7,11 +9,34 @@ function Profile() {
   const [biography, setBiography] = useState("");
   const [birthdate, setBirthdate] = useState("");
   const [residence, setResidence] = useState("");
+  const token = useSelector((s) => s.user?.token);
+  const dispatch = useDispatch();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(username, email, password, biography, birthdate, residence);
+    const res = await fetch("https://localhost:4000/api/users", {
+      method: "PUT",
+      body: JSON.stringify({
+        username,
+        email,
+        password,
+        biography,
+        birthdate,
+        residence,
+      }),
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + token,
+      },
+    });
+    if (res.ok) {
+      const data = await res.json();
+      dispatch({ type: "EDIT", user: data });
+    }
   };
+  if (!token) {
+    return <Redirect to="/loginregister" />;
+  }
 
   return (
     <form className="edituser" onSubmit={handleSubmit}>
@@ -76,7 +101,8 @@ function Profile() {
       </label>
 
       <button>Guardar cambios</button>
-      <button>Eliminar cuenta</button>
+      <NavLink to="/changepassword">Cambiar contraseña</NavLink>
+      <NavLink to="/deleteuser">Eliminar cuenta</NavLink>
     </form>
   );
 }

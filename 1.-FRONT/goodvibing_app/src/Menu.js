@@ -1,9 +1,7 @@
 import { useState } from "react";
 import { NavLink } from "react-router-dom";
-//import Profile from "./Profile";
-//import Stories from "./Stories";
-//import Messages from "./Message";
-//import "./Menu.css";
+
+import "./Menu.css";
 
 function Menu() {
   const [open, setOpen] = useState(false);
@@ -16,12 +14,12 @@ function Menu() {
           <div className="modal-fg">
             <li>
               <NavLink to="/profile" activeClassName="active" exact>
-                Profile
+                Mis datos
               </NavLink>
             </li>
             <li>
-              <NavLink to="/stories" activeClassName="active" exact>
-                Stories
+              <NavLink to="/mystories" activeClassName="active" exact>
+                Mis historias
               </NavLink>
             </li>
             <li>
@@ -29,7 +27,6 @@ function Menu() {
                 Message
               </NavLink>
             </li>
-
             <li> Cerrar sesión</li>
             <button onClick={() => setOpen(false)}>X</button>
           </div>

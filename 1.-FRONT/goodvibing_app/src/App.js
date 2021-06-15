@@ -1,4 +1,4 @@
-import logo from "./goodvibing_logo_ps02.png";
+//import logo from "./goodvibing_logo_ps02.png";
 import Profile from "./Profile";
 import Message from "./Message";
 import { Switch, Route } from "react-router-dom";

@@ -1,7 +1,10 @@
+import { Link } from "react-router-dom";
+
 function InfoUser() {
   return (
     <div className="infouser">
       <h1>Información del usuario</h1>
+      <Link to="/viewstories">Ver historias</Link>
     </div>
   );
 }

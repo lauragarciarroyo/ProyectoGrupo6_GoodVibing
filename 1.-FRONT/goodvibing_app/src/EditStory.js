@@ -1,12 +1,11 @@
 import React, { useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 import { NavLink, useParams } from "react-router-dom";
 
 function EditStory() {
   const [body, setBody] = useState("");
   const [title, settitle] = useState("");
   const token = useSelector((s) => s.user?.token);
-  const dispatch = useDispatch();
   const { id } = useParams();
 
   const handleSubmit = async (e) => {
@@ -25,7 +24,7 @@ function EditStory() {
     );
     if (res.ok) {
       const data = await res.json();
-      dispatch({ type: "EDIT", body: data });
+      console.log("Data:", data);
     }
   };
 

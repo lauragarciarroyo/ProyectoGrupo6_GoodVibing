@@ -23,9 +23,6 @@ const storyReducer = (state = null, action) => {
       return action.story;
     case "SEARCH":
       return action.story;
-    case "EDIT":
-      return action.story;
-
     default:
       return state;
   }

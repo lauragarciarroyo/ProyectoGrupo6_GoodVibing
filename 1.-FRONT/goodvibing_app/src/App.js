@@ -19,6 +19,7 @@ import CreateComment from "./CreateComment";
 import ErrorMesage from "./components/ErrorMesage";
 import ViewStory from "./ViewStory";
 import { useDispatch, useSelector } from "react-redux";
+import ViewStories from "./ViewStories";
 
 const PrivateRoute = ({ children }) => {
   const user = useSelector((state) => state.user);
@@ -63,14 +64,14 @@ function App() {
           <Route path="/createstory" exact>
             <CreateStory />
           </Route>
-          <Route path="/celeteuser" exact>
+          <Route path="/deleteuser" exact>
             <DeleteUser />
           </Route>
           <Route path="/changepassword" exact>
             <Changepassword />
           </Route>
-          <Route path="/createstory" exact>
-            <CreateStory />
+          <Route path="/viewstories/:id" exact>
+            <ViewStories />
           </Route>
           <Route path="/randomstories" exact>
             <RandomStories />
@@ -85,7 +86,7 @@ function App() {
               <EditStory />
             </PrivateRoute>
           </Route>
-          <Route path="/deletestory" exact>
+          <Route path="/deletestory/:id" exact>
             <DeleteStory />
           </Route>
           <Route path="/createcomment" exact>

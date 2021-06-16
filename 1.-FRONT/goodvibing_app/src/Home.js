@@ -1,8 +1,11 @@
 import Helmet from "react-helmet";
 import { Link, NavLink } from "react-router-dom";
 import Search from "./Search";
+import { useSelector } from "react-redux";
 
 function Home() {
+  const user = useSelector((state) => state.user);
+
   return (
     <div className="home">
       <h1>Home</h1>
@@ -10,9 +13,11 @@ function Home() {
         <title>Goodvibing - Home</title>
       </Helmet>
       Welcome to Goodvibing App
-      <div className="bottom">
-        <NavLink to="/loginregister">¡Bienvenido!</NavLink>
-      </div>
+      {!user && (
+        <div className="bottom">
+          <NavLink to="/loginregister">¡Bienvenido!</NavLink>
+        </div>
+      )}
       <div className="bottom">
         <Link to="/contact"> Conócenos.¿Hablamos?</Link>
       </div>

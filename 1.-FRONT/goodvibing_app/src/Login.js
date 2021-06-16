@@ -15,14 +15,16 @@ function Login() {
       body: JSON.stringify({ email, password }),
       headers: { "Content-Type": "application/json" },
     });
+    const data = await res.json();
     if (res.ok) {
-      const data = await res.json();
-      dispatch({ type: "LOGIN", user: data });
+      dispatch({ type: "LOGIN", user: data.data });
+    } else {
+      dispatch({ type: "SET_ERROR", message: data.message });
     }
   };
 
   if (isLoggedIn) {
-    return <Redirect to="/home" />;
+    return <Redirect to="/" />;
   }
   return (
     <form className="Login" onSubmit={handleSubmit}>
@@ -38,6 +40,7 @@ function Login() {
       <label>
         Password:
         <input
+          type="password"
           placeholder="Password..."
           value={password}
           onChange={(e) => setPassword(e.target.value)}

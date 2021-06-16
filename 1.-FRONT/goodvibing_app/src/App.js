@@ -1,4 +1,5 @@
 //import logo from "./goodvibing_logo_ps02.png";
+import "./App.css";
 import Profile from "./Profile";
 import Message from "./Message";
 import { Switch, Route } from "react-router-dom";
@@ -15,35 +16,37 @@ import MyStory from "./MyStory";
 import EditStory from "./EditStory";
 import DeleteStory from "./DeleteStory";
 import CreateComment from "./CreateComment";
+import ErrorMesage from "./components/ErrorMesage";
 
 function App() {
   return (
     <div className="App">
+      <ErrorMesage />
       <Menu />
       <main>
         <Switch>
-          <Route path="/Home" exact>
+          <Route path="/" exact>
             <Home />
           </Route>
-          <Route path="/Mystories" exact>
+          <Route path="/mystories" exact>
             <MyStories />
           </Route>
-          <Route path="/Message" exact>
+          <Route path="/message" exact>
             <Message />
           </Route>
-          <Route path="/Loginregister" exact>
+          <Route path="/loginregister" exact>
             <LoginRegister />
           </Route>
-          <Route path="/Profile" exact>
+          <Route path="/profile" exact>
             <Profile />
           </Route>
-          <Route path="/Contact" exact>
+          <Route path="/contact" exact>
             <Contact />
           </Route>
-          <Route path="/Createstory" exact>
+          <Route path="/createstory" exact>
             <CreateStory />
           </Route>
-          <Route path="/Deleteuser" exact>
+          <Route path="/celeteuser" exact>
             <DeleteUser />
           </Route>
           <Route path="/changepassword" exact>

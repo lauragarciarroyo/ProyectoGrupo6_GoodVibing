@@ -134,7 +134,7 @@ async function loginUser(req, res, next) {
       expiresIn: "30d",
     });
 
-    res.send({ status: "ok", data: { userId: user.id, token } });
+    res.send({ status: "ok", data: { user, token } });
   } catch (err) {
     next(err);
   }

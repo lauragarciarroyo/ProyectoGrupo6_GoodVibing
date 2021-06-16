@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 
 function Register() {
-  const [username, setUsername] = useState("");
+  const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const dispatch = useDispatch();
@@ -11,14 +11,18 @@ function Register() {
     e.preventDefault();
     const res = await fetch("http://localhost:4000/api/users", {
       method: "POST",
-      body: JSON.stringify({ username, email, password }),
+      body: JSON.stringify({ name, email, password }),
       headers: {
         "Content-Type": "application/json",
       },
     });
+    const data = await res.json();
+
     if (res.ok) {
-      const data = await res.json();
       dispatch({ type: "REGISTER", user: data });
+      // Aquí hay que hacer algo más...
+    } else {
+      dispatch({ type: "SET_ERROR", message: data.message });
     }
   };
 
@@ -28,8 +32,8 @@ function Register() {
         Username:
         <input
           placeholder="User..."
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
+          value={name}
+          onChange={(e) => setName(e.target.value)}
         />
       </label>
       <br />

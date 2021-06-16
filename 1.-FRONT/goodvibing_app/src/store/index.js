@@ -31,6 +31,17 @@ const storyReducer = (state = null, action) => {
   }
 };
 
+const errorReducer = (state = { message: null }, action) => {
+  switch (action.type) {
+    case "SET_ERROR":
+      return { message: action.message };
+    case "CLEAR_ERROR":
+      return { message: null };
+    default:
+      return state;
+  }
+};
+
 const historyReducer = (state = [], action) => {
   switch (action.type) {
     case "SEARCH":
@@ -51,6 +62,7 @@ const store = createStore(
     user: userReducer,
     story: storyReducer,
     history: historyReducer,
+    error: errorReducer,
   }),
   JSON.parse(localStorage.getItem("session")) || {},
   applyMiddleware(localStorageMiddleware)

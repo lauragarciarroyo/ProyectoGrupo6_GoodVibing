@@ -7,15 +7,10 @@ function Home() {
   const user = useSelector((state) => state.user);
 
   return (
-    <div>
-      <meta charSet="utf-8" />
-      <link rel="icon" href="goodvibing_ico_ps04.jpg" />
-      <meta
-        name="viewport"
-        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
-      />
-      <link rel="stylesheet" href="Home.css" />
-      <title>GoodVibing</title>
+    <div className="home">
+      <Helmet>
+        <title>GoodVibing</title>
+      </Helmet>
       <header>
         <div className="container">
           <div className="flex-container">
@@ -46,22 +41,20 @@ function Home() {
               </div>
             </div>
             <div>
-              <a
-                className="avatarLoginRegister"
-                href="https://simpsons.fandom.com/es/wiki/Homer_Simpson"
-              >
-                <img src="user.png" width={100} />
-              </a>
+              <a className="avatarLoginRegister"></a>
+              <NavLink to="/loginregister">¡Bienvenido!</NavLink>
+              <img src="user.png" width={100} />
             </div>
           </div>
         </div>
       </header>
-      <a className="btn-flotante" href="https://www.gmail.com">
+      <a className="btn-flotante">
+        {" "}
+        <Link to="/contact"></Link>
         <img src="mailbox.png" />
       </a>
     </div>
   );
-},
-});
+}
 
 export default Home;

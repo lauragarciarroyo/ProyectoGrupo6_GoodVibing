@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import UseFetch from "./UseFetch";
 
 function RandomStories({ q }) {
-  const stories = UseFetch(`https://localhost:4000/api/stories?name=${q}`);
+  const stories = UseFetch(`http://localhost:4000/api/stories?name=${q}`);
   return (
     <div className="randomstories">
       <h1>historias</h1>

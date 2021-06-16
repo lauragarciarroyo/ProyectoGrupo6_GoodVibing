@@ -23,7 +23,7 @@ function ViewStory() {
   return (
     <div className="story">
       <Helmet>
-        <title>Goodvibing app {story && "- " + story.name}</title>
+        <title>Goodvibing app {story && "- " + story.title}</title>
       </Helmet>
 
       <h1>{story.title}</h1>

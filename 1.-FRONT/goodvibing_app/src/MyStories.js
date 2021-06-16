@@ -18,6 +18,7 @@ function MyStories() {
       {results.data.map((e) => (
         <li key={e.id}>
           <Link to={`/mystories/${e.id}`}>{e.title}</Link>
+
           <p>{e.body}</p>
         </li>
       ))}

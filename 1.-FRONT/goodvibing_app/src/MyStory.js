@@ -10,7 +10,7 @@ function MyStory({ id }) {
       <h1>Mi historia</h1>
       <NavLink to="/editstory">Modificar historia</NavLink>
       <NavLink to="/deletestory">Eliminar historia</NavLink>
-      {story}
+      {story.id}
     </div>
   );
 }

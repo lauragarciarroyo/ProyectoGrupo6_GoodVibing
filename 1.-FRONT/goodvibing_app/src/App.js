@@ -75,11 +75,15 @@ function App() {
           <Route path="/randomstories" exact>
             <RandomStories />
           </Route>
-          <Route path="/mystory" exact>
-            <MyStory />
+          <Route path="/mystory/:id" exact>
+            <PrivateRoute>
+              <MyStory />
+            </PrivateRoute>
           </Route>
-          <Route path="/editstory" exact>
-            <EditStory />
+          <Route path="/editstory/:id" exact>
+            <PrivateRoute>
+              <EditStory />
+            </PrivateRoute>
           </Route>
           <Route path="/deletestory" exact>
             <DeleteStory />

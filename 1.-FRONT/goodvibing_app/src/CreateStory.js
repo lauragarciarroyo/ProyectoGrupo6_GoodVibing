@@ -1,20 +1,20 @@
 import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { Redirect } from "react-router-dom";
+import { NavLink, Redirect } from "react-router-dom";
 
 function CreateStory() {
   const [title, setTitle] = useState("");
-  const [story, setStory] = useState("");
+  const [body, setBody] = useState("");
   const token = useSelector((s) => s.user?.token);
   const dispatch = useDispatch();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const res = await fetch("https://localhost:4000/api/stories", {
+    const res = await fetch("http://localhost:4000/api/stories", {
       method: "POST",
       body: JSON.stringify({
         title,
-        story,
+        body,
       }),
       headers: {
         "Content-Type": "application/json",
@@ -47,12 +47,14 @@ function CreateStory() {
           Historia
           <input
             placeholder="Escribe tu historia.."
-            value={story}
-            onChange={(e) => setStory(e.target.value)}
+            value={body}
+            onChange={(e) => setBody(e.target.value)}
           />
         </label>
         <br />
-        <button>Guardar historia</button>
+        <NavLink to="/mystory">Guardar historia</NavLink>
+        <h1>{title}</h1>
+        <p>{body}</p>
       </form>
     </div>
   );

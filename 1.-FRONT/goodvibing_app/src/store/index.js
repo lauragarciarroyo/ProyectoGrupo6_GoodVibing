@@ -8,12 +8,10 @@ const userReducer = (state = null, action) => {
       return null;
     case "REGISTER":
       return action.user;
-    case "EDIT":
-      return action.user;
     case "CHANGEPASSWORD":
       return action.user;
-    case "DELETE":
-      return null;
+    case "EDIT":
+      return action.user;
     default:
       return state;
   }
@@ -24,6 +22,8 @@ const storyReducer = (state = null, action) => {
     case "CREATE":
       return action.story;
     case "SEARCH":
+      return action.story;
+    case "EDIT":
       return action.story;
 
     default:

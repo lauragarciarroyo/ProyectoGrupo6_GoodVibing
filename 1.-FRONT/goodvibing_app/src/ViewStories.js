@@ -8,7 +8,7 @@ function ViewStories({ id }) {
       <h1>Historias</h1>
       {results?.results?.map((e) => (
         <li key={e.id}>
-          <Link to={`/viewstories/${e.id}`}>{e.name}</Link>
+          <Link to={`/viewstories/${e.id}`}>{e.title}</Link>
         </li>
       ))}
       {!results && <i>Loading...</i>}

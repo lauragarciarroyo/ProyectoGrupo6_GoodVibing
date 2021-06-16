@@ -1,9 +1,8 @@
-import { useDispatch, useSelector } from "react-redux";
-import { Redirect } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { NavLink, Redirect } from "react-router-dom";
 
 function DeleteUser() {
   const token = useSelector((s) => s.user?.token);
-  const dispatch = useDispatch();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -16,7 +15,7 @@ function DeleteUser() {
     });
     if (res.ok) {
       const data = await res.json();
-      dispatch({ type: "DELETE", user: data });
+      console.log(data);
     }
   };
   if (!token) {
@@ -25,7 +24,7 @@ function DeleteUser() {
 
   return (
     <div className="deleteuser" onSubmit={handleSubmit}>
-      <button>Eliminar cuenta</button>
+      <NavLink to="/">Eliminar cuenta</NavLink>
     </div>
   );
 }

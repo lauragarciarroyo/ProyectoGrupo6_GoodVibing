@@ -10,10 +10,10 @@ const userReducer = (state = null, action) => {
       return action.user;
     case "EDIT":
       return action.user;
-    case "DELETE":
-      return action.user;
     case "CHANGEPASSWORD":
       return action.user;
+    case "DELETE":
+      return null;
     default:
       return state;
   }

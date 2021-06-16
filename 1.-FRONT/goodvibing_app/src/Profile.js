@@ -3,10 +3,9 @@ import { useSelector, useDispatch } from "react-redux";
 import { Redirect, NavLink } from "react-router-dom";
 
 function Profile() {
-  const [username, setUsername] = useState("");
+  const [name, setName] = useState("");
   const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [biography, setBiography] = useState("");
+  const [bio, setBio] = useState("");
   const [birthdate, setBirthdate] = useState("");
   const [residence, setResidence] = useState("");
   const token = useSelector((s) => s.user?.token);
@@ -14,13 +13,12 @@ function Profile() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const res = await fetch("https://localhost:4000/api/users", {
+    const res = await fetch("http://localhost:4000/api/users", {
       method: "PUT",
       body: JSON.stringify({
-        username,
+        name,
         email,
-        password,
-        biography,
+        bio,
         birthdate,
         residence,
       }),
@@ -44,8 +42,8 @@ function Profile() {
         Username:
         <input
           placeholder="User..."
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
+          value={name}
+          onChange={(e) => setName(e.target.value)}
         />
       </label>
       <br />
@@ -60,22 +58,11 @@ function Profile() {
       </label>
       <br />
       <label>
-        Password:
-        <input
-          placeholder="Password..."
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          type="password"
-        />
-      </label>
-      <br />
-      <br />
-      <label>
         Biografía:
         <input
           placeholder="Escribe algo sobre ti..."
-          value={biography}
-          onChange={(e) => setBiography(e.target.value)}
+          value={bio}
+          onChange={(e) => setBio(e.target.value)}
           type="text"
         />
       </label>

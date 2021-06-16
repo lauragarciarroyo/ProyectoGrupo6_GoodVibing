@@ -4,24 +4,21 @@ import React, { useState } from "react";
 
 function Changepassword() {
   const [password, setPassword] = useState("");
-  const [newpassword, setNewPassword] = useState("");
+  const [newPassword, setNewPassword] = useState("");
 
   const token = useSelector((s) => s.user?.token);
   const dispatch = useDispatch();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const res = await fetch(
-      "https://localhost:4000/api/users/change-password",
-      {
-        method: "POST",
-        body: JSON.stringify({ password, newpassword }),
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: "Bearer " + token,
-        },
-      }
-    );
+    const res = await fetch("http://localhost:4000/api/users/change-password", {
+      method: "POST",
+      body: JSON.stringify({ password, newPassword }),
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + token,
+      },
+    });
     if (res.ok) {
       const data = await res.json();
       dispatch({ type: "CHANGEPASSWORD", user: data });
@@ -45,7 +42,7 @@ function Changepassword() {
         New password:
         <input
           placeholder="Introduce tu nueva contraseña..."
-          value={newpassword}
+          value={newPassword}
           onChange={(e) => setNewPassword(e.target.value)}
         />
       </label>

@@ -7,8 +7,8 @@ function DeleteUser() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const res = await fetch("https://localhost:4000/api/users/delete", {
-      method: "PUT",
+    const res = await fetch("http://localhost:4000/api/users/delete", {
+      method: "DELETE",
       headers: {
         "Content-Type": "application/json",
         Authorization: "Bearer " + token,

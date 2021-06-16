@@ -2,7 +2,7 @@ import Helmet from "react-helmet";
 import { Link, NavLink } from "react-router-dom";
 import Search from "./Search";
 import { useSelector } from "react-redux";
-import Home from "./home.css";
+import "./Home.css";
 
 function Home() {
   const user = useSelector((state) => state.user);

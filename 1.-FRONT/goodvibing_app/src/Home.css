@@ -90,8 +90,6 @@ body {
   transform: translateY(-7px);
 }
 
-@import "compass/css3";
-
 .flexsearch--wrapper {
   height: auto;
   width: auto;

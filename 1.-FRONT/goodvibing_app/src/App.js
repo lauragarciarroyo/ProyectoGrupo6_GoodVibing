@@ -2,7 +2,7 @@
 import "./App.css";
 import Profile from "./Profile";
 import Message from "./Message";
-import { Switch, Route } from "react-router-dom";
+import { Switch, Route, Redirect } from "react-router-dom";
 import Menu from "./Menu";
 import Home from "./Home";
 import LoginRegister from "./Loginregister";
@@ -17,6 +17,19 @@ import EditStory from "./EditStory";
 import DeleteStory from "./DeleteStory";
 import CreateComment from "./CreateComment";
 import ErrorMesage from "./components/ErrorMesage";
+import ViewStory from "./ViewStory";
+import { useDispatch, useSelector } from "react-redux";
+
+const PrivateRoute = ({ children }) => {
+  const user = useSelector((state) => state.user);
+  const dispatch = useDispatch();
+  if (!user) {
+    dispatch({ type: "SET_ERROR", message: "Esta página es privada" });
+    return <Redirect to="/" />;
+  } else {
+    return children;
+  }
+};
 
 function App() {
   return (
@@ -29,10 +42,14 @@ function App() {
             <Home />
           </Route>
           <Route path="/mystories" exact>
-            <MyStories />
+            <PrivateRoute>
+              <MyStories />
+            </PrivateRoute>
           </Route>
           <Route path="/message" exact>
-            <Message />
+            <PrivateRoute>
+              <Message />
+            </PrivateRoute>
           </Route>
           <Route path="/loginregister" exact>
             <LoginRegister />
@@ -69,6 +86,11 @@ function App() {
           </Route>
           <Route path="/createcomment" exact>
             <CreateComment />
+          </Route>
+          <Route path="/story/:id" exact>
+            <PrivateRoute>
+              <ViewStory />
+            </PrivateRoute>
           </Route>
         </Switch>
       </main>

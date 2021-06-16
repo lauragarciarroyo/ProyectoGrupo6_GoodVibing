@@ -3,7 +3,11 @@ import { useSelector } from "react-redux";
 
 function useFetchToken(url) {
   const [data, setData] = useState(null);
+  const [error, setError] = useState(null);
+
   const token = useSelector((s) => s.user?.token);
+
+  if (!token) setError("Token no encontrado...");
 
   useEffect(() => {
     const opts = {};
@@ -12,10 +16,17 @@ function useFetchToken(url) {
     }
     fetch(url, opts)
       .then((res) => res.json())
-      .then((data) => setData(data));
+      .then((data) => {
+        if (data.status === "ok") {
+          setData(data.data);
+        } else {
+          throw new Error(data.message);
+        }
+      })
+      .catch((error) => setError(error.message));
   }, [url, token]);
 
-  return data;
+  return [data, error];
 }
 
 export default useFetchToken;

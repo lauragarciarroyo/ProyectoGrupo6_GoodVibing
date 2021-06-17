@@ -13,6 +13,7 @@ function Userinfo() {
       <p>{user.bio}</p>
       <p>{user.residence}</p>
       <p>{user.birthdate}</p>
+      <p>{user.email}</p>
       <br />
       <div>
         <Link to="/viewstories/:id">Ver Historias del usuario</Link>
@@ -24,3 +25,4 @@ function Userinfo() {
 export default Userinfo;
 
 //Muestra la info de un usuario, petición tipo GET a /api/users/:user_id, con token
+//Se muestran en profile, pero además hay que llegar a userinfo desde viewstory(/story/:id)

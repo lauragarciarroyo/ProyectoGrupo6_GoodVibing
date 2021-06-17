@@ -9,7 +9,7 @@ function Profile() {
   const [bio, setBio] = useState("");
   const [birthdate, setBirthdate] = useState("");
   const [residence, setResidence] = useState("");
-  const [font, setFont] = useState("");
+  //const [font, setFont] = useState("");
 
   const token = useSelector((s) => s.user?.token);
   const dispatch = useDispatch();
@@ -24,7 +24,6 @@ function Profile() {
         bio,
         residence,
         birthdate,
-        font,
       }),
       headers: {
         "Content-Type": "application/json",
@@ -90,14 +89,6 @@ function Profile() {
           type="text"
         />
       </label>
-      <label>
-        Fuente
-        <input
-          value={font}
-          onChange={(e) => setFont(e.target.value)}
-          type="fuente"
-        />
-      </label>
 
       <NavLink to="/profile">Guardar cambios</NavLink>
       <br />
@@ -111,3 +102,5 @@ function Profile() {
 }
 
 export default Profile;
+
+//Falta añadir el cambio de fuente y de fondo

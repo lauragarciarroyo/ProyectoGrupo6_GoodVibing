@@ -21,6 +21,9 @@ function Home() {
             <Link to="/">
               <img src={logo} width={200} alt="logo" />
             </Link>
+            <div className="Search">
+              <Search />
+            </div>
           </div>
         </div>
       </div>

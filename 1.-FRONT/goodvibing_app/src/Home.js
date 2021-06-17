@@ -24,24 +24,6 @@ function Home() {
           </div>
         </div>
       </div>
-      <div className="flexsearch">
-        <div className="flexsearch--wrapper">
-          <form className="flexsearch--form" action="#" method="post">
-            <div className="flexsearch--input-wrapper">
-              <input
-                className="flexsearch--input"
-                type="search"
-                placeholder="Busca una experiencia"
-                button
-                type="submit"
-                className="searchButton"
-              >
-                <img src={next} />
-              </input>
-            </div>
-          </form>
-        </div>
-      </div>
 
       <div className="avatarLoginRegister">
         <NavLink to="/loginregister"></NavLink>

@@ -34,4 +34,4 @@ function MyStories() {
 
 export default MyStories;
 
-//Ver mis historias
+//Ver mis historias, en lista, la previsualización

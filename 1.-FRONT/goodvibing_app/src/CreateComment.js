@@ -5,12 +5,12 @@ import { NavLink, useParams } from "react-router-dom";
 function CreateComment() {
   const token = useSelector((s) => s.user?.token);
   const [text, setText] = useState("");
-  const { story_id } = useParams();
+  const { id } = useParams();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     const res = await fetch(
-      `http://localhost:4000/api/stories/${story_id}/comments`,
+      `http://localhost:4000/api/stories/${id}/comments`,
       {
         method: "POST",
         body: JSON.stringify({ text }),
@@ -21,7 +21,8 @@ function CreateComment() {
       }
     );
     if (res.ok) {
-      await res.json();
+      const data = res.json();
+      console.log(data);
     }
   };
 

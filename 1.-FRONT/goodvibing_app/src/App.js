@@ -74,7 +74,7 @@ function App() {
           <Route path="/viewstories/:id" exact>
             <ViewStories />
           </Route>
-          <Route path="/randomstories" exact>
+          <Route path="/randomstories/" exact>
             <RandomStories />
           </Route>
           <Route path="/mystory/:id" exact>

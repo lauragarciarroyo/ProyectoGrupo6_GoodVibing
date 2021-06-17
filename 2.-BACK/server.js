@@ -35,7 +35,7 @@ app.post("/api/users/login", UsersController.loginUser);
 app.get("/api/users/:user_id", validateAuthorization, UsersController.getUser);
 
 // Cambiar datos de un usuario
-app.put("/api/users/", validateAuthorization, UsersController.editUser);
+app.put("/api/users", validateAuthorization, UsersController.editUser);
 
 // Cambiar avatar de un usuario
 app.post("/api/users/avatar", validateAuthorization, UsersController.setAvatar);
@@ -48,7 +48,7 @@ app.post(
 );
 
 // Borrar un usuario
-app.delete("/api/users/", validateAuthorization, UsersController.deleteUser);
+app.delete("/api/users", validateAuthorization, UsersController.deleteUser);
 
 //Eliminar avatar
 

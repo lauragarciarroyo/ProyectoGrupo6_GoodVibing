@@ -17,7 +17,7 @@ function MyStories() {
       <h1>Tus historias</h1>
       {results.data.map((e) => (
         <li key={e.id}>
-          <Link to={`/mystories/${e.id}`}>{e.title}</Link>
+          <Link to={`/mystory/${e.id}`}>{e.title}</Link>
 
           <p>{e.body}</p>
         </li>

@@ -1,18 +1,19 @@
 import { useState } from "react";
 import { useSelector } from "react-redux";
-import { NavLink } from "react-router-dom";
+import { NavLink, useParams } from "react-router-dom";
 
-function CreateComment({ story_id }) {
+function CreateComment() {
   const token = useSelector((s) => s.user?.token);
-  const [comment, setComment] = useState("");
+  const [text, setText] = useState("");
+  const { story_id } = useParams();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     const res = await fetch(
-      `https://localhost:4000/api/stories/${story_id}/comments`,
+      `http://localhost:4000/api/stories/${story_id}/comments`,
       {
         method: "POST",
-        body: JSON.stringify({ comment }),
+        body: JSON.stringify({ text }),
         headers: {
           "Content-Type": "application/json",
           Authorization: "Bearer " + token,
@@ -20,19 +21,20 @@ function CreateComment({ story_id }) {
       }
     );
     if (res.ok) {
-      const data = await res.json();
-      console.log(data);
+      await res.json();
     }
   };
 
   return (
-    <form className="comment" onSubmit={handleSubmit}>
-      <label>
-        Comentario
-        <input value={comment} onChange={(e) => setComment(e.target.value)} />
-      </label>
-      <NavLink to="/mycomments">Escribe tu comentario</NavLink>
-    </form>
+    <div>
+      <form className="comment" onSubmit={handleSubmit}>
+        <label>
+          Comentario
+          <input value={text} onChange={(e) => setText(e.target.value)} />
+        </label>
+        <NavLink to="/mycomments">Escribe tu comentario</NavLink>
+      </form>
+    </div>
   );
 }
 

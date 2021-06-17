@@ -53,8 +53,6 @@ function CreateStory() {
         </label>
         <br />
         <NavLink to="/mystory">Guardar historia</NavLink>
-        <h1>{title}</h1>
-        <p>{body}</p>
       </form>
     </div>
   );

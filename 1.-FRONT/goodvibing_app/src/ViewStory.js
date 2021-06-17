@@ -2,6 +2,7 @@ import { Redirect, useParams } from "react-router-dom";
 import { Helmet } from "react-helmet";
 import useFetchToken from "./useFetchToken";
 import { useDispatch } from "react-redux";
+import CreateComment from "./CreateComment";
 
 function ViewStory() {
   const { id } = useParams();
@@ -28,6 +29,10 @@ function ViewStory() {
 
       <h1>{story.title}</h1>
       <p>{story.body}</p>
+      <br />
+      <div>
+        <CreateComment />
+      </div>
     </div>
   );
 }

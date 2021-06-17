@@ -24,7 +24,7 @@ function EditStory() {
     );
     if (res.ok) {
       const data = await res.json();
-      console.log("Data:", data);
+      console.log(data);
     }
   };
 

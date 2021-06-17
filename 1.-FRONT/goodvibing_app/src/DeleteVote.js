@@ -6,7 +6,7 @@ function DeleteVote({ story_id }) {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const res = await fetch(
-      `https://localhost:4000/api/stories/${story_id}/vote`,
+      `http://localhost:4000/api/stories/${story_id}/vote`,
       {
         method: "DELETE",
         headers: {

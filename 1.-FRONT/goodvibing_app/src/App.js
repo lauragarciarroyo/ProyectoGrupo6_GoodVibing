@@ -20,6 +20,7 @@ import ErrorMesage from "./components/ErrorMesage";
 import ViewStory from "./ViewStory";
 import { useDispatch, useSelector } from "react-redux";
 import ViewStories from "./ViewStories";
+import MyComments from "./MyComments";
 
 const PrivateRoute = ({ children }) => {
   const user = useSelector((state) => state.user);
@@ -96,6 +97,9 @@ function App() {
             <PrivateRoute>
               <ViewStory />
             </PrivateRoute>
+          </Route>
+          <Route path="/mycomments" exact>
+            <MyComments />
           </Route>
         </Switch>
       </main>

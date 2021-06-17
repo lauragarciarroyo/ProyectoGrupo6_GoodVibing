@@ -1,10 +1,11 @@
 //Ver mi historia, desde aquí se puede editar y borrar
-import { NavLink, useParams } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import UseFetchToken from "./useFetchToken";
+import { useSelector } from "react-redux";
 
 function MyStory() {
-  const { id } = useParams();
-  const story = UseFetchToken(`http://localhost:4000/api/stories/${id}`);
+  const { user } = useSelector((state) => state.user);
+  const story = UseFetchToken(`http://localhost:4000/api/stories/${user.id}`);
 
   return (
     <div className="Mi historia">

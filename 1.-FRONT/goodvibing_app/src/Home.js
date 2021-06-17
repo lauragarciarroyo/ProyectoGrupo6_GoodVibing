@@ -8,6 +8,7 @@ import FondoHome from "./assets/img/FondoHome.jpg";
 import logo from "./assets/img/logo.jpg";
 import mailbox from "./assets/img/mailbox.png";
 import avatar from "./assets/img/avatar.png";
+import next from "./assets/img/next.png";
 
 function Home() {
   const user = useSelector((state) => state.user);
@@ -17,8 +18,11 @@ function Home() {
       <div className="container">
         <div className="flex-container">
           <div className="buttonLogoHome">
-            <img src={logo} width={200} alt="logo" />
+            <Link to="/">
+              <img src={logo} width={200} alt="logo" />
+            </Link>
           </div>
+
           <div className="flexsearch">
             <div className="flexsearch--wrapper">
               <form className="flexsearch--form" action="#" method="post">
@@ -28,23 +32,34 @@ function Home() {
                     type="search"
                     placeholder="Busca una experiencia"
                   />
+                  <input
+                    className="flexsearch--submit"
+                    type="submit"
+                    //defaultValue="➜"
+                    img
+                    src={next}
+                    width={100}
+                    alt="go"
+                  />
                 </div>
-                <input
-                  className="flexsearch--submit"
-                  type="submit"
-                  defaultValue="➜"
-                />
               </form>
             </div>
           </div>
+
           <div className="avatarLoginRegister">
             <NavLink to="/loginregister"></NavLink>
-            <img src={avatar} width={100} alt="login" />
+            <Link to="/loginregister">
+              <img src={avatar} width={100} alt="login" />
+            </Link>
+          </div>
+          <div className="btn-flotante">
+            <NavLink to="/contact"></NavLink>
+            <Link to="/contact">
+              <img src={mailbox} alt="contact" />{" "}
+            </Link>
           </div>
         </div>
       </div>
-      <div className="btn-flotante" img src={mailbox} />
-      <Link to="/contact"></Link>
     </div>
   );
 }

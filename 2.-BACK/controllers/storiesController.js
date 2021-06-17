@@ -65,10 +65,10 @@ async function createStory(req, res, next) {
 
 async function searchStories(req, res, next) {
   const { id } = req.params;
-  const { tittle, body } = req.body;
+  const { title, body } = req.body;
 
   try {
-    const stories = await storiesRepository.searchStory({ id, tittle, body });
+    const stories = await storiesRepository.searchStory({ id, title, body });
     res.send(stories);
   } catch (err) {
     next(err);

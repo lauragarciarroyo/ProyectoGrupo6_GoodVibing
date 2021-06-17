@@ -18,16 +18,15 @@ function Search() {
 
   return (
     <div className="search">
-      <h1>Explora historias</h1>
-
       <form onSubmit={handleSubmit}>
         <input
-          placeholder="Search..."
+          placeholder="Busca una experiencia"
           value={search}
           onChange={(e) => setSearch(e.target.value)}
         />
-        <button>Search</button>
+        <button>¡Explora!</button>
       </form>
+
       {q && <RandomStories q={q} />}
       {!q && recent.length > 0 && (
         <div className="history">

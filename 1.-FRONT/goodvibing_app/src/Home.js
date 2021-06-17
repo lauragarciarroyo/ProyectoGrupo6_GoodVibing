@@ -21,18 +21,19 @@ function Home() {
             <Link to="/">
               <img src={logo} width={200} alt="logo" />
             </Link>
+
             <div className="Search">
               <Search />
+
+              <div className="avatarLoginRegister">
+                <NavLink to="/loginregister"></NavLink>
+                <Link to="/loginregister">
+                  <img src={avatar} width={100} alt="login" />
+                </Link>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-
-      <div className="avatarLoginRegister">
-        <NavLink to="/loginregister"></NavLink>
-        <Link to="/loginregister">
-          <img src={avatar} width={100} alt="login" />
-        </Link>
       </div>
       <div className="btn-flotante">
         <NavLink to="/contact"></NavLink>

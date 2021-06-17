@@ -13,7 +13,7 @@ function MyComments() {
       <h1>Tus comentarios</h1>
       {results.map((e) => (
         <li key={e.id}>
-          <Link to={"/mycomments"}>{e.text}</Link>
+          <Link to={`/mycomments`}>{e.text}</Link>
 
           <p>{e.body}</p>
         </li>

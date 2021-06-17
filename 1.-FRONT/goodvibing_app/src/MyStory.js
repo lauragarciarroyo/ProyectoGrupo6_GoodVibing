@@ -18,7 +18,7 @@ function MyStory() {
   return (
     <div className="Mi historia">
       <h1>{story.title}</h1>
-      <Link to="/profile">{user.name}</Link>
+      <Link to="/userinfo">{user.name}</Link>
       <p>{story.body}</p>
       <br />
       <NavLink to="/editstory">Modificar historia</NavLink>

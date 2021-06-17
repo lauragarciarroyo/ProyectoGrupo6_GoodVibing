@@ -98,13 +98,14 @@ function Profile() {
           type="fuente"
         />
       </label>
-      <Userinfo />
 
       <NavLink to="/profile">Guardar cambios</NavLink>
       <br />
       <NavLink to="/changepassword">Cambiar contraseña</NavLink>
       <br />
       <NavLink to="/deleteuser">Eliminar cuenta</NavLink>
+      <br />
+      <Userinfo />
     </form>
   );
 }

@@ -22,43 +22,38 @@ function Home() {
               <img src={logo} width={200} alt="logo" />
             </Link>
           </div>
-
-          <div className="flexsearch">
-            <div className="flexsearch--wrapper">
-              <form className="flexsearch--form" action="#" method="post">
-                <div className="flexsearch--input-wrapper">
-                  <input
-                    className="flexsearch--input"
-                    type="search"
-                    placeholder="Busca una experiencia"
-                  />
-                  <input
-                    className="flexsearch--submit"
-                    type="submit"
-                    //defaultValue="➜"
-                    img
-                    src={next}
-                    width={100}
-                    alt="go"
-                  />
-                </div>
-              </form>
-            </div>
-          </div>
-
-          <div className="avatarLoginRegister">
-            <NavLink to="/loginregister"></NavLink>
-            <Link to="/loginregister">
-              <img src={avatar} width={100} alt="login" />
-            </Link>
-          </div>
-          <div className="btn-flotante">
-            <NavLink to="/contact"></NavLink>
-            <Link to="/contact">
-              <img src={mailbox} alt="contact" />{" "}
-            </Link>
-          </div>
         </div>
+      </div>
+      <div className="flexsearch">
+        <div className="flexsearch--wrapper">
+          <form className="flexsearch--form" action="#" method="post">
+            <div className="flexsearch--input-wrapper">
+              <input
+                className="flexsearch--input"
+                type="search"
+                placeholder="Busca una experiencia"
+                button
+                type="submit"
+                className="searchButton"
+              >
+                <img src={next} />
+              </input>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <div className="avatarLoginRegister">
+        <NavLink to="/loginregister"></NavLink>
+        <Link to="/loginregister">
+          <img src={avatar} width={100} alt="login" />
+        </Link>
+      </div>
+      <div className="btn-flotante">
+        <NavLink to="/contact"></NavLink>
+        <Link to="/contact">
+          <img src={mailbox} alt="contact" />{" "}
+        </Link>
       </div>
     </div>
   );

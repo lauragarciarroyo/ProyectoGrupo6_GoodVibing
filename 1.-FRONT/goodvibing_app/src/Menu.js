@@ -42,11 +42,7 @@ function Menu() {
         </>
       )}
       <ul>
-        <li>
-          <NavLink to="/" activeClassName="active" exact>
-            Home
-          </NavLink>
-        </li>
+        <li></li>
       </ul>
     </>
   );

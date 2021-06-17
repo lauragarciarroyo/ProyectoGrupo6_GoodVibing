@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Redirect, NavLink } from "react-router-dom";
-import InfoUser from "./InfoUser";
+import Userinfo from "./Userinfo";
 
 function Profile() {
   const [name, setName] = useState("");
@@ -98,7 +98,7 @@ function Profile() {
           type="fuente"
         />
       </label>
-      <InfoUser />
+      <Userinfo />
 
       <NavLink to="/profile">Guardar cambios</NavLink>
       <br />

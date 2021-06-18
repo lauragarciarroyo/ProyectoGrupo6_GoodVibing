@@ -31,7 +31,7 @@ function Menu() {
                 </li>
                 <li>
                   <NavLink to="/message" activeClassName="active" exact>
-                    Message
+                    Mis mensajes
                   </NavLink>
                 </li>
                 <li onClick={() => closeSession()}>Cerrar sesión</li>

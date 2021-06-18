@@ -17,17 +17,6 @@ const userReducer = (state = null, action) => {
   }
 };
 
-const storyReducer = (state = null, action) => {
-  switch (action.type) {
-    case "CREATE":
-      return action.story;
-    case "SEARCH":
-      return action.story;
-    default:
-      return state;
-  }
-};
-
 const errorReducer = (state = { message: null }, action) => {
   switch (action.type) {
     case "SET_ERROR":
@@ -57,7 +46,6 @@ const localStorageMiddleware = (store) => (next) => (action) => {
 const store = createStore(
   combineReducers({
     user: userReducer,
-    story: storyReducer,
     history: historyReducer,
     error: errorReducer,
   }),

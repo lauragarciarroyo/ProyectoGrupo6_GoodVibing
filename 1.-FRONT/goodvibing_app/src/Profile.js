@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Redirect, NavLink } from "react-router-dom";
 import Userinfo from "./Userinfo";
@@ -144,11 +144,11 @@ function Profile() {
         <button>Guardar cambios</button>
       </form>
 
-      <br />
+      <p />
       <NavLink to="/changepassword">Cambiar contraseña</NavLink>
-      <br />
+      <p />
       <NavLink to="/deleteuser">Eliminar cuenta</NavLink>
-      <br />
+      <p />
       <Userinfo user={user} />
     </>
   );

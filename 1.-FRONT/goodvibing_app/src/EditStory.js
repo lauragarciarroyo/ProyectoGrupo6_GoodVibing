@@ -1,10 +1,14 @@
 import React, { useState } from "react";
-import { useSelector } from "react-redux";
-import { NavLink, useParams } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import { useParams, useHistory } from "react-router-dom";
 
 function EditStory() {
-  const [body, setBody] = useState("");
-  const [title, settitle] = useState("");
+  const [body, setBody] = useState();
+  const [title, settitle] = useState();
+  const [date, setDate] = useState();
+
+  const dispatch = useDispatch();
+  const history = useHistory();
   const token = useSelector((s) => s.user?.token);
   const { id } = useParams();
 
@@ -15,32 +19,57 @@ function EditStory() {
 
       {
         method: "PUT",
-        body: JSON.stringify({ title, body }),
+        body: JSON.stringify({ title, body, date }),
         headers: {
           "Content-Type": "application/json",
           Authorization: "Bearer " + token,
         },
       }
     );
+    const data = await res.json();
+
     if (res.ok) {
-      const data = await res.json();
-      console.log(data);
+      history.push("/mystory/:id");
+    } else {
+      dispatch({ type: "SET_ERROR", message: data.message });
     }
   };
 
   return (
-    <form className="mystory" onSubmit={handleSubmit}>
-      <label>
-        Título:
-        <input value={title} onChange={(e) => settitle(e.target.value)} />
-      </label>
-      <label>
-        Historia:
-        <input value={body} onChange={(e) => setBody(e.target.value)} />
-      </label>
-      <NavLink to="/mystory">Guardar historia</NavLink>
-    </form>
+    <>
+      <form className="mystory" onSubmit={handleSubmit}>
+        <p>
+          <label>
+            Título:
+            <input value={title} onChange={(e) => settitle(e.target.value)} />
+          </label>
+        </p>
+        <p>
+          <label>
+            Historia:
+            <input value={body} onChange={(e) => setBody(e.target.value)} />
+          </label>
+        </p>
+        <p>
+          <label>
+            Fecha:
+            <input
+              value={date}
+              onChange={(e) => setDate(e.target.value)}
+              type="date"
+            />
+          </label>
+        </p>
+      </form>
+      <form onSubmit={handleSubmit}>
+        <h1>Modifica tu historia</h1>
+        <button>Editar tu historia</button>
+      </form>
+    </>
   );
 }
 
 export default EditStory;
+
+//La fecha se debe poner automática, da error
+//HAce falta poner el valor inicial en useState

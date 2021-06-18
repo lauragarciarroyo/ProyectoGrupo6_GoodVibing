@@ -47,7 +47,7 @@ function CreateStory() {
             onChange={(e) => setTitle(e.target.value)}
           />
         </label>
-        <br />
+        <p />
         <label>
           Historia
           <textarea
@@ -56,7 +56,7 @@ function CreateStory() {
             onChange={(e) => setBody(e.target.value)}
           ></textarea>
         </label>
-        <br />
+        <p />
         <button>Guardar historia</button>
       </form>
     </div>

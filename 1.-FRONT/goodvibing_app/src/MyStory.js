@@ -20,14 +20,18 @@ function MyStory() {
       <h1>{story.data.title}</h1>
       <Link to="/userinfo">{user.name}</Link>
       <p>{story.data.body}</p>
-      <br />
-      <NavLink to="/editstory">Modificar historia</NavLink>
-      <NavLink to="/deletestory">Eliminar historia</NavLink>
+      <p />
+      <p />
+      <NavLink to="/editstory/:id">Modificar historia</NavLink>
+      <p />
+      <NavLink to="/deletestory/:id">Eliminar historia</NavLink>
+      <p />
+      <NavLink to="/createcomment">Comentar historia</NavLink>
+      <p />
     </div>
   );
 }
 
 export default MyStory;
 
-//No muestra la historia
-//Link hay que cambiarlo, debe llevar a datos de usuario pero no a profile porque aparece modificar datos
+//Modificar los links del final (modificar historia y eliminarla)

@@ -1,11 +1,15 @@
 import { useState } from "react";
-import { useSelector } from "react-redux";
-import { NavLink, useParams } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import { useParams, useHistory } from "react-router-dom";
 
 function CreateComment() {
   const token = useSelector((s) => s.user?.token);
-  const [text, setText] = useState("");
+  const history = useHistory();
+
   const { id } = useParams();
+  const dispatch = useDispatch();
+
+  const [text, setText] = useState("");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -20,9 +24,12 @@ function CreateComment() {
         },
       }
     );
+    const data = await res.json();
+
     if (res.ok) {
-      const data = res.json();
-      console.log(data);
+      history.push("/mycomments");
+    } else {
+      dispatch({ type: "SET_ERROR", message: data.message });
     }
   };
 
@@ -33,12 +40,12 @@ function CreateComment() {
           Comentario
           <input value={text} onChange={(e) => setText(e.target.value)} />
         </label>
-        <NavLink to="/mycomments">Escribe tu comentario</NavLink>
       </form>
+      <button>¡Comenta!</button>
     </div>
   );
 }
 
 export default CreateComment;
 
-//Crear comentario, link desde viewstory
+//Crear comentario, link desde una historia

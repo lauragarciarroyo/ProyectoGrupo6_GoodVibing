@@ -23,6 +23,9 @@ import ViewStories from "./ViewStories";
 import MyComments from "./MyComments";
 import Userinfo from "./Userinfo";
 import CreateVote from "./CreateVote";
+import "fontsource-roboto";
+import Register from "./Register";
+import Login from "./Login";
 
 const PrivateRoute = ({ children }) => {
   const user = useSelector((state) => state.user);
@@ -55,8 +58,11 @@ function App() {
               <Message />
             </PrivateRoute>
           </Route>
-          <Route path="/loginregister" exact>
-            <LoginRegister />
+          <Route path="/login" exact>
+            <Login />
+          </Route>
+          <Route path="/register" exact>
+            <Register />
           </Route>
           <Route path="/profile" exact>
             <PrivateRoute>

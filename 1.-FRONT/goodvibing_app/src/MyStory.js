@@ -3,6 +3,9 @@ import { Link, NavLink, useParams } from "react-router-dom";
 //import { Helmet } from "react-helmet";
 import UseFetchToken from "./useFetchToken";
 import { useSelector } from "react-redux";
+import CreateVote from "./CreateVote";
+import CreateComment from "./CreateComment";
+import DeleteStory from "./DeleteStory";
 
 function MyStory() {
   const { user } = useSelector((state) => state.user);
@@ -24,10 +27,11 @@ function MyStory() {
       <p />
       <NavLink to="/editstory/:id">Modificar historia</NavLink>
       <p />
-      <NavLink to="/deletestory/:id">Eliminar historia</NavLink>
+      <DeleteStory />
       <p />
-      <NavLink to="/createcomment">Comentar historia</NavLink>
+      <CreateComment />
       <p />
+      <CreateVote />
     </div>
   );
 }

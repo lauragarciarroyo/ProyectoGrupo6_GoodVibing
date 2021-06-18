@@ -42,7 +42,7 @@ function CreateVote() {
           name="checkedH"
         />
       }
-      label="¡Vota!"
+      label="Me gusta"
     />
   );
 }

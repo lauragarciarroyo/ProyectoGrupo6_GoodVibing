@@ -22,6 +22,7 @@ import { useDispatch, useSelector } from "react-redux";
 import ViewStories from "./ViewStories";
 import MyComments from "./MyComments";
 import Userinfo from "./Userinfo";
+import CreateVote from "./CreateVote";
 
 const PrivateRoute = ({ children }) => {
   const user = useSelector((state) => state.user);
@@ -112,6 +113,9 @@ function App() {
           </Route>
           <Route path="/userinfo" exact>
             <Userinfo />
+          </Route>
+          <Route path="/createvote" exact>
+            <CreateVote />
           </Route>
         </Switch>
       </main>

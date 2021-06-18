@@ -40,8 +40,8 @@ function CreateComment() {
           Comentario
           <input value={text} onChange={(e) => setText(e.target.value)} />
         </label>
+        <button>¡Comenta!</button>
       </form>
-      <button>¡Comenta!</button>
     </div>
   );
 }
@@ -49,3 +49,4 @@ function CreateComment() {
 export default CreateComment;
 
 //Crear comentario, link desde una historia
+//El id sale como undefined,

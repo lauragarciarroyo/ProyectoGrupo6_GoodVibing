@@ -1,31 +1,38 @@
-import { useSelector } from "react-redux";
-import { NavLink, Redirect } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import { useHistory } from "react-router-dom";
 
 function DeleteUser() {
-  const token = useSelector((s) => s.user?.token);
+  const token = useSelector((s) => s.user.token);
+  const dispatch = useDispatch();
+  const history = useHistory();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const res = await fetch("http://localhost:4000/api/users/delete", {
-      method: "DELETE",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: "Bearer " + token,
-      },
-    });
-    if (res.ok) {
+    if (window.confirm("Confirma esta acción... no hay vuelta atrás")) {
+      const res = await fetch("http://localhost:4000/api/users/", {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: "Bearer " + token,
+        },
+      });
+
       const data = await res.json();
-      console.log(data);
+
+      if (res.ok) {
+        dispatch({ type: "LOGOUT" });
+        history.push("/");
+      } else {
+        dispatch({ type: "SET_ERROR", message: data.message });
+      }
     }
   };
-  if (!token) {
-    return <Redirect to="/loginregister" />;
-  }
 
   return (
-    <div className="deleteuser" onSubmit={handleSubmit}>
-      <NavLink to="/">Eliminar cuenta</NavLink>
-    </div>
+    <form onSubmit={handleSubmit}>
+      <h1>Borrar tu cuenta</h1>
+      <button>Eliminar cuenta</button>
+    </form>
   );
 }
 

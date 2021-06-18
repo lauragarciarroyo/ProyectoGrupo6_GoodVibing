@@ -1,11 +1,13 @@
 import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { NavLink, Redirect } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
 function CreateStory() {
+  const history = useHistory();
   const [title, setTitle] = useState("");
   const [body, setBody] = useState("");
-  const token = useSelector((s) => s.user?.token);
+
+  const token = useSelector((s) => s.user.token);
   const dispatch = useDispatch();
 
   const handleSubmit = async (e) => {
@@ -21,18 +23,21 @@ function CreateStory() {
         Authorization: "Bearer " + token,
       },
     });
+    const data = await res.json();
     if (res.ok) {
-      const data = await res.json();
-      dispatch({ type: "CREATE", story: data });
+      //redirigimos a las historias del usuario
+      history.push("/mystories");
+    } else {
+      dispatch({ type: "SET_ERROR", message: data.message });
     }
   };
-  if (!token) {
-    return <Redirect to="/loginregister" />;
-  }
 
   return (
     <div className="historias">
-      <h1>{title}</h1>
+      <div className="preview">
+        <h1>{title}</h1>
+        <p>{body}</p>
+      </div>
       <form className="edituser" onSubmit={handleSubmit}>
         <label>
           Título
@@ -45,14 +50,14 @@ function CreateStory() {
         <br />
         <label>
           Historia
-          <input
+          <textarea
             placeholder="Escribe tu historia.."
             value={body}
             onChange={(e) => setBody(e.target.value)}
-          />
+          ></textarea>
         </label>
         <br />
-        <NavLink to="/mystory">Guardar historia</NavLink>
+        <button>Guardar historia</button>
       </form>
     </div>
   );

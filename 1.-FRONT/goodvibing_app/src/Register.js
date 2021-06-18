@@ -19,7 +19,7 @@ function Register() {
     const data = await res.json();
 
     if (res.ok) {
-      dispatch({ type: "REGISTER", user: data });
+      dispatch({ type: "REGISTER", user: data.data });
       // Aquí hay que hacer algo más...
     } else {
       dispatch({ type: "SET_ERROR", message: data.message });

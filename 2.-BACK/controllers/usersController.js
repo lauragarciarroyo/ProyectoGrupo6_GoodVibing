@@ -38,13 +38,18 @@ async function createUser(req, res, next) {
       passwordHash,
     });
 
+    const tokenPayload = { id: createdUser.id };
+
+    const token = jwt.sign(tokenPayload, process.env.JWT_SECRET, {
+      expiresIn: "30d",
+    });
+
     res.status(201);
     res.send({
       status: "ok",
       data: {
-        id: createdUser.id,
-        name: createdUser.name,
-        email: createdUser.email,
+        token,
+        user: createdUser,
       },
     });
   } catch (err) {
@@ -142,7 +147,7 @@ async function loginUser(req, res, next) {
 
 async function editUser(req, res, next) {
   try {
-    const { id } = req.auth.id;
+    const { id } = req.auth;
 
     // La fecha en formato iso podéis encontrarla aquí: https://www.utctime.net/ (es la ISO-8601)
     const { name, email, bio, residence, birthdate, font } = req.body;
@@ -169,7 +174,7 @@ async function editUser(req, res, next) {
 
     if (!user) {
       const error = new Error("No existe el usuario");
-      error.code = 401;
+      error.status = 401;
       throw error;
     }
 

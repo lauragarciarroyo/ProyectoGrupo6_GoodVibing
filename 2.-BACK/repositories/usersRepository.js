@@ -32,9 +32,17 @@ async function createUser({ name, email, passwordHash }) {
 }
 
 async function deleteUser({ id }) {
-  const query = "DELETE FROM users WHERE id = ?";
+  // Borrar comentarios
+  await database.pool.query("DELETE FROM comments WHERE user_id = ?", id);
 
-  await database.pool.query(query, id);
+  // Borrar votos
+  await database.pool.query("DELETE FROM votes WHERE user_id = ?", id);
+
+  // Borrar historias
+  await database.pool.query("DELETE FROM stories WHERE user_id = ?", id);
+
+  // Borramos user
+  await database.pool.query("DELETE FROM users WHERE id = ?", id);
 
   return;
 }

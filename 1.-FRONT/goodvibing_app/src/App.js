@@ -26,7 +26,7 @@ import Userinfo from "./Userinfo";
 const PrivateRoute = ({ children }) => {
   const user = useSelector((state) => state.user);
   const dispatch = useDispatch();
-  if (!user) {
+  if (!user.token) {
     dispatch({ type: "SET_ERROR", message: "Esta página es privada" });
     return <Redirect to="/" />;
   } else {
@@ -58,16 +58,22 @@ function App() {
             <LoginRegister />
           </Route>
           <Route path="/profile" exact>
-            <Profile />
+            <PrivateRoute>
+              <Profile />
+            </PrivateRoute>
           </Route>
           <Route path="/contact" exact>
             <Contact />
           </Route>
           <Route path="/createstory" exact>
-            <CreateStory />
+            <PrivateRoute>
+              <CreateStory />
+            </PrivateRoute>
           </Route>
           <Route path="/deleteuser" exact>
-            <DeleteUser />
+            <PrivateRoute>
+              <DeleteUser />
+            </PrivateRoute>
           </Route>
           <Route path="/changepassword" exact>
             <Changepassword />

@@ -11,7 +11,7 @@ const userReducer = (state = null, action) => {
     case "CHANGEPASSWORD":
       return action.user;
     case "EDIT":
-      return action.user;
+      return { ...state, user: action.user };
     default:
       return state;
   }

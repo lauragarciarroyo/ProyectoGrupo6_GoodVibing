@@ -1,5 +1,5 @@
 //Ver mi historia, desde aquí se puede editar y borrar
-import { Link, NavLink, useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 //import { Helmet } from "react-helmet";
 import UseFetchToken from "./useFetchToken";
 import { useSelector } from "react-redux";

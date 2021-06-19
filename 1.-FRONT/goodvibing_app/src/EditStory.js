@@ -62,7 +62,7 @@ function EditStory() {
         </p>
       </form>
       <form onSubmit={handleSubmit}>
-        <h1>Modifica tu historia</h1>
+        <h3>Modifica tu historia</h3>
         <button>Editar tu historia</button>
       </form>
     </>

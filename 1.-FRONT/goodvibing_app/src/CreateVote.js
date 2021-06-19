@@ -6,14 +6,15 @@ import Checkbox from "@material-ui/core/Checkbox";
 import FavoriteBorder from "@material-ui/icons/FavoriteBorder";
 import Favorite from "@material-ui/icons/Favorite";
 import "fontsource-roboto";
+import DeleteVote from "./DeleteVote";
 
 function CreateVote() {
   const token = useSelector((s) => s.user?.token);
   const { id } = useParams;
   const [vote, setVote] = useState("");
 
-  const handleChange = async (e) => {
-    setVote({ ...vote, [e.target.name]: e.target.checked });
+  const handleSubmit = async (e) => {
+    setVote({ ...vote, [e.vote]: e.target.checked });
     const res = await fetch(
       `http://localhost:4000/api/stories/${id}/vote`,
 
@@ -33,17 +34,20 @@ function CreateVote() {
   };
 
   return (
-    <FormControlLabel
-      control={
-        <Checkbox
-          icon={<FavoriteBorder />}
-          onChange={handleChange}
-          checkedIcon={<Favorite />}
-          name="checkedH"
-        />
-      }
-      label="Me gusta"
-    />
+    <div>
+      <FormControlLabel
+        control={
+          <Checkbox
+            icon={<FavoriteBorder />}
+            onChange={handleSubmit}
+            checkedIcon={<Favorite />}
+            name="checkedH"
+          />
+        }
+        label="Me gusta"
+      />
+      <DeleteVote />
+    </div>
   );
 }
 

@@ -6,6 +6,7 @@ import { useSelector } from "react-redux";
 import CreateVote from "./CreateVote";
 import CreateComment from "./CreateComment";
 import DeleteStory from "./DeleteStory";
+import EditStory from "./EditStory";
 
 function MyStory() {
   const { user } = useSelector((state) => state.user);
@@ -25,7 +26,7 @@ function MyStory() {
       <p>{story.data.body}</p>
       <p />
       <p />
-      <NavLink to="/editstory/:id">Modificar historia</NavLink>
+      <EditStory />
       <p />
       <DeleteStory />
       <p />

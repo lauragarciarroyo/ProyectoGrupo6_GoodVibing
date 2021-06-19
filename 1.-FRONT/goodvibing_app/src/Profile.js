@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Redirect, NavLink } from "react-router-dom";
+import DeleteUser from "./Deteleuser";
+import UploadAvatar from "./UploadAvatar";
 import Userinfo from "./Userinfo";
 
 function Profile() {
@@ -145,9 +147,11 @@ function Profile() {
       </form>
 
       <p />
+      <UploadAvatar />
+      <p />
       <NavLink to="/changepassword">Cambiar contraseña</NavLink>
       <p />
-      <NavLink to="/deleteuser">Eliminar cuenta</NavLink>
+      <DeleteUser />
       <p />
       <Userinfo user={user} />
     </>

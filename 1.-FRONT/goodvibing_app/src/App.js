@@ -25,6 +25,8 @@ import CreateVote from "./CreateVote";
 import "fontsource-roboto";
 import Register from "./Register";
 import Login from "./Login";
+import SignUp from "./SignUp";
+import SignIn from "./SignIn";
 
 const PrivateRoute = ({ children }) => {
   const user = useSelector((state) => state.user);
@@ -121,6 +123,12 @@ function App() {
           </Route>
           <Route path="/createvote" exact>
             <CreateVote />
+          </Route>
+          <Route path="/signup" exact>
+            <SignUp />
+          </Route>
+          <Route path="/signin" exact>
+            <SignIn />
           </Route>
         </Switch>
       </main>

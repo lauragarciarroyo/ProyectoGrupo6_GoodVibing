@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useParams, useHistory } from "react-router-dom";
+import UploadAvatar from "./UploadAvatar";
 
 function EditStory() {
   const [body, setBody] = useState();
@@ -63,6 +64,7 @@ function EditStory() {
       </form>
       <form onSubmit={handleSubmit}>
         <h3>Modifica tu historia</h3>
+        <UploadAvatar />
         <button>Editar tu historia</button>
       </form>
     </>
@@ -72,4 +74,4 @@ function EditStory() {
 export default EditStory;
 
 //La fecha se debe poner automática, da error
-//HAce falta poner el valor inicial en useState
+//Hace falta poner el valor inicial en useState

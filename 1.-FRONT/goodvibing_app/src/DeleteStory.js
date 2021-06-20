@@ -29,7 +29,7 @@ function DeleteStory() {
 
   return (
     <form onSubmit={handleSubmit}>
-      <h1>Borrar tu historia</h1>
+      <h3>Borrar tu historia</h3>
       <button>Eliminar historia</button>
     </form>
   );

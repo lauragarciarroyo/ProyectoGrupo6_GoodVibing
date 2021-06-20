@@ -24,7 +24,7 @@ function MyStory() {
       <h1>{story.data.title}</h1>
       <Link to="/userinfo">{user.name}</Link>
       <p>{story.data.body}</p>
-      <p />
+
       <p />
       <EditStory />
       <p />

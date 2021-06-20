@@ -7,7 +7,8 @@ import "./Home.css";
 import FondoHome from "./assets/img/FondoHome.jpg";
 import logo from "./assets/img/logo.jpg";
 import mailbox from "./assets/img/mailbox.png";
-
+import enter from "./assets/img/enter.png";
+import register from "./assets/img/register.png";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import IconButton from "@material-ui/core/IconButton";
@@ -15,6 +16,7 @@ import Typography from "@material-ui/core/Typography";
 import InputBase from "@material-ui/core/InputBase";
 import { fade, makeStyles } from "@material-ui/core/styles";
 import SearchIcon from "@material-ui/icons/Search";
+import { Button } from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -78,9 +80,10 @@ export default function SearchAppBar() {
     <div className={classes.root}>
       <AppBar position="static">
         <Toolbar>
-          <Typography className={classes.title} variant="h2" noWrap>
+          <Link to="/">
             <img src={logo} width={100} href="/" alt="home" />
-          </Typography>
+          </Link>
+
           <div className={classes.search}>
             <div className={classes.searchIcon}>
               <SearchIcon />
@@ -94,6 +97,13 @@ export default function SearchAppBar() {
               inputProps={{ "aria-label": "search" }}
             />
           </div>
+          <Link to="/SignIn">
+            <img src={enter} width={50} alt="in" href="./SignIn" />
+          </Link>
+
+          <Link to="/SignUp">
+            <img src={register} width={50} alt="up" href="./SignUp" />
+          </Link>
         </Toolbar>
       </AppBar>
       <div className="btn-flotante">

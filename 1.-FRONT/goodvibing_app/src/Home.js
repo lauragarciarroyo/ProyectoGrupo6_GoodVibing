@@ -34,7 +34,7 @@ const useStyles = makeStyles((theme) => ({
   },
   search: {
     position: "relative",
-    justifyContent: "center",
+    justifyContent: "space-between",
     borderRadius: theme.shape.borderRadius,
     backgroundColor: fade(theme.palette.common.white, 0.15),
     "&:hover": {
@@ -53,8 +53,8 @@ const useStyles = makeStyles((theme) => ({
     position: "absolute",
     pointerEvents: "none",
     display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
+    alignItems: "space-between",
+    justifyContent: "space-between",
   },
   inputRoot: {
     color: "inherit",
@@ -79,7 +79,14 @@ export default function SearchAppBar() {
 
   return (
     <div className={classes.root}>
-      <AppBar position="static" style={{ backgroundColor: "white" }}>
+      <AppBar
+        position="static"
+        style={{ backgroundColor: "white" }}
+        display="flex"
+        flexDirection="row"
+        flexWrap="nowrap"
+        justifyContent="space-between"
+      >
         <Toolbar>
           <Link to="/">
             <img src={logo} width={100} href="/" alt="home" />

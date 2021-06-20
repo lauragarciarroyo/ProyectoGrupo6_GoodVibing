@@ -12,13 +12,14 @@ import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
+import logocolores from "./assets/img/logocolores.png";
 
 function Copyright() {
   return (
     <Typography variant="body2" color="textSecondary" align="center">
       {"Copyright © "}
-      <Link color="inherit" href="https://material-ui.com/">
-        Your Website
+      <Link color="inherit" href="/">
+        GoodVibing
       </Link>{" "}
       {new Date().getFullYear()}
       {"."}
@@ -53,11 +54,8 @@ export default function SignUp() {
     <Container component="main" maxWidth="xs">
       <CssBaseline />
       <div className={classes.paper}>
-        <Avatar className={classes.avatar}>
-          <LockOutlinedIcon />
-        </Avatar>
         <Typography component="h1" variant="h5">
-          Sign up
+          Regístrate
         </Typography>
         <form className={classes.form} noValidate>
           <Grid container spacing={2}>
@@ -69,7 +67,7 @@ export default function SignUp() {
                 required
                 fullWidth
                 id="firstName"
-                label="First Name"
+                label="Nombre"
                 autoFocus
               />
             </Grid>
@@ -79,8 +77,8 @@ export default function SignUp() {
                 required
                 fullWidth
                 id="lastName"
-                label="Last Name"
-                name="lastName"
+                label="Apellidos"
+                name="Last Name"
                 autoComplete="lname"
               />
             </Grid>
@@ -90,7 +88,7 @@ export default function SignUp() {
                 required
                 fullWidth
                 id="email"
-                label="Email Address"
+                label="Correo electrónico"
                 name="email"
                 autoComplete="email"
               />
@@ -101,16 +99,10 @@ export default function SignUp() {
                 required
                 fullWidth
                 name="password"
-                label="Password"
+                label="Contraseña"
                 type="password"
                 id="password"
                 autoComplete="current-password"
-              />
-            </Grid>
-            <Grid item xs={12}>
-              <FormControlLabel
-                control={<Checkbox value="allowExtraEmails" color="primary" />}
-                label="I want to receive inspiration, marketing promotions and updates via email."
               />
             </Grid>
           </Grid>
@@ -121,12 +113,12 @@ export default function SignUp() {
             color="primary"
             className={classes.submit}
           >
-            Sign Up
+            Únete a nuestra comunidad
           </Button>
           <Grid container justify="flex-end">
             <Grid item>
-              <Link href="#" variant="body2">
-                Already have an account? Sign in
+              <Link href="./SignIn" variant="body2">
+                ¿Ya estás registrado? Loguéate
               </Link>
             </Grid>
           </Grid>

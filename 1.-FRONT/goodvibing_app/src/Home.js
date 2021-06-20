@@ -6,7 +6,6 @@ import "./Home.css";
 import FondoHome from "./assets/img/FondoHome.jpg";
 import logo from "./assets/img/logo.jpg";
 import mailbox from "./assets/img/mailbox.png";
-import avatar from "./assets/img/avatar.png";
 import enter from "./assets/img/enter.png";
 import register from "./assets/img/register.png";
 

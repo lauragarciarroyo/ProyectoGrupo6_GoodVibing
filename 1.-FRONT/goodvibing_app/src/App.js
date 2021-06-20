@@ -124,12 +124,6 @@ function App() {
           <Route path="/createvote" exact>
             <CreateVote />
           </Route>
-          <Route path="/signup" exact>
-            <SignUp />
-          </Route>
-          <Route path="/signin" exact>
-            <SignIn />
-          </Route>
         </Switch>
       </main>
     </div>

@@ -97,12 +97,12 @@ export default function SearchAppBar() {
               inputProps={{ "aria-label": "search" }}
             />
           </div>
-          <Link to="/SignIn">
-            <img src={enter} width={50} alt="in" href="./SignIn" />
+          <Link to="/Login">
+            <img src={enter} width={50} alt="in" href="./Login" />
           </Link>
 
-          <Link to="/SignUp">
-            <img src={register} width={50} alt="up" href="./SignUp" />
+          <Link to="/register">
+            <img src={register} width={50} alt="up" href="./register" />
           </Link>
         </Toolbar>
       </AppBar>

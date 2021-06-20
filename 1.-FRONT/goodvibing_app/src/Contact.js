@@ -1,50 +1,99 @@
-import { useState } from "react";
-import "./Contact.css";
+import React from "react";
+import Button from "@material-ui/core/Button";
+import CssBaseline from "@material-ui/core/CssBaseline";
+import TextField from "@material-ui/core/TextField";
+import FormControlLabel from "@material-ui/core/FormControlLabel";
+import Link from "@material-ui/core/Link";
+import Box from "@material-ui/core/Box";
+import Typography from "@material-ui/core/Typography";
+import { makeStyles } from "@material-ui/core/styles";
+import Container from "@material-ui/core/Container";
+import logo from "./assets/img/logo.jpg";
 
-function Contact() {
-  const [username, setUsername] = useState("");
-  const [email, setEmail] = useState("");
-  const [message, setMessage] = useState("");
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log(username, email, message);
-  };
-
+function Copyright() {
   return (
-    <form className="contact" onSubmit={handleSubmit}>
-      <label>
-        Username:
-        <input
-          placeholder="User..."
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
-        />
-      </label>
-      <br />
-      <label>
-        Email:
-        <input
-          placeholder="Email..."
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          type="email"
-        />
-      </label>
-      <br />
-      <label>
-        Message:
-        <input
-          placeholder="Escribe tu mensaje..."
-          value={message}
-          onChange={(e) => setMessage(e.target.value)}
-          type="text"
-        />
-      </label>
-      <br />
-      <button>Enviar</button>
-    </form>
+    <Typography variant="body2" color="textSecondary" align="center">
+      {"Copyright © "}
+      <Link color="inherit" href="/">
+        GoodVibing
+      </Link>{" "}
+      {new Date().getFullYear()}
+      {"."}
+    </Typography>
   );
 }
 
-export default Contact;
+const useStyles = makeStyles((theme) => ({
+  paper: {
+    marginTop: theme.spacing(8),
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+  },
+  avatar: {
+    margin: theme.spacing(1),
+    backgroundColor: theme.palette.secondary.main,
+  },
+  form: {
+    width: "100%", // Fix IE 11 issue.
+    marginTop: theme.spacing(1),
+  },
+  submit: {
+    margin: theme.spacing(3, 0, 2),
+  },
+}));
+
+export default function Contact() {
+  const classes = useStyles();
+
+  return (
+    <Container component="main" maxWidth="xs">
+      <CssBaseline />
+      <div className={classes.paper}>
+        <Typography component="h1" variant="h5">
+          Escríbenos
+        </Typography>
+        <form className={classes.form} noValidate>
+          <TextField
+            variant="outlined"
+            margin="normal"
+            required
+            fullWidth
+            id="email"
+            label="Correo electrónico"
+            name="email"
+            autoComplete="email"
+            autoFocus
+          />
+          <TextField
+            multiline
+            rowsMin={10}
+            aria-label="maximun height"
+            variant="outlined"
+            margin="normal"
+            required
+            fullWidth
+            name="message"
+            label="Tu mensaje"
+            type="message"
+            id="message"
+            placeholder="Escribe tu mensaje aquí..."
+          />
+
+          <Button
+            type="submit"
+            fullWidth
+            variant="contained"
+            color="primary"
+            className={classes.submit}
+          >
+            ¡Envía!
+          </Button>
+        </form>
+      </div>
+      <Box mt={8}>
+        <Copyright />
+      </Box>
+    </Container>
+  );
+}

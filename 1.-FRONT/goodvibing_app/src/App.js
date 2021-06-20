@@ -1,4 +1,4 @@
-//import logo from "./goodvibing_logo_ps02.png";
+import React from "react";
 import "./App.css";
 import Profile from "./Profile";
 import Message from "./Message";

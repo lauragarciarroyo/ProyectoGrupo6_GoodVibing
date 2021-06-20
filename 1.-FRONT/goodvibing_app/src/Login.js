@@ -10,6 +10,8 @@ import Link from "@material-ui/core/Link";
 import Grid from "@material-ui/core/Grid";
 import Box from "@material-ui/core/Box";
 import Typography from "@material-ui/core/Typography";
+import CssBaseline from "@material-ui/core/CssBaseline";
+import { TextField } from "@material-ui/core";
 
 function Login() {
   const [email, setEmail] = useState("");
@@ -70,68 +72,72 @@ function Login() {
   }
   return (
     <Container component="main" maxWidth="xs">
-      <form className="Login" onSubmit={handleSubmit}>
-        <label>
-          Email:
-          <input
-            placeholder="Email..."
-            variant="outlined"
-            margin="normal"
-            required
-            fullWidth
-            id="email"
-            label="Correo electrónico"
-            name="email"
-            autoComplete="email"
-            autoFocus
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
+      <CssBaseline />
+      <div className={classes.paper}>
+        <Typography component="h1" variant="h5">
+          Loguéate
+        </Typography>
+        <form className="Login" onSubmit={handleSubmit}>
+          <label>
+            <TextField
+              placeholder="Email..."
+              variant="outlined"
+              margin="normal"
+              required
+              fullWidth
+              id="email"
+              label="Correo electrónico"
+              name="email"
+              autoComplete="email"
+              autoFocus
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
+          </label>
+          <br />
+          <label>
+            <TextField
+              variant="outlined"
+              margin="normal"
+              required
+              fullWidth
+              name="password"
+              label="Contraseña"
+              type="password"
+              id="password"
+              autoComplete="current-password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+          </label>
+          <p />
+          <FormControlLabel
+            control={<Checkbox value="remember" color="primary" />}
+            label="Recuérdame"
           />
-        </label>
-        <br />
-        <label>
-          Password:
-          <input
-            variant="outlined"
-            margin="normal"
-            required
+          <Button
+            type="submit"
             fullWidth
-            name="password"
-            label="Contraseña"
-            type="password"
-            id="password"
-            autoComplete="current-password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-        </label>
-        <p />
-        <FormControlLabel
-          control={<Checkbox value="remember" color="primary" />}
-          label="Recuérdame"
-        />
-        <Button
-          type="submit"
-          fullWidth
-          variant="contained"
-          color="primary"
-          className={classes.submit}
-        >
-          ¡Entra!
-        </Button>
-        <Grid container>
-          <Grid item xs>
-            <Link href="#" variant="body2">
-              ¿Olvidaste tu contraseña?
-            </Link>
+            variant="contained"
+            color="primary"
+            className={classes.submit}
+          >
+            ¡Entra!
+          </Button>
+          <Grid container>
+            <Grid item xs>
+              <Link href="#" variant="body2">
+                ¿Olvidaste tu contraseña?
+              </Link>
+            </Grid>
+            <Grid item>
+              <Link href="./SignUp" variant="body2">
+                {"¿Aún no tienes cuenta? ¡Regístrate!"}
+              </Link>
+            </Grid>
           </Grid>
-          <Grid item>
-            <Link href="./SignUp" variant="body2">
-              {"¿Aún no tienes cuenta? ¡Regístrate!"}
-            </Link>
-          </Grid>
-        </Grid>
-      </form>
+        </form>
+      </div>
       <Box mt={8}>
         <Copyright />
       </Box>

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useParams, useHistory } from "react-router-dom";
-import UploadImage from "./UploadImage";
+import UploadAvatar from "./UploadAvatar";
 
 function EditStory() {
   const [body, setBody] = useState();
@@ -64,8 +64,8 @@ function EditStory() {
       </form>
       <form onSubmit={handleSubmit}>
         <h3>Modifica tu historia</h3>
+        <UploadAvatar />
         <button>Editar tu historia</button>
-        <UploadImage />
       </form>
     </>
   );

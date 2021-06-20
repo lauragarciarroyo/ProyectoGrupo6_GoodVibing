@@ -26,7 +26,7 @@ function UploadImage() {
         Imagen:
         <input onChange={(e) => setFile(e.target.file)} type="file" />
       </label>
-      <button>Enviar</button>
+      <button>Subir Imagen</button>
     </form>
   );
 }

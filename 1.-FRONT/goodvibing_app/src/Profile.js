@@ -111,7 +111,7 @@ function Profile() {
           <label>
             Fecha de nacimiento:
             <input
-              value={birthdate.slice(0, 10)}
+              value={birthdate}
               onChange={(e) => setBirthdate(e.target.value)}
               type="date"
             />
@@ -161,3 +161,4 @@ function Profile() {
 export default Profile;
 
 //Falta añadir el cambio de fuente y de fondo
+//.slice(0, 10)

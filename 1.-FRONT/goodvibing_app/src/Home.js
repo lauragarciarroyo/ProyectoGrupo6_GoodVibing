@@ -4,11 +4,9 @@ import Search from "./Search";
 import { useSelector } from "react-redux";
 import "./Home.css";
 import FondoHome from "./assets/img/FondoHome.jpg";
-//import goodvibing_ico_ps04 from "./assets/img/goodvibing_ico_ps04";
 import logo from "./assets/img/logo.jpg";
 import mailbox from "./assets/img/mailbox.png";
 import avatar from "./assets/img/avatar.png";
-import next from "./assets/img/next.png";
 
 function Home() {
   const user = useSelector((state) => state.user);

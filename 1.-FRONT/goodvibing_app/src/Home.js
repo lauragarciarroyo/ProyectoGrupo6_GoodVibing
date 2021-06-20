@@ -8,6 +8,8 @@ import FondoHome from "./assets/img/FondoHome.jpg";
 import logo from "./assets/img/logo.jpg";
 import mailbox from "./assets/img/mailbox.png";
 import avatar from "./assets/img/avatar.png";
+import enter from "./assets/img/enter.png";
+import register from "./assets/img/register.png";
 
 function Home() {
   const user = useSelector((state) => state.user);
@@ -24,10 +26,17 @@ function Home() {
             <div className="Search">
               <Search />
 
-              <div className="avatarLoginRegister">
-                <NavLink to="/loginregister"></NavLink>
-                <Link to="/loginregister">
-                  <img src={avatar} width={100} alt="login" />
+              <div className="LoginButton">
+                <NavLink to="./SignIn"></NavLink>
+                <Link to="./SignIn">
+                  <img src={enter} width={50} alt="login" />
+                </Link>
+              </div>
+
+              <div className="RegisterButton">
+                <NavLink to="./SignUp"></NavLink>
+                <Link to="./SignUp">
+                  <img src={register} width={50} alt="register" />
                 </Link>
               </div>
             </div>

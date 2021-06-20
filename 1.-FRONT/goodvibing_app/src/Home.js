@@ -23,7 +23,7 @@ const useStyles = makeStyles((theme) => ({
     flexGrow: 1,
   },
   menuButton: {
-    marginRight: theme.spacing(2),
+    marginRight: theme.spacing(0),
   },
   title: {
     flexGrow: 1,
@@ -34,6 +34,7 @@ const useStyles = makeStyles((theme) => ({
   },
   search: {
     position: "relative",
+    justifyContent: "center",
     borderRadius: theme.shape.borderRadius,
     backgroundColor: fade(theme.palette.common.white, 0.15),
     "&:hover": {
@@ -83,7 +84,6 @@ export default function SearchAppBar() {
           <Link to="/">
             <img src={logo} width={100} href="/" alt="home" />
           </Link>
-
           <div className={classes.search}>
             <div className={classes.searchIcon}>
               <SearchIcon />

@@ -79,7 +79,7 @@ export default function SearchAppBar() {
 
   return (
     <div className={classes.root}>
-      <AppBar position="static">
+      <AppBar position="static" style={{ backgroundColor: "white" }}>
         <Toolbar>
           <Link to="/">
             <img src={logo} width={100} href="/" alt="home" />

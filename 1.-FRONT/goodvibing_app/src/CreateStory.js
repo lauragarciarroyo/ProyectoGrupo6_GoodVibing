@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
+import UploadImage from "./UploadImage";
 
 function CreateStory() {
   const history = useHistory();
@@ -57,6 +58,7 @@ function CreateStory() {
           ></textarea>
         </label>
         <p />
+        <UploadImage />
         <button>Guardar historia</button>
       </form>
     </div>

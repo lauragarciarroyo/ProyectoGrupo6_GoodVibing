@@ -5,7 +5,6 @@ import Message from "./Message";
 import { Switch, Route, Redirect } from "react-router-dom";
 import Menu from "./Menu";
 import Home from "./Home";
-import LoginRegister from "./Loginregister";
 import Contact from "./Contact";
 import CreateStory from "./CreateStory";
 import MyStories from "./MyStories";

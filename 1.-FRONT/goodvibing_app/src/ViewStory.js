@@ -1,10 +1,12 @@
-import { Redirect, useParams } from "react-router-dom";
+import { Redirect, useParams, Link } from "react-router-dom";
 import { Helmet } from "react-helmet";
 import useFetchToken from "./useFetchToken";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import CreateComment from "./CreateComment";
 
 function ViewStory() {
+  const { user } = useSelector((state) => state.user);
+
   const { id } = useParams();
   const dispatch = useDispatch();
 
@@ -28,6 +30,8 @@ function ViewStory() {
       </Helmet>
 
       <h1>{story.title}</h1>
+      <Link to="/userinfo">{user.name}</Link>
+
       <p>{story.body}</p>
       <br />
       <div>

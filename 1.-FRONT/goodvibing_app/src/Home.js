@@ -3,6 +3,7 @@ import { Link, NavLink } from "react-router-dom";
 import Search from "./Search";
 import { useSelector } from "react-redux";
 import "./Home.css";
+import "./AppBar";
 import FondoHome from "./assets/img/FondoHome.jpg";
 import logo from "./assets/img/logo.jpg";
 import mailbox from "./assets/img/mailbox.png";

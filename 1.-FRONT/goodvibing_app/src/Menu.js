@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { NavLink } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
+import { Button } from "@material-ui/core";
 
 function Menu() {
   const [open, setOpen] = useState(false);
@@ -19,22 +19,31 @@ function Menu() {
           {open && (
             <div className="modal-bg">
               <div className="modal-fg">
-                <li>
-                  <NavLink to="/profile" activeClassName="active" exact>
-                    Mis datos
-                  </NavLink>
-                </li>
-                <li>
-                  <NavLink to="/mystories" activeClassName="active" exact>
-                    Mis historias
-                  </NavLink>
-                </li>
-                <li>
-                  <NavLink to="/message" activeClassName="active" exact>
-                    Mis mensajes
-                  </NavLink>
-                </li>
-                <li onClick={() => closeSession()}>Cerrar sesión</li>
+                <Button
+                  href="/changepassword"
+                  color="secondary"
+                  activeClassName="active"
+                >
+                  Mis datos
+                </Button>{" "}
+                <p />
+                <Button
+                  href="/mystories"
+                  activeClassName="active"
+                  color="secondary"
+                >
+                  Mis historias
+                </Button>
+                <p />
+                <Button
+                  href="/message"
+                  activeClassName="active"
+                  color="secondary"
+                >
+                  Mis mensajes
+                </Button>
+                <p />
+                <Button onClick={() => closeSession()}>Cerrar sesión</Button>
                 <button onClick={() => setOpen(false)}>X</button>
               </div>
             </div>

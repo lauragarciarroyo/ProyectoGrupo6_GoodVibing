@@ -1,5 +1,4 @@
 import React from "react";
-import Helmet from "react-helmet";
 import { Link, NavLink } from "react-router-dom";
 import Search from "./Search";
 import { useSelector } from "react-redux";
@@ -11,13 +10,10 @@ import enter from "./assets/img/enter.png";
 import register from "./assets/img/register.png";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
-import IconButton from "@material-ui/core/IconButton";
-import Typography from "@material-ui/core/Typography";
 import InputBase from "@material-ui/core/InputBase";
 import { fade, makeStyles } from "@material-ui/core/styles";
 import SearchIcon from "@material-ui/icons/Search";
-import { Button } from "@material-ui/core";
-
+import ImageAvatar from "./ImageAvatar";
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
@@ -104,6 +100,8 @@ export default function SearchAppBar() {
           <Link to="/register">
             <img src={register} width={50} alt="up" href="./register" />
           </Link>
+
+          <ImageAvatar />
         </Toolbar>
       </AppBar>
       <div className="btn-flotante">

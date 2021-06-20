@@ -30,7 +30,6 @@ function DeleteUser() {
 
   return (
     <form onSubmit={handleSubmit}>
-      <h1>Borrar tu cuenta</h1>
       <button>Eliminar cuenta</button>
     </form>
   );

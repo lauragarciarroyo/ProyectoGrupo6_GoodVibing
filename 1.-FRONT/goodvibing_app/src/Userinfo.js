@@ -1,17 +1,19 @@
-import { Link } from "react-router-dom";
+import { Button } from "@material-ui/core";
 
 function Userinfo({ user }) {
   return (
     <div className="userinfo">
-      <h1>{user.name}</h1>
-      <br />
+      <h2>{user.name}</h2>
+      <p />
       <p>{user.bio}</p>
       <p>{user.residence}</p>
       <p>{new Date(user.birthdate).toLocaleDateString()}</p>
       <p>{user.email}</p>
-      <br />
+      <p />
       <div>
-        <Link to="/viewstories/:id">Ver Historias del usuario</Link>
+        <Button href="/viewstories/:id" color="primary">
+          Ver historias del usuario
+        </Button>{" "}
       </div>
     </div>
   );

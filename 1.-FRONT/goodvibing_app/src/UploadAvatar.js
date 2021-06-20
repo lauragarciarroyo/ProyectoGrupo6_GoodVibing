@@ -1,8 +1,6 @@
+import { Avatar } from "@material-ui/core";
 import { useState } from "react";
 import { useSelector } from "react-redux";
-
-//import PhotoCamera from '@material-ui/icons/PhotoCamera';
-//import IconButton from '@material-ui/core/IconButton';
 
 function UploadAvatar() {
   const [file, setFile] = useState();
@@ -25,8 +23,8 @@ function UploadAvatar() {
 
   return (
     <form onSubmit={handleSubmit}>
+      <Avatar />
       <label>
-        Imagen:
         <input onChange={(e) => setFile(e.target.file)} type="file" />
       </label>
       <button>Enviar</button>

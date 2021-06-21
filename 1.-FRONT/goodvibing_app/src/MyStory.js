@@ -33,7 +33,7 @@ function MyStory() {
             {user.name}{" "}
           </Button>{" "}
           <p />
-          <Container maxWidth="xl">{story.data.body}</Container>
+          <Container maxWidth="sm">{story.data.body}</Container>
           <p />
           <Container maxWidth="sm">
             <EditStory />

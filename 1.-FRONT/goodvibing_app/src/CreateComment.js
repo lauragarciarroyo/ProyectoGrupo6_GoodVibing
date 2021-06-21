@@ -39,7 +39,7 @@ function CreateComment() {
       <form className="comment" onSubmit={handleSubmit}>
         <label>
           <TextField
-            id="standar-basic"
+            id="filled-basic"
             multiline
             rowsMax={6}
             value={text}

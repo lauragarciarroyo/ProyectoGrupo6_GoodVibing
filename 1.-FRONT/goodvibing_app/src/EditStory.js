@@ -71,10 +71,13 @@ function EditStory() {
             />
           </label>
         </p>
-
-        <UploadImage />
         <p />
-        <Container maxWidth="xs">
+        <Container maxWidth="xl">
+          <UploadImage />
+        </Container>
+        <p />
+        <p />
+        <Container maxWidth="xl">
           <button>Editar tu historia</button>
         </Container>
       </form>

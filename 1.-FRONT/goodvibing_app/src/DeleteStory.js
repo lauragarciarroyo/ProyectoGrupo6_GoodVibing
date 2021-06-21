@@ -1,3 +1,4 @@
+import { Container, CssBaseline } from "@material-ui/core";
 import { useSelector, useDispatch } from "react-redux";
 import { useParams, useHistory } from "react-router-dom";
 
@@ -28,9 +29,12 @@ function DeleteStory() {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <button>Eliminar historia</button>
-    </form>
+    <Container>
+      <CssBaseline />
+      <form onSubmit={handleSubmit}>
+        <button>Eliminar historia</button>
+      </form>
+    </Container>
   );
 }
 

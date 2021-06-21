@@ -1,6 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect } from "react-router-dom";
 import React, { useState } from "react";
+import { Container, CssBaseline, TextField } from "@material-ui/core";
 
 function Changepassword() {
   const [password, setPassword] = useState("");
@@ -29,25 +30,34 @@ function Changepassword() {
   }
 
   return (
-    <form className="Login" onSubmit={handleSubmit}>
-      <label>
-        Password:
-        <input
-          placeholder="Introduce tu contraseña actual..."
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
-      </label>
-      <label>
-        New password:
-        <input
-          placeholder="Introduce tu nueva contraseña..."
-          value={newPassword}
-          onChange={(e) => setNewPassword(e.target.value)}
-        />
-      </label>
-      <button>Cambiar contraseña</button>
-    </form>
+    <Container component="main" maxWidth="sm">
+      <CssBaseline />
+      <form className="Login" onSubmit={handleSubmit}>
+        <label>
+          <TextField
+            id="filled-basic"
+            variant="filled"
+            placeholder="Introduce tu contraseña actual..."
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+        </label>
+        <p />
+        <label>
+          <TextField
+            id="filled-basic"
+            variant="filled"
+            placeholder="Introduce tu nueva contraseña..."
+            value={newPassword}
+            onChange={(e) => setNewPassword(e.target.value)}
+          />
+        </label>
+
+        <p />
+
+        <button>Cambiar contraseña</button>
+      </form>
+    </Container>
   );
 }
 

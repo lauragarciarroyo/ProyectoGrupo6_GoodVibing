@@ -1,6 +1,7 @@
-import { Container, CssBaseline } from "@material-ui/core";
+import { Button, Container, CssBaseline } from "@material-ui/core";
 import { useSelector, useDispatch } from "react-redux";
 import { useParams, useHistory } from "react-router-dom";
+import { makeStyles } from "@material-ui/core/styles";
 
 function DeleteStory() {
   const token = useSelector((s) => s.user?.token);
@@ -27,12 +28,27 @@ function DeleteStory() {
       }
     }
   };
+  const useStyles = makeStyles((theme) => ({
+    root: {
+      "& > *": {
+        margin: theme.spacing(1),
+      },
+    },
+  }));
+  const classes = useStyles();
 
   return (
     <Container>
       <CssBaseline />
       <form onSubmit={handleSubmit}>
-        <button>Eliminar historia</button>
+        <Button
+          type="submit"
+          variant="contained"
+          color="primary"
+          className={classes.submit}
+        >
+          Eliminar historia
+        </Button>
       </form>
     </Container>
   );

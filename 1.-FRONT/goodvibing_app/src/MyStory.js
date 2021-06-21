@@ -1,14 +1,11 @@
 //Ver mi historia, desde aquí se puede editar y borrar
-import { useParams } from "react-router-dom";
-//import { Helmet } from "react-helmet";
+import { Link, useParams } from "react-router-dom";
 import UseFetchToken from "./useFetchToken";
 import { useSelector } from "react-redux";
 import CreateVote from "./CreateVote";
 import CreateComment from "./CreateComment";
-import DeleteStory from "./DeleteStory";
-import EditStory from "./EditStory";
 import { Button, Container, CssBaseline, Grid } from "@material-ui/core";
-import ImageAvatar from "./ImageAvatar";
+import React from "react";
 
 function MyStory() {
   const { user } = useSelector((state) => state.user);
@@ -22,31 +19,31 @@ function MyStory() {
   }
 
   return (
-    <Container component="main" maxWidth="sm">
+    <Container component="main" maxWidth="sm" align="center">
       <CssBaseline />
-      <ImageAvatar />
 
       <div className="Mi historia">
-        <Grid container spacing={3}>
+        <Grid container spacing={4}>
           <h1>{story.data.title}</h1>
+          <p />
           <Button href="/userinfo" color="primary">
             {user.name}{" "}
           </Button>{" "}
           <p />
-          <Container maxWidth="sm">{story.data.body}</Container>
-          <p />
-          <Container maxWidth="sm">
-            <EditStory />
+          <Container maxWidth="sm" align="left">
+            {story.data.body}
           </Container>
           <p />
           <CreateComment />
           <p />
           <CreateVote />
         </Grid>
-        <Container maxWidth="sm">
-          <DeleteStory />
-          <p />
-        </Container>
+      </div>
+      <div>
+        <Link to={`/editstory/${id}`}>Editar historia</Link>
+        <p />
+
+        <Link to={`/deletestory/${id}`}>Eliminar historia</Link>
       </div>
     </Container>
   );

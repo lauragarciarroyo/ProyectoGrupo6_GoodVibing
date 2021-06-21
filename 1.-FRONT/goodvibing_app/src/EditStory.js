@@ -1,4 +1,4 @@
-import { Container, TextField } from "@material-ui/core";
+import { Button, Container, makeStyles, TextField } from "@material-ui/core";
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useParams, useHistory } from "react-router-dom";
@@ -36,6 +36,13 @@ function EditStory() {
       dispatch({ type: "SET_ERROR", message: data.message });
     }
   };
+  const useStyles = makeStyles((theme) => ({
+    form: {
+      width: "100%",
+      margin: theme.spacing(3, 0, 2),
+    },
+  }));
+  const classes = useStyles();
 
   return (
     <>
@@ -43,8 +50,11 @@ function EditStory() {
         <p>
           <label>
             <TextField
-              id="standard-basic"
+              id="standard-full-width"
               label="Título"
+              style={{ margin: 80 }}
+              placeholder="Escribe un título..."
+              margin="normal"
               value={title}
               onChange={(e) => settitle(e.target.value)}
             />
@@ -53,8 +63,16 @@ function EditStory() {
         <p>
           <label>
             <TextField
-              id="standard-basic"
+              id="outlined-full-width"
               label="Historia"
+              style={{ margin: 70 }}
+              placeholder="Escribe tu historia..."
+              fullWidth
+              margin="normal"
+              InputLabelProps={{
+                shrink: true,
+              }}
+              variant="outlined"
               multiline
               value={body}
               onChange={(e) => setBody(e.target.value)}
@@ -78,7 +96,14 @@ function EditStory() {
         <p />
         <p />
         <Container maxWidth="xl">
-          <button>Editar tu historia</button>
+          <Button
+            type="submit"
+            variant="contained"
+            color="primary"
+            className={classes.submit}
+          >
+            Eliminar historia
+          </Button>{" "}
         </Container>
       </form>
     </>

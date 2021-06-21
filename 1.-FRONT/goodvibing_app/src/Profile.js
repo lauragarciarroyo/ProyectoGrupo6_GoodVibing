@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Redirect } from "react-router-dom";
-import UploadAvatar from "./UploadAvatar";
 import Userinfo from "./Userinfo";
 import { makeStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
@@ -74,7 +73,6 @@ function Profile() {
           <form className={classes.root} onSubmit={handleSubmit}>
             <Grid container spacing={3}>
               <Grid item lg={12} sm={20}>
-                <UploadAvatar />
                 <p>
                   <label>
                     <TextField

@@ -1,4 +1,4 @@
-import { Button } from "@material-ui/core";
+import { Link } from "react-router-dom";
 
 function Userinfo({ user }) {
   return (
@@ -11,9 +11,7 @@ function Userinfo({ user }) {
       <p>{user.email}</p>
       <p />
       <div>
-        <Button href="/viewstories/:id" color="primary">
-          Ver historias del usuario
-        </Button>{" "}
+        <Link to={`/viewstories/${user.id}`}>Ver historias del usuario</Link>
       </div>
     </div>
   );

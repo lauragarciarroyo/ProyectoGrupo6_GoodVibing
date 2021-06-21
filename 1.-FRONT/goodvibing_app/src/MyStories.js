@@ -1,6 +1,6 @@
 import UseFetchToken from "./useFetchToken";
 import { useSelector } from "react-redux";
-import { Button, Container } from "@material-ui/core";
+import { Button, Container, makeStyles } from "@material-ui/core";
 
 function MyStories() {
   const { user } = useSelector((state) => state.user);
@@ -9,20 +9,36 @@ function MyStories() {
     `http://localhost:4000/api/users/${user.id}/stories`
   );
 
+  const useStyles = makeStyles((theme) => ({
+    paper: {
+      marginTop: theme.spacing(8),
+      display: "flex",
+      flexDirection: "column",
+      alignItems: "center",
+      width: "100%",
+    },
+  }));
+  const classes = useStyles();
+
   if (!results) return <p>Cargando...</p>;
 
   return (
-    <Container component="main" maxWidth="ml">
-      <div className="Mis historias">
+    <div className="Mis historias">
+      <div className={classes.paper}>
         <h1>Tus historias</h1>
 
         {results.data.map((e) => (
           <div key={e.id}>
-            <Button href={`/mystory/${e.id}`} color="primary">
+            <Button
+              href={`/mystory/${e.id}`}
+              color="primary"
+              style={{ margin: 10 }}
+            >
               {e.title}
             </Button>
-
-            <p>{e.body}</p>
+            <Container style={{ margin: 10 }}>
+              <p>{e.body}</p>
+            </Container>
           </div>
         ))}
 
@@ -34,7 +50,7 @@ function MyStories() {
           </Button>{" "}
         </div>
       </div>
-    </Container>
+    </div>
   );
 }
 

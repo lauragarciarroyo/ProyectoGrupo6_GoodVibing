@@ -1,5 +1,4 @@
 import { Redirect, useParams, Link } from "react-router-dom";
-import { Helmet } from "react-helmet";
 import useFetchToken from "./useFetchToken";
 import { useDispatch, useSelector } from "react-redux";
 import CreateComment from "./CreateComment";
@@ -25,15 +24,11 @@ function ViewStory() {
 
   return (
     <div className="story">
-      <Helmet>
-        <title>Goodvibing app {story && "- " + story.title}</title>
-      </Helmet>
-
-      <h1>{story.title}</h1>
+      <h1>{story.data.title}</h1>
       <Link to="/userinfo">{user.name}</Link>
 
-      <p>{story.body}</p>
-      <br />
+      <p>{story.data.body}</p>
+      <p />
       <div>
         <CreateComment />
       </div>

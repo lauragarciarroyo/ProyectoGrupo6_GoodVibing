@@ -1,15 +1,18 @@
 import UseFetch from "./UseFetch";
-import { Link, useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 function ViewStories() {
-  const { id } = useParams();
-  const results = UseFetch(`http://localhost:4000/api/users/${id}/stories`);
+  const { user } = useSelector((state) => state.user);
+  const results = UseFetch(
+    `http://localhost:4000/api/users/${user.id}/stories`
+  );
   return (
     <div className="viewstories">
       <h1>Historias</h1>
       {results.data.map((e) => (
         <li key={e.id}>
-          <Link to={`/viewstory/${e.id}`}>{e.title}</Link>
+          <Link to={`/viewstory/${user.id}`}>{e.title}</Link>
 
           <p>{e.body}</p>
         </li>

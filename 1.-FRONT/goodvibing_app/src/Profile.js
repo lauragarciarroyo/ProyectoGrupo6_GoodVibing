@@ -4,9 +4,6 @@ import { Redirect } from "react-router-dom";
 import Userinfo from "./Userinfo";
 import { makeStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
-import Container from "@material-ui/core/Container";
-import CssBaseline from "@material-ui/core/CssBaseline";
-import Grid from "@material-ui/core/Grid";
 import Button from "@material-ui/core/Button";
 import { Box } from "@material-ui/core";
 
@@ -26,10 +23,11 @@ function Profile() {
   console.log(birthdate);
   const useStyles = makeStyles((theme) => ({
     root: {
-      "& > *": {
-        margin: theme.spacing(1),
-        width: "25ch",
-      },
+      marginTop: theme.spacing(4),
+      display: "flex",
+      flexDirection: "column",
+      width: "15%",
+      alignItems: "left",
     },
   }));
 
@@ -67,122 +65,117 @@ function Profile() {
 
   return (
     <div>
-      <Container component="main" maxWidth="lg">
-        <CssBaseline />
-        <>
-          <form className={classes.root} onSubmit={handleSubmit}>
-            <Grid container spacing={3}>
-              <Grid item lg={12} sm={20}>
-                <p>
-                  <label>
-                    <TextField
-                      id="filled-basic"
-                      variant="filled"
-                      placeholder="User..."
-                      value={name}
-                      onChange={(e) => setName(e.target.value)}
-                    />
-                  </label>
-                </p>
-              </Grid>
-              <Grid item lg={12}>
-                <p>
-                  <label>
-                    <TextField
-                      id="filled-basic"
-                      variant="filled"
-                      placeholder="Email..."
-                      value={email}
-                      onChange={(e) => setEmail(e.target.value)}
-                      type="email"
-                    />
-                  </label>
-                </p>
-              </Grid>
-              <Grid item lg={12}>
-                <p>
-                  <label>
-                    <TextField
-                      id="filled-basic"
-                      variant="filled"
-                      multiline
-                      rowsMax={8}
-                      placeholder="Escribe algo sobre ti..."
-                      value={bio}
-                      onChange={(e) => setBio(e.target.value)}
-                      type="text"
-                    />
-                  </label>
-                </p>
-              </Grid>
-              <Grid item lg={12}>
-                <p>
-                  <label>
-                    <TextField
-                      id="filled-basic"
-                      variant="filled"
-                      value={
-                        birthdate && birthdate.length > 10
-                          ? birthdate.slice(0, 10)
-                          : birthdate
-                      }
-                      onChange={(e) => {
-                        setBirthdate(e.target.value);
-                      }}
-                      type="date"
-                    />
-                  </label>
-                </p>
-              </Grid>
-              <Grid item lg={12}>
-                <p>
-                  <label>
-                    <TextField
-                      id="filled-basic"
-                      variant="filled"
-                      placeholder="¿Dónde vives?"
-                      value={residence}
-                      onChange={(e) => setResidence(e.target.value)}
-                      type="text"
-                    />
-                  </label>
-                </p>
-              </Grid>
-              <Grid item lg={12}>
-                <p>
-                  <label>
-                    <TextField
-                      select
-                      name="font"
-                      value={font}
-                      onChange={(e) => setFont(e.target.value)}
-                    >
-                      <option value="sans-serif">sans-serif</option>
-                      <option value="serif">serif</option>
-                      <option value="monospace">monospace</option>
-                    </TextField>
-                  </label>
-                </p>
-              </Grid>
-            </Grid>
-            <button>Guardar cambios</button>
-          </form>
-          <Container>
-            <Button href="/deleteuser" color="primary">
-              Eliminar cuenta
-            </Button>{" "}
-          </Container>
-          <Container>
-            <Button href="/changepassword" color="primary">
-              Cambiar contraseña
-            </Button>{" "}
-          </Container>
-
-          <Box sm={15}>
+      <>
+        <form className={classes.root} onSubmit={handleSubmit}>
+          <p>
+            <label>
+              <TextField
+                id="filled-basic"
+                style={{ margin: 20 }}
+                variant="filled"
+                placeholder="User..."
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+              />
+            </label>
+          </p>
+          <p>
+            <label>
+              <TextField
+                id="filled-basic"
+                variant="filled"
+                style={{ margin: 20 }}
+                placeholder="Email..."
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                type="email"
+              />
+            </label>
+          </p>
+          <p>
+            <label>
+              <TextField
+                id="filled-basic"
+                variant="filled"
+                multiline
+                style={{ margin: 20 }}
+                rowsMax={8}
+                placeholder="Escribe algo sobre ti..."
+                value={bio}
+                onChange={(e) => setBio(e.target.value)}
+                type="text"
+              />
+            </label>
+          </p>
+          <p>
+            <label>
+              <TextField
+                id="filled-basic"
+                variant="filled"
+                style={{ margin: 20 }}
+                value={
+                  birthdate && birthdate.length > 10
+                    ? birthdate.slice(0, 10)
+                    : birthdate
+                }
+                onChange={(e) => {
+                  setBirthdate(e.target.value);
+                }}
+                type="date"
+              />
+            </label>
+          </p>
+          <p>
+            <label>
+              <TextField
+                id="filled-basic"
+                variant="filled"
+                style={{ margin: 20 }}
+                placeholder="¿Dónde vives?"
+                value={residence}
+                onChange={(e) => setResidence(e.target.value)}
+                type="text"
+              />
+            </label>
+          </p>
+          <p>
+            <label>
+              <TextField
+                select
+                name="font"
+                style={{ margin: 20 }}
+                value={font}
+                onChange={(e) => setFont(e.target.value)}
+              >
+                <option value="sans-serif">sans-serif</option>
+                <option value="serif">serif</option>
+                <option value="monospace">monospace</option>
+              </TextField>
+            </label>
+          </p>
+          <Button
+            type="submit"
+            variant="contained"
+            color="primary"
+            className={classes.submit}
+          >
+            Editar historia
+          </Button>{" "}
+        </form>
+        <div className={classes.paper}>
+          <Button href="/deleteuser" color="primary">
+            Eliminar cuenta
+          </Button>{" "}
+          <Button href="/changepassword" color="primary">
+            Cambiar contraseña
+          </Button>{" "}
+        </div>
+        <div className={classes.box}>
+          <Box display="flex" justifyContent="flex-center" m={1} p={1}>
             <Userinfo user={user} />
           </Box>
-        </>
-      </Container>
+        </div>
+      </>
     </div>
   );
 }
@@ -190,4 +183,3 @@ function Profile() {
 export default Profile;
 
 //Falta añadir el cambio de fondo
-//.slice(0, 10)

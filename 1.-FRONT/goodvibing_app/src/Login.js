@@ -2,8 +2,7 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect } from "react-router-dom";
 import Button from "@material-ui/core/Button";
-import Checkbox from "@material-ui/core/Checkbox";
-import FormControlLabel from "@material-ui/core/FormControlLabel";
+
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 import Link from "@material-ui/core/Link";
@@ -58,7 +57,7 @@ function Login() {
     return (
       <Typography variant="body2" color="textSecondary" align="center">
         {"Copyright © "}
-        <Link color="inherit" href="https://material-ui.com/">
+        <Link color="inherit" href="./">
           GoodVibing
         </Link>{" "}
         {new Date().getFullYear()}
@@ -121,16 +120,8 @@ function Login() {
             ¡Entra!
           </Button>
           <Grid container>
-            <Grid item xs>
-              <Link href="#" variant="body2">
-                ¿Olvidaste tu contraseña?
-              </Link>
-            </Grid>
-            <Grid item>
-              <Link href="./SignUp" variant="body2">
-                {"¿Aún no tienes cuenta? ¡Regístrate!"}
-              </Link>
-            </Grid>
+            <Grid item xs></Grid>
+            <Grid item></Grid>
           </Grid>
         </form>
       </div>

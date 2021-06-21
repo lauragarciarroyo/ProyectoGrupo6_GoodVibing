@@ -4,7 +4,7 @@ import UseFetchToken from "./useFetchToken";
 import { useSelector } from "react-redux";
 import CreateVote from "./CreateVote";
 import CreateComment from "./CreateComment";
-import { Button, Container, CssBaseline, Grid } from "@material-ui/core";
+import { Button, Container, CssBaseline, makeStyles } from "@material-ui/core";
 import React from "react";
 
 function MyStory() {
@@ -14,38 +14,48 @@ function MyStory() {
 
   const story = UseFetchToken(`http://localhost:4000/api/stories/${id}`);
 
+  const useStyles = makeStyles((theme) => ({
+    paper: {
+      marginTop: theme.spacing(20),
+      display: "flex",
+      flexDirection: "column",
+      alignItems: "center",
+      width: "100%",
+    },
+  }));
+
+  const classes = useStyles();
+
   if (!story) {
     return <div>Cargando...</div>;
   }
 
   return (
-    <Container component="main" maxWidth="sm" align="center">
+    <div className="Mi historia">
       <CssBaseline />
-
-      <div className="Mi historia">
-        <Grid container spacing={4}>
-          <h1>{story.data.title}</h1>
-          <p />
-          <Button href="/userinfo" color="primary">
-            {user.name}{" "}
-          </Button>{" "}
-          <p />
-          <Container maxWidth="sm" align="left">
-            {story.data.body}
-          </Container>
-          <p />
-          <CreateComment />
-          <p />
-          <CreateVote />
-        </Grid>
-      </div>
-      <div>
-        <Link to={`/editstory/${id}`}>Editar historia</Link>
+      <div className={classes.paper}>
+        <h1>{story.data.title}</h1>
         <p />
+        <Button href="/userinfo" color="primary">
+          {user.name}{" "}
+        </Button>{" "}
+        <p />
+        <Container maxWidth="xs" style={{ margin: 40 }} align="center">
+          {story.data.body}
+        </Container>
+        <p />
+        <CreateComment />
+        <p />
+        <CreateVote />
+        <p />
+        <div>
+          <Link to={`/editstory/${id}`}>Editar historia</Link>
+          <p />
 
-        <Link to={`/deletestory/${id}`}>Eliminar historia</Link>
+          <Link to={`/deletestory/${id}`}>Eliminar historia</Link>
+        </div>
       </div>
-    </Container>
+    </div>
   );
 }
 

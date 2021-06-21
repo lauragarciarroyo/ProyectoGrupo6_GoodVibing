@@ -8,6 +8,7 @@ import CreateComment from "./CreateComment";
 import DeleteStory from "./DeleteStory";
 import EditStory from "./EditStory";
 import { Button, Container, CssBaseline, Grid } from "@material-ui/core";
+import ImageAvatar from "./ImageAvatar";
 
 function MyStory() {
   const { user } = useSelector((state) => state.user);
@@ -23,6 +24,8 @@ function MyStory() {
   return (
     <Container component="main" maxWidth="sm">
       <CssBaseline />
+      <ImageAvatar />
+
       <div className="Mi historia">
         <Grid container spacing={3}>
           <h1>{story.data.title}</h1>

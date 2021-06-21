@@ -110,11 +110,7 @@ function Login() {
               onChange={(e) => setPassword(e.target.value)}
             />
           </label>
-          <p />
-          <FormControlLabel
-            control={<Checkbox value="remember" color="primary" />}
-            label="Recuérdame"
-          />
+
           <Button
             type="submit"
             fullWidth

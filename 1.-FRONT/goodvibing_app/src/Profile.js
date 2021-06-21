@@ -15,35 +15,14 @@ function Profile() {
   const { token, user } = useSelector((state) => state.user);
   const dispatch = useDispatch();
 
+  console.log(user);
+
   const [name, setName] = useState(user.name);
   const [email, setEmail] = useState(user.email);
-  const [bio, setBio] = useState(user.bio);
-  const [birthdate, setBirthdate] = useState(user.birthdate);
-  const [residence, setResidence] = useState(user.residence);
+  const [bio, setBio] = useState(user.bio || "");
+  const [birthdate, setBirthdate] = useState(user.birthdate || "");
+  const [residence, setResidence] = useState(user.residence || "");
   const [font, setFont] = useState(user.font || "sans-serif");
-
-  // Ejemplo de como cargar datos inicial
-  // useEffect(() => {
-  //   const getData = async () => {
-  //     const response = await fetch(
-  //       `http://localhost:4000/api/users/${user.id}`,
-  //       {
-  //         headers: { Authorization: "Bearer " + token },
-  //       }
-  //     );
-
-  //     const data = await response.json();
-
-  //     if (response.ok) {
-  //       //llenamos los datos de usuario
-  //       console.log(data);
-  //     } else {
-  //       dispatch({ type: "SET_ERROR", message: data.mesage });
-  //     }
-  //   };
-
-  //   getData();
-  // }, [user, token, dispatch]);
 
   console.log(birthdate);
   const useStyles = makeStyles((theme) => ({
@@ -144,8 +123,14 @@ function Profile() {
                     <TextField
                       id="filled-basic"
                       variant="filled"
-                      value={birthdate}
-                      onChange={(e) => setBirthdate(e.target.value)}
+                      value={
+                        birthdate && birthdate.length > 10
+                          ? birthdate.slice(0, 10)
+                          : birthdate
+                      }
+                      onChange={(e) => {
+                        setBirthdate(e.target.value);
+                      }}
                       type="date"
                     />
                   </label>

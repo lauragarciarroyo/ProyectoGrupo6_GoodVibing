@@ -29,7 +29,7 @@ import Login from "./Login";
 const PrivateRoute = ({ children }) => {
   const user = useSelector((state) => state.user);
   const dispatch = useDispatch();
-  if (!user.token) {
+  if (!user) {
     dispatch({ type: "SET_ERROR", message: "Esta página es privada" });
     return <Redirect to="/" />;
   } else {

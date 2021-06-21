@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
+import { useHistory } from "react-router";
 import { TextField } from "@material-ui/core";
 import Container from "@material-ui/core/Container";
 import Typography from "@material-ui/core/Typography";
@@ -14,6 +15,7 @@ function Register() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const dispatch = useDispatch();
+  const history = useHistory();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -28,7 +30,7 @@ function Register() {
 
     if (res.ok) {
       dispatch({ type: "REGISTER", user: data.data });
-      // Aquí hay que hacer algo más...
+      history.push("/");
     } else {
       dispatch({ type: "SET_ERROR", message: data.message });
     }

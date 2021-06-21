@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Button } from "@material-ui/core";
 import { Redirect } from "react-router";
+import Nav from "./Nav.js";
 
 function Menu() {
   const [open, setOpen] = useState(false);
@@ -52,9 +53,8 @@ function Menu() {
           )}
         </>
       )}
-      <ul>
-        <li></li>
-      </ul>
+
+      <Nav />
     </>
   );
 }

@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
-import { Redirect } from "react-router-dom";
+import { Redirect, useHistory } from "react-router-dom";
 import React, { useState } from "react";
 import { Container, CssBaseline, TextField } from "@material-ui/core";
 
@@ -9,6 +9,7 @@ function Changepassword() {
 
   const token = useSelector((s) => s.user?.token);
   const dispatch = useDispatch();
+  const history = useHistory();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -20,9 +21,13 @@ function Changepassword() {
         Authorization: "Bearer " + token,
       },
     });
+    const data = await res.json();
+
     if (res.ok) {
-      const data = await res.json();
-      dispatch({ type: "CHANGEPASSWORD", user: data });
+      dispatch({ type: "CHANGEPASSWORD", user: data.data });
+      history.push("/profile");
+    } else {
+      dispatch({ type: "SET_ERROR", message: data.message });
     }
   };
   if (!token) {
@@ -37,6 +42,7 @@ function Changepassword() {
           <TextField
             id="filled-basic"
             variant="filled"
+            type="password"
             placeholder="Introduce tu contraseña actual..."
             value={password}
             onChange={(e) => setPassword(e.target.value)}
@@ -46,6 +52,7 @@ function Changepassword() {
         <label>
           <TextField
             id="filled-basic"
+            type="password"
             variant="filled"
             placeholder="Introduce tu nueva contraseña..."
             value={newPassword}

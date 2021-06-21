@@ -9,7 +9,7 @@ const userReducer = (state = null, action) => {
     case "REGISTER":
       return action.user;
     case "CHANGEPASSWORD":
-      return action.user;
+      return { ...state, user: action.user };
     case "EDIT":
       return { ...state, user: action.user };
     default:

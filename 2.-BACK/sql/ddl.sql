@@ -12,7 +12,7 @@ CREATE TABLE users (
   font VARCHAR(255),
   bio TEXT,
   residence VARCHAR(255),
-  birthdate DATETIME,
+  birthdate DATE,
   PRIMARY KEY (id)
 );
 

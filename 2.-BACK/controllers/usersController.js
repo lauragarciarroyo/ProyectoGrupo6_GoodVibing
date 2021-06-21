@@ -152,12 +152,14 @@ async function editUser(req, res, next) {
     // La fecha en formato iso podéis encontrarla aquí: https://www.utctime.net/ (es la ISO-8601)
     const { name, email, bio, residence, birthdate, font } = req.body;
 
+    console.log(req.body);
+
     const schema = Joi.object({
       name: Joi.string().required().max(255),
       email: Joi.string().email().required().max(255),
-      bio: Joi.string(),
-      residence: Joi.string().max(255),
-      birthdate: Joi.date().iso(),
+      bio: Joi.string().allow("", null),
+      residence: Joi.string().max(255).allow("", null),
+      birthdate: Joi.date().iso().allow("", null),
       font: Joi.string().max(255),
     });
 

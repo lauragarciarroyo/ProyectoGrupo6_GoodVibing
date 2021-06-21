@@ -1,3 +1,4 @@
+import { Container, CssBaseline, TextField } from "@material-ui/core";
 import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
@@ -34,34 +35,43 @@ function CreateStory() {
   };
 
   return (
-    <div className="historias">
-      <div className="preview">
-        <h1>{title}</h1>
-        <p>{body}</p>
+    <Container component="main" maxWidth="sm">
+      <CssBaseline />
+      <div className="historias">
+        <div className="preview">
+          <h1>{title}</h1>
+          <p>{body}</p>
+        </div>
+        <form className="edituser" onSubmit={handleSubmit}>
+          <label>
+            <TextField
+              id="filled-basic"
+              placeholder="Escribe el título..."
+              value={title}
+              onChange={(e) => setTitle(e.target.value)}
+            />
+          </label>
+          <p />
+          <label>
+            <TextField
+              id="filled-basic"
+              variant="filled"
+              multiline
+              textareautosize
+              placeholder="Escribe tu historia.."
+              value={body}
+              onChange={(e) => setBody(e.target.value)}
+            />
+          </label>
+          <p />
+          <Container>
+            <UploadImage />
+          </Container>
+
+          <button>Guardar historia</button>
+        </form>
       </div>
-      <form className="edituser" onSubmit={handleSubmit}>
-        <label>
-          Título
-          <input
-            placeholder="Escribe el título..."
-            value={title}
-            onChange={(e) => setTitle(e.target.value)}
-          />
-        </label>
-        <p />
-        <label>
-          Historia
-          <textarea
-            placeholder="Escribe tu historia.."
-            value={body}
-            onChange={(e) => setBody(e.target.value)}
-          ></textarea>
-        </label>
-        <p />
-        <UploadImage />
-        <button>Guardar historia</button>
-      </form>
-    </div>
+    </Container>
   );
 }
 export default CreateStory;

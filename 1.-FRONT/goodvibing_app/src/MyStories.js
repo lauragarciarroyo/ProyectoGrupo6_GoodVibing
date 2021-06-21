@@ -1,7 +1,7 @@
-import { NavLink } from "react-router-dom";
 import UseFetchToken from "./useFetchToken";
-import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
+import { Button, Container } from "@material-ui/core";
+import CssBaseline from "@material-ui/core/CssBaseline";
 
 function MyStories() {
   const { user } = useSelector((state) => state.user);
@@ -13,22 +13,30 @@ function MyStories() {
   if (!results) return <p>Cargando...</p>;
 
   return (
-    <div className="Mis historias">
-      <h1>Tus historias</h1>
-      {results.data.map((e) => (
-        <li key={e.id}>
-          <Link to={`/mystory/${e.id}`}>{e.title}</Link>
+    <Container component="main" maxWidth="ml">
+      <CssBaseline />
+      <div className="Mis historias">
+        <h1>Tus historias</h1>
 
-          <p>{e.body}</p>
-        </li>
-      ))}
+        {results.data.map((e) => (
+          <div key={e.id}>
+            <Button href={`/mystory/${e.id}`} color="primary">
+              {e.title}
+            </Button>
 
-      {!results.data.length && <i>No se han encontrado historias</i>}
+            <p>{e.body}</p>
+          </div>
+        ))}
 
-      <div className="bottom">
-        <NavLink to="/createstory">Crea tu historia</NavLink>
+        {!results.data.length && <i>No se han encontrado historias</i>}
+
+        <div className="bottom">
+          <Button href="/createstory" color="secondary">
+            Crea tu historia
+          </Button>{" "}
+        </div>
       </div>
-    </div>
+    </Container>
   );
 }
 

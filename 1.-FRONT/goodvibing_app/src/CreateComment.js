@@ -1,3 +1,4 @@
+import { TextField } from "@material-ui/core";
 import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useParams, useHistory } from "react-router-dom";
@@ -37,8 +38,13 @@ function CreateComment() {
     <div>
       <form className="comment" onSubmit={handleSubmit}>
         <label>
-          Comentario
-          <input value={text} onChange={(e) => setText(e.target.value)} />
+          <TextField
+            id="standar-basic"
+            multiline
+            rowsMax={6}
+            value={text}
+            onChange={(e) => setText(e.target.value)}
+          />
         </label>
         <button>¡Comenta!</button>
       </form>

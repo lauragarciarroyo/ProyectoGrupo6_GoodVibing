@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Button } from "@material-ui/core";
+import { Redirect } from "react-router";
 
 function Menu() {
   const [open, setOpen] = useState(false);
@@ -9,6 +10,7 @@ function Menu() {
 
   const closeSession = () => {
     dispatch({ type: "LOGOUT" });
+    <Redirect to="/"></Redirect>;
   };
 
   return (
@@ -20,7 +22,7 @@ function Menu() {
             <div className="modal-bg">
               <div className="modal-fg">
                 <Button
-                  href="/changepassword"
+                  href="/profile"
                   color="secondary"
                   activeClassName="active"
                 >

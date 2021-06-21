@@ -25,8 +25,6 @@ import CreateVote from "./CreateVote";
 import "fontsource-roboto";
 import Register from "./Register";
 import Login from "./Login";
-import SignUp from "./SignUp";
-import SignIn from "./SignIn";
 
 const PrivateRoute = ({ children }) => {
   const user = useSelector((state) => state.user);

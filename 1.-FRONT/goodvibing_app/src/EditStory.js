@@ -1,7 +1,8 @@
+import { Container, TextField } from "@material-ui/core";
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useParams, useHistory } from "react-router-dom";
-import UploadAvatar from "./UploadAvatar";
+import UploadImage from "./UploadImage";
 
 function EditStory() {
   const [body, setBody] = useState();
@@ -41,31 +42,41 @@ function EditStory() {
       <form className="mystory" onSubmit={handleSubmit}>
         <p>
           <label>
-            Título:
-            <input value={title} onChange={(e) => settitle(e.target.value)} />
+            <TextField
+              id="standard-basic"
+              label="Título"
+              value={title}
+              onChange={(e) => settitle(e.target.value)}
+            />
           </label>
         </p>
         <p>
           <label>
-            Historia:
-            <input value={body} onChange={(e) => setBody(e.target.value)} />
+            <TextField
+              id="standard-basic"
+              label="Historia"
+              multiline
+              value={body}
+              onChange={(e) => setBody(e.target.value)}
+            />
           </label>
         </p>
         <p>
           <label>
-            Fecha:
-            <input
+            <TextField
+              id="standard-basic"
               value={date}
               onChange={(e) => setDate(e.target.value)}
               type="date"
             />
           </label>
         </p>
-      </form>
-      <form onSubmit={handleSubmit}>
-        <h3>Modifica tu historia</h3>
-        <UploadAvatar />
-        <button>Editar tu historia</button>
+
+        <UploadImage />
+        <p />
+        <Container maxWidth="xs">
+          <button>Editar tu historia</button>
+        </Container>
       </form>
     </>
   );

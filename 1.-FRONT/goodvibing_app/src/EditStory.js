@@ -1,4 +1,10 @@
-import { Button, Container, makeStyles, TextField } from "@material-ui/core";
+import {
+  Button,
+  CssBaseline,
+  makeStyles,
+  TextareaAutosize,
+  TextField,
+} from "@material-ui/core";
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useParams, useHistory } from "react-router-dom";
@@ -37,9 +43,12 @@ function EditStory() {
     }
   };
   const useStyles = makeStyles((theme) => ({
-    form: {
+    paper: {
+      marginTop: theme.spacing(8),
+      display: "flex",
+      flexDirection: "column",
+      alignItems: "center",
       width: "100%",
-      margin: theme.spacing(3, 0, 2),
     },
   }));
   const classes = useStyles();
@@ -47,64 +56,57 @@ function EditStory() {
   return (
     <>
       <form className="mystory" onSubmit={handleSubmit}>
-        <p>
-          <label>
-            <TextField
-              id="standard-full-width"
-              label="Título"
-              style={{ margin: 80 }}
-              placeholder="Escribe un título..."
-              margin="normal"
-              value={title}
-              onChange={(e) => settitle(e.target.value)}
-            />
-          </label>
-        </p>
-        <p>
-          <label>
-            <TextField
-              id="outlined-full-width"
-              label="Historia"
-              style={{ margin: 70 }}
-              placeholder="Escribe tu historia..."
-              fullWidth
-              margin="normal"
-              InputLabelProps={{
-                shrink: true,
-              }}
-              variant="outlined"
-              multiline
-              value={body}
-              onChange={(e) => setBody(e.target.value)}
-            />
-          </label>
-        </p>
-        <p>
-          <label>
-            <TextField
-              id="standard-basic"
-              value={date}
-              onChange={(e) => setDate(e.target.value)}
-              type="date"
-            />
-          </label>
-        </p>
-        <p />
-        <Container maxWidth="xl">
+        <CssBaseline />
+        <div className={classes.paper}>
+          <p>
+            <label>
+              <TextField
+                id="standard-full-width"
+                label="Título"
+                middle
+                style={{ margin: 40 }}
+                placeholder="Escribe un título..."
+                margin="normal"
+                value={title}
+                onChange={(e) => settitle(e.target.value)}
+              />
+            </label>
+          </p>
+          <p>
+            <label>
+              <TextareaAutosize
+                aria-label="empty textarea"
+                style={{ margin: 40 }}
+                rowsMin={8}
+                placeholder="Escribe tu historia..."
+                value={body}
+                onChange={(e) => setBody(e.target.value)}
+              />
+            </label>
+          </p>
+          <p>
+            <label>
+              <TextField
+                id="standard-basic"
+                style={{ margin: 40 }}
+                value={date}
+                onChange={(e) => setDate(e.target.value)}
+                type="date"
+              />
+            </label>
+          </p>
+          <p />
           <UploadImage />
-        </Container>
-        <p />
-        <p />
-        <Container maxWidth="xl">
+          <p />
           <Button
             type="submit"
             variant="contained"
             color="primary"
             className={classes.submit}
           >
-            Eliminar historia
+            Editar historia
           </Button>{" "}
-        </Container>
+        </div>
       </form>
     </>
   );

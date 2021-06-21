@@ -2,7 +2,7 @@ import { Container, CssBaseline, TextField } from "@material-ui/core";
 import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
-import ImageAvatar from "./ImageAvatar";
+
 import UploadImage from "./UploadImage";
 
 function CreateStory() {
@@ -38,7 +38,6 @@ function CreateStory() {
   return (
     <Container component="main" maxWidth="sm">
       <CssBaseline />
-      <ImageAvatar />
 
       <div className="historias">
         <div className="preview">

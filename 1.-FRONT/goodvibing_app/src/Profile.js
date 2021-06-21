@@ -29,6 +29,9 @@ function Profile() {
       width: "15%",
       alignItems: "left",
     },
+    box: {
+      margin: theme.spacing(0, 100, 0),
+    },
   }));
 
   const classes = useStyles();
@@ -171,7 +174,7 @@ function Profile() {
           </Button>{" "}
         </div>
         <div className={classes.box}>
-          <Box display="flex" justifyContent="flex-center" m={1} p={1}>
+          <Box>
             <Userinfo user={user} />
           </Box>
         </div>

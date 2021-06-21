@@ -1,5 +1,7 @@
+import { IconButton, makeStyles } from "@material-ui/core";
 import { useState } from "react";
 import { useSelector } from "react-redux";
+import PhotoCamera from "@material-ui/icons/PhotoCamera";
 
 function UploadImage() {
   const [file, setFile] = useState();
@@ -19,6 +21,18 @@ function UploadImage() {
     });
     await res.json();
   };
+  const useStyles = makeStyles((theme) => ({
+    root: {
+      "& > *": {
+        margin: theme.spacing(1),
+      },
+    },
+    input: {
+      display: "none",
+    },
+  }));
+
+  const classes = useStyles();
 
   return (
     <form onSubmit={handleSubmit}>
@@ -26,7 +40,21 @@ function UploadImage() {
         Imagen:
         <input onChange={(e) => setFile(e.target.file)} type="file" />
       </label>
-      <button>Subir Imagen</button>
+      <input
+        accept="image/*"
+        className={classes.input}
+        id="icon-button-file"
+        type="file"
+      />
+      <label htmlFor="icon-button-file">
+        <IconButton
+          color="primary"
+          aria-label="upload picture"
+          component="span"
+        >
+          <PhotoCamera />
+        </IconButton>
+      </label>
     </form>
   );
 }

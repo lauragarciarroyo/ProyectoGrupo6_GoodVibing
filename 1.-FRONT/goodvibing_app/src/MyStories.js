@@ -1,8 +1,6 @@
 import UseFetchToken from "./useFetchToken";
 import { useSelector } from "react-redux";
 import { Button, Container } from "@material-ui/core";
-import CssBaseline from "@material-ui/core/CssBaseline";
-import ImageAvatar from "./ImageAvatar";
 
 function MyStories() {
   const { user } = useSelector((state) => state.user);
@@ -15,8 +13,6 @@ function MyStories() {
 
   return (
     <Container component="main" maxWidth="ml">
-      <CssBaseline />
-      <ImageAvatar />
       <div className="Mis historias">
         <h1>Tus historias</h1>
 

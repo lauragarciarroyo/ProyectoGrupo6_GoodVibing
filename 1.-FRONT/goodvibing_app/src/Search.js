@@ -6,13 +6,13 @@ import RandomStories from "./RandomStories";
 function Search() {
   const { q } = useParams();
   const history = useHistory();
-  const [search, setSearch] = useState(q || ""); //Se pone q como valor inicial, para cuando se busque el nombre en el formulario y si no hay q, cadena vacía
-  const dispatch = useDispatch(); //Así q se puede editar
+  const [search, setSearch] = useState(q || "");
+  const dispatch = useDispatch();
   const recent = useSelector((s) => s.history);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    history.push("/search/" + search); //Al pulsar submit, con push, cambiará de ruta
+    history.push(`/search/${q}`);
     dispatch({ type: "SEARCH", search });
   };
 
@@ -45,7 +45,5 @@ function Search() {
 }
 
 export default Search;
-//Línea 34 : si hay q, entonces enseñamé los resultados de q, llamando al componente SearchResults (así solo hace fetch cuando ponemos un nombre, y no siempre)
-//Línea 32: formulario con botón de búsqueda
 
 //Al buscar vamos a la página de explora, donde aparece un listado con previsualizaciones de las historias, buscando por palabra clave

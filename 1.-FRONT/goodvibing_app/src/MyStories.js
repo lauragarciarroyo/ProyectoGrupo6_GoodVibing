@@ -47,7 +47,7 @@ function MyStories() {
         {!results.length && <i>No se han encontrado historias</i>}
 
         <div className="bottom">
-          <Button href="/createstory" color="secondary">
+          <Button href="/blog" color="secondary">
             Crea tu historia
           </Button>{" "}
         </div>

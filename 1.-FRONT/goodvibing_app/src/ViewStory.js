@@ -2,7 +2,7 @@ import { Redirect, useParams, Link } from "react-router-dom";
 import useFetchToken from "./useFetchToken";
 import { useDispatch } from "react-redux";
 import CreateComment from "./CreateComment";
-import ImageStory from "./ImageStory";
+//import ImageStory from "./ImageStory";
 
 function ViewStory() {
   const { id } = useParams();
@@ -32,6 +32,7 @@ function ViewStory() {
 
       <h2>Comentarios</h2>
       <p>METER AQUI UN COMPONENTE QUE LISTE COMENTARIOS</p>
+
       <div>
         <CreateComment />
       </div>

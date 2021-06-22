@@ -85,10 +85,7 @@ export default function Blog() {
           </Grid>
         </main>
       </Container>
-      <Footer
-        title="GoodVibing"
-        description="¡Comparte tus buenas historias!"
-      />
+      <Footer description="¡Comparte tus buenas historias!" />
     </React.Fragment>
   );
 }

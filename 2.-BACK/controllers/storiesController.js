@@ -209,13 +209,13 @@ async function deleteStories(req, res, next) {
 async function addStoryImage(req, res, next) {
   try {
     const { id } = req.auth;
-    const { story_id } = req.params;
+    const { id_story } = req.params;
 
     //Comprobar que el usuario que intenta subir la foto es el que creó la historia
 
-    const story = await storiesRepository.findStoriesById({ id });
+    const story = await storiesRepository.findStoriesById({ id_story });
 
-    if (story.user_id !== req.auth.id) {
+    if (story.id !== req.auth.id) {
       const err = new Error(
         "No puedes subir una foto a una historia que no es tuya"
       );
@@ -236,7 +236,7 @@ async function addStoryImage(req, res, next) {
     //Guardar ese nombre de fichero en la tabla de historias
     const storyPhoto = await storiesRepository.setStoryPhoto({
       id,
-      story_id,
+      id_story,
       image: savedImage,
     });
 

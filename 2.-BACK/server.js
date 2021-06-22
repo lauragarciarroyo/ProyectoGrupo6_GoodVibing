@@ -93,7 +93,7 @@ app.delete(
 // Añadir imagen a una historia
 
 app.post(
-  "/api/stories/:id/image",
+  "/api/stories/:id_story/image",
   validateAuthorization,
   StoriesController.addStoryImage
 );

@@ -6,11 +6,9 @@ import { useSelector } from "react-redux";
 function ImageAvatar() {
   const { user } = useSelector((state) => state.user);
   const useStyles = makeStyles((theme) => ({
-    root: {
-      display: "flex",
-      "& > *": {
-        margin: theme.spacing(1),
-      },
+    large: {
+      width: theme.spacing(7),
+      height: theme.spacing(7),
     },
   }));
 
@@ -18,7 +16,11 @@ function ImageAvatar() {
 
   return (
     <div className={classes.root}>
-      <Avatar alt={user.name} src="/static/images/avatar/1.jpg" />
+      <Avatar
+        alt={user.name}
+        src="/static/images/avatar/1.jpg"
+        className={classes.large}
+      />
     </div>
   );
 }

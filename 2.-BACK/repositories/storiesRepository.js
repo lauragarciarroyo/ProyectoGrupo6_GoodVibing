@@ -92,16 +92,16 @@ async function getUserStories({ id }) {
   return result;
 }
 
-async function setStoryPhoto({ image, id }) {
+async function setStoryPhoto({ image, id_story, id }) {
   const query = `
   UPDATE stories
   SET image = ?
   WHERE id = ?
   `;
 
-  await database.pool.query(query, [image, id]);
+  await database.pool.query(query, [image, id_story, id]);
 
-  return await findStoriesById({ id });
+  return await findStoriesById({ id_story });
 }
 
 async function deleteStoryPhoto({ image, id }) {

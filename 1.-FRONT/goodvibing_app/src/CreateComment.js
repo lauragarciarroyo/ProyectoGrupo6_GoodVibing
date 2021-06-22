@@ -67,4 +67,3 @@ function CreateComment() {
 export default CreateComment;
 
 //Crear comentario, link desde una historia
-//El id sale como undefined,

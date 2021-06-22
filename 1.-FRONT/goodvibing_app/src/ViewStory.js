@@ -13,6 +13,7 @@ function ViewStory() {
     `http://localhost:4000/api/stories/${id}`
   );
 
+  console.log(story);
   if (error) {
     dispatch({ type: "SET_ERROR", message: error });
     return <Redirect to="/" />;
@@ -24,11 +25,14 @@ function ViewStory() {
 
   return (
     <div className="story">
-      <h1>{story.data.title}</h1>
-      <Link to="/userinfo">{user.name}</Link>
+      <h1>{story.title}</h1>
+      <p>{new Date(story.date).toLocaleDateString()}</p>
+      <Link to={`/userinfo/${story.user_id}`}>{story.user_name}</Link>
 
-      <p>{story.data.body}</p>
-      <p />
+      <p>{story.body}</p>
+
+      <h2>Comentarios</h2>
+      <p>METER AQUI UN COMPONENTE QUE LISTE COMENTARIOS</p>
       <div>
         <CreateComment />
       </div>

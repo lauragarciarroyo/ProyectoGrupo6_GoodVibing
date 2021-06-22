@@ -12,7 +12,7 @@ import Toolbar from "@material-ui/core/Toolbar";
 import InputBase from "@material-ui/core/InputBase";
 import { fade, makeStyles } from "@material-ui/core/styles";
 import SearchIcon from "@material-ui/icons/Search";
-import ImageAvatar from "./ImageAvatar";
+import UserAvatar from "./UserAvatar";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -78,11 +78,13 @@ export default function SearchAppBar() {
     <div className={classes.root}>
       <AppBar
         position="static"
-        style={{ backgroundColor: "white" }}
-        display="flex"
-        flexDirection="row"
-        flexWrap="nowrap"
-        justifyContent="space-between"
+        style={{
+          backgroundColor: "white",
+          display: "flex",
+          flexDirection: "row",
+          flexWrap: "nowrap",
+          justifyContent: "space-between",
+        }}
       >
         <Toolbar>
           <Link to="/">
@@ -113,7 +115,7 @@ export default function SearchAppBar() {
             </>
           ) : (
             <>
-              <ImageAvatar />
+              <UserAvatar src={user.user.avatar} />
             </>
           )}
         </Toolbar>

@@ -1,31 +1,42 @@
-import { Avatar } from "@material-ui/core";
 import { useState } from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import UserAvatar from "./UserAvatar";
 
 function UploadAvatar() {
   const [file, setFile] = useState();
-  const token = useSelector((s) => s.user?.token);
+  const { token, user } = useSelector((s) => s.user);
+  const dispatch = useDispatch();
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
-    const fd = new FormData();
-    fd.append("avatar", file);
-    const res = await fetch("http://localhost:4000/api/users/avatar", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: "Bearer " + token,
-      },
-      body: fd,
-    });
-    await res.json();
+    try {
+      if (!file) {
+        throw new Error("No hay ningún fichero que subir");
+      }
+
+      console.log(file);
+
+      e.preventDefault();
+      const fd = new FormData();
+      fd.append("avatar", file);
+      const res = await fetch("http://localhost:4000/api/users/avatar", {
+        method: "POST",
+        headers: {
+          Authorization: "Bearer " + token,
+        },
+        body: fd,
+      });
+      const { data } = await res.json();
+      dispatch({ type: "EDIT", user: data });
+    } catch (error) {
+      dispatch({ type: "SET_ERROR", message: error.message });
+    }
   };
 
   return (
     <form onSubmit={handleSubmit}>
-      <Avatar />
+      <UserAvatar src={user.avatar} />
       <label>
-        <input onChange={(e) => setFile(e.target.file)} type="file" />
+        <input onChange={(e) => setFile(e.target.files[0])} type="file" />
       </label>
       <button>Enviar</button>
     </form>

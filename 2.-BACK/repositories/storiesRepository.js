@@ -26,9 +26,10 @@ async function getStories({ search }) {
 
 async function findStoriesById({ id }) {
   const query = `
-    SELECT stories.*, COUNT(votes.id) as votes 
+    SELECT stories.*, COUNT(votes.id) as votes, users.name as user_name
     FROM stories 
     LEFT JOIN votes ON stories.id = votes.story_id
+    INNER JOIN users ON stories.user_id = users.id
     WHERE stories.id = ?
     GROUP BY stories.id
     `;

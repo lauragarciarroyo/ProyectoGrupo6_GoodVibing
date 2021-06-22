@@ -154,6 +154,9 @@ function App() {
           <Route path="/sidebar" exact>
             <Sidebar />
           </Route>
+          <Route path="*">
+            <h1>404 - Ruta no encontrada</h1>
+          </Route>
         </Switch>
       </main>
     </div>

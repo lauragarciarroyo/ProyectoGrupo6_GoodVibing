@@ -23,7 +23,7 @@ function StoriesHome() {
         {results.data.map((e) => (
           <div key={e.id}>
             <Button
-              href={`/viewstory/${e.id}`}
+              href={`/story/${e.id}`}
               color="primary"
               style={{ margin: 10 }}
             >

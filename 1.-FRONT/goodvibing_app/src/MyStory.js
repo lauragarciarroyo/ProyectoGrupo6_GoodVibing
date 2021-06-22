@@ -12,7 +12,7 @@ function MyStory() {
 
   const { id } = useParams();
 
-  const story = UseFetchToken(`http://localhost:4000/api/stories/${id}`);
+  const [story] = UseFetchToken(`http://localhost:4000/api/stories/${id}`);
 
   const useStyles = makeStyles((theme) => ({
     paper: {

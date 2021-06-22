@@ -5,9 +5,11 @@ import { Button, Container, makeStyles } from "@material-ui/core";
 function MyStories() {
   const { user } = useSelector((state) => state.user);
 
-  const results = UseFetchToken(
+  const [results] = UseFetchToken(
     `http://localhost:4000/api/users/${user.id}/stories`
   );
+
+  console.log(results);
 
   const useStyles = makeStyles((theme) => ({
     paper: {
@@ -27,7 +29,7 @@ function MyStories() {
       <div className={classes.paper}>
         <h1>Tus historias</h1>
 
-        {results.data.map((e) => (
+        {results.map((e) => (
           <div key={e.id}>
             <Button
               href={`/mystory/${e.id}`}
@@ -42,7 +44,7 @@ function MyStories() {
           </div>
         ))}
 
-        {!results.data.length && <i>No se han encontrado historias</i>}
+        {!results.length && <i>No se han encontrado historias</i>}
 
         <div className="bottom">
           <Button href="/createstory" color="secondary">

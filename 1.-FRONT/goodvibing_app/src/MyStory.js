@@ -34,14 +34,14 @@ function MyStory() {
     <div className="Mi historia">
       <CssBaseline />
       <div className={classes.paper}>
-        <h1>{story.data.title}</h1>
+        <h1>{story.title}</h1>
         <p />
         <Button href="/userinfo" color="primary">
           {user.name}{" "}
         </Button>{" "}
         <p />
         <Container maxWidth="xs" style={{ margin: 40 }} align="center">
-          {story.data.body}
+          {story.body}
         </Container>
         <p />
         <CreateComment />

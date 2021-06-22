@@ -13,6 +13,7 @@ import InputBase from "@material-ui/core/InputBase";
 import { fade, makeStyles } from "@material-ui/core/styles";
 import SearchIcon from "@material-ui/icons/Search";
 import ImageAvatar from "./ImageAvatar";
+
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
@@ -111,7 +112,9 @@ export default function SearchAppBar() {
               </Link>
             </>
           ) : (
-            <ImageAvatar />
+            <>
+              <ImageAvatar />
+            </>
           )}
         </Toolbar>
       </AppBar>

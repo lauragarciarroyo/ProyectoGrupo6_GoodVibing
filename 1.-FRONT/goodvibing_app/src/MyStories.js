@@ -15,7 +15,7 @@ function MyStories() {
       display: "flex",
       flexDirection: "column",
       alignItems: "center",
-      width: "100%",
+      width: "50%",
     },
   }));
   const classes = useStyles();

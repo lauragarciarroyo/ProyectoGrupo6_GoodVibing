@@ -35,18 +35,21 @@ function CreateVote() {
 
   return (
     <div>
-      <FormControlLabel
-        control={
-          <Checkbox
-            icon={<FavoriteBorder />}
-            onChange={handleSubmit}
-            checkedIcon={<Favorite />}
-            name="checkedH"
-          />
-        }
-        label="Me gusta"
-      />
-      <DeleteVote />
+      <form onSubmit={handleSubmit}>
+        <FormControlLabel
+          control={
+            <Checkbox
+              icon={<FavoriteBorder />}
+              checkedIcon={<Favorite />}
+              name="checkedH"
+              onChange={(e) => setVote(e.target.value)}
+              value={vote}
+            />
+          }
+          label="Me gusta"
+        />
+        <DeleteVote />
+      </form>
     </div>
   );
 }

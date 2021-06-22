@@ -101,7 +101,7 @@ async function setStoryPhoto({ image, id_story, id }) {
 
   await database.pool.query(query, [image, id_story, id]);
 
-  return await findStoriesById({ id_story });
+  return await findStoriesById({ id });
 }
 
 async function deleteStoryPhoto({ image, id }) {

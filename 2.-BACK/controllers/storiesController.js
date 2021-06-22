@@ -1,4 +1,5 @@
 const Joi = require("joi");
+const { saveImage } = require("../helpers");
 
 const {
   storiesRepository,
@@ -211,18 +212,6 @@ async function addStoryImage(req, res, next) {
     const { id } = req.auth;
     const { id_story } = req.params;
 
-    //Comprobar que el usuario que intenta subir la foto es el que creó la historia
-
-    const story = await storiesRepository.findStoriesById({ id_story });
-
-    if (story.id !== req.auth.id) {
-      const err = new Error(
-        "No puedes subir una foto a una historia que no es tuya"
-      );
-      err.status = 401;
-      throw err;
-    }
-
     //Comprobar que realmente se envió un fichero y si no dar un error
     if (!req.files || !req.files.image) {
       const error = new Error("No se envió ningún fichero");
@@ -231,11 +220,11 @@ async function addStoryImage(req, res, next) {
     }
 
     //Procesar el fichero y guardarlo en un directorio con un nombre único
-    const savedImage = await savedImage({ data: req.files.image.data });
+    const savedImage = await saveImage({ data: req.files.image.data });
 
     //Guardar ese nombre de fichero en la tabla de historias
     const storyPhoto = await storiesRepository.setStoryPhoto({
-      id,
+      user_id: id,
       id_story,
       image: savedImage,
     });

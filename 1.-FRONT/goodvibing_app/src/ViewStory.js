@@ -1,11 +1,10 @@
 import { Redirect, useParams, Link } from "react-router-dom";
 import useFetchToken from "./useFetchToken";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import CreateComment from "./CreateComment";
+import ImageStory from "./ImageStory";
 
 function ViewStory() {
-  const { user } = useSelector((state) => state.user);
-
   const { id } = useParams();
   const dispatch = useDispatch();
 

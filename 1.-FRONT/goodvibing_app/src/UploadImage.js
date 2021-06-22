@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useParams } from "react-router";
+import ImageStory from "./ImageStory";
 
 function UploadImage() {
   const [file, setFile] = useState();
@@ -34,6 +35,7 @@ function UploadImage() {
 
   return (
     <form onSubmit={handleSubmit}>
+      <ImageStory src={ImageStory} />
       <label>
         Imagen:
         <input onChange={(e) => setFile(e.target.file)} type="file" />

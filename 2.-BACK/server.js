@@ -31,7 +31,7 @@ app.post("/api/users", UsersController.createUser);
 // Hace login, devuelve token
 app.post("/api/users/login", UsersController.loginUser);
 
-// Ver información de un usuario (PENDIENTE: mostrar los comentarios del usuario SI SOY YO)
+// Ver información de un usuario
 app.get("/api/users/:user_id", validateAuthorization, UsersController.getUser);
 
 // Cambiar datos de un usuario

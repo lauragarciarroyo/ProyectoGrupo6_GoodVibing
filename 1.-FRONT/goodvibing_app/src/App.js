@@ -25,14 +25,9 @@ import CreateVote from "./CreateVote";
 import "fontsource-roboto";
 import Register from "./Register";
 import Login from "./Login";
-import Blog from "./Blog";
-import FeaturedPost from "./FeaturedPost";
 import Footer from "./Footer";
 import Header from "./Header";
 import Main from "./Main";
-import MainFeaturedPost from "./MainFeaturedPost";
-import Markdown from "./Markdown";
-import Sidebar from "./Sidebar";
 
 const PrivateRoute = ({ children }) => {
   const user = useSelector((state) => state.user);
@@ -130,12 +125,6 @@ function App() {
           <Route path="/createvote" exact>
             <CreateVote />
           </Route>
-          <Route path="/blog" exact>
-            <Blog />
-          </Route>
-          <Route path="/featuredpost" exact>
-            <FeaturedPost />
-          </Route>
           <Route path="/footer" exact>
             <Footer />
           </Route>
@@ -144,15 +133,6 @@ function App() {
           </Route>
           <Route path="/main" exact>
             <Main />
-          </Route>
-          <Route path="/mainfeaturedpost" exact>
-            <MainFeaturedPost />
-          </Route>
-          <Route path="/markdown" exact>
-            <Markdown />
-          </Route>
-          <Route path="/sidebar" exact>
-            <Sidebar />
           </Route>
           <Route path="*">
             <h1>404 - Ruta no encontrada</h1>

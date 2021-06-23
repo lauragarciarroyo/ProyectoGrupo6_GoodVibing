@@ -4,7 +4,7 @@ import UseFetchToken from "./useFetchToken";
 import { useSelector } from "react-redux";
 import CreateVote from "./CreateVote";
 import CreateComment from "./CreateComment";
-import { Button, Container, CssBaseline, makeStyles } from "@material-ui/core";
+import { Container, CssBaseline, makeStyles } from "@material-ui/core";
 import React from "react";
 
 function MyStory() {
@@ -37,9 +37,9 @@ function MyStory() {
         <h1>{story.title}</h1>
         <p>{new Date(story.date).toLocaleDateString()}</p>
         <p />
-        <Button href="/userinfo" color="primary">
-          {user.name}{" "}
-        </Button>{" "}
+        <Link to={`/userinfo/ ${user.id}`} color="primary">
+          {user.name}
+        </Link>
         <p />
         <Container maxWidth="xs" style={{ margin: 40 }} align="center">
           {story.body}

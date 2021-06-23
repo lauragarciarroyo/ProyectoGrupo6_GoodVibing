@@ -117,7 +117,7 @@ function App() {
           <Route path="/mycomments" exact>
             <MyComments />
           </Route>
-          <Route path="/userinfo/:story.user_id" exact>
+          <Route path="/userinfo/:id" exact>
             <Userinfo />
           </Route>
           <Route path="/createvote" exact>

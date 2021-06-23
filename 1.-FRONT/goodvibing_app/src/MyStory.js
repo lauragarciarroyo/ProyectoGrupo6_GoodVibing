@@ -35,6 +35,7 @@ function MyStory() {
       <CssBaseline />
       <div className={classes.paper}>
         <h1>{story.title}</h1>
+        <p>{new Date(story.date).toLocaleDateString()}</p>
         <p />
         <Button href="/userinfo" color="primary">
           {user.name}{" "}

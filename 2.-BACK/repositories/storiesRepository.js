@@ -69,11 +69,9 @@ async function updateStories({ body, title, date, id }) {
 }
 
 async function deleteStories({ id }) {
-  await database.pool.query("DELETE FROM comments WHERE user_id = ?", id);
+  const query = "DELETE FROM stories WHERE id = ? ";
 
-  await database.pool.query("DELETE FROM votes WHERE user_id = ?", id);
-
-  await database.pool.query("DELETE FROM stories WHERE user_id = ?", id);
+  await database.pool.query(query, [id]);
 
   return;
 }

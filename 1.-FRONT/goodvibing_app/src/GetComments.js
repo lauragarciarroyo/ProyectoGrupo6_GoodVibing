@@ -3,15 +3,15 @@ import useFetchToken from "./useFetchToken";
 
 function GetComments() {
   const { id } = useParams();
-  const results = useFetchToken(`http://localhost:4000/api/stories/${id}`);
+  const comments = useFetchToken(`http://localhost:4000/api/stories/${id}`);
   return (
-    <div className="Comments">
-      {results.map((e) => (
+    <div>
+      {comments.map((e) => (
         <li key={e.id}>
-          <p>{e.text}</p>
+          <p>{e.comments}</p>
         </li>
       ))}
-      {!results.length && <i>No hay comentarios</i>}
+      {!comments.length && <i>No hay comentarios</i>}
     </div>
   );
 }

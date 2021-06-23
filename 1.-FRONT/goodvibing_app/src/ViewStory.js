@@ -11,7 +11,6 @@ function ViewStory() {
   const [story, error] = useFetchToken(
     `http://localhost:4000/api/stories/${id}`
   );
-
   console.log(story);
   if (error) {
     dispatch({ type: "SET_ERROR", message: error });
@@ -27,12 +26,9 @@ function ViewStory() {
       <h1>{story.title}</h1>
       <p>{new Date(story.date).toLocaleDateString()}</p>
       <Link to={`/userinfo/${story.user_id}`}>{story.user_name}</Link>
-
       <p>{story.body}</p>
-
       <h2>Comentarios</h2>
       <p>METER AQUI UN COMPONENTE QUE LISTE COMENTARIOS</p>
-
       <div>
         <CreateComment />
       </div>

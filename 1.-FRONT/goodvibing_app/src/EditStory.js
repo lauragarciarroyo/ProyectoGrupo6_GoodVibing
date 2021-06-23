@@ -37,7 +37,7 @@ function EditStory() {
     const data = await res.json();
 
     if (res.ok) {
-      history.push("/mystory/:id");
+      history.push(`/mystory/${id}`);
     } else {
       dispatch({ type: "SET_ERROR", message: data.message });
     }

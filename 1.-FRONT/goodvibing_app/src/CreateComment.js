@@ -56,9 +56,14 @@ function CreateComment() {
             onChange={(e) => setText(e.target.value)}
           />
         </label>
-        <Button default className={classes.submit}>
+        <Button
+          type="submit"
+          variant="contained"
+          color="primary"
+          className={classes.submit}
+        >
           ¡Comenta!
-        </Button>
+        </Button>{" "}
       </form>
     </div>
   );

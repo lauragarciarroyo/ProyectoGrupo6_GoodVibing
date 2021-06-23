@@ -8,9 +8,10 @@ import {
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useParams, useHistory } from "react-router-dom";
+import StoryUserEdit from "./StoryUserEdit";
 import UploadImage from "./UploadImage";
 
-function EditStory() {
+function EditStory({ story }) {
   const [body, setBody] = useState();
   const [title, settitle] = useState();
   const [date, setDate] = useState();
@@ -55,6 +56,9 @@ function EditStory() {
 
   return (
     <>
+      <div className="mi historia">
+        <StoryUserEdit />
+      </div>
       <form className="mystory" onSubmit={handleSubmit}>
         <CssBaseline />
         <div className={classes.paper}>

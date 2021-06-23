@@ -112,9 +112,7 @@ function App() {
             <CreateComment />
           </Route>
           <Route path="/story/:id" exact>
-            <PrivateRoute>
-              <ViewStory />
-            </PrivateRoute>
+            <ViewStory />
           </Route>
           <Route path="/mycomments" exact>
             <MyComments />

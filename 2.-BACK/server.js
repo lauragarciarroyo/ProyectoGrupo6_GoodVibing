@@ -108,6 +108,9 @@ app.delete(
 
 // Comments
 
+//Listar comentarios  de una historia
+app.get("/api/stories/:story_id/comments", CommentsController.getComments);
+
 //Crear un comentario
 app.post(
   "/api/stories/:story_id/comments",

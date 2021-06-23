@@ -46,6 +46,30 @@ async function createComments(req, res, next) {
   }
 }
 
+async function getComments(req, res, next) {
+  try {
+    const { id } = req.params;
+
+    const story = await storiesRepository.findStoriesById({ id });
+
+    if (!story) {
+      const err = new Error("No existe la historia");
+      err.status = 404;
+      throw err;
+    }
+
+    const comments = await commentsRepository.getStoryComments({
+      story_id: id,
+    });
+
+    story.comments = comments;
+
+    res.send({ status: "ok", data: comments });
+  } catch (err) {
+    next(err);
+  }
+}
+
 async function deleteComments(req, res, next) {
   try {
     const { id } = req.auth;
@@ -88,4 +112,4 @@ async function deleteComments(req, res, next) {
   }
 }
 
-module.exports = { createComments, deleteComments };
+module.exports = { createComments, deleteComments, getComments };

@@ -4,17 +4,22 @@ import useFetchToken from "./useFetchToken";
 
 function GetComments() {
   const { id } = useParams();
-  const comments = useFetchToken(`http://localhost:4000/api/stories/${id}`);
+  const comments = useFetchToken(
+    `http://localhost:4000/api/stories/${id}/comments`
+  );
+  if (!comments) {
+    return <div>Loading...</div>;
+  }
   return (
-    <div>
-      {comments.map((e) => (
+    <div className="Comments">
+      {comments.data.map((e) => (
         <li key={e.id}>
-          <p>{e.comments}</p>
+          <p>{e.text}</p>
           <p>{new Date(comments.date).toLocaleDateString()}</p>
           <Link to={`/userinfo/${comments.user_id}`}>{comments.user_name}</Link>
         </li>
       ))}
-      {!comments.length && <i>No hay comentarios</i>}
+      {!comments.data.length && <i>No hay comentarios</i>}
     </div>
   );
 }

@@ -90,6 +90,7 @@ export default function SearchAppBar() {
           <Link to="/">
             <img src={logo} width={100} href="/" alt="home" />
           </Link>
+
           <div className={classes.search}>
             <div className={classes.searchIcon}>
               <SearchIcon />

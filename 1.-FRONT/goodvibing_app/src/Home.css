@@ -89,3 +89,7 @@ body {
 .btn-flotante:hover {
   transform: translateY(-7px);
 }
+
+.search {
+  background-color: darkorchid;
+}

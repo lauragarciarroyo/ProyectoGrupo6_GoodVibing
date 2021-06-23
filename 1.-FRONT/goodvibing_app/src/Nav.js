@@ -2,7 +2,6 @@ import React from "react";
 import { Link, NavLink } from "react-router-dom";
 import { useSelector } from "react-redux";
 import "./Home.css";
-
 import logo from "./assets/img/logo.jpg";
 import mailbox from "./assets/img/mailbox.png";
 import enter from "./assets/img/enter.png";
@@ -31,6 +30,7 @@ const useStyles = makeStyles((theme) => ({
   search: {
     position: "relative",
     justifyContent: "space-between",
+    color: "purple",
     borderRadius: theme.shape.borderRadius,
     backgroundColor: fade(theme.palette.common.white, 0.15),
     "&:hover": {

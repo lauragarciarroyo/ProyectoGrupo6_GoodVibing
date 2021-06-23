@@ -1,8 +1,11 @@
+import React from "react";
+import { makeStyles } from "@material-ui/core/styles";
+import Header from "./Header";
+import Footer from "./Footer";
 import { Container, CssBaseline, TextField } from "@material-ui/core";
 import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
-
 import UploadImage from "./UploadImage";
 
 function CreateStory() {
@@ -12,7 +15,6 @@ function CreateStory() {
 
   const token = useSelector((s) => s.user.token);
   const dispatch = useDispatch();
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     const res = await fetch("http://localhost:4000/api/stories", {
@@ -28,7 +30,6 @@ function CreateStory() {
     });
     const data = await res.json();
     if (res.ok) {
-      //redirigimos a las historias del usuario
       history.push("/mystories");
     } else {
       dispatch({ type: "SET_ERROR", message: data.message });
@@ -38,7 +39,7 @@ function CreateStory() {
   return (
     <Container component="main" maxWidth="sm">
       <CssBaseline />
-
+      <Header title="¡Bienvenid@ a tu blog!" />
       <div className="historias">
         <div className="preview">
           <h1>{title}</h1>
@@ -48,9 +49,16 @@ function CreateStory() {
           <label>
             <TextField
               id="filled-basic"
-              placeholder="Escribe el título..."
+              placeholder="Escribe aquí el título..."
               value={title}
+              margin="normal"
               onChange={(e) => setTitle(e.target.value)}
+              maxWidth="xs"
+              required
+              rowsMax="1"
+              size="medium"
+              style={{ margin: 40 }}
+              align="center"
             />
           </label>
           <p />
@@ -58,14 +66,17 @@ function CreateStory() {
             <TextField
               id="filled-basic"
               variant="filled"
-              multiline
-              textareautosize
-              placeholder="Escribe tu historia.."
+              multiline={true}
               value={body}
               onChange={(e) => setBody(e.target.value)}
+              style={{ margin: 50 }}
+              required
+              textareautosize
+              placeholder="Escribe aquí tu historia..."
             />
           </label>
           <p />
+
           <Container>
             <UploadImage />
           </Container>
@@ -73,11 +84,9 @@ function CreateStory() {
           <button>Guardar historia</button>
         </form>
       </div>
+      <Footer> ¡Comparte una buena historia! </Footer>
     </Container>
   );
 }
-export default CreateStory;
 
-// Petición de crear historia
-//FOTOS
-//MAPA (otro componente)
+export default CreateStory;

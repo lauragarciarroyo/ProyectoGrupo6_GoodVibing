@@ -163,7 +163,7 @@ function Profile() {
             color="primary"
             className={classes.submit}
           >
-            Editar historia
+            Guardar cambios
           </Button>{" "}
         </form>
         <div className={classes.paper}>

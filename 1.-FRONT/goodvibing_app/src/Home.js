@@ -1,17 +1,16 @@
 import React from "react";
 import StoriesHome from "./StoriesHome";
-import logoEntero_blanco from "./assets/img/logoEntero_blanco.png";
+import goodvibing_logo_ps01 from "./assets/img/goodvibing_logo_ps01.jpg";
+import "./Home.css";
 
 export default function Home() {
   return (
     <div>
-      <h1>
-        <p>Bienvenido a </p>
-        <p>
-          <img src={logoEntero_blanco} alt="logo" width="200"></img>
-        </p>
-      </h1>
-      <h3>La plataforma donde podrás compartir SOLO-BUENAS-NOTICIAS</h3>
+      <h1>Bienvenido a Goodvibing</h1>
+      <h2>
+        La plataforma donde podrás compartir <u>SOLO</u> - <u>BUENAS</u> -{" "}
+        <u>NOTICIAS</u>
+      </h2>
       <StoriesHome />
     </div>
   );

@@ -93,3 +93,21 @@ body {
 .search {
   background-color: darkorchid;
 }
+
+h1 {
+  font-family: "Dancing Script", cursive;
+  font-size: 500%;
+  background: linear-gradient(orange, green, purple, blue);
+  -webkit-background-clip: text;
+  color: transparent;
+  text-align: center;
+}
+
+h2 {
+  font-family: "Crimson Text", serif;
+  font-size: 300%;
+  background: linear-gradient(pink, purple, blue);
+  -webkit-background-clip: text;
+  color: transparent;
+  text-align: center;
+}

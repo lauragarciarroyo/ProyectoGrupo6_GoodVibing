@@ -1,6 +1,20 @@
-import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { Link, Redirect, useParams } from "react-router-dom";
+import useFetchToken from "./useFetchToken";
 
-function Userinfo({ user }) {
+function Userinfo() {
+  const { id } = useParams();
+  const dispatch = useDispatch();
+
+  const [user, error] = useFetchToken(`http://localhost:4000/api/users/${id}`);
+  if (error) {
+    dispatch({ type: "SET_ERROR", message: error });
+    return <Redirect to="/" />;
+  }
+  if (!user) {
+    return <div>Loading...</div>;
+  }
+
   return (
     <div className="userinfo">
       <h2>{user.name}</h2>

@@ -9,11 +9,11 @@
     },
     {
       "src": "logo192.png",
-      "type": "image/png",
+      "type": "Favicon.ico",
       "sizes": "192x192"
     },
     {
-      "src": "logo512.png",
+      "src": "Favicon.ico",
       "type": "image/png",
       "sizes": "512x512"
     }

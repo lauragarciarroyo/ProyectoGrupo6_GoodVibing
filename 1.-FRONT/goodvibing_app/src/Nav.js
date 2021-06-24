@@ -78,7 +78,11 @@ export default function SearchAppBar() {
     <div className={classes.root}>
       <AppBar
         position="static"
+        alignContent="center"
+        alignItems="center"
         style={{
+          alignContent: "center",
+          alignItems: "center",
           backgroundColor: "white",
           display: "flex",
           flexDirection: "row",

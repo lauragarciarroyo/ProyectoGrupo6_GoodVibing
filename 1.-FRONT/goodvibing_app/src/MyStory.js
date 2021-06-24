@@ -41,7 +41,12 @@ function MyStory() {
           {user.name}
         </Link>
         <p />
-        <Container maxWidth="xs" style={{ margin: 40 }} align="center">
+        <Container
+          maxWidth="xs"
+          style={{ margin: 40 }}
+          justify-content="center"
+          align="center"
+        >
           {story.body}
         </Container>
         <p />

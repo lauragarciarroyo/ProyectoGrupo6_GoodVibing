@@ -142,21 +142,7 @@ function Profile() {
               />
             </label>
           </p>
-          <p>
-            <label>
-              <TextField
-                select
-                name="font"
-                style={{ margin: 20 }}
-                value={font}
-                onChange={(e) => setFont(e.target.value)}
-              >
-                <option value="sans-serif">sans-serif</option>
-                <option value="serif">serif</option>
-                <option value="monospace">monospace</option>
-              </TextField>
-            </label>
-          </p>
+          <p></p>
           <Button
             type="submit"
             variant="contained"

@@ -19,7 +19,6 @@ function Profile() {
   const [bio, setBio] = useState(user.bio || "");
   const [birthdate, setBirthdate] = useState(user.birthdate || "");
   const [residence, setResidence] = useState(user.residence || "");
-  const [font, setFont] = useState(user.font || "sans-serif");
 
   console.log(birthdate);
   const useStyles = makeStyles((theme) => ({
@@ -47,7 +46,6 @@ function Profile() {
         bio,
         residence,
         birthdate,
-        font,
       }),
       headers: {
         "Content-Type": "application/json",

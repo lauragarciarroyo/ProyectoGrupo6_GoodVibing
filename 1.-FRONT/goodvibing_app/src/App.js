@@ -29,6 +29,7 @@ import Footer from "./Footer";
 import Header from "./Header";
 import Main from "./Main";
 import DeleteComment from "./DeleteComment";
+import UserinfoA from "./UserInfoA";
 
 const PrivateRoute = ({ children }) => {
   const user = useSelector((state) => state.user);
@@ -90,6 +91,9 @@ function App() {
           </Route>
           <Route path="/viewstories/:id" exact>
             <ViewStories />
+          </Route>
+          <Route path="/userinfoa/" exact>
+            <UserinfoA />
           </Route>
           <Route path="/randomstories/" exact>
             <RandomStories />

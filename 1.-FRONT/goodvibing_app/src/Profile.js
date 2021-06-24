@@ -186,5 +186,3 @@ function Profile() {
 }
 
 export default Profile;
-
-//Falta añadir el cambio de fondo

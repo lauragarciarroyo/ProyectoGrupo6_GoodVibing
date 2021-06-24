@@ -1,19 +1,8 @@
-import { useDispatch } from "react-redux";
-import { Link, Redirect, useParams } from "react-router-dom";
-import useFetchToken from "./useFetchToken";
+import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 
 function Userinfo() {
-  const { id } = useParams();
-  const dispatch = useDispatch();
-
-  const [user, error] = useFetchToken(`http://localhost:4000/api/users/${id}`);
-  if (error) {
-    dispatch({ type: "SET_ERROR", message: error });
-    return <Redirect to="/" />;
-  }
-  if (!user) {
-    return <div>Loading...</div>;
-  }
+  const user = useSelector((s) => s.user);
 
   return (
     <div className="userinfo">
@@ -32,6 +21,3 @@ function Userinfo() {
 }
 
 export default Userinfo;
-
-//Muestra la info de un usuario, petición tipo GET a /api/users/:user_id, con token
-//Se muestran en profile, pero además hay que llegar a userinfo desde viewstory(/story/:id)

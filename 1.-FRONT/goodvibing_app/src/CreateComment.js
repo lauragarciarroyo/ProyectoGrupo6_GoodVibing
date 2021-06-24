@@ -2,6 +2,7 @@ import { Button, makeStyles, TextField } from "@material-ui/core";
 import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useParams, useHistory } from "react-router-dom";
+import DeleteComment from "./DeleteComment";
 
 function CreateComment() {
   const token = useSelector((s) => s.user?.token);
@@ -64,6 +65,7 @@ function CreateComment() {
         >
           ¡Comenta!
         </Button>{" "}
+        <DeleteComment />
       </form>
     </div>
   );

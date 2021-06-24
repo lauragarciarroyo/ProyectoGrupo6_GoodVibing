@@ -2,6 +2,7 @@ import { Redirect, useParams, Link } from "react-router-dom";
 import useFetchToken from "./useFetchToken";
 import { useDispatch } from "react-redux";
 import CreateComment from "./CreateComment";
+import GetComments from "./GetComments";
 //import ImageStory from "./ImageStory";
 
 function ViewStory() {

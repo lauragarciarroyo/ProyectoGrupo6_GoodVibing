@@ -36,10 +36,6 @@ async function createComments({ user_id, story_id, text }) {
 async function deleteComments({ id }) {
   await database.pool.query("DELETE FROM comments WHERE user_id = ?", id);
 
-  await database.pool.query("DELETE FROM votes WHERE user_id = ?", id);
-
-  await database.pool.query("DELETE FROM stories WHERE user_id = ?", id);
-
   return;
 }
 

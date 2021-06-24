@@ -28,6 +28,7 @@ import Login from "./Login";
 import Footer from "./Footer";
 import Header from "./Header";
 import Main from "./Main";
+import DeleteComment from "./DeleteComment";
 
 const PrivateRoute = ({ children }) => {
   const user = useSelector((state) => state.user);
@@ -122,6 +123,9 @@ function App() {
           </Route>
           <Route path="/createvote" exact>
             <CreateVote />
+          </Route>
+          <Route path="/deletecomment/:id" exact>
+            <DeleteComment />
           </Route>
           <Route path="/footer" exact>
             <Footer />

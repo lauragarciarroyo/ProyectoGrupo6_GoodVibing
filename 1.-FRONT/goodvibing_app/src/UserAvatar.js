@@ -1,14 +1,22 @@
 import React from "react";
 import { Avatar, makeStyles, Menu, MenuItem } from "@material-ui/core";
 import AccountCircle from "@material-ui/icons/AccountCircle";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 
 export default function UserAvatar({ src }) {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
+  const user = useSelector((s) => s.user);
+  const dispatch = useDispatch();
 
   const isMenuOpen = Boolean(anchorEl);
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
+
+  const closeSession = () => {
+    dispatch({ type: "LOGOUT" });
+    <Redirect to="/"></Redirect>;
+  };
 
   const handleProfileMenuOpen = (event) => {
     setAnchorEl(event.currentTarget);
@@ -43,6 +51,7 @@ export default function UserAvatar({ src }) {
       <MenuItem onClick={handleMenuClose}>
         <Link to="/Message">Mis mensajes</Link>
       </MenuItem>
+      <MenuItem onClick={() => closeSession()}>Cerrar sesión</MenuItem>
     </Menu>
   );
   const mobileMenuId = "primary-search-account-menu-mobile";
@@ -66,21 +75,26 @@ export default function UserAvatar({ src }) {
   const classes = useStyles();
   return (
     <>
-      <div className={classes.sectionMobile}>
-        <Avatar
-          src={`http://localhost:4000/images/${src}`}
-          edge="end"
-          aria-label="account of current user"
-          aria-controls={menuId}
-          aria-haspopup="true"
-          onClick={handleProfileMenuOpen}
-          color="inherit"
-        >
-          <AccountCircle />
-        </Avatar>
-      </div>
-      {renderMobileMenu}
-      {renderMenu}
+      {user && (
+        <>
+          <div className={classes.sectionMobile}>
+            <Avatar
+              src={`http://localhost:4000/images/${src}`}
+              edge="end"
+              aria-label="account of current user"
+              aria-controls={menuId}
+              aria-haspopup="true"
+              onClick={handleProfileMenuOpen}
+              color="inherit"
+            >
+              <AccountCircle />
+            </Avatar>
+          </div>
+
+          {renderMobileMenu}
+          {renderMenu}
+        </>
+      )}
     </>
   );
 }

@@ -1,8 +1,9 @@
 import { useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 function Userinfo() {
   const user = useSelector((s) => s.user);
+  const { id } = useParams();
 
   return (
     <div className="userinfo">
@@ -14,7 +15,7 @@ function Userinfo() {
       <p>{user.email}</p>
       <p />
       <div>
-        <Link to={`/viewstories/${user.id}`}>Ver historias del usuario</Link>
+        <Link to={`/viewstories/${id}`}>Ver historias del usuario</Link>
       </div>
     </div>
   );

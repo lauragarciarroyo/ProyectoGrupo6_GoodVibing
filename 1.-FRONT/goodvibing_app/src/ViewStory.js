@@ -3,7 +3,6 @@ import useFetchToken from "./useFetchToken";
 import { useDispatch } from "react-redux";
 import CreateComment from "./CreateComment";
 import GetComments from "./GetComments";
-//import ImageStory from "./ImageStory";
 
 function ViewStory() {
   const { id } = useParams();

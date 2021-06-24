@@ -48,9 +48,6 @@ export default function UserAvatar({ src }) {
       <MenuItem onClick={handleMenuClose}>
         <Link to="/mystories">Mis historias</Link>
       </MenuItem>
-      <MenuItem onClick={handleMenuClose}>
-        <Link to="/Message">Mis mensajes</Link>
-      </MenuItem>
       <MenuItem onClick={() => closeSession()}>Cerrar sesión</MenuItem>
     </Menu>
   );

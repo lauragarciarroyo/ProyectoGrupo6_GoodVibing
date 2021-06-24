@@ -1,5 +1,5 @@
 import React from "react";
-import StoriesHome from "./StoriesHome2";
+import StoriesHome from "./StoriesHome";
 import "./Home.css";
 
 export default function Home() {

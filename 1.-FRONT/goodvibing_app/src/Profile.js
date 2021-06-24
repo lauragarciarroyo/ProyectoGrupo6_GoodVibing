@@ -19,7 +19,6 @@ function Profile() {
   const [bio, setBio] = useState(user.bio || "");
   const [birthdate, setBirthdate] = useState(user.birthdate || "");
   const [residence, setResidence] = useState(user.residence || "");
-  const [font, setFont] = useState(user.font || "sans-serif");
 
   console.log(birthdate);
   const useStyles = makeStyles((theme) => ({
@@ -47,7 +46,6 @@ function Profile() {
         bio,
         residence,
         birthdate,
-        font,
       }),
       headers: {
         "Content-Type": "application/json",
@@ -142,21 +140,7 @@ function Profile() {
               />
             </label>
           </p>
-          <p>
-            <label>
-              <TextField
-                select
-                name="font"
-                style={{ margin: 20 }}
-                value={font}
-                onChange={(e) => setFont(e.target.value)}
-              >
-                <option value="sans-serif">sans-serif</option>
-                <option value="serif">serif</option>
-                <option value="monospace">monospace</option>
-              </TextField>
-            </label>
-          </p>
+          <p></p>
           <Button
             type="submit"
             variant="contained"

@@ -60,7 +60,7 @@ export default function Contact() {
             required
             fullWidth
             id="email"
-            label="Correo electrónico"
+            label="Escribe tu correo electrónico"
             name="email"
             autoComplete="email"
             autoFocus
@@ -74,7 +74,7 @@ export default function Contact() {
             required
             fullWidth
             name="message"
-            label="Tu mensaje"
+            label="Escribe tu mensaje aquí..."
             type="message"
             id="message"
             placeholder="Escribe tu mensaje aquí..."

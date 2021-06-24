@@ -28,7 +28,7 @@ function Menu() {
                   activeClassName="active"
                 >
                   Mis datos
-                </Button>{" "}
+                </Button>
                 <p />
                 <Button
                   href="/mystories"

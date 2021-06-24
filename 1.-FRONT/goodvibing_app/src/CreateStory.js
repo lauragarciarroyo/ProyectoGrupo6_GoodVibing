@@ -1,12 +1,27 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Header from "./Header";
-import Footer from "./Footer";
 import { Container, CssBaseline, TextField } from "@material-ui/core";
 import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import UploadImage from "./UploadImage";
+import Box from "@material-ui/core/Box";
+import Typography from "@material-ui/core/Typography";
+import Link from "@material-ui/core/Link";
+
+function Copyright() {
+  return (
+    <Typography variant="body2" color="textSecondary" align="center">
+      {"Copyright © "}
+      <Link color="inherit" href="/">
+        GoodVibing
+      </Link>{" "}
+      {new Date().getFullYear()}
+      {"."}
+    </Typography>
+  );
+}
 
 function CreateStory() {
   const history = useHistory();
@@ -84,7 +99,9 @@ function CreateStory() {
           <button>Guardar historia</button>
         </form>
       </div>
-      <Footer> ¡Comparte una buena historia! </Footer>
+      <Box mt={8}>
+        <Copyright />
+      </Box>
     </Container>
   );
 }

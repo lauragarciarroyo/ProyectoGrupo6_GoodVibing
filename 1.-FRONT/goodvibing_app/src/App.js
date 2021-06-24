@@ -3,7 +3,7 @@ import "./App.css";
 import Profile from "./Profile";
 import Message from "./Message";
 import { Switch, Route, Redirect } from "react-router-dom";
-import Menu from "./Menu";
+import Nav from "./Nav";
 import Home from "./Home";
 import Contact from "./Contact";
 import CreateStory from "./CreateStory";
@@ -44,7 +44,7 @@ function App() {
   return (
     <div className="App">
       <ErrorMesage />
-      <Menu />
+      <Nav />
       <main>
         <Switch>
           <Route path="/" exact>

@@ -27,7 +27,6 @@ import Register from "./Register";
 import Login from "./Login";
 import Footer from "./Footer";
 import Header from "./Header";
-import Main from "./Main";
 
 const PrivateRoute = ({ children }) => {
   const user = useSelector((state) => state.user);
@@ -128,9 +127,6 @@ function App() {
           </Route>
           <Route path="/header" exact>
             <Header />
-          </Route>
-          <Route path="/main" exact>
-            <Main />
           </Route>
           <Route path="*">
             <h1>404 - Ruta no encontrada</h1>

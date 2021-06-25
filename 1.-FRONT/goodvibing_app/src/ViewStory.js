@@ -29,6 +29,7 @@ function ViewStory() {
       <p>{story.body}</p>
       <h2>Comentarios</h2>
       <p>METER AQUI UN COMPONENTE QUE LISTE COMENTARIOS</p>
+      <GetComments />
       <div>
         <CreateComment />
       </div>

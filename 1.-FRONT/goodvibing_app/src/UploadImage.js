@@ -19,7 +19,7 @@ function UploadImage() {
 
       e.preventDefault();
       const fd = new FormData();
-      fd.append("avatar", file);
+      fd.append("image", file);
       const res = await fetch(`http://localhost:4000/api/stories/${id}/image`, {
         method: "POST",
         headers: {

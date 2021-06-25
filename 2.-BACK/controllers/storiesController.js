@@ -26,6 +26,23 @@ async function getStories(req, res, next) {
     next(error);
   }
 }
+async function getStoriesHome(req, res, next) {
+  try {
+    const stories = await storiesRepository.getStoriesHome(3);
+
+    const publicStories = stories.map((story) => {
+      story.body = story.body.slice(0, 200) + "...";
+      return story;
+    });
+
+    res.send({
+      status: "ok",
+      data: publicStories,
+    });
+  } catch (error) {
+    next(error);
+  }
+}
 
 async function getRandomStories(req, res, next) {
   try {
@@ -298,4 +315,5 @@ module.exports = {
   getRandomStories,
   addStoryImage,
   deleteStoryImage,
+  getStoriesHome,
 };

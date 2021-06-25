@@ -2,7 +2,7 @@ import { Button, Container, makeStyles } from "@material-ui/core";
 import useFetch from "./UseFetch";
 
 function StoriesHome() {
-  const results = useFetch(`http://localhost:4000/api/stories`);
+  const results = useFetch(`http://localhost:4000/api/storieshome`);
 
   const useStyles = makeStyles((theme) => ({
     paper: {

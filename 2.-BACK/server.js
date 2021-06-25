@@ -66,6 +66,9 @@ app.post("/api/stories", validateAuthorization, StoriesController.createStory);
 // Ver últimas historias
 app.get("/api/stories", StoriesController.getStories);
 
+// Ver últimas historias
+app.get("/api/random-stories", StoriesController.getRandomStories);
+
 //Ver las historias de un usuario
 app.get("/api/users/:id/stories", StoriesController.getUserStories);
 

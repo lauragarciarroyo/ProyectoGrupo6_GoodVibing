@@ -1,5 +1,5 @@
-import React from "react";
-import { Link, NavLink } from "react-router-dom";
+import React, { useState } from "react";
+import { Link, NavLink, useHistory } from "react-router-dom";
 import { useSelector } from "react-redux";
 import "./Home.css";
 import logo from "./assets/img/logo.jpg";
@@ -73,6 +73,8 @@ const useStyles = makeStyles((theme) => ({
 export default function SearchAppBar() {
   const classes = useStyles();
   const user = useSelector((state) => state.user);
+  const [search, setSearch] = useState(null);
+  const history = useHistory();
 
   return (
     <div className={classes.root}>
@@ -90,19 +92,32 @@ export default function SearchAppBar() {
           <Link to="/">
             <img src={logo} width={100} href="/" alt="home" />
           </Link>
+          <Link to="/search">Explora</Link>
 
           <div className={classes.search}>
             <div className={classes.searchIcon}>
               <SearchIcon />
             </div>
-            <InputBase
-              placeholder="Busca una experiencia"
-              classes={{
-                root: classes.inputRoot,
-                input: classes.inputInput,
+            <form
+              onSubmit={(e) => {
+                e.preventDefault();
+                if (search) {
+                  history.push(`/search?q=${search}`);
+                }
               }}
-              inputProps={{ "aria-label": "search" }}
-            />
+            >
+              <InputBase
+                placeholder="Busca una experiencia"
+                classes={{
+                  root: classes.inputRoot,
+                  input: classes.inputInput,
+                }}
+                inputProps={{ "aria-label": "search" }}
+                onChange={(e) => {
+                  setSearch(e.target.value);
+                }}
+              />
+            </form>
           </div>
           {!user ? (
             <>

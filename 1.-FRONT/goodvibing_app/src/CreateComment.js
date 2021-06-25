@@ -2,7 +2,6 @@ import { Button, makeStyles, TextField } from "@material-ui/core";
 import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useParams, useHistory } from "react-router-dom";
-import DeleteComment from "./DeleteComment";
 
 function CreateComment() {
   const token = useSelector((s) => s.user?.token);
@@ -29,7 +28,7 @@ function CreateComment() {
     const data = await res.json();
 
     if (res.ok) {
-      history.push("/mycomments");
+      history.go(0);
     } else {
       dispatch({ type: "SET_ERROR", message: data.message });
     }
@@ -65,7 +64,6 @@ function CreateComment() {
         >
           ¡Comenta!
         </Button>{" "}
-        <DeleteComment />
       </form>
     </div>
   );

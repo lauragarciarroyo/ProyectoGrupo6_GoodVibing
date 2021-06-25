@@ -9,8 +9,9 @@ async function findCommentsById({ id }) {
 
 async function getStoryComments({ story_id }) {
   const query = `
-    SELECT * 
+    SELECT comments.*, users.name AS username
     FROM comments
+    LEFT JOIN users ON comments.user_id = users.id
     WHERE story_id = ?
   `;
 
@@ -34,7 +35,7 @@ async function createComments({ user_id, story_id, text }) {
 }
 
 async function deleteComments({ id }) {
-  await database.pool.query("DELETE FROM comments WHERE user_id = ?", id);
+  await database.pool.query("DELETE FROM comments WHERE id = ?", id);
 
   return;
 }

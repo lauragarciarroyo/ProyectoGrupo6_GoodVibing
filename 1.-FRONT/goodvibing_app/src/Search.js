@@ -1,49 +1,40 @@
-import { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { Link, useHistory, useParams } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import RandomStories from "./RandomStories";
+import useFetch from "./UseFetch";
 
-function Search() {
-  const { q } = useParams();
-  const history = useHistory();
-  const [search, setSearch] = useState(q || "");
-  const dispatch = useDispatch();
-  const recent = useSelector((s) => s.history);
+function Search({ q }) {
+  const stories = useFetch(`http://localhost:4000/api/stories?q=${q}`);
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    history.push(`/search/${q}`);
-    dispatch({ type: "SEARCH", search });
-  };
+  if (!stories) return <p>Cargando...</p>;
 
   return (
     <div className="search">
-      <form onSubmit={handleSubmit}>
-        <input
-          placeholder="Busca una experiencia"
-          value={search}
-          onChange={(e) => setSearch(e.target.value)}
-        />
-        <button>¡Explora!</button>
-      </form>
-
-      {q && <RandomStories q={q} />}
-      {!q && recent.length > 0 && (
+      {stories.data.length > 0 ? (
         <div className="history">
           <h2>Historias</h2>
           <ul>
-            {recent.map((s) => (
-              <li key={s}>
-                <Link to={`/search/${s}`}>{s}</Link>
+            {stories.data.map((s) => (
+              <li key={s.id}>
+                <Link to={`/story/${s.id}`}>{s.title}</Link>
               </li>
             ))}
           </ul>
         </div>
+      ) : (
+        <p>No hay resultados...</p>
       )}
     </div>
   );
 }
 
-export default Search;
+function SearchWrapper() {
+  const q = new URLSearchParams(useLocation().search).get("q");
+
+  if (!q) return <RandomStories />;
+
+  return <Search q={q} />;
+}
+
+export default SearchWrapper;
 
 //Al buscar vamos a la página de explora, donde aparece un listado con previsualizaciones de las historias, buscando por palabra clave

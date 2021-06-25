@@ -24,6 +24,21 @@ async function getStories({ search }) {
   return stories;
 }
 
+async function getRandomStories(n = 5) {
+  const query = `
+  SELECT stories.*, COUNT(votes.id) as votes
+  FROM stories
+  LEFT JOIN votes ON stories.id = votes.story_id
+  GROUP BY stories.id
+  ORDER BY RAND()
+  LIMIT ?
+  `;
+
+  const [stories] = await database.pool.query(query, [n]);
+
+  return stories;
+}
+
 async function findStoriesById({ id }) {
   const query = `
     SELECT stories.*, COUNT(votes.id) as votes, users.name as user_name
@@ -118,6 +133,7 @@ module.exports = {
   deleteStories,
   getUserStories,
   getStories,
+  getRandomStories,
   setStoryPhoto,
   deleteStoryPhoto,
 };

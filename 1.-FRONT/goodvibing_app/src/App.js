@@ -30,6 +30,7 @@ import Header from "./Header";
 import Main from "./Main";
 import DeleteComment from "./DeleteComment";
 import UserinfoA from "./UserInfoA";
+import Search from "./Search";
 
 const PrivateRoute = ({ children }) => {
   const user = useSelector((state) => state.user);
@@ -139,6 +140,9 @@ function App() {
           </Route>
           <Route path="/main" exact>
             <Main />
+          </Route>
+          <Route path="/search" exact>
+            <Search />
           </Route>
           <Route path="*">
             <h1>404 - Ruta no encontrada</h1>

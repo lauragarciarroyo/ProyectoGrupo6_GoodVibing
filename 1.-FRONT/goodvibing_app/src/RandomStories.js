@@ -2,18 +2,19 @@ import { Link } from "react-router-dom";
 import UseFetch from "./UseFetch";
 
 function RandomStories({ q }) {
-  const stories = UseFetch(`http://localhost:4000/api/stories?name=${q}`);
+  const stories = UseFetch(`http://localhost:4000/api/random-stories`);
+
+  if (!stories) return <p>Cargando...</p>;
+
   return (
     <div className="randomstories">
-      <h1>historias</h1>
+      <h1>Explora historias aleatoriass</h1>
       <div>
-        {stories?.stories?.map((e) => (
-          <li key={e.id}>
-            <Link to={`/randomstories/${e.id}`}>{e.q}</Link>
+        {stories.data.map((s) => (
+          <li key={s.id}>
+            <Link to={`/story/${s.id}`}>{s.title}</Link>
           </li>
         ))}
-        {!stories && <i>Loading...</i>}
-        {stories && !stories.results && <i>No se han encontrado historias</i>}
       </div>
     </div>
   );

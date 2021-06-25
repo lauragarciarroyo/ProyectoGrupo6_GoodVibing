@@ -1,28 +1,53 @@
-import { useParams } from "react-router";
-import { Link } from "react-router-dom";
-import useFetchToken from "./useFetchToken";
-import DeleteComment from "./DeleteComment";
+import { Link, useHistory } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
 
-function GetComments() {
-  const { id } = useParams();
-  const results = useFetchToken(`http://localhost:4000/api/stories/${id}`);
-  if (!results) {
-    return <div>Loading...</div>;
-  }
+function GetComments({ comments, storyUserId }) {
+  const { token, user } = useSelector((state) => state.user);
+  const dispatch = useDispatch();
+  const history = useHistory();
+
+  const deleteComment = async (id) => {
+    console.log(id);
+    try {
+      const res = await fetch(`http://localhost:4000/api/comments/${id}`, {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: "Bearer " + token,
+        },
+      });
+      const data = await res.json();
+
+      if (res.ok) {
+        history.go(0);
+      } else {
+        throw new Error(data.message);
+      }
+    } catch (error) {
+      dispatch({ type: "SET_ERROR", message: error.message });
+    }
+  };
+
   return (
     <>
       <div className="Comments">
-        {results.data.comments.map((e) => (
+        {comments.map((e) => (
           <li key={e.id}>
             <p>{e.text}</p>
-            <p>{new Date(results.date).toLocaleDateString()}</p>
-            <Link to={`/userinfo/${results.user_id}`}>{results.user_name}</Link>
+            <p>{new Date(e.date).toLocaleDateString()}</p>
+            <Link to={`/userinfo/${e.user_id}`}>{e.username}</Link>
+            {user.id === e.user_id || user.id === storyUserId ? (
+              <button
+                onClick={(event) => {
+                  event.preventDefault();
+                  deleteComment(e.id);
+                }}
+              >
+                Borrar comentario
+              </button>
+            ) : null}
           </li>
         ))}
-        {!results.data.comments.length && <i>No hay comentarios</i>}
-      </div>
-      <div>
-        <DeleteComment />
       </div>
     </>
   );

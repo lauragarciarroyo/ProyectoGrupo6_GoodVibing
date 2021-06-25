@@ -11,7 +11,7 @@ function ViewStory() {
   const [story, error] = useFetchToken(
     `http://localhost:4000/api/stories/${id}`
   );
-  console.log(story);
+
   if (error) {
     dispatch({ type: "SET_ERROR", message: error });
     return <Redirect to="/" />;
@@ -28,8 +28,7 @@ function ViewStory() {
       <Link to={`/userinfo/${story.user_id}`}>{story.user_name}</Link>
       <p>{story.body}</p>
       <h2>Comentarios</h2>
-      <p>METER AQUI UN COMPONENTE QUE LISTE COMENTARIOS</p>
-      <GetComments />
+      <GetComments storyUserId={story.user_id} comments={story.comments} />
       <div>
         <CreateComment />
       </div>

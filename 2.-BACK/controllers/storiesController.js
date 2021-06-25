@@ -27,6 +27,24 @@ async function getStories(req, res, next) {
   }
 }
 
+async function getRandomStories(req, res, next) {
+  try {
+    const stories = await storiesRepository.getRandomStories(5);
+
+    const randomStories = stories.map((story) => {
+      story.body = story.body.slice(0, 200) + "...";
+      return story;
+    });
+
+    res.send({
+      status: "ok",
+      data: randomStories,
+    });
+  } catch (error) {
+    next(error);
+  }
+}
+
 async function createStory(req, res, next) {
   try {
     const { id } = req.auth;
@@ -277,6 +295,7 @@ module.exports = {
   deleteStories,
   getUserStories,
   getStories,
+  getRandomStories,
   addStoryImage,
   deleteStoryImage,
 };

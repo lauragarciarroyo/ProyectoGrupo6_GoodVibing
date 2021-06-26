@@ -77,14 +77,9 @@ function CreateStory() {
           </label>
           <p />
 
-          <Container>
-            <UploadImage />
-          </Container>
-
           <button>Guardar historia</button>
         </form>
       </div>
-      <Footer> ¡Comparte una buena historia! </Footer>
     </Container>
   );
 }

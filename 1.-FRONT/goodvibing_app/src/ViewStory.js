@@ -3,6 +3,7 @@ import useFetchToken from "./useFetchToken";
 import { useDispatch } from "react-redux";
 import CreateComment from "./CreateComment";
 import GetComments from "./GetComments";
+import CreateVote from "./CreateVote";
 
 function ViewStory() {
   const { id } = useParams();
@@ -23,14 +24,23 @@ function ViewStory() {
 
   return (
     <div className="story">
-      <h1>{story.title}</h1>
-      <p>{new Date(story.date).toLocaleDateString()}</p>
-      <Link to={`/userinfo/${story.user_id}`}>{story.user_name}</Link>
-      <p>{story.body}</p>
+      <h1 align="center">{story.title}</h1>
+      <p align="center">{new Date(story.date).toLocaleDateString()}</p>
+      <Link align="center" to={`/userinfo/${story.user_id}`}>
+        {story.user_name}
+      </Link>
+      <p align="center">{story.body}</p>
+      <p></p>
       <h2>Comentarios</h2>
-      <GetComments storyUserId={story.user_id} comments={story.comments} />
+      <GetComments
+        align="center"
+        storyUserId={story.user_id}
+        comments={story.comments}
+      />
       <div>
         <CreateComment />
+        <p />
+        <CreateVote />
       </div>
     </div>
   );

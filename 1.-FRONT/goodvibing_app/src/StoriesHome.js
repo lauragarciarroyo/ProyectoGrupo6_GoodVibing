@@ -21,7 +21,7 @@ function StoriesHome() {
     <div className={classes.paper}>
       <div className="Historias">
         {results.data.map((e) => (
-          <div key={e.id}>
+          <div align="center" key={e.id}>
             <Button
               href={`/story/${e.id}`}
               color="primary"

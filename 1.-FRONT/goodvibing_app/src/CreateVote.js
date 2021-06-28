@@ -11,9 +11,10 @@ import DeleteVote from "./DeleteVote";
 function CreateVote() {
   const token = useSelector((s) => s.user?.token);
   const { id } = useParams;
-  const [vote, setVote] = useState("");
+  const [vote, setVote] = useState();
 
   const handleSubmit = async (e) => {
+    e.preventDefault();
     setVote({ ...vote, [e.vote]: e.target.checked });
     const res = await fetch(
       `http://localhost:4000/api/stories/${id}/vote`,

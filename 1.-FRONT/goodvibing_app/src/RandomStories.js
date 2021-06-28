@@ -11,9 +11,9 @@ function RandomStories({ q }) {
       <h1>Explora historias aleatorias</h1>
       <div>
         {stories.data.map((s) => (
-          <li key={s.id}>
+          <div align="center" key={s.id}>
             <Link to={`/story/${s.id}`}>{s.title}</Link>
-          </li>
+          </div>
         ))}
       </div>
     </div>

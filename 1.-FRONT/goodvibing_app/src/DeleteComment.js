@@ -35,5 +35,3 @@ function DeleteComment() {
 }
 
 export default DeleteComment;
-
-//No funciona

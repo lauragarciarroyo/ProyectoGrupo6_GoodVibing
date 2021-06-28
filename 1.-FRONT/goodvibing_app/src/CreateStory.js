@@ -1,12 +1,9 @@
 import React from "react";
-import { makeStyles } from "@material-ui/core/styles";
 import Header from "./Header";
-import Footer from "./Footer";
 import { Container, CssBaseline, TextField } from "@material-ui/core";
 import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
-import UploadImage from "./UploadImage";
 
 function CreateStory() {
   const history = useHistory();

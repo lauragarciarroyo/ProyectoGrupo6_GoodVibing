@@ -4,8 +4,7 @@ import { useSelector } from "react-redux";
 import "./Home.css";
 import logo from "./assets/img/logo.jpg";
 import mailbox from "./assets/img/mailbox.png";
-import enter from "./assets/img/enter.png";
-import register from "./assets/img/register.png";
+
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import InputBase from "@material-ui/core/InputBase";

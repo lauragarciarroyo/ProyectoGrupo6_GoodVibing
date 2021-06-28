@@ -1,41 +1,41 @@
-import { Button, Container, makeStyles } from "@material-ui/core";
+import { Button } from "@material-ui/core";
+import Box from "@material-ui/core/Box";
 import useFetch from "./UseFetch";
 
 function StoriesHome() {
   const results = useFetch(`http://localhost:4000/api/storieshome`);
-
-  const useStyles = makeStyles((theme) => ({
-    paper: {
-      marginTop: theme.spacing(8),
-      display: "flex",
-      flexDirection: "column",
-      alignItems: "center",
-      width: "100%",
-    },
-  }));
-  const classes = useStyles();
+  const defaultProps = {
+    bgcolor: "background.paper",
+    m: 1,
+    style: { width: "30rem", height: "15rem" },
+    borderColor: "text.primary",
+  };
 
   if (!results) return <p>Cargando...</p>;
 
   return (
-    <div className={classes.paper}>
-      <div className="Historias">
-        {results.data.map((e) => (
-          <div align="center" key={e.id}>
-            <Button
-              href={`/story/${e.id}`}
-              color="primary"
-              style={{ margin: 10 }}
-            >
-              {e.title}
-            </Button>
-            <Container style={{ margin: 10 }}>
-              <p>{e.body}</p>
-            </Container>
-          </div>
-        ))}
-        {!results.data.length && <i>No se han encontrado historias</i>}
-      </div>
+    <div className="Historias">
+      {results.data.map((e) => (
+        <Box
+          display="flex"
+          justifyContent="center"
+          alignItems="center"
+          border={1}
+          mx="auto"
+          display="block"
+          css={{ maxWidth: 800 }}
+          {...defaultProps}
+          p={2}
+          key={e.id}
+        >
+          <Button href={`/story/${e.id}`} fullWidth color="primary">
+            {e.title}
+          </Button>
+
+          <p>{e.body}</p>
+        </Box>
+      ))}
+      {!results.data.length && <i>No se han encontrado historias</i>}
     </div>
   );
 }

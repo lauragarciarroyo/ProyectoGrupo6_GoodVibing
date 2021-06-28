@@ -12,15 +12,12 @@ function Profile() {
   const { token, user } = useSelector((state) => state.user);
   const dispatch = useDispatch();
 
-  console.log(user);
-
   const [name, setName] = useState(user.name);
   const [email, setEmail] = useState(user.email);
   const [bio, setBio] = useState(user.bio || "");
   const [birthdate, setBirthdate] = useState(user.birthdate || "");
   const [residence, setResidence] = useState(user.residence || "");
 
-  console.log(birthdate);
   const useStyles = makeStyles((theme) => ({
     root: {
       marginTop: theme.spacing(4),
@@ -60,6 +57,8 @@ function Profile() {
       dispatch({ type: "SET_ERROR", message: data.message });
     }
   };
+
+  console.log(birthdate);
 
   if (!token) {
     return <Redirect to="/loginregister" />;

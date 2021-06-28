@@ -2,7 +2,7 @@ import { useSelector } from "react-redux";
 import { Link, useParams } from "react-router-dom";
 
 function Userinfo() {
-  const user = useSelector((s) => s.user);
+  const { user } = useSelector((s) => s.user);
   const { id } = useParams();
 
   return (

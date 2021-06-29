@@ -154,7 +154,7 @@ body {
 
 .flexsearch--input:focus {
   outline: none;
-  border-color: purple;
+  border-color: white;
 }
 
 .flexsearch--input:focus.flexsearch--submit {

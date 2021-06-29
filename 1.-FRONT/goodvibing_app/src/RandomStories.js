@@ -1,5 +1,6 @@
 import { Box, Button, makeStyles } from "@material-ui/core";
 import UseFetch from "./UseFetch";
+import { Typography } from "@material-ui/core";
 
 function RandomStories({ q }) {
   const stories = UseFetch(`http://localhost:4000/api/random-stories`);
@@ -41,6 +42,16 @@ function RandomStories({ q }) {
             </div>
           ))}
         </div>
+      </div>
+      <div>
+        <Typography variant="body2" color="textSecondary" align="center">
+          {"Copyright © "}
+          <Link color="inherit" href="/">
+            GoodVibing
+          </Link>{" "}
+          {new Date().getFullYear()}
+          {"."}
+        </Typography>
       </div>
     </div>
   );

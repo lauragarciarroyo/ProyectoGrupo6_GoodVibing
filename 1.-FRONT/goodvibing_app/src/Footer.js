@@ -4,6 +4,8 @@ import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 import Typography from "@material-ui/core/Typography";
 import Link from "@material-ui/core/Link";
+import { NavLink } from "react-router-dom";
+import iconoSobre from "./assets/img/iconoSobre.png";
 
 function Copyright() {
   return (
@@ -46,6 +48,12 @@ export default function Footer(props) {
         </Typography>
         <Copyright />
       </Container>
+      <div className="btn-flotante">
+        <NavLink to="/contact"></NavLink>
+        <Link to="/contact">
+          <img src={iconoSobre} width={50} alt="contact" />{" "}
+        </Link>
+      </div>
     </footer>
   );
 }

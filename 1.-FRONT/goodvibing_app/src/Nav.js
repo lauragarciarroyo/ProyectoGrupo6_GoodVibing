@@ -3,15 +3,14 @@ import { Link, NavLink, useHistory } from "react-router-dom";
 import { useSelector } from "react-redux";
 import "./Home.css";
 import logo from "./assets/img/logo.jpg";
-import mailbox from "./assets/img/mailbox.png";
-
+import dados from "./assets/img/dados.png";
+import iconoSobre from "./assets/img/iconoSobre.png";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import InputBase from "@material-ui/core/InputBase";
 import { fade, makeStyles } from "@material-ui/core/styles";
 import SearchIcon from "@material-ui/icons/Search";
 import UserAvatar from "./UserAvatar";
-import dices from "./assets/img/dices.png";
 import login from "./assets/img/login.png";
 import register2 from "./assets/img/register2.png";
 
@@ -135,7 +134,7 @@ export default function SearchAppBar() {
             </form>
           </div>
           <Link to="/search">
-            <img src={dices} alt="random" href="./search"></img>
+            <img src={dados} width={50} alt="random" href="./search"></img>
           </Link>
           {!user ? (
             <>
@@ -157,7 +156,7 @@ export default function SearchAppBar() {
       <div className="btn-flotante">
         <NavLink to="/contact"></NavLink>
         <Link to="/contact">
-          <img src={mailbox} alt="contact" />{" "}
+          <img src={iconoSobre} width={50} alt="contact" />{" "}
         </Link>
       </div>
     </div>

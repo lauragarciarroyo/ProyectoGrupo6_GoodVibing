@@ -8,8 +8,8 @@ function StoriesHome() {
 
   const defaultProps = {
     bgcolor: "background.paper",
-    m: 1,
-    style: { width: "50rem", height: "25rem" },
+    m: 20,
+    style: { width: "100rem", height: "25rem" },
     borderColor: "text.primary",
   };
 
@@ -25,7 +25,7 @@ function StoriesHome() {
 
   return (
     <div className="Historias">
-      <Grid item xs={11}>
+      <Grid item xs={12}>
         <Grid container spacing={1}>
           {results.data.map((e) => (
             <Box

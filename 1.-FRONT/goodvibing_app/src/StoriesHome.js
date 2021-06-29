@@ -25,7 +25,7 @@ function StoriesHome() {
 
   return (
     <div className="Historias">
-      <Grid item xs={12}>
+      <Grid item xs={11}>
         <Grid container spacing={1}>
           {results.data.map((e) => (
             <Box

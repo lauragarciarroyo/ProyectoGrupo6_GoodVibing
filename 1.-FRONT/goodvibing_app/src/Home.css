@@ -96,18 +96,22 @@ body {
 
 h1 {
   font-family: "Dancing Script", cursive;
-  font-size: 500%;
-  background: linear-gradient(orange, green, purple, blue);
-  -webkit-background-clip: text;
-  color: transparent;
+  font-size: 800%;
+  color: white;
+  -webkit-text-stroke: 1px darkviolet;
   text-align: center;
 }
 
 h2 {
-  font-family: "Crimson Text", serif;
-  font-size: 300%;
-  background: linear-gradient(pink, purple, blue);
-  -webkit-background-clip: text;
-  color: transparent;
+  font-family: "Open Sans", sans-serif;
+  font-size: 100%;
+  color: darkviolet;
+  text-align: center;
+}
+
+h3 {
+  font-family: "Open Sans", sans-serif;
+  font-size: 200%;
+  color: purple;
   text-align: center;
 }

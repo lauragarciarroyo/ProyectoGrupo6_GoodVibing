@@ -35,8 +35,7 @@ function MyStories() {
               borderRadius={50}
               justifyContent="center"
               alignItems="center"
-              border={1}
-              boxShadow={3}
+              boxShadow={20}
               p={2}
               m={2}
               display="block"

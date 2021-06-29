@@ -33,8 +33,7 @@ function StoriesHome() {
               justifyContent="center"
               alignItems="center"
               mx="auto"
-              border={1}
-              boxShadow={3}
+              boxShadow={20}
               bgcolor="background.paper"
               display="block"
               css={{ maxWidth: 450, maxHeight: 200 }}

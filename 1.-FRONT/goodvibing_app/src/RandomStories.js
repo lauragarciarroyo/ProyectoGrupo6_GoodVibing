@@ -46,9 +46,9 @@ function RandomStories({ q }) {
       <div>
         <Typography variant="body2" color="textSecondary" align="center">
           {"Copyright © "}
-          <Link color="inherit" href="/">
+          <Button color="inherit" href="/">
             GoodVibing
-          </Link>{" "}
+          </Button>{" "}
           {new Date().getFullYear()}
           {"."}
         </Typography>

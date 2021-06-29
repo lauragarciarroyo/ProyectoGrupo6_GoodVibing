@@ -3,7 +3,7 @@ import { Link, useParams } from "react-router-dom";
 import UseFetchToken from "./useFetchToken";
 import CreateVote from "./CreateVote";
 import CreateComment from "./CreateComment";
-import { Container, CssBaseline, makeStyles } from "@material-ui/core";
+import { Box, Button, makeStyles } from "@material-ui/core";
 import React from "react";
 
 function MyStory() {
@@ -29,17 +29,28 @@ function MyStory() {
 
   return (
     <div className="Mi historia">
-      <CssBaseline />
       <div className={classes.paper}>
         <h1>{story.title}</h1>
         <p>{new Date(story.date).toLocaleDateString()}</p>
-        <p />
-        <Link to={`/userinfo/${story.user_id}`}>{story.user_name}</Link>
-        <p />
-        <Container maxWidth="xs" style={{ margin: 40 }} align="center">
-          {story.body}
-        </Container>
-        <p />
+        <Box
+          borderRadius={50}
+          justifyContent="center"
+          alignItems="center"
+          boxShadow={20}
+          p={2}
+          m={2}
+          display="block"
+          css={{ maxWidth: 900 }}
+        >
+          <Button fullWidth color="primary" href={`/userinfo/${story.user_id}`}>
+            {story.user_name}
+          </Button>
+          <p />
+          <div maxWidth="xs" style={{ margin: 40 }} align="center">
+            {story.body}
+          </div>
+        </Box>
+
         <CreateComment />
         <p />
         <CreateVote />

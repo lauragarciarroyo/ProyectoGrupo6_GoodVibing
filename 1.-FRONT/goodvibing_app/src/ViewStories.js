@@ -1,6 +1,6 @@
 import UseFetch from "./UseFetch";
 import { useSelector } from "react-redux";
-import { Button, Container, makeStyles } from "@material-ui/core";
+import { Box, Button, makeStyles } from "@material-ui/core";
 import { Grid } from "@material-ui/core";
 
 function ViewStories() {
@@ -15,7 +15,7 @@ function ViewStories() {
       display: "flex",
       flexDirection: "column",
       alignItems: "center",
-      width: "25%",
+      width: "100%",
     },
   }));
   const classes = useStyles();
@@ -24,33 +24,44 @@ function ViewStories() {
   }
   return (
     <div className="viewstories">
-      <div className={classes.paper}></div>
-      <h1>Historias</h1>
-      {results.data.map((e) => (
-        <div key={e.id}>
-          <Grid container justify="center">
-            <Button
-              href={`/mystory/${e.id}`}
-              color="primary"
-              style={{ margin: 10 }}
+      <div className={classes.paper}>
+        <h1 align="center">Historias</h1>
+        {results.data.map((e) => (
+          <div key={e.id}>
+            <Box
+              borderRadius={16}
+              justifyContent="center"
+              alignItems="center"
+              boxShadow={20}
+              p={2}
+              m={2}
+              display="block"
+              css={{ maxWidth: 600 }}
             >
-              {e.title}
-            </Button>
+              <Button
+                href={`/mystory/${e.id}`}
+                color="primary"
+                style={{ margin: 10 }}
+                fullWidth
+              >
+                {e.title}
+              </Button>
+
+              <div container justify="center">
+                <p>{e.body}</p>
+              </div>
+            </Box>
+          </div>
+        ))}
+        {!results.data.length && <i>No se han encontrado historias</i>}
+
+        <div className="bottom">
+          <Grid container justify="center">
+            <Button href="/createstory" color="secondary">
+              Crea tu historia
+            </Button>{" "}
           </Grid>
-
-          <Container style={{ margin: 10 }}>
-            <p>{e.body}</p>
-          </Container>
         </div>
-      ))}
-      {!results.data.length && <i>No se han encontrado historias</i>}
-
-      <div className="bottom">
-        <Grid container justify="center">
-          <Button href="/createstory" color="secondary">
-            Crea tu historia
-          </Button>{" "}
-        </Grid>
       </div>
     </div>
   );

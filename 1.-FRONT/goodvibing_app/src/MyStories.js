@@ -1,7 +1,6 @@
 import UseFetchToken from "./useFetchToken";
 import { useSelector } from "react-redux";
-import { Button, Container, makeStyles } from "@material-ui/core";
-import { Grid } from "@material-ui/core";
+import { Box, Button, makeStyles } from "@material-ui/core";
 
 function MyStories() {
   const { user } = useSelector((state) => state.user);
@@ -14,11 +13,11 @@ function MyStories() {
 
   const useStyles = makeStyles((theme) => ({
     paper: {
-      marginTop: theme.spacing(8),
       display: "flex",
+      flexGrow: 1,
       flexDirection: "column",
       alignItems: "center",
-      width: "50%",
+      width: "100%",
     },
   }));
   const classes = useStyles();
@@ -32,20 +31,29 @@ function MyStories() {
 
         {results.map((e) => (
           <div key={e.id}>
-            <Grid container justify="center">
+            <Box
+              borderRadius={50}
+              justifyContent="center"
+              alignItems="center"
+              boxShadow={20}
+              p={2}
+              m={2}
+              display="block"
+              css={{ maxWidth: 600 }}
+            >
               <Button
                 href={`/mystory/${e.id}`}
                 color="primary"
                 style={{ margin: 10 }}
+                fullWidth
               >
                 {e.title}
               </Button>
-            </Grid>
-            <Grid container justify="cemter">
-              <Container style={{ margin: 10 }}>
+
+              <div container justify="center">
                 <p>{e.body}</p>
-              </Container>
-            </Grid>
+              </div>
+            </Box>
           </div>
         ))}
 

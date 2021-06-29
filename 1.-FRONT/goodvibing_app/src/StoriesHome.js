@@ -29,12 +29,17 @@ function StoriesHome() {
         <Grid container spacing={1}>
           {results.data.map((e) => (
             <Box
+              borderRadius={16}
               justifyContent="center"
               alignItems="center"
               mx="auto"
+<<<<<<< HEAD
               border={1}
               borderColor="#84047e"
               boxShadow={3}
+=======
+              boxShadow={20}
+>>>>>>> 76c7f09604cf0b0b4ffcdc3e9cac38972922e701
               bgcolor="background.paper"
               display="block"
               css={{ maxWidth: 450, maxHeight: 200 }}

@@ -2,6 +2,8 @@ body {
   margin: 0;
   padding: 0;
   background-image: url("./assets/img/FondoHome.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .btn-flotante {
@@ -31,6 +33,7 @@ h2 {
   font-size: 100%;
   color: darkviolet;
   text-align: center;
+  margin-top: 50px;
 }
 
 h3 {

@@ -33,6 +33,7 @@ function StoriesHome() {
               alignItems="center"
               mx="auto"
               border={1}
+              borderColor="#84047e"
               boxShadow={3}
               bgcolor="background.paper"
               display="block"

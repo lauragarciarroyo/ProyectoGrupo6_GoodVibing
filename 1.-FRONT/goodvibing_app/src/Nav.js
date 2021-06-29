@@ -12,7 +12,7 @@ import { fade, makeStyles } from "@material-ui/core/styles";
 import SearchIcon from "@material-ui/icons/Search";
 import UserAvatar from "./UserAvatar";
 import login from "./assets/img/login.png";
-import register2 from "./assets/img/register2.png";
+import register from "./assets/img/register.png";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -143,7 +143,7 @@ export default function SearchAppBar() {
               </Link>
 
               <Link to="/register">
-                <img src={register2} width={50} alt="up" href="./register" />
+                <img src={register} width={50} alt="up" href="./register" />
               </Link>
             </>
           ) : (

@@ -29,6 +29,7 @@ function ViewStories() {
         {results.data.map((e) => (
           <div key={e.id}>
             <Box
+              borderRadius={16}
               justifyContent="center"
               alignItems="center"
               border={1}

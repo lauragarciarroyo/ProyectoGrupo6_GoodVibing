@@ -29,6 +29,7 @@ function StoriesHome() {
         <Grid container spacing={1}>
           {results.data.map((e) => (
             <Box
+              borderRadius={16}
               justifyContent="center"
               alignItems="center"
               mx="auto"

@@ -32,6 +32,7 @@ function MyStories() {
         {results.map((e) => (
           <div key={e.id}>
             <Box
+              borderRadius={50}
               justifyContent="center"
               alignItems="center"
               border={1}

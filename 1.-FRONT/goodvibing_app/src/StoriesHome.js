@@ -7,7 +7,7 @@ function StoriesHome() {
   const results = useFetch(`http://localhost:4000/api/storieshome`);
 
   const defaultProps = {
-    bgcolor: "background.paper",
+    bgcolor: "background",
     m: 20,
     style: { width: "100rem", height: "25rem" },
     borderColor: "text.primary",

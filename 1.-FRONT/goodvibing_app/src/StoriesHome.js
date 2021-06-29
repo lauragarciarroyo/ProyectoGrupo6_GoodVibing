@@ -1,4 +1,4 @@
-import { Button, Grid, makeStyles, Paper } from "@material-ui/core";
+import { Button, Grid, makeStyles } from "@material-ui/core";
 import Box from "@material-ui/core/Box";
 import React from "react";
 import useFetch from "./UseFetch";
@@ -14,7 +14,7 @@ function StoriesHome() {
   };
 
   const useStyles = makeStyles((theme) => ({
-    paper: {
+    div: {
       height: 50,
       width: 300,
     },
@@ -25,7 +25,7 @@ function StoriesHome() {
 
   return (
     <div className="Historias">
-      <Grid item xs={16}>
+      <Grid item xs={11}>
         <Grid container spacing={1}>
           {results.data.map((e) => (
             <Box
@@ -36,18 +36,18 @@ function StoriesHome() {
               boxShadow={3}
               bgcolor="background.paper"
               display="block"
-              css={{ maxWidth: 400 }}
+              css={{ maxWidth: 450, maxHeight: 200 }}
               {...defaultProps}
               p={3}
             >
-              <Paper className={classes.paper}>
+              <div className={classes.paper}>
                 <div key={e.id}>
-                  <Button href={`/story/${e.id}`} color="primary">
+                  <Button href={`/story/${e.id}`} fullWidth color="primary">
                     {e.title}
                   </Button>
                   <p>{e.body}</p>
                 </div>
-              </Paper>
+              </div>
             </Box>
           ))}
           {!results.data.length && <i>No se han encontrado historias</i>}

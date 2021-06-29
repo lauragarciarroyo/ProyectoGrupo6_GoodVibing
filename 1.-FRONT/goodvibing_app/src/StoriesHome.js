@@ -17,11 +17,12 @@ function StoriesHome() {
     <div className="Historias">
       {results.data.map((e) => (
         <Box
-          display="flex"
           justifyContent="center"
           alignItems="center"
-          border={1}
           mx="auto"
+          border={1}
+          boxShadow={3}
+          bgcolor="background.paper"
           display="block"
           css={{ maxWidth: 800 }}
           {...defaultProps}

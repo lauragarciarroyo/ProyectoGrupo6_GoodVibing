@@ -1,6 +1,7 @@
 import UseFetchToken from "./useFetchToken";
 import { useSelector } from "react-redux";
 import { Button, Container, makeStyles } from "@material-ui/core";
+import { Grid } from "@material-ui/core";
 
 function MyStories() {
   const { user } = useSelector((state) => state.user);
@@ -27,20 +28,24 @@ function MyStories() {
   return (
     <div className="Mis historias">
       <div className={classes.paper}>
-        <h1>Tus historias</h1>
+        <h1 align="center">Tus historias</h1>
 
         {results.map((e) => (
           <div key={e.id}>
-            <Button
-              href={`/mystory/${e.id}`}
-              color="primary"
-              style={{ margin: 10 }}
-            >
-              {e.title}
-            </Button>
-            <Container style={{ margin: 10 }}>
-              <p>{e.body}</p>
-            </Container>
+            <Grid container justify="center">
+              <Button
+                href={`/mystory/${e.id}`}
+                color="primary"
+                style={{ margin: 10 }}
+              >
+                {e.title}
+              </Button>
+            </Grid>
+            <Grid container justify="cemter">
+              <Container style={{ margin: 10 }}>
+                <p>{e.body}</p>
+              </Container>
+            </Grid>
           </div>
         ))}
 

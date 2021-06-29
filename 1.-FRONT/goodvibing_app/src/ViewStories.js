@@ -1,6 +1,7 @@
 import UseFetch from "./UseFetch";
 import { useSelector } from "react-redux";
 import { Button, Container, makeStyles } from "@material-ui/core";
+import { Grid } from "@material-ui/core";
 
 function ViewStories() {
   const { user } = useSelector((state) => state.user);
@@ -27,13 +28,15 @@ function ViewStories() {
       <h1>Historias</h1>
       {results.data.map((e) => (
         <div key={e.id}>
-          <Button
-            href={`/mystory/${e.id}`}
-            color="primary"
-            style={{ margin: 10 }}
-          >
-            {e.title}
-          </Button>
+          <Grid container justify="center">
+            <Button
+              href={`/mystory/${e.id}`}
+              color="primary"
+              style={{ margin: 10 }}
+            >
+              {e.title}
+            </Button>
+          </Grid>
 
           <Container style={{ margin: 10 }}>
             <p>{e.body}</p>
@@ -43,9 +46,11 @@ function ViewStories() {
       {!results.data.length && <i>No se han encontrado historias</i>}
 
       <div className="bottom">
-        <Button href="/createstory" color="secondary">
-          Crea tu historia
-        </Button>{" "}
+        <Grid container justify="center">
+          <Button href="/createstory" color="secondary">
+            Crea tu historia
+          </Button>{" "}
+        </Grid>
       </div>
     </div>
   );

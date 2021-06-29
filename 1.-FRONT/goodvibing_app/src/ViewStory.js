@@ -4,6 +4,7 @@ import { useDispatch } from "react-redux";
 import CreateComment from "./CreateComment";
 import GetComments from "./GetComments";
 import CreateVote from "./CreateVote";
+import { Grid } from "@material-ui/core";
 
 function ViewStory() {
   const { id } = useParams();
@@ -25,22 +26,32 @@ function ViewStory() {
   return (
     <div className="story">
       <h1 align="center">{story.title}</h1>
+      <p />
+      <p />
       <p align="center">{new Date(story.date).toLocaleDateString()}</p>
-      <Link align="center" to={`/userinfo/${story.user_id}`}>
-        {story.user_name}
-      </Link>
+      <Grid container justify="center">
+        <Link align="center" to={`/userinfo/${story.user_id}`}>
+          {story.user_name}
+        </Link>
+      </Grid>
       <p align="center">{story.body}</p>
       <p></p>
       <h2>Comentarios</h2>
-      <GetComments
-        align="center"
-        storyUserId={story.user_id}
-        comments={story.comments}
-      />
+      <Grid container justify="center">
+        <GetComments
+          align="center"
+          storyUserId={story.user_id}
+          comments={story.comments}
+        />
+      </Grid>
       <div>
-        <CreateComment />
+        <Grid container justify="center">
+          <CreateComment />
+        </Grid>
         <p />
-        <CreateVote />
+        <Grid container justify="center">
+          <CreateVote />
+        </Grid>
       </div>
     </div>
   );

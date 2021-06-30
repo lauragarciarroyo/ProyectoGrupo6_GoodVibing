@@ -19,3 +19,17 @@
 .error p {
   flex-grow: 1;
 }
+
+.App {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.App > main {
+  flex-grow: 1;
+}
+
+.App > footer {
+  padding: 1rem 0;
+}

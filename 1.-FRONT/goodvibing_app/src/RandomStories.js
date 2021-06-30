@@ -1,6 +1,7 @@
 import { Box, Button, makeStyles } from "@material-ui/core";
 import UseFetch from "./UseFetch";
 import { Typography } from "@material-ui/core";
+import StoryTitle from "./StoryTitle";
 
 function RandomStories({ q }) {
   const stories = UseFetch(`http://localhost:4000/api/random-stories`);
@@ -35,9 +36,9 @@ function RandomStories({ q }) {
                 display="block"
                 css={{ maxWidth: 600 }}
               >
-                <Button color="primary" href={`/story/${s.id}`}>
+                <StoryTitle color="primary" href={`/story/${s.id}`}>
                   {s.title}
-                </Button>
+                </StoryTitle>
               </Box>
             </div>
           ))}

@@ -2,6 +2,7 @@ import { Box, Button, makeStyles } from "@material-ui/core";
 import { useLocation } from "react-router-dom";
 import RandomStories from "./RandomStories";
 import useFetch from "./UseFetch";
+import StoryTitle from "./StoryTitle";
 
 function Search({ q }) {
   const stories = useFetch(`http://localhost:4000/api/stories?q=${q}`);
@@ -37,7 +38,7 @@ function Search({ q }) {
                     display="block"
                     css={{ maxWidth: 600 }}
                   >
-                    <Button href={`/story/${s.id}`}>{s.title}</Button>
+                    <StoryTitle href={`/story/${s.id}`}>{s.title}</StoryTitle>
                   </Box>
                 </div>
               ))}

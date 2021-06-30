@@ -2,6 +2,7 @@ import { Button, Grid, makeStyles } from "@material-ui/core";
 import Box from "@material-ui/core/Box";
 import React from "react";
 import useFetch from "./UseFetch";
+import StoryTitle from "./StoryTitle";
 
 function StoriesHome() {
   const results = useFetch(`http://localhost:4000/api/storieshome`);
@@ -24,9 +25,9 @@ function StoriesHome() {
   if (!results) return <p>Cargando...</p>;
 
   return (
-    <div className="Historias">
-      <Grid item xs={11}>
-        <Grid container spacing={1}>
+    <div className="Historias" style={{ margin: "2rem 0" }}>
+      <Grid item>
+        <Grid container>
           {results.data.map((e) => (
             <Box
               borderRadius={16}
@@ -36,15 +37,13 @@ function StoriesHome() {
               boxShadow={20}
               bgcolor="background.paper"
               display="block"
-              css={{ maxWidth: 450, maxHeight: 200 }}
+              css={{ maxWidth: 450, maxHeight: 200, margin: "1rem auto" }}
               {...defaultProps}
               p={3}
             >
               <div className={classes.paper}>
                 <div key={e.id}>
-                  <Button href={`/story/${e.id}`} fullWidth color="primary">
-                    {e.title}
-                  </Button>
+                  <StoryTitle href={`/story/${e.id}`}>{e.title}</StoryTitle>
                   <p>{e.body}</p>
                 </div>
               </div>

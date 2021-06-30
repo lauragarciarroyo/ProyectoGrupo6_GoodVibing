@@ -31,6 +31,8 @@ import Main from "./Main";
 import DeleteComment from "./DeleteComment";
 import UserinfoA from "./UserInfoA";
 import Search from "./Search";
+import Typography from "@material-ui/core/Typography";
+import Link from "@material-ui/core/Link";
 
 const PrivateRoute = ({ children }) => {
   const user = useSelector((state) => state.user);
@@ -118,13 +120,17 @@ function App() {
             <CreateComment />
           </Route>
           <Route path="/story/:id" exact>
-            <ViewStory />
+            <PrivateRoute>
+              <ViewStory />
+            </PrivateRoute>
           </Route>
           <Route path="/mycomments" exact>
             <MyComments />
           </Route>
           <Route path="/userinfo/:id" exact>
-            <Userinfo />
+            <PrivateRoute>
+              <Userinfo />
+            </PrivateRoute>
           </Route>
           <Route path="/createvote" exact>
             <CreateVote />
@@ -149,6 +155,16 @@ function App() {
           </Route>
         </Switch>
       </main>
+      <footer>
+        <Typography variant="body2" color="textSecondary" align="center">
+          {"Copyright © "}
+          <Link color="inherit" href="/">
+            GoodVibing
+          </Link>{" "}
+          {new Date().getFullYear()}
+          {"."}
+        </Typography>
+      </footer>
     </div>
   );
 }

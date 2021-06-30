@@ -16,7 +16,6 @@ import register from "./assets/img/register.png";
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    flexGrow: 1,
     marginRight: "0 0 1rem",
     width: "100%",
     backgroundColor: "white",
@@ -97,13 +96,14 @@ export default function SearchAppBar() {
           width: "100%",
           backgroundColor: "white",
           display: "flex",
+
           alignItems: "start",
           justifyContent: "space-between",
           flexDirection: "row",
           flexWrap: "nowrap",
         }}
       >
-        <Toolbar>
+        <Toolbar style={{ width: "100%", flexGrow: "0" }}>
           <Link to="/">
             <img src={logo} width={100} href="/" alt="home" />
           </Link>
@@ -136,21 +136,23 @@ export default function SearchAppBar() {
           <Link to="/search">
             <img src={dados} width={50} alt="random" href="./search"></img>
           </Link>
-          {!user ? (
-            <>
-              <Link to="/Login">
-                <img src={login} width={50} alt="in" href="./Login" />
-              </Link>
+          <div className="right" style={{ marginLeft: "auto" }}>
+            {!user ? (
+              <>
+                <Link to="/Login">
+                  <img src={login} width={50} alt="in" href="./Login" />
+                </Link>
 
-              <Link to="/register">
-                <img src={register} width={50} alt="up" href="./register" />
-              </Link>
-            </>
-          ) : (
-            <>
-              <UserAvatar src={user.user.avatar} />
-            </>
-          )}
+                <Link to="/register">
+                  <img src={register} width={50} alt="up" href="./register" />
+                </Link>
+              </>
+            ) : (
+              <>
+                <UserAvatar src={user.user.avatar} />
+              </>
+            )}
+          </div>
         </Toolbar>
       </AppBar>
       <div className="btn-flotante">

@@ -6,9 +6,191 @@ body {
   background-size: cover;
 }
 
+.container {
+  width: 100%;
+}
+
+.flex-container {
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-flex-wrap: nowrap;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  -webkit-justify-content: space-around;
+  -ms-flex-pack: distribute;
+  justify-content: space-around;
+  -webkit-align-content: space-around;
+  -ms-flex-line-pack: distribute;
+  align-content: space-around;
+  -webkit-align-items: flex-start;
+  -ms-flex-align: start;
+  align-items: flex-start;
+  margin: 0;
+  padding: 10px 3px 3px 3px;
+  background-color: white;
+}
+
+.flex-item:nth-child(1) {
+  -webkit-order: 0;
+  -ms-flex-order: 0;
+  order: 0;
+  -webkit-flex: 0 1 auto;
+  -ms-flex: 0 1 auto;
+  flex: 0 1 auto;
+  -webkit-align-self: flex-start;
+  -ms-flex-item-align: start;
+  align-self: flex-start;
+}
+
+.flex-item:nth-child(2) {
+  -webkit-order: 0;
+  -ms-flex-order: 0;
+  order: 0;
+  -webkit-flex: 0 1 auto;
+  -ms-flex: 0 1 auto;
+  flex: 0 1 auto;
+  -webkit-align-self: auto;
+  -ms-flex-item-align: auto;
+  align-self: auto;
+}
+
+.flex-item:nth-child(3) {
+  -webkit-order: 0;
+  -ms-flex-order: 0;
+  order: 0;
+  -webkit-flex: 0 1 auto;
+  -ms-flex: 0 1 auto;
+  flex: 0 1 auto;
+  -webkit-align-self: auto;
+  -ms-flex-item-align: auto;
+  align-self: auto;
+}
+
+.flex-item:nth-child(4) {
+  -webkit-order: 0;
+  -ms-flex-order: 0;
+  order: 0;
+  -webkit-flex: 0 1 auto;
+  -ms-flex: 0 1 auto;
+  flex: 0 1 auto;
+  -webkit-align-self: flex-end;
+  -ms-flex-item-align: end;
+  align-self: flex-end;
+}
+
+.random:hover {
+  transform: translateY(-7px);
+}
+
+.LoginButton:hover {
+  transform: translateY(-7px);
+}
+
+.RegisterButton:hover {
+  transform: translateY(-7px);
+}
+
+.flexsearch--wrapper {
+  height: auto;
+  width: auto;
+  max-width: 90%;
+  overflow: hidden;
+  background: transparent;
+  margin: 5px 10px;
+  position: static;
+}
+
+.flexsearch--form {
+  overflow: hidden;
+  position: relative;
+}
+
+.flexsearch--input-wrapper {
+  padding: 0 66px 0 0; /* Right padding for submit button width */
+  overflow: hidden;
+}
+
+.flexsearch--input {
+  width: 100%;
+}
+
+.flexsearch--input {
+  -webkit-box-sizing: content-box;
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
+  height: 60px;
+  padding: 0 40px 0 10px;
+  border-color: #84047e;
+  border-radius: 35px; /* (height/2) + border-width */
+  border-style: solid;
+  border-width: 5px;
+  margin-top: 15px;
+  color: #84047e;
+  font-family: "Helvetica", sans-serif;
+  font-size: 26px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+
+.flexsearch--submit {
+  position: absolute;
+  right: 0;
+  top: 0;
+  display: block;
+  width: 60px;
+  height: 60px;
+  padding: 0;
+  border: none;
+  margin-top: 20px; /* margin-top + border-width */
+  margin-right: 5px; /* border-width */
+  background: transparent;
+  color: #84047e;
+  font-family: "Helvetica", sans-serif;
+  font-size: 40px;
+  line-height: 60px;
+}
+
+.flexsearch--input:focus {
+  outline: none;
+  border-color: purple;
+}
+
+.flexsearch--input:focus.flexsearch--submit {
+  color: violet;
+}
+
+.flexsearch--submit:hover {
+  color: violet;
+  cursor: pointer;
+}
+
+::-webkit-input-placeholder {
+  color: #84047e;
+}
+
+input:-moz-placeholder {
+  color: #84047e;
+}
+
+.footer {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  background-color: white;
+  bottom: 0;
+  flex: 0 0 auto;
+  justify-content: center;
+  position: absolute;
+  height: 50px;
+}
+
 .btn-flotante {
   position: fixed;
-  bottom: 40px;
+  bottom: 5px;
   right: 40px;
 }
 
@@ -17,26 +199,29 @@ body {
 }
 
 h1 {
-  font-family: "Dancing Script", cursive;
-  font-size: 800%;
-  color: white;
-  -webkit-text-stroke: 1px darkviolet;
+  font-family: "Open Sans", sans-serif;
+  font-size: 100%;
+  color: #84047e;
   text-align: center;
+  margin-top: 30px;
 }
 
 h2 {
-  font-family: "Open Sans", sans-serif;
-  font-size: 100%;
-  color: darkviolet;
+  font-family: "Dancing Script", cursive;
+  font-size: 1000%;
+  color: white;
+  -webkit-text-stroke: 1px #84047e;
   text-align: center;
-  margin-top: 50px;
+  margin-top: 30px;
+  margin-bottom: 30px;
 }
 
 h3 {
   font-family: "Open Sans", sans-serif;
   font-size: 200%;
-  color: purple;
+  color: #84047e;
   text-align: center;
+  margin-top: 30px;
 }
 
 h3 a {

@@ -1,4 +1,4 @@
-import { Box, Button, makeStyles } from "@material-ui/core";
+import { Box, makeStyles } from "@material-ui/core";
 import { useLocation } from "react-router-dom";
 import RandomStories from "./RandomStories";
 import useFetch from "./UseFetch";

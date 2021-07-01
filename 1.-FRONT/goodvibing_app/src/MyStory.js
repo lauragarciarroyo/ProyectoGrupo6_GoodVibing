@@ -21,7 +21,7 @@ function MyStory() {
       <div className="name">
         <Link to={`/userinfo/${story.user_id}`}>{story.user_name}</Link>
       </div>
-      <div className="historias">{story.body}</div>
+      <div className="story">{story.body}</div>
 
       <CreateComment />
       <p />

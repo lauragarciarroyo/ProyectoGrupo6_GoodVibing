@@ -30,7 +30,7 @@ function ViewStory() {
       <div className="name">
         <Link to={`/userinfo/${story.user_id}`}>{story.user_name} </Link>
       </div>
-      <div className="historias">
+      <div className="story">
         <p>{story.body}</p>
       </div>
       <h2>Comentarios</h2>

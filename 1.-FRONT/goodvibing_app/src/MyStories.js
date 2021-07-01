@@ -1,6 +1,6 @@
 import UseFetchToken from "./useFetchToken";
 import { useSelector } from "react-redux";
-import { Box, Button, makeStyles } from "@material-ui/core";
+import { Link } from "react-router-dom";
 
 function MyStories() {
   const { user } = useSelector((state) => state.user);
@@ -11,59 +11,24 @@ function MyStories() {
 
   console.log(results);
 
-  const useStyles = makeStyles((theme) => ({
-    paper: {
-      display: "flex",
-      flexGrow: 1,
-      flexDirection: "column",
-      alignItems: "center",
-      width: "100%",
-    },
-  }));
-  const classes = useStyles();
-
   if (!results) return <p>Cargando...</p>;
 
   return (
-    <div className="Mis historias">
-      <div className={classes.paper}>
-        <h1 align="center">Tus historias</h1>
+    <div className="mystories">
+      <h1>Tus historias</h1>
 
-        {results.map((e) => (
-          <div key={e.id}>
-            <Box
-              borderRadius={50}
-              justifyContent="center"
-              alignItems="center"
-              boxShadow={20}
-              p={2}
-              m={2}
-              display="block"
-              css={{ maxWidth: 600 }}
-            >
-              <Button
-                href={`/mystory/${e.id}`}
-                color="primary"
-                style={{ margin: 10 }}
-                fullWidth
-              >
-                {e.title}
-              </Button>
+      {results.map((e) => (
+        <div className="historias" key={e.id}>
+          <Link to={`/mystory/${e.id}`}>{e.title}</Link>
 
-              <div container justify="center">
-                <p>{e.body}</p>
-              </div>
-            </Box>
-          </div>
-        ))}
-
-        {!results.length && <i>No se han encontrado historias</i>}
-
-        <div className="bottom">
-          <Button href="/createstory" color="secondary">
-            Crea tu historia
-          </Button>{" "}
+          <p>{e.body}</p>
         </div>
+      ))}
+
+      {!results.length && <i>No se han encontrado historias</i>}
+
+      <div className="bottom">
+        <Link to="/createstory">Crea tu historia</Link>
       </div>
     </div>
   );

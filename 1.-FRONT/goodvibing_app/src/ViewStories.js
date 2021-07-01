@@ -1,7 +1,6 @@
 import UseFetch from "./UseFetch";
 import { useSelector } from "react-redux";
-import { Box, Button, makeStyles } from "@material-ui/core";
-import { Grid } from "@material-ui/core";
+import { Link } from "react-router-dom";
 
 function ViewStories() {
   const { user } = useSelector((state) => state.user);
@@ -9,59 +8,23 @@ function ViewStories() {
     `http://localhost:4000/api/users/${user.id}/stories`
   );
 
-  const useStyles = makeStyles((theme) => ({
-    paper: {
-      marginTop: theme.spacing(8),
-      display: "flex",
-      flexDirection: "column",
-      alignItems: "center",
-      width: "100%",
-    },
-  }));
-  const classes = useStyles();
   if (!results) {
     return <div>Loading...</div>;
   }
   return (
     <div className="viewstories">
-      <div className={classes.paper}>
-        <h1 align="center">Historias</h1>
-        {results.data.map((e) => (
-          <div key={e.id}>
-            <Box
-              borderRadius={16}
-              justifyContent="center"
-              alignItems="center"
-              boxShadow={20}
-              p={2}
-              m={2}
-              display="block"
-              css={{ maxWidth: 600 }}
-            >
-              <Button
-                href={`/mystory/${e.id}`}
-                color="primary"
-                style={{ margin: 10 }}
-                fullWidth
-              >
-                {e.title}
-              </Button>
+      <h1>Historias</h1>
+      {results.data.map((e) => (
+        <div className="historias" key={e.id}>
+          <Link to={`/mystory/${e.id}`}>{e.title}</Link>
 
-              <div container justify="center">
-                <p>{e.body}</p>
-              </div>
-            </Box>
-          </div>
-        ))}
-        {!results.data.length && <i>No se han encontrado historias</i>}
-
-        <div className="bottom">
-          <Grid container justify="center">
-            <Button href="/createstory" color="secondary">
-              Crea tu historia
-            </Button>{" "}
-          </Grid>
+          <p>{e.body}</p>
         </div>
+      ))}
+      {!results.data.length && <i>No se han encontrado historias</i>}
+
+      <div className="bottom">
+        <Link to="/createstory">Crea tu historia</Link>
       </div>
     </div>
   );

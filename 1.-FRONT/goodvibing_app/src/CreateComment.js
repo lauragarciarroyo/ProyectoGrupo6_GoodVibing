@@ -1,4 +1,3 @@
-import { Button, makeStyles, TextField } from "@material-ui/core";
 import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useParams, useHistory } from "react-router-dom";
@@ -33,37 +32,16 @@ function CreateComment() {
       dispatch({ type: "SET_ERROR", message: data.message });
     }
   };
-  const useStyles = makeStyles((theme) => ({
-    paper: {
-      marginTop: theme.spacing(8),
-      display: "flex",
-      flexDirection: "column",
-      alignItems: "center",
-    },
-  }));
-  const classes = useStyles();
 
   return (
     <div>
       <form className="comment" onSubmit={handleSubmit}>
         <label>
-          <TextField
-            id="standar-basic"
-            multiline
-            placeholder="Escribe tu comentario..."
-            rowsMax={6}
-            value={text}
-            onChange={(e) => setText(e.target.value)}
-          />
+          Comentario
+          <input value={text} onChange={(e) => setText(e.target.value)} />
         </label>
-        <Button
-          type="submit"
-          variant="contained"
-          color="primary"
-          className={classes.submit}
-        >
-          ¡Comenta!
-        </Button>{" "}
+
+        <button>¡Comenta!</button>
       </form>
     </div>
   );

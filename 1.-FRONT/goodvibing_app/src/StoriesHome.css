@@ -101,3 +101,14 @@ button button {
   color: grey;
   text-align: initial;
 }
+.createstory button {
+  width: 10%;
+  padding: 12px;
+  margin: 8px;
+  display: block;
+  margin-left: 300px;
+  margin-right: 300px;
+  border: 1px solid #ccc;
+  border-radius: 15px;
+  background-color: rgb(246, 189, 246);
+}

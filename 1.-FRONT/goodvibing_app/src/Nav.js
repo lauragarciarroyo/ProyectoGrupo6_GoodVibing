@@ -33,106 +33,65 @@ export default function SearchAppBar() {
         padding="10px 3px 3px 3px"
         backgroundColor="white"
       >
-        <div
-          className="flex-item:nth-child(1)"
-          order="0"
-          flex="0 1 auto"
-          alignSelf="flex-start"
-        >
-          <Link to="/">
-            <img src={logo} width={100} href="/" alt="home" />
-          </Link>
-        </div>
+        <Link to="/">
+          <img src={logo} width={100} href="/" alt="home" />
+        </Link>
+      </div>
 
-        <div
-          className="flexsearch--wrapper"
-          height="auto"
-          width="auto"
-          maxWidth="90%"
-          overflow="hidden"
-          background="transparent"
-          margin="5px 10px"
-          position="static"
-        ></div>
+      <div
+        className="search"
+        width="20%"
+        position="relative"
+        display="flex"
+        marginTop="35px"
+        onSubmit={(e) => {
+          e.preventDefault();
+          if (search) {
+            history.push(`/search?q=${search}`);
+          }
+        }}
+      >
+        {" "}
+      </div>
 
-        <div
-          className="flexsearch--form"
-          overflow="hidden"
-          position="relative"
-        ></div>
+      <div
+        className="searchTerm"
+        width="100%"
+        border="3px solid #84047e"
+        borderRight="none"
+        padding="5px"
+        height="20px"
+        borderRadius="5px 0 0 5px"
+        outline="none"
+        color="#84047e"
+      ></div>
 
-        <form
-          onSubmit={(e) => {
-            e.preventDefault();
-            if (search) {
-              history.push(`/search?q=${search}`);
-            }
-          }}
-        ></form>
+      <div className="searchTerm:focus" color="#84047e" fontSize="large"></div>
 
-        <div
-          className="flexsearch--input-wrapper"
-          padding="0 66px 0 0"
-          overflow="hidden"
-        ></div>
+      <div
+        className="searchButton"
+        width="40px"
+        height="36px"
+        border="3px solid #84047e"
+        background="#84047e"
+        textAlign="center"
+        color="#fff"
+        borderRadius="0 5px 5px 0"
+        cursor="pointer"
+        fontSize="20px"
+        onChange={(e) => {
+          setSearch(e.target.value);
+        }}
+      ></div>
 
-        <div
-          className="flexsearch--input"
-          box-sizing="content-box"
-          height="60px"
-          padding="0 40px 0 10px"
-          borderColor="#84047e"
-          borderRadius="35px"
-          borderStyle="solid"
-          borderWidth="5px"
-          marginTop="15px"
-          color="#84047e"
-          fontFamily="Helvetica, sans-serif"
-          fontSize="26px"
-          placeholder="Busca una experiencia"
-          onChange={(e) => {
-            setSearch(e.target.value);
-          }}
-        ></div>
-
-        <div
-          className="flexsearch--submit"
-          position="absolute"
-          right="0"
-          top="0"
-          display="block"
-          width="60px"
-          height="60px"
-          padding="0"
-          border="none"
-          marginTop="20px"
-          marginRight="5px"
-          background="transparent"
-          color="#84047e"
-          fontFamily="Helvetica, sans-serif"
-          fontSize="40px"
-          lineHeight="60px"
-        ></div>
-
-        <div
-          className="flexsearch--input:focus"
-          outline="none"
-          borderColor="purple"
-        ></div>
-
-        <div
-          className="flexsearch--input:focus.flexsearch--submit"
-          color="violet"
-        ></div>
-
-        <div
-          className="flexsearch--submit:hover"
-          color="violet"
-          cursor="pointer"
-        ></div>
-
-        <div className="input:-moz-placeholder" color="#84047e"></div>
-
+      <div
+        className="wrap"
+        width="30%"
+        position="absolute"
+        top="50%"
+        left="50%"
+        transform="translate(-50%, -50%)"
+      >
         <Link to="./RandomStories">
           <img src={dados} width={50} alt="random" href="./RandomStories"></img>
         </Link>
@@ -154,11 +113,12 @@ export default function SearchAppBar() {
           )}
         </div>
       </div>
+
       <div className="btn-flotante" position="fixed" bottom="5px" right="40px">
         <div className="btn-flotante:hover" transform="translateY(-7px)">
           <NavLink to="/contact"></NavLink>
           <Link to="/contact">
-            <img src={iconoSobre} width={50} alt="contact" />{" "}
+            <img src={iconoSobre} width={50} alt="contact" />
           </Link>
         </div>
       </div>

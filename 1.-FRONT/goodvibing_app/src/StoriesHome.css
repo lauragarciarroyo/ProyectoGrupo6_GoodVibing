@@ -77,3 +77,27 @@ button button {
 .date {
   color: grey;
 }
+.createtitle {
+  width: 20%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: block;
+  margin-left: 300px;
+  margin-right: 300px;
+  border: 1px solid #ccc;
+  border-radius: 15px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.2);
+  color: grey;
+}
+.createbody {
+  width: 50%;
+  padding: 100px;
+  display: block;
+  margin-left: 300px;
+  margin-right: 300px;
+  border: 1px solid #ccc;
+  border-radius: 15px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.2);
+  color: grey;
+  text-align: initial;
+}

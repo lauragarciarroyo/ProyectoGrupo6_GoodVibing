@@ -91,7 +91,7 @@ button button {
 }
 .createbody {
   width: 50%;
-  padding: 100px;
+  padding: 150px;
   display: block;
   margin-left: 300px;
   margin-right: 300px;
@@ -99,7 +99,7 @@ button button {
   border-radius: 15px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.2);
   color: grey;
-  text-align: initial;
+  text-align: super;
 }
 .createstory button {
   width: 10%;

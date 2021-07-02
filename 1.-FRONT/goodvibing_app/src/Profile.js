@@ -1,11 +1,8 @@
 import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { Redirect } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import Userinfo from "./Userinfo";
-import { makeStyles } from "@material-ui/core/styles";
-import TextField from "@material-ui/core/TextField";
-import Button from "@material-ui/core/Button";
-import { Box } from "@material-ui/core";
+
 import UploadAvatar from "./UploadAvatar";
 
 function Profile() {
@@ -17,21 +14,6 @@ function Profile() {
   const [bio, setBio] = useState(user.bio || "");
   const [birthdate, setBirthdate] = useState(user.birthdate || "");
   const [residence, setResidence] = useState(user.residence || "");
-
-  const useStyles = makeStyles((theme) => ({
-    root: {
-      marginTop: theme.spacing(4),
-      display: "flex",
-      flexDirection: "column",
-      width: "15%",
-      alignItems: "left",
-    },
-    box: {
-      margin: theme.spacing(0, 100, 0),
-    },
-  }));
-
-  const classes = useStyles();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -67,13 +49,10 @@ function Profile() {
   return (
     <div>
       <>
-        <form className={classes.root} onSubmit={handleSubmit}>
+        <form className="profile" onSubmit={handleSubmit}>
           <p>
             <label>
-              <TextField
-                id="filled-basic"
-                style={{ margin: 20 }}
-                variant="filled"
+              <input
                 placeholder="User..."
                 value={name}
                 onChange={(e) => setName(e.target.value)}
@@ -82,10 +61,7 @@ function Profile() {
           </p>
           <p>
             <label>
-              <TextField
-                id="filled-basic"
-                variant="filled"
-                style={{ margin: 20 }}
+              <input
                 placeholder="Email..."
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
@@ -95,12 +71,7 @@ function Profile() {
           </p>
           <p>
             <label>
-              <TextField
-                id="filled-basic"
-                variant="filled"
-                multiline
-                style={{ margin: 20 }}
-                rowsMax={8}
+              <input
                 placeholder="Escribe algo sobre ti..."
                 value={bio}
                 onChange={(e) => setBio(e.target.value)}
@@ -110,10 +81,7 @@ function Profile() {
           </p>
           <p>
             <label>
-              <TextField
-                id="filled-basic"
-                variant="filled"
-                style={{ margin: 20 }}
+              <input
                 value={
                   birthdate && birthdate.length > 10
                     ? birthdate.slice(0, 10)
@@ -128,10 +96,7 @@ function Profile() {
           </p>
           <p>
             <label>
-              <TextField
-                id="filled-basic"
-                variant="filled"
-                style={{ margin: 20 }}
+              <input
                 placeholder="¿Dónde vives?"
                 value={residence}
                 onChange={(e) => setResidence(e.target.value)}
@@ -140,28 +105,19 @@ function Profile() {
             </label>
           </p>
           <p></p>
-          <Button
-            type="submit"
-            variant="contained"
-            color="primary"
-            className={classes.submit}
-          >
-            Guardar cambios
-          </Button>{" "}
+          <button>Guardar cambios</button>
         </form>
-        <div className={classes.paper}>
-          <Button href="/deleteuser" color="primary">
-            Eliminar cuenta
-          </Button>{" "}
-          <Button href="/changepassword" color="primary">
-            Cambiar contraseña
-          </Button>{" "}
+        <div className="deleteuser">
+          <Link to="/deleteuser">Eliminar cuenta</Link>
         </div>
-        <div className={classes.box}>
-          <Box>
-            <Userinfo user={user} />
-          </Box>
+        <div className="changepassword">
+          <Link to="/changepassword">Cambiar contraseña</Link>
         </div>
+
+        <div className="info">
+          <Userinfo user={user} />
+        </div>
+
         <UploadAvatar />
       </>
     </div>

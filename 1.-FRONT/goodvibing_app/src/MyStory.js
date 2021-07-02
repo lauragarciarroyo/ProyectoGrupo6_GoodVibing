@@ -4,6 +4,7 @@ import UseFetchToken from "./useFetchToken";
 import CreateVote from "./CreateVote";
 import CreateComment from "./CreateComment";
 import React from "react";
+import GetComments from "./GetComments";
 
 function MyStory() {
   const { id } = useParams();
@@ -22,10 +23,14 @@ function MyStory() {
         <Link to={`/userinfo/${story.user_id}`}>{story.user_name}</Link>
       </div>
       <div className="story">{story.body}</div>
-
-      <CreateComment />
-      <p />
-      <CreateVote />
+      <div className="comment">
+        <CreateComment />
+        <p />
+        <GetComments storyUserId={story.user_id} comments={story.comments} />
+      </div>
+      <div className="votos">
+        <CreateVote />
+      </div>
       <p />
       <div>
         <Link to={`/editstory/${id}`}>Editar historia</Link>

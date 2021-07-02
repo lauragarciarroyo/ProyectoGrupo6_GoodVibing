@@ -35,13 +35,17 @@ function CreateComment() {
 
   return (
     <div>
-      <form className="comment" onSubmit={handleSubmit}>
+      <form className="comentario" onSubmit={handleSubmit}>
         <label>
-          Comentario
-          <input value={text} onChange={(e) => setText(e.target.value)} />
+          <input
+            placeholder="Escribe tu comentario..."
+            value={text}
+            onChange={(e) => setText(e.target.value)}
+          />
         </label>
-
-        <button>¡Comenta!</button>
+        <div className="button">
+          <button>Publicar</button>
+        </div>
       </form>
     </div>
   );

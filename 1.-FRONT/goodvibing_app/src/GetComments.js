@@ -30,11 +30,11 @@ function GetComments({ comments, storyUserId }) {
 
   return (
     <>
-      <div className="Comments">
+      <div className="comment">
         {comments.map((e) => (
-          <li key={e.id}>
-            <p>{e.text}</p>
-            <p>{new Date(e.date).toLocaleDateString()}</p>
+          <div className="list" key={e.id}>
+            {e.text}
+            <div className="date">{new Date(e.date).toLocaleDateString()}</div>
             <Link to={`/userinfo/${e.user_id}`}>{e.username}</Link>
             {user.id === e.user_id || user.id === storyUserId ? (
               <button
@@ -46,7 +46,7 @@ function GetComments({ comments, storyUserId }) {
                 Borrar comentario
               </button>
             ) : null}
-          </li>
+          </div>
         ))}
       </div>
     </>

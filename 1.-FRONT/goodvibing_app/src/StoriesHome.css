@@ -22,7 +22,7 @@
   margin-right: auto;
 }
 .story {
-  display: block;
+  display: flex;
   width: 700px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.5), 0 6px 20px 0 rgba(0, 0, 0, 0.5);
   margin: 40px;
@@ -49,4 +49,31 @@
 
 .bottom:hover {
   background-color: violet;
+}
+
+.comentario input {
+  width: 20%;
+  border: none;
+  height: 20px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.2);
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+button button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+.comment {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+}
+.date {
+  color: grey;
 }

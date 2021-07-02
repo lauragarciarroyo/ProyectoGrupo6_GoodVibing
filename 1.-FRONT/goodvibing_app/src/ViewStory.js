@@ -33,14 +33,14 @@ function ViewStory() {
       <div className="story">
         <p>{story.body}</p>
       </div>
-      <h2>Comentarios</h2>
-      <GetComments storyUserId={story.user_id} comments={story.comments} />
-
-      <div>
-        <CreateComment />
-
-        <p />
-
+      <div className="comment">
+        <div>
+          <CreateComment />
+        </div>
+        <GetComments storyUserId={story.user_id} comments={story.comments} />
+      </div>
+      <p />
+      <div className="votos">
         <CreateVote />
       </div>
     </aside>

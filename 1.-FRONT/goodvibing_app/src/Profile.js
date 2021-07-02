@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Link, Redirect } from "react-router-dom";
 import Userinfo from "./Userinfo";
-
+import "./profile.css";
 import UploadAvatar from "./UploadAvatar";
 
 function Profile() {
@@ -117,8 +117,9 @@ function Profile() {
         <div className="info">
           <Userinfo user={user} />
         </div>
-
-        <UploadAvatar />
+        <div className="avatar">
+          <UploadAvatar />
+        </div>
       </>
     </div>
   );

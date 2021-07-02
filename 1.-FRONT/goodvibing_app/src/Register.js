@@ -135,9 +135,6 @@ function Register() {
           </Button>
         </div>
       </form>
-      <Box mt={5}>
-        <Copyright />
-      </Box>
     </Container>
   );
 }

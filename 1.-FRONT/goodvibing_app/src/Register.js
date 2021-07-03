@@ -5,10 +5,23 @@ import { TextField } from "@material-ui/core";
 import Container from "@material-ui/core/Container";
 import Typography from "@material-ui/core/Typography";
 import Grid from "@material-ui/core/Grid";
-import Box from "@material-ui/core/Box";
 import Button from "@material-ui/core/Button";
 import Link from "@material-ui/core/Link";
 import { makeStyles } from "@material-ui/core/styles";
+
+const useStyle = makeStyles({
+  submit: {
+    background: "#84047e",
+    border: 0,
+    borderRadius: 3,
+    color: "white",
+    height: 48,
+    padding: "0 30px",
+    marginTop: "15px",
+    width: "100%",
+    type: "submit",
+  },
+});
 
 function Register() {
   const [name, setName] = useState("");
@@ -16,7 +29,7 @@ function Register() {
   const [password, setPassword] = useState("");
   const dispatch = useDispatch();
   const history = useHistory();
-
+  const classes = useStyle();
   const handleSubmit = async (e) => {
     e.preventDefault();
     const res = await fetch("http://localhost:4000/api/users", {
@@ -54,7 +67,7 @@ function Register() {
       margin: theme.spacing(3, 0, 2),
     },
   }));
-  const classes = useStyles();
+
   function Copyright() {
     return (
       <Typography variant="body2" color="textSecondary" align="center">
@@ -124,13 +137,7 @@ function Register() {
               </label>
             </Grid>
           </Grid>
-          <Button
-            type="submit"
-            fullWidth
-            variant="contained"
-            color="primary"
-            className={classes.submit}
-          >
+          <Button className={classes.submit} type="submit">
             Únete a nuestra comunidad
           </Button>
         </div>

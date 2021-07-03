@@ -1,10 +1,26 @@
 import UseFetchToken from "./useFetchToken";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import { Button, makeStyles } from "@material-ui/core";
+
+const useStyle = makeStyles({
+  buttonCreate: {
+    background: "#84047e",
+    border: 0,
+    borderRadius: 3,
+    color: "white",
+    height: 48,
+    padding: "0 30px",
+    marginTop: "15px",
+    width: "50%",
+    type: "submit",
+    marginLeft: "330px",
+  },
+});
 
 function MyStories() {
   const { user } = useSelector((state) => state.user);
-
+  const classes = useStyle();
   const [results] = UseFetchToken(
     `http://localhost:4000/api/users/${user.id}/stories`
   );
@@ -27,9 +43,9 @@ function MyStories() {
 
       {!results.length && <i>No se han encontrado historias</i>}
 
-      <div className="bottom">
-        <Link to="/createstory">Crea tu historia</Link>
-      </div>
+      <Button className={classes.buttonCreate} href="./createstory">
+        Crea tu historia
+      </Button>
     </div>
   );
 }

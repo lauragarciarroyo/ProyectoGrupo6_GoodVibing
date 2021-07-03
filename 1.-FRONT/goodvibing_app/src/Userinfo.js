@@ -52,7 +52,7 @@ function Userinfo() {
 
   return (
     <div className="userinfo">
-      <h2>{user.name}</h2>
+      <h3>{user.name}</h3>
       <p />
       <p align="center">{user.bio}</p>
       <p align="center">{user.residence}</p>

@@ -127,3 +127,16 @@ button button {
   color: grey;
   text-align: super;
 }
+
+.mystory input {
+  width: 20%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: block;
+  margin-left: 800px;
+  margin-right: 800px;
+  border: 1px solid #ccc;
+  border-radius: 15px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.2);
+  color: grey;
+}

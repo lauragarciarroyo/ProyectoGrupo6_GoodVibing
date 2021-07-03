@@ -1,12 +1,28 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory, useParams } from "react-router";
+import Button from "@material-ui/core/Button";
+import { makeStyles } from "@material-ui/core/styles";
+
+const useStyle = makeStyles({
+  submit: {
+    background: "#84047e",
+    border: 0,
+    borderRadius: 3,
+    color: "white",
+    height: 48,
+    padding: "0 30px",
+    marginTop: "15px",
+    width: "30%",
+    type: "submit",
+  },
+});
 
 function DeleteComment() {
   const token = useSelector((s) => s.user?.token);
   const { id } = useParams();
   const dispatch = useDispatch();
   const history = useHistory();
-
+  const classes = useStyle();
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (window.confirm("¿Estás seguro de eliminar tu comentario?")) {
@@ -29,7 +45,9 @@ function DeleteComment() {
 
   return (
     <form onSubmit={handleSubmit}>
-      <button>Eliminar comentario</button>
+      <Button className={classes.submit} type="submit">
+        Borrar comentario
+      </Button>
     </form>
   );
 }

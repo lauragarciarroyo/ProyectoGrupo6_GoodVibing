@@ -1,11 +1,28 @@
 import { Link, useHistory } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
+import Button from "@material-ui/core/Button";
+import { makeStyles } from "@material-ui/core/styles";
+
+const useStyle = makeStyles({
+  submit: {
+    background: "#84047e",
+    border: 0,
+    borderRadius: 3,
+    color: "white",
+    height: 30,
+    padding: "0 30px",
+    marginTop: "15px",
+    marginLeft: "10px",
+    width: "20%",
+    type: "submit",
+  },
+});
 
 function GetComments({ comments, storyUserId }) {
   const { token, user } = useSelector((state) => state.user);
   const dispatch = useDispatch();
   const history = useHistory();
-
+  const classes = useStyle();
   const deleteComment = async (id) => {
     console.log(id);
     try {
@@ -37,14 +54,15 @@ function GetComments({ comments, storyUserId }) {
             <div className="date">{new Date(e.date).toLocaleDateString()}</div>
             <Link to={`/userinfo/${e.user_id}`}>{e.username}</Link>
             {user.id === e.user_id || user.id === storyUserId ? (
-              <button
+              <Button
+                className={classes.submit}
                 onClick={(event) => {
                   event.preventDefault();
                   deleteComment(e.id);
                 }}
               >
                 Borrar comentario
-              </button>
+              </Button>
             ) : null}
           </div>
         ))}

@@ -1,14 +1,29 @@
 import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useParams, useHistory } from "react-router-dom";
+import Button from "@material-ui/core/Button";
+import { makeStyles } from "@material-ui/core/styles";
+
+const useStyle = makeStyles({
+  submit: {
+    background: "#84047e",
+    border: 0,
+    borderRadius: 3,
+    color: "white",
+    height: 48,
+    padding: "0 30px",
+    marginTop: "15px",
+    width: "30%",
+    type: "submit",
+  },
+});
 
 function CreateComment() {
   const token = useSelector((s) => s.user?.token);
   const history = useHistory();
-
+  const classes = useStyle();
   const { id } = useParams();
   const dispatch = useDispatch();
-
   const [text, setText] = useState("");
 
   const handleSubmit = async (e) => {
@@ -43,9 +58,9 @@ function CreateComment() {
             onChange={(e) => setText(e.target.value)}
           />
         </label>
-        <div className="button">
-          <button>Publicar</button>
-        </div>
+        <Button className={classes.submit} type="submit">
+          Publica
+        </Button>
       </form>
     </div>
   );

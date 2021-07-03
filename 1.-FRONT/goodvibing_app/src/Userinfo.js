@@ -2,12 +2,30 @@ import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Link, useParams } from "react-router-dom";
 import { Grid } from "@material-ui/core";
+import { Button } from "@material-ui/core";
+import { makeStyles } from "@material-ui/core";
+
+const useStyle = makeStyles({
+  submit: {
+    background: "#84047e",
+    border: 0,
+    borderRadius: 3,
+    color: "white",
+    height: 48,
+    padding: "0 30px",
+    marginTop: "15px",
+    width: "30%",
+    type: "submit",
+    marginLeft: "450px",
+  },
+});
 
 function Userinfo() {
   const { token } = useSelector((state) => state.user);
   const dispatch = useDispatch();
   const [user, setUser] = useState();
   const { id } = useParams();
+  const classes = useStyle();
 
   useEffect(() => {
     const loadUser = async () => {
@@ -43,11 +61,13 @@ function Userinfo() {
       <p align="center">{user.email}</p>
       <p />
       <div>
-        <Grid container justify="center">
-          <Link to={`/viewstories/${id}`} align="center">
-            Ver historias del usuario
-          </Link>
-        </Grid>
+        <Button
+          className={classes.submit}
+          type="submit"
+          href={`/viewstories/${id}`}
+        >
+          Ver historias del usuario
+        </Button>
       </div>
     </div>
   );

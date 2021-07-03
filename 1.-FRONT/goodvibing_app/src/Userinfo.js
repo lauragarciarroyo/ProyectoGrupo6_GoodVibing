@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { Link, useParams } from "react-router-dom";
-import { Grid } from "@material-ui/core";
+import { useParams } from "react-router-dom";
 import { Button } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core";
 

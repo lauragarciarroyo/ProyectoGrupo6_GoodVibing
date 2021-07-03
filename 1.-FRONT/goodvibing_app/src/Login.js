@@ -44,7 +44,7 @@ function Login() {
       dispatch({ type: "SET_ERROR", message: data.message });
     }
   };
-  const useStyles = makeStyles((theme) => ({
+  const useStyle = makeStyles((theme) => ({
     paper: {
       marginTop: theme.spacing(8),
       display: "flex",

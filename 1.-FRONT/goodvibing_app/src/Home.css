@@ -8,6 +8,7 @@ body {
 
 .container {
   width: 100%;
+  max-height: min-content;
 }
 
 .flex-container {
@@ -22,21 +23,30 @@ body {
   background-color: white;
 }
 
-.search {
-  width: 20%;
-  position: relative;
+.search input {
   display: flex;
-  margin-top: 35px;
+  justify-content: space-between;
+  align-content: space-between;
+  align-items: space-between;
+  border: 3px solid #84047e;
+  margin-left: auto;
+  width: 200%;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 20px;
+  text-align: center;
+  color: #84047e;
+  padding: 20px;
+  height: 10px;
+  margin-right: auto;
 }
 
 .searchTerm {
-  width: 100%;
   border: 3px solid #84047e;
-  border-right: none;
+
   padding: 5px;
   height: 20px;
   border-radius: 5px 0 0 5px;
-  outline: none;
   color: #84047e;
 }
 
@@ -58,11 +68,13 @@ body {
 }
 
 .wrap {
-  width: 30%;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  width: 50%;
+  justify-content: space-between;
+  align-content: space-between;
+  align-items: space-between;
+  margin: auto;
+  padding: auto;
+  margin-right: 1px;
 }
 
 .footer {
@@ -97,7 +109,7 @@ h1 {
 
 h2 {
   font-family: "Dancing Script", cursive;
-  font-size: 1000%;
+  font-size: 500%;
   color: white;
   -webkit-text-stroke: 1px #84047e;
   text-align: center;

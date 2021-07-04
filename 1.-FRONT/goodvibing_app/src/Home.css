@@ -26,24 +26,22 @@ body {
 .search input {
   display: flex;
   justify-content: space-between;
-  align-content: space-between;
   align-items: space-between;
   border: 3px solid #84047e;
-  margin-left: auto;
-  width: 200%;
-  border-radius: 20px;
+  width: 400%;
+  border-radius: 10px;
   cursor: pointer;
   font-size: 20px;
   text-align: center;
   color: #84047e;
-  padding: 20px;
-  height: 10px;
-  margin-right: auto;
+  padding: 15px;
+  height: auto;
+  margin-left: 20px;
+  margin-right: 20px;
 }
 
 .searchTerm {
   border: 3px solid #84047e;
-
   padding: 5px;
   height: 20px;
   border-radius: 5px 0 0 5px;
@@ -69,12 +67,15 @@ body {
 
 .wrap {
   width: 50%;
-  justify-content: space-between;
   align-content: space-between;
   align-items: space-between;
   margin: auto;
   padding: auto;
-  margin-right: 1px;
+  margin-right: 30px;
+  margin-left: 30px;
+}
+.wrap img {
+  margin-left: 100%;
 }
 
 .footer {

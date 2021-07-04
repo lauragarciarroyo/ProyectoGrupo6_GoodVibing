@@ -126,5 +126,9 @@ h3 {
 }
 
 h3 a {
-  color: darkviolet;
+  color: #84047e;
+  font-family: "Open Sans", sans-serif;
+  text-align: center;
+  margin-top: 30px;
+  text-decoration: none;
 }

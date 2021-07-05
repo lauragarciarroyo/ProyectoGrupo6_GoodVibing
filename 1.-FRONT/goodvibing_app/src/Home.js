@@ -1,6 +1,6 @@
 import React from "react";
 import StoriesHome from "./StoriesHome";
-import "./Home.css";
+import "./App.css";
 
 export default function Home() {
   return (

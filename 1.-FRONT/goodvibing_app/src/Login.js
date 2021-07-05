@@ -4,32 +4,17 @@ import { Redirect } from "react-router-dom";
 import Button from "@material-ui/core/Button";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
-import Link from "@material-ui/core/Link";
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import { TextField } from "@material-ui/core";
-
-const useStyle = makeStyles({
-  submit: {
-    background: "#84047e",
-    border: 0,
-    borderRadius: 3,
-    color: "white",
-    height: 48,
-    padding: "0 30px",
-    marginTop: "15px",
-    width: "100%",
-    type: "submit",
-  },
-});
 
 function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const isLoggedIn = useSelector((s) => !!s.user);
   const dispatch = useDispatch();
-  const classes = useStyle();
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     const res = await fetch("http://localhost:4000/api/users/login", {
@@ -61,21 +46,18 @@ function Login() {
     },
     submit: {
       margin: theme.spacing(3, 0, 2),
+      background: "#84047e",
+      border: 0,
+      borderRadius: 3,
+      color: "white",
+      height: 48,
+      padding: "0 30px",
+      marginTop: "15px",
+      width: "100%",
+      type: "submit",
     },
   }));
-
-  function Copyright() {
-    return (
-      <Typography variant="body2" color="textSecondary" align="center">
-        {"Copyright © "}
-        <Link color="inherit" href="./">
-          GoodVibing
-        </Link>{" "}
-        {new Date().getFullYear()}
-        {"."}
-      </Typography>
-    );
-  }
+  const classes = useStyle();
 
   if (isLoggedIn) {
     return <Redirect to="/" />;

@@ -15,7 +15,7 @@ const useStyle = makeStyles({
     marginTop: "15px",
     width: "20%",
     type: "submit",
-    marginLeft: "10px",
+    marginLeft: "650px",
   },
 });
 

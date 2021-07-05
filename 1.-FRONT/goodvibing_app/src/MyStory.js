@@ -19,7 +19,7 @@ const useStyle = makeStyles({
     marginTop: "15px",
     width: "30%",
     type: "submit",
-    marginLeft: "450px",
+    marginLeft: "280px",
   },
 });
 

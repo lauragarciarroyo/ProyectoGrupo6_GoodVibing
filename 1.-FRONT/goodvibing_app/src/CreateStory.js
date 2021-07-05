@@ -3,12 +3,28 @@ import Header from "./Header";
 import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
+import { Button } from "@material-ui/core";
+import { makeStyles } from "@material-ui/core";
+
+const useStyle = makeStyles({
+  submit: {
+    background: "#84047e",
+    border: 0,
+    borderRadius: 3,
+    color: "white",
+    height: 48,
+    padding: "0 30px",
+    marginTop: "15px",
+    width: "100%",
+    type: "submit",
+  },
+});
 
 function CreateStory() {
   const history = useHistory();
   const [title, setTitle] = useState("");
   const [body, setBody] = useState("");
-
+  const classes = useStyle();
   const token = useSelector((s) => s.user.token);
   const dispatch = useDispatch();
   const handleSubmit = async (e) => {
@@ -59,7 +75,9 @@ function CreateStory() {
         </label>
         <p />
 
-        <button>Guardar historia</button>
+        <Button className={classes.submit} type="submit">
+          Publica
+        </Button>
       </form>
     </div>
   );

@@ -5,11 +5,13 @@ import "./Home.css";
 export default function Home() {
   return (
     <div>
-      <h2> Bienvenido a </h2>
-      <h1>Goodvibing</h1>
-      <h2>La plataforma donde podrás compartir</h2>
+      <h1> Bienvenido a </h1>
+      <h2>Goodvibing</h2>
+      <h1>La plataforma donde podrás compartir</h1>
       <h3>
-        <strong>SOLO BUENAS NOTICIAS</strong>
+        <strong>
+          <u>SOLO</u> <u>BUENAS</u> <u>NOTICIAS</u>
+        </strong>
       </h3>
       <StoriesHome />;
     </div>

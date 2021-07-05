@@ -168,8 +168,8 @@ async function viewStories(req, res, next) {
 
 async function editStories(req, res, next) {
   try {
-    const { id_story } = req.params; //Id de la historia que queremos editar
-    const { id } = req.auth; //Id del usuario que viene del token
+    const { id_story } = req.params;
+    const { id } = req.auth;
     const { body, title, date } = req.body;
 
     console.log(id_story);

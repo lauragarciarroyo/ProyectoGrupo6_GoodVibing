@@ -8,11 +8,29 @@ import iconoSobre from "./assets/img/iconoSobre.png";
 import UserAvatar from "./UserAvatar";
 import login from "./assets/img/login.png";
 import register from "./assets/img/register.png";
+import { Button } from "@material-ui/core";
+import SearchIcon from "@material-ui/icons/Search";
+import { makeStyles } from "@material-ui/core";
+
+const useStyle = makeStyles({
+  submit: {
+    background: "#84047e",
+    border: 0,
+    borderRadius: 3,
+    color: "white",
+    height: 48,
+    padding: "0 30px",
+    marginTop: "15px",
+    width: "15%",
+    type: "submit",
+  },
+});
 
 export default function SearchAppBar() {
   const user = useSelector((state) => state.user);
   const [search, setSearch] = useState(null);
   const history = useHistory();
+  const classes = useStyle();
 
   return (
     <div className="container">
@@ -21,7 +39,7 @@ export default function SearchAppBar() {
           <img src={logo} width={100} href="/" alt="home" />
         </Link>
 
-        <div className="search">
+        <div className="search" width="50%">
           <form
             onSubmit={(e) => {
               e.preventDefault();
@@ -36,6 +54,9 @@ export default function SearchAppBar() {
                 setSearch(e.target.value);
               }}
             />
+            <Button className={classes.submit} type="submit">
+              Go!
+            </Button>
           </form>
         </div>
         <div className="wrap">

@@ -12,7 +12,7 @@ function Search({ q }) {
     <div className="search">
       {stories.data.length > 0 ? (
         <div className="history">
-          <h2>Historias</h2>
+          <h3>Historias</h3>
           <ul>
             {stories.data.map((s) => (
               <div key={s.id}>

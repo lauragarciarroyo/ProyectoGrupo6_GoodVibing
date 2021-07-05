@@ -9,7 +9,6 @@ import UserAvatar from "./UserAvatar";
 import login from "./assets/img/login.png";
 import register from "./assets/img/register.png";
 import { Button } from "@material-ui/core";
-import SearchIcon from "@material-ui/icons/Search";
 import { makeStyles } from "@material-ui/core";
 
 const useStyle = makeStyles({

@@ -38,7 +38,7 @@ function UploadImage() {
       <ImageStory src={ImageStory} />
       <label>
         Imagen:
-        <input onChange={(e) => setFile(e.target.file)} type="file" />
+        <input onChange={(e) => setFile(e.target.files[0])} type="file" />
       </label>
       <button>Enviar</button>
     </form>

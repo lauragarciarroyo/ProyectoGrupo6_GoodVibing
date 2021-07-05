@@ -5,6 +5,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { Button } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core";
+import UploadImage from "./UploadImage";
 
 const useStyle = makeStyles({
   submit: {
@@ -74,6 +75,7 @@ function CreateStory() {
           />
         </label>
         <p />
+        <UploadImage />
 
         <Button className={classes.submit} type="submit">
           Publica

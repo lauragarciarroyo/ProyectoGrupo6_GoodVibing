@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useParams, useHistory } from "react-router-dom";
 import StoryUserEdit from "./StoryUserEdit";
+import UploadImage from "./UploadImage";
 
 function EditStory({ story }) {
   const [body, setBody] = useState();
@@ -68,6 +69,7 @@ function EditStory({ story }) {
               type="date"
             />
           </label>
+          <UploadImage />
         </p>
         <button>Editar historia</button>
       </form>

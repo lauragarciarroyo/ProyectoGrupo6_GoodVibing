@@ -258,7 +258,7 @@ async function addStoryImage(req, res, next) {
     const savedImage = await saveImage({ data: req.files.image.data });
 
     //Guardar ese nombre de fichero en la tabla de historias
-    const storyPhoto = await storiesRepository.setStoryPhoto({
+    await storiesRepository.setStoryPhoto({
       user_id: id,
       id_story,
       image: savedImage,
@@ -268,7 +268,6 @@ async function addStoryImage(req, res, next) {
     res.send({
       status: "ok",
       data: savedImage,
-      storyPhoto,
     });
   } catch (err) {
     next(err);

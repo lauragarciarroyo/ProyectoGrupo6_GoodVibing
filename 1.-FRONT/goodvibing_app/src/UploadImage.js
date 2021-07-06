@@ -27,7 +27,12 @@ function UploadImage() {
         },
         body: fd,
       });
-      await res.json();
+      const { data } = await res.json();
+      if (res.ok) {
+        file(data);
+      } else {
+        throw new Error(data.error);
+      }
     } catch (error) {
       dispatch({ type: "SET_ERROR", message: error.message });
     }

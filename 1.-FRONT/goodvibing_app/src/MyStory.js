@@ -42,7 +42,9 @@ function MyStory() {
       <div className="comment">
         <CreateComment />
         <p />
-        <GetComments storyUserId={story.user_id} comments={story.comments} />
+        <div className="comments">
+          <GetComments storyUserId={story.user_id} comments={story.comments} />
+        </div>
       </div>
       <div className="votos" align="center">
         <CreateVote />

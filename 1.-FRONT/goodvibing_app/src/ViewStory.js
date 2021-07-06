@@ -37,7 +37,9 @@ function ViewStory() {
         <div>
           <CreateComment />
         </div>
-        <GetComments storyUserId={story.user_id} comments={story.comments} />
+        <div className="Comments">
+          <GetComments storyUserId={story.user_id} comments={story.comments} />
+        </div>
       </div>
       <p />
       <div className="votos" align="center">

@@ -40,7 +40,7 @@ function UploadImage() {
 
   return (
     <form onSubmit={handleSubmit}>
-      <ImageStory src={ImageStory} />
+      <ImageStory src={ImageStory.image} />
       <label>
         Imagen:
         <input onChange={(e) => setFile(e.target.files[0])} type="file" />

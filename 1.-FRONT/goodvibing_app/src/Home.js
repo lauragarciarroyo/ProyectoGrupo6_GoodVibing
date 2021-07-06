@@ -1,6 +1,7 @@
 import React from "react";
 import StoriesHome from "./StoriesHome";
 import "./App.css";
+import Navbar from "./Navbar";
 
 export default function Home() {
   return (

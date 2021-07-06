@@ -3,7 +3,7 @@ import "./App.css";
 import Profile from "./Profile";
 import Message from "./Message";
 import { Switch, Route, Redirect } from "react-router-dom";
-import Nav from "./Nav";
+import Navbar from "./Navbar";
 import Home from "./Home";
 import Contact from "./Contact";
 import CreateStory from "./CreateStory";
@@ -49,7 +49,7 @@ function App() {
   return (
     <div className="App">
       <ErrorMesage />
-      <Nav />
+      <Navbar />
       <Switch>
         <Route path="/" exact>
           <Home />

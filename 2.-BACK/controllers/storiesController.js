@@ -267,7 +267,8 @@ async function addStoryImage(req, res, next) {
     //Dar una respuesta
     res.send({
       status: "ok",
-      data: storyPhoto,
+      data: savedImage,
+      storyPhoto,
     });
   } catch (err) {
     next(err);

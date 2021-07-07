@@ -3,8 +3,7 @@ import useFetchToken from "./useFetchToken";
 import { useDispatch } from "react-redux";
 import CreateComment from "./CreateComment";
 import GetComments from "./GetComments";
-import CreateVote from "./CreateVote";
-
+import Vote from "./vote";
 function ViewStory() {
   const { id } = useParams();
   const dispatch = useDispatch();
@@ -43,7 +42,7 @@ function ViewStory() {
       </div>
       <p />
       <div className="votos" align="center">
-        <CreateVote />
+        <Vote />
       </div>
     </aside>
   );

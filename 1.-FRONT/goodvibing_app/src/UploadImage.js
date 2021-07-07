@@ -28,6 +28,8 @@ function UploadImage() {
         body: fd,
       });
       const { data } = await res.json();
+      console.log("data", data);
+
       if (res.ok) {
         file(data);
       } else {
@@ -39,14 +41,16 @@ function UploadImage() {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <ImageStory src={ImageStory.image} />
-      <label>
-        Imagen:
-        <input onChange={(e) => setFile(e.target.files[0])} type="file" />
-      </label>
-      <button>Enviar</button>
-    </form>
+    <div className="UploadImage">
+      <ImageStory />
+      <form onSubmit={handleSubmit}>
+        <label>
+          Imagen:
+          <input onChange={(e) => setFile(e.target.files[0])} type="file" />
+        </label>
+        <button>Enviar</button>
+      </form>
+    </div>
   );
 }
 

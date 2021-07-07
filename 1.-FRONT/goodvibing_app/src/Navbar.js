@@ -57,47 +57,48 @@ export default function Navbar() {
                     history.push(`/search?q=${search}`);
                   }
                 }}
-              ></form>
-              <div
-                className="flexsearch--input-wrapper"
-                padding="0 66px 0 0"
-                overFlow="hidden"
               >
                 <div
-                  className="flexsearch--input"
-                  width="100"
-                  boxSizing="content-box"
-                  height="60px"
-                  padding="0 40px 0 10px"
-                  borderColor="#84047e"
-                  borderRadius="35px"
-                  borderStyle="solid"
-                  borderWidth="5px"
-                  marginTop="15px"
-                  color="#84047e"
-                  fontSize="15px"
-                  placeholder="Busca una experiencia"
-                  onChange={(e) => {
-                    setSearch(e.target.value);
-                  }}
-                ></div>
-                <div
-                  className="flexsearch--submit"
-                  position="absolute"
-                  right="0"
-                  top="0"
-                  display="block"
-                  width="60px"
-                  height="60px"
-                  padding="0"
-                  border="none"
-                  marginTop="20px"
-                  marginRight="5px"
-                  color="#84047e"
-                  fontSize="20px"
-                  lineHeight="60px"
-                ></div>
-              </div>
+                  className="flexsearch--input-wrapper"
+                  padding="0 66px 0 0"
+                  overFlow="hidden"
+                >
+                  <input
+                    className="flexsearch--input"
+                    width="100"
+                    boxSizing="content-box"
+                    height="60px"
+                    padding="0 40px 0 10px"
+                    borderColor="#84047e"
+                    borderRadius="35px"
+                    borderStyle="solid"
+                    borderWidth="5px"
+                    marginTop="15px"
+                    color="#84047e"
+                    fontSize="15px"
+                    placeholder="Busca una experiencia"
+                    onChange={(e) => {
+                      setSearch(e.target.value);
+                    }}
+                  ></input>
+                  <div
+                    className="flexsearch--submit"
+                    position="absolute"
+                    right="0"
+                    top="0"
+                    display="block"
+                    width="60px"
+                    height="60px"
+                    padding="0"
+                    border="none"
+                    marginTop="20px"
+                    marginRight="5px"
+                    color="#84047e"
+                    fontSize="20px"
+                    lineHeight="60px"
+                  ></div>
+                </div>
+              </form>
             </div>
           </div>
         </div>

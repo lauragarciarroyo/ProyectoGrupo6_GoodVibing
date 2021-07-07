@@ -106,17 +106,32 @@ export default function Navbar() {
             <img src={dados} width={150} href="./RandomStories" alt="random" />
           </Link>
         </div>
-        <div className="login">
-          <Link to="./Login">
-            <img src={login} width={100} href="./Login" alt="login" />
-          </Link>
-        </div>
-        <div className="register">
-          <Link to="./Register">
-            <img src={register} width={100} href="./Register" alt="registro" />
-          </Link>
-        </div>
+
+        {!user ? (
+          <>
+            <div className="login">
+              <Link to="./Login">
+                <img src={login} width={100} href="./Login" alt="login" />
+              </Link>
+            </div>
+            <div className="register">
+              <Link to="./Register">
+                <img
+                  src={register}
+                  width={100}
+                  href="./Register"
+                  alt="registro"
+                />
+              </Link>
+            </div>
+          </>
+        ) : (
+          <>
+            <UserAvatar src={user.user.avatar} />
+          </>
+        )}
       </div>
+
       <div className="btn-flotante">
         <NavLink to="/contact"></NavLink>
         <Link to="/contact">

@@ -65,8 +65,8 @@ export default function UserAvatar({ src }) {
   );
   const useStyles = makeStyles((theme) => ({
     large: {
-      width: theme.spacing(7),
-      height: theme.spacing(7),
+      width: "150px",
+      height: "100px",
     },
   }));
   const classes = useStyles();
@@ -83,6 +83,7 @@ export default function UserAvatar({ src }) {
               aria-haspopup="true"
               onClick={handleProfileMenuOpen}
               color="inherit"
+              className={classes.large}
             >
               <AccountCircle />
             </Avatar>

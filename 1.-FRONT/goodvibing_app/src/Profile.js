@@ -1,14 +1,31 @@
 import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { Link, Redirect } from "react-router-dom";
+import { Redirect } from "react-router-dom";
 import Userinfo from "./Userinfo";
 import "./profile.css";
 import UploadAvatar from "./UploadAvatar";
+import Button from "@material-ui/core/Button";
+import { makeStyles } from "@material-ui/core/styles";
+
+const useStyle = makeStyles({
+  submit: {
+    background: "#84047e",
+    border: 0,
+    borderRadius: 3,
+    color: "white",
+    height: 48,
+    padding: "0 30px",
+    marginTop: "15px",
+    width: "20%",
+    type: "submit",
+    marginLeft: "300px",
+  },
+});
 
 function Profile() {
   const { token, user } = useSelector((state) => state.user);
   const dispatch = useDispatch();
-
+  const classes = useStyle();
   const [name, setName] = useState(user.name);
   const [email, setEmail] = useState(user.email);
   const [bio, setBio] = useState(user.bio || "");
@@ -49,6 +66,13 @@ function Profile() {
   return (
     <div>
       <>
+        <div className="info">
+          <Userinfo user={user} />
+        </div>
+        <div className="avatar">
+          <UploadAvatar />
+        </div>
+
         <form className="profile" onSubmit={handleSubmit}>
           <p>
             <label>
@@ -105,21 +129,22 @@ function Profile() {
             </label>
           </p>
           <p></p>
-          <button>Guardar cambios</button>
+          <Button className={classes.submit} type="submit">
+            Guardar cambios
+          </Button>
         </form>
-        <div className="deleteuser">
-          <Link to="/deleteuser">Eliminar cuenta</Link>
-        </div>
-        <div className="changepassword">
-          <Link to="/changepassword">Cambiar contraseña</Link>
-        </div>
-
-        <div className="info">
-          <Userinfo user={user} />
-        </div>
-        <div className="avatar">
-          <UploadAvatar />
-        </div>
+        <p></p>
+        <Button className={classes.submit} type="submit" href="./deleteuser">
+          Eliminar cuenta
+        </Button>
+        <p></p>
+        <Button
+          className={classes.submit}
+          type="submit"
+          href="./changepassword"
+        >
+          Cambiar contraseña
+        </Button>
       </>
     </div>
   );

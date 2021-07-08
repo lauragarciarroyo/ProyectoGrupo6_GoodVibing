@@ -29,10 +29,11 @@ export default function Header(props) {
     <React.Fragment>
       <Toolbar className={classes.toolbar}>
         <Typography
-          component="h4"
+          component="h3"
           variant="h5"
-          color="inherit"
+          color="#84047e"
           align="center"
+          fontWeight="bold"
           noWrap
           className={classes.toolbarTitle}
         >

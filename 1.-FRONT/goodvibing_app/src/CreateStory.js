@@ -16,8 +16,13 @@ const useStyle = makeStyles({
     height: 48,
     padding: "0 30px",
     marginTop: "15px",
-    width: "100%",
+    width: "30%",
     type: "submit",
+    marginLeft: "600px",
+  },
+  title: {
+    fontFamily: "Open Sans, sans serif",
+    color: "#84047e",
   },
 });
 
@@ -53,7 +58,7 @@ function CreateStory() {
     <div className="createstory">
       <Header title="¡Bienvenid@ a tu blog!" />
       <div className="preview">
-        <h1>{title}</h1>
+        <h3>{title}</h3>
         <p>{body}</p>
       </div>
       <form className="create" onSubmit={handleSubmit}>
@@ -75,7 +80,9 @@ function CreateStory() {
           />
         </label>
         <p />
-        <UploadImage />
+        <div align="center">
+          <UploadImage />
+        </div>
 
         <Button className={classes.submit} type="submit">
           Publica

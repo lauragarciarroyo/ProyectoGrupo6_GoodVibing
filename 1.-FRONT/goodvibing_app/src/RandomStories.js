@@ -8,7 +8,7 @@ function RandomStories({ q }) {
 
   return (
     <div className="randomstories">
-      <h1>Explora historias aleatorias</h1>
+      <h3>Explora historias aleatorias</h3>
       <div>
         {stories.data.map((s) => (
           <div key={s.id}>

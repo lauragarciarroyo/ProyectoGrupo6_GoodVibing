@@ -53,6 +53,7 @@ function CreateComment() {
       <form className="comentario" onSubmit={handleSubmit}>
         <label>
           <input
+            className="createtitle"
             placeholder="Escribe tu comentario..."
             value={text}
             onChange={(e) => setText(e.target.value)}

@@ -23,7 +23,7 @@ function ViewStory() {
 
   return (
     <aside>
-      <h1>{story.title}</h1>
+      <h3>{story.title}</h3>
 
       <p align="center ">{new Date(story.date).toLocaleDateString()}</p>
       <div className="name">

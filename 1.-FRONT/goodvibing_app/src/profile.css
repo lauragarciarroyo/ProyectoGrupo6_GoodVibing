@@ -10,17 +10,7 @@
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.2);
   color: grey;
 }
-.profile button {
-  width: 10%;
-  padding: 12px;
-  margin: 8px;
-  display: block;
-  margin-left: 300px;
-  margin-right: 300px;
-  border: 1px solid #ccc;
-  border-radius: 15px;
-  background-color: rgb(246, 189, 246);
-}
+
 .deleteuser {
   background-color: rgb(246, 189, 246);
   width: 10%;
@@ -46,4 +36,10 @@
   display: block;
   text-align: center;
   text-decoration: none;
+}
+
+.avatar {
+  display: block;
+  justify-content: right;
+  margin-left: 80%;
 }

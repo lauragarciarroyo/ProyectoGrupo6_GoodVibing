@@ -1,4 +1,3 @@
-//Ver mi historia, desde aquí se puede editar y borrar
 import { Link, useParams } from "react-router-dom";
 import UseFetchToken from "./useFetchToken";
 import CreateVote from "./CreateVote";
@@ -73,5 +72,3 @@ function MyStory() {
 }
 
 export default MyStory;
-
-//Modificar los links del final (modificar historia y eliminarla)

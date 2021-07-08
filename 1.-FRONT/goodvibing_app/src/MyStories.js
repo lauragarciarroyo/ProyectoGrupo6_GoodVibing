@@ -5,6 +5,9 @@ import { Button, makeStyles } from "@material-ui/core";
 
 const useStyle = makeStyles({
   buttonCreate: {
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
     background: "#84047e",
     border: 0,
     borderRadius: 3,
@@ -14,7 +17,7 @@ const useStyle = makeStyles({
     marginTop: "15px",
     width: "25%",
     type: "submit",
-    marginLeft: "330px",
+    marginLeft: "600px",
   },
 });
 
@@ -31,7 +34,7 @@ function MyStories() {
 
   return (
     <div className="mystories">
-      <h1>Tus historias</h1>
+      <h3>Tus historias</h3>
 
       {results.map((e) => (
         <div className="historias" key={e.id}>
@@ -51,5 +54,3 @@ function MyStories() {
 }
 
 export default MyStories;
-
-//Ver mis historias, en lista, la previsualización

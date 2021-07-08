@@ -47,7 +47,7 @@ function GetComments({ comments, storyUserId }) {
 
   return (
     <>
-      <div className="comment">
+      <div className="createcomment">
         {comments.map((e) => (
           <div className="list" key={e.id}>
             {e.text}

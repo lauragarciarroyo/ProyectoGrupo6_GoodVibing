@@ -1,3 +1,8 @@
+.storieshome {
+  display: flex;
+  justify-content: center;
+}
+
 .cajas {
   display: block;
   width: 525px;
@@ -28,13 +33,21 @@
   margin: 40px;
   padding: 40px;
   text-align: center;
+  font-family: "Open Sans", sans-serif;
+  font-weight: bold;
   border-radius: 10px;
   height: 250px;
   margin-left: auto;
   margin-right: auto;
+  color: #84047e;
+  font-size: medium;
 }
 .name {
   text-align: center;
+  text-decoration: none;
+  font-size: 30px;
+  font-family: "Open Sans", sans-serif;
+  color: #84047e;
 }
 .bottom {
   background-color: white;
@@ -82,7 +95,7 @@ button button {
   color: gray;
 }
 .date {
-  color: grey;
+  color: #84047e;
 }
 .createtitle {
   width: 20%;
@@ -106,7 +119,7 @@ button button {
   border-radius: 15px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2),
     0 6px 20px 0 rgba(122, 37, 156, 0.2);
-  color: grey;
+  color: #84047e;
   text-align: super;
 }
 .createstory button {
@@ -128,7 +141,7 @@ button button {
   margin-left: auto;
   margin-right: auto;
 
-  color: grey;
+  color: #84047e;
   text-align: super;
 }
 
@@ -142,5 +155,17 @@ button button {
   border: 1px solid #ccc;
   border-radius: 15px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.2);
-  color: grey;
+  color: #84047e;
+}
+
+.userinfo {
+  color: #84047e;
+  font-family: "Open Sans", sans-serif;
+  font-size: larger;
+  justify-content: center;
+}
+
+.info {
+  color: #84047e;
+  justify-content: center;
 }

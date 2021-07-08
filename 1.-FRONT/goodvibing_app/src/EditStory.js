@@ -3,12 +3,29 @@ import { useSelector, useDispatch } from "react-redux";
 import { useParams, useHistory } from "react-router-dom";
 import StoryUserEdit from "./StoryUserEdit";
 import UploadImage from "./UploadImage";
+import { Button } from "@material-ui/core";
+import { makeStyles } from "@material-ui/core";
+
+const useStyle = makeStyles({
+  submit: {
+    background: "#84047e",
+    border: 0,
+    borderRadius: 3,
+    color: "white",
+    height: 48,
+    padding: "0 30px",
+    marginTop: "15px",
+    marginLeft: "700px",
+    width: "10%",
+    type: "submit",
+  },
+});
 
 function EditStory({ story }) {
   const [body, setBody] = useState();
   const [title, settitle] = useState();
   const [date, setDate] = useState();
-
+  const classes = useStyle();
   const dispatch = useDispatch();
   const history = useHistory();
   const token = useSelector((s) => s.user?.token);
@@ -46,6 +63,7 @@ function EditStory({ story }) {
         <p>
           <label>
             <input
+              className="createtitle"
               placeholder="Escribe un título..."
               value={title}
               onChange={(e) => settitle(e.target.value)}
@@ -69,9 +87,10 @@ function EditStory({ story }) {
               type="date"
             />
           </label>
-          <UploadImage />
         </p>
-        <button>Editar historia</button>
+        <Button className={classes.submit} type="submit">
+          Publica
+        </Button>
       </form>
     </>
   );

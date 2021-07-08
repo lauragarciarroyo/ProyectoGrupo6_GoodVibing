@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
 import { Button } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core";
+import Footer from "./Footer";
 
 const useStyle = makeStyles({
   submit: {
@@ -48,7 +49,7 @@ function Userinfo() {
     loadUser();
   }, [token, setUser, dispatch, id]);
 
-  if (!user) return <p>Cargando...</p>;
+  if (!user) return <p></p>;
 
   return (
     <div className="userinfo">
@@ -71,5 +72,7 @@ function Userinfo() {
     </div>
   );
 }
+
+<Footer />;
 
 export default Userinfo;

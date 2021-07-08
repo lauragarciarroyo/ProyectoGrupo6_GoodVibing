@@ -61,10 +61,19 @@ function Register() {
     },
     form: {
       width: "100%", // Fix IE 11 issue.
-      marginTop: theme.spacing(3),
+      marginTop: theme.spacing(1),
     },
     submit: {
       margin: theme.spacing(3, 0, 2),
+      background: "#84047e",
+      border: 0,
+      borderRadius: 3,
+      color: "white",
+      height: 48,
+      padding: "0 30px",
+      marginTop: "15px",
+      width: "100%",
+      type: "submit",
     },
   }));
 

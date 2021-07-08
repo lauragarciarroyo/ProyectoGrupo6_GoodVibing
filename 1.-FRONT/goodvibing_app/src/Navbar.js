@@ -9,12 +9,28 @@ import dados from "./assets/img/dados.png";
 import login from "./assets/img/login.png";
 import register from "./assets/img/register.png";
 import iconoSobre from "./assets/img/iconoSobre.png";
+import Button from "@material-ui/core/Button";
+import { makeStyles } from "@material-ui/core/styles";
+
+const useStyle = makeStyles({
+  submit: {
+    background: "#84047e",
+    border: 0,
+    borderRadius: "50%",
+    color: "white",
+    height: "50px",
+    padding: "0 10px",
+    marginTop: "15px",
+    width: "20%",
+    type: "submit",
+  },
+});
 
 export default function Navbar() {
   const user = useSelector((state) => state.user);
   const [search, setSearch] = useState(null);
   const history = useHistory();
-
+  const classes = useStyle();
   return (
     <div className="container" width={100}>
       <div
@@ -81,22 +97,9 @@ export default function Navbar() {
                       setSearch(e.target.value);
                     }}
                   ></input>
-                  <div
-                    className="flexsearch--submit"
-                    position="absolute"
-                    right="0"
-                    top="0"
-                    display="block"
-                    width="60px"
-                    height="60px"
-                    padding="0"
-                    border="none"
-                    marginTop="20px"
-                    marginRight="5px"
-                    color="#84047e"
-                    fontSize="20px"
-                    lineHeight="60px"
-                  ></div>
+                  <Button className={classes.submit} type="submit">
+                    Go!
+                  </Button>
                 </div>
               </form>
             </div>

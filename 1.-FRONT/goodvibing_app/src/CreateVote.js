@@ -7,6 +7,7 @@ import FavoriteBorder from "@material-ui/icons/FavoriteBorder";
 import Favorite from "@material-ui/icons/Favorite";
 import "fontsource-roboto";
 import DeleteVote from "./DeleteVote";
+import { ContadorComponent } from "./ContadorVotes";
 
 function CreateVote() {
   const token = useSelector((s) => s.user?.token);
@@ -49,6 +50,7 @@ function CreateVote() {
           }
           label="Me gusta"
         />
+        <ContadorComponent />
         <DeleteVote />
       </form>
     </div>

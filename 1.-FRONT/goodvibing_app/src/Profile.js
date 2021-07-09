@@ -18,7 +18,7 @@ const useStyle = makeStyles({
     marginTop: "15px",
     width: "20%",
     type: "submit",
-    marginLeft: "300px",
+    marginLeft: "700px",
   },
 });
 
@@ -77,6 +77,7 @@ function Profile() {
           <p>
             <label>
               <input
+                align="center"
                 placeholder="User..."
                 value={name}
                 onChange={(e) => setName(e.target.value)}

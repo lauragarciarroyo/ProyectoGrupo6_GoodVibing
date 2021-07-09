@@ -3,17 +3,28 @@ import { useDispatch, useSelector } from "react-redux";
 import { Redirect } from "react-router-dom";
 import Button from "@material-ui/core/Button";
 import { makeStyles } from "@material-ui/core/styles";
-import Container from "@material-ui/core/Container";
-import Grid from "@material-ui/core/Grid";
-import Typography from "@material-ui/core/Typography";
-import CssBaseline from "@material-ui/core/CssBaseline";
-import { TextField } from "@material-ui/core";
+import "./Login.css";
+
+const useStyle = makeStyles({
+  submit: {
+    background: "#84047e",
+    border: 0,
+    borderRadius: 4,
+    color: "white",
+    height: 48,
+    padding: "0 30px",
+    marginTop: "15px",
+    width: "30%",
+    type: "submit",
+  },
+});
 
 function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const isLoggedIn = useSelector((s) => !!s.user);
   const dispatch = useDispatch();
+  const classes = useStyle();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -29,90 +40,52 @@ function Login() {
       dispatch({ type: "SET_ERROR", message: data.message });
     }
   };
-  const useStyle = makeStyles((theme) => ({
-    paper: {
-      marginTop: theme.spacing(8),
-      display: "flex",
-      flexDirection: "column",
-      alignItems: "center",
-    },
-    avatar: {
-      margin: theme.spacing(1),
-      backgroundColor: theme.palette.secondary.main,
-    },
-    form: {
-      width: "100%", // Fix IE 11 issue.
-      marginTop: theme.spacing(1),
-    },
-    submit: {
-      margin: theme.spacing(3, 0, 2),
-      background: "#84047e",
-      border: 0,
-      borderRadius: 3,
-      color: "white",
-      height: 48,
-      padding: "0 30px",
-      marginTop: "15px",
-      width: "100%",
-      type: "submit",
-    },
-  }));
-  const classes = useStyle();
 
   if (isLoggedIn) {
     return <Redirect to="/" />;
   }
-  return (
-    <Container component="main" maxWidth="xs">
-      <CssBaseline />
-      <div className={classes.paper}>
-        <Typography component="h1" variant="h5">
-          Loguéate
-        </Typography>
-        <form className="Login" onSubmit={handleSubmit}>
-          <label>
-            <TextField
-              placeholder="Email..."
-              variant="outlined"
-              margin="normal"
-              required
-              fullWidth
-              id="email"
-              label="Correo electrónico"
-              name="email"
-              autoComplete="email"
-              autoFocus
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-            />
-          </label>
-          <br />
-          <label>
-            <TextField
-              variant="outlined"
-              margin="normal"
-              required
-              fullWidth
-              name="password"
-              label="Contraseña"
-              type="password"
-              id="password"
-              autoComplete="current-password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-            />
-          </label>
 
-          <Button className={classes.submit} type="submit">
-            ¡Entra!
-          </Button>
-          <Grid container>
-            <Grid item xs></Grid>
-            <Grid item></Grid>
-          </Grid>
-        </form>
+  return (
+    <div className="login">
+      <div className="logintitle">
+        <h3>Loguéate</h3>
       </div>
-    </Container>
+      <form className="signin" align="center" onSubmit={handleSubmit}>
+        <label>
+          <input
+            className="mail"
+            required
+            fullWidth
+            placeholder="Correo electrónico"
+            id="email"
+            label="Correo electrónico"
+            name="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            type="email"
+          />
+        </label>
+        <p />
+        <label>
+          <input
+            className="password"
+            required
+            fullWidth
+            id="password"
+            placeholder="Contraseña"
+            label="password"
+            name="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            type="password"
+          />
+        </label>
+        <p />
+        <Button className={classes.submit} type="submit">
+          ¡Entra!
+        </Button>
+      </form>
+    </div>
   );
 }
 

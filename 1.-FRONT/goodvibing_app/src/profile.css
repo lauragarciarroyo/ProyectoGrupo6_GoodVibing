@@ -8,11 +8,15 @@
   border: 1px solid #ccc;
   border-radius: 15px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.2);
-  color: grey;
+  color: #84047e;
+  justify-content: center;
+  justify-self: center;
+  justify-items: center;
+  margin-left: 40%;
 }
 
 .deleteuser {
-  background-color: rgb(246, 189, 246);
+  background-color: #84047e;
   width: 10%;
   padding: 12px;
   margin: 8px;

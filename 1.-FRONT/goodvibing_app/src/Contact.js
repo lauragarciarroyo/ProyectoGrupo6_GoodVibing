@@ -1,40 +1,9 @@
 import React from "react";
 import Button from "@material-ui/core/Button";
-import CssBaseline from "@material-ui/core/CssBaseline";
-import TextField from "@material-ui/core/TextField";
-import Typography from "@material-ui/core/Typography";
-import Link from "@material-ui/core/Link";
 import { makeStyles } from "@material-ui/core/styles";
-import Container from "@material-ui/core/Container";
-
-function Copyright() {
-  return (
-    <Typography variant="body2" color="textSecondary" align="center">
-      {"Copyright © "}
-      <Link color="inherit" href="/">
-        GoodVibing
-      </Link>{" "}
-      {new Date().getFullYear()}
-      {"."}
-    </Typography>
-  );
-}
+import "./Contact.css";
 
 const useStyles = makeStyles((theme) => ({
-  paper: {
-    marginTop: theme.spacing(8),
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center",
-  },
-  avatar: {
-    margin: theme.spacing(1),
-    backgroundColor: theme.palette.secondary.main,
-  },
-  form: {
-    width: "100%", // Fix IE 11 issue.
-    marginTop: theme.spacing(1),
-  },
   submit: {
     background: "#84047e",
     border: 0,
@@ -43,7 +12,7 @@ const useStyles = makeStyles((theme) => ({
     height: 48,
     padding: "0 30px",
     marginTop: "15px",
-    width: "100%",
+    width: "30%",
     type: "submit",
   },
 }));
@@ -52,44 +21,33 @@ export default function Contact() {
   const classes = useStyles();
 
   return (
-    <Container component="main" maxWidth="xs">
-      <CssBaseline />
-      <div className={classes.paper}>
-        <Typography component="h1" variant="h5">
-          Escríbenos
-        </Typography>
-        <form className={classes.form} noValidate>
-          <TextField
-            variant="outlined"
-            margin="normal"
+    <div className="contact">
+      <div className="contacttitle">
+        <h3>Escríbenos</h3>
+      </div>
+      <form className="contactform" align="center">
+        <label>
+          <input
+            className="mail"
             required
             fullWidth
+            placeholder="Correo electrónico"
             id="email"
             label="Correo electrónico"
             name="email"
-            autoComplete="email"
-            autoFocus
+            type="email"
           />
-          <TextField
-            multiline
-            rowsMin={10}
-            aria-label="maximun height"
-            variant="outlined"
-            margin="normal"
-            required
-            fullWidth
-            name="message"
-            label="Tu mensaje"
-            type="message"
-            id="message"
-            placeholder="Escribe tu mensaje aquí..."
-          />
+        </label>
+        <p />
+        <label>
+          <input className="message" placeholder="Escribe aquí tu mensaje" />
+        </label>
+        <p />
 
-          <Button className={classes.submit} type="submit">
-            ¡Envía!
-          </Button>
-        </form>
-      </div>
-    </Container>
+        <Button className={classes.submit} type="submit">
+          ¡Envía!
+        </Button>
+      </form>
+    </div>
   );
 }

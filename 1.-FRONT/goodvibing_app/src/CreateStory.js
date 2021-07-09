@@ -84,9 +84,11 @@ function CreateStory() {
           <UploadImage />
         </div>
 
-        <Button className={classes.submit} type="submit">
-          Publica
-        </Button>
+        <div align="center">
+          <Button className={classes.submit} type="submit">
+            Publica
+          </Button>
+        </div>
       </form>
     </div>
   );

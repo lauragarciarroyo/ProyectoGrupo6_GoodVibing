@@ -2,6 +2,7 @@ import { Link, useHistory } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import Button from "@material-ui/core/Button";
 import { makeStyles } from "@material-ui/core/styles";
+import "./GetComments.css";
 
 const useStyle = makeStyles({
   submit: {
@@ -9,11 +10,11 @@ const useStyle = makeStyles({
     border: 0,
     borderRadius: 3,
     color: "white",
-    height: 30,
+    height: 50,
     padding: "0 30px",
     marginTop: "15px",
     marginLeft: "10px",
-    width: "20%",
+    width: "50%",
     type: "submit",
   },
 });
@@ -49,20 +50,22 @@ function GetComments({ comments, storyUserId }) {
     <>
       <div className="createcomment">
         {comments.map((e) => (
-          <div className="list" key={e.id}>
+          <div className="list" align="center" key={e.id}>
             {e.text}
             <div className="date">{new Date(e.date).toLocaleDateString()}</div>
             <Link to={`/userinfo/${e.user_id}`}>{e.username}</Link>
             {user.id === e.user_id || user.id === storyUserId ? (
-              <Button
-                className={classes.submit}
-                onClick={(event) => {
-                  event.preventDefault();
-                  deleteComment(e.id);
-                }}
-              >
-                Borrar comentario
-              </Button>
+              <div>
+                <Button
+                  className={classes.submit}
+                  onClick={(event) => {
+                    event.preventDefault();
+                    deleteComment(e.id);
+                  }}
+                >
+                  Borrar comentario
+                </Button>
+              </div>
             ) : null}
           </div>
         ))}

@@ -16,10 +16,10 @@ const useStyle = makeStyles({
     color: "white",
     height: 48,
     padding: "0 30px",
-    marginTop: "15px",
+    marginTop: "5px",
     width: "30%",
     type: "submit",
-    marginLeft: "280px",
+    marginLeft: "590px",
   },
 });
 
@@ -33,7 +33,7 @@ function MyStory() {
 
   return (
     <div className="Mihistoria">
-      <h3>{story.title}</h3>
+      <h3 className="mihistoria">{story.title}</h3>
       <p align="center " className="date">
         {new Date(story.date).toLocaleDateString()}
       </p>
@@ -48,10 +48,7 @@ function MyStory() {
           <GetComments storyUserId={story.user_id} comments={story.comments} />
         </div>
       </div>
-      <div className="votos" align="center">
-        <CreateVote />
-      </div>
-      <p />
+
       <div>
         <Button
           className={classes.submit}

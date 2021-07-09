@@ -4,6 +4,7 @@ import { useSelector } from "react-redux";
 import { Button, Container, CssBaseline, makeStyles } from "@material-ui/core";
 import React from "react";
 import { useParams } from "react-router";
+import { Link } from "react-router-dom";
 
 function StoryUserEdit() {
   const { user } = useSelector((state) => state.user);
@@ -32,14 +33,19 @@ function StoryUserEdit() {
     <div className="Mi historia">
       <CssBaseline />
       <div className={classes.paper}>
-        <h1>{story.title}</h1>
-        <p>{new Date(story.date).toLocaleDateString()}</p>
+        <h3>{story.title}</h3>
+        <p className="date">{new Date(story.date).toLocaleDateString()}</p>
         <p />
-        <Button href="/userinfo" color="primary">
+        <Link className="myname" href="/userinfo" color="primary">
           {user.name}{" "}
-        </Button>{" "}
+        </Link>
         <p />
-        <Container maxWidth="xs" style={{ margin: 40 }} align="center">
+        <Container
+          maxWidth="xs"
+          style={{ margin: 40 }}
+          align="center"
+          className="body"
+        >
           {story.body}
         </Container>
       </div>

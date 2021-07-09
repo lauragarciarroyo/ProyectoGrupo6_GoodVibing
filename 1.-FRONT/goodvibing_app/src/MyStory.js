@@ -6,6 +6,7 @@ import React from "react";
 import GetComments from "./GetComments";
 import { Button } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core";
+import "./MyStory.css";
 
 const useStyle = makeStyles({
   submit: {
@@ -33,8 +34,10 @@ function MyStory() {
   return (
     <div className="Mi historia">
       <h3>{story.title}</h3>
-      <p align="center ">{new Date(story.date).toLocaleDateString()}</p>
-      <div className="name">
+      <p align="center " className="date">
+        {new Date(story.date).toLocaleDateString()}
+      </p>
+      <div className="myname" align="center">
         <Link to={`/userinfo/${story.user_id}`}>{story.user_name}</Link>
       </div>
       <div className="story">{story.body}</div>

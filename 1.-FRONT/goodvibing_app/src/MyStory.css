@@ -1,0 +1,12 @@
+.myname {
+  color: #84047e;
+  font-family: "Open Sans", sans-serif;
+  font-size: 30px;
+  font-weight: bold;
+  justify-content: center;
+}
+
+.date {
+  font-weight: bold;
+  font-size: large;
+}

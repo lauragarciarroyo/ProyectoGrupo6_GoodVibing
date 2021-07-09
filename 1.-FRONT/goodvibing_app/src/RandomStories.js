@@ -1,5 +1,6 @@
 import UseFetch from "./UseFetch";
 import StoryTitle from "./StoryTitle";
+import "./RandomStories.css";
 
 function RandomStories({ q }) {
   const stories = UseFetch(`http://localhost:4000/api/random-stories`);
@@ -7,11 +8,11 @@ function RandomStories({ q }) {
   if (!stories) return <p>Cargando...</p>;
 
   return (
-    <div className="randomstories">
-      <h3>Explora historias aleatorias</h3>
-      <div>
+    <div>
+      <h3 className="explorerandom">Explora historias aleatorias</h3>
+      <div className="randomstories">
         {stories.data.map((s) => (
-          <div key={s.id}>
+          <div className="cajas" key={s.id}>
             <StoryTitle href={`/story/${s.id}`}>{s.title}</StoryTitle>
           </div>
         ))}
@@ -21,6 +22,3 @@ function RandomStories({ q }) {
 }
 
 export default RandomStories;
-
-//Resultado búsqueda de historias en barra de búsqueda de home
-//Revisar el link al hacer map

@@ -32,7 +32,7 @@ function MyStory() {
   }
 
   return (
-    <div className="Mi historia">
+    <div className="Mihistoria">
       <h3>{story.title}</h3>
       <p align="center " className="date">
         {new Date(story.date).toLocaleDateString()}

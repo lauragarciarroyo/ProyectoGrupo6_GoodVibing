@@ -3,6 +3,7 @@ import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { Button } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core";
+import "./ViewStories.css";
 
 const useStyle = makeStyles({
   submit: {
@@ -31,7 +32,7 @@ function ViewStories() {
   }
   return (
     <div className="viewstories">
-      <h1>Historias</h1>
+      <h3 className="listahistorias">Historias</h3>
       {results.data.map((e) => (
         <div className="historias" key={e.id}>
           <Link to={`/mystory/${e.id}`}>{e.title}</Link>

@@ -1,11 +1,11 @@
 import React from "react";
-import Header from "./Header";
 import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { Button } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core";
 import UploadImage from "./UploadImage";
+import "./CreateStory.css";
 
 const useStyle = makeStyles({
   submit: {
@@ -56,7 +56,7 @@ function CreateStory() {
 
   return (
     <div className="createstory">
-      <Header title="¡Bienvenid@ a tu blog!" />
+      <h3 className="blog">¡Bienvenid@ a tu blog!</h3>
       <div className="preview">
         <h3>{title}</h3>
         <p>{body}</p>
@@ -80,10 +80,6 @@ function CreateStory() {
           />
         </label>
         <p />
-        <div align="center">
-          <UploadImage />
-        </div>
-
         <div align="center">
           <Button className={classes.submit} type="submit">
             Publica

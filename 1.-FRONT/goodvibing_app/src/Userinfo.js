@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 import { Button } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core";
 import Footer from "./Footer";
+import "./Userinfo.css";
 
 const useStyle = makeStyles({
   submit: {

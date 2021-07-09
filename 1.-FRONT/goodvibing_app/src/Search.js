@@ -2,6 +2,7 @@ import { useLocation } from "react-router-dom";
 import RandomStories from "./RandomStories";
 import useFetch from "./UseFetch";
 import StoryTitle from "./StoryTitle";
+import "./Search.css";
 
 function Search({ q }) {
   const stories = useFetch(`http://localhost:4000/api/stories?q=${q}`);
@@ -12,7 +13,7 @@ function Search({ q }) {
     <div className="search">
       {stories.data.length > 0 ? (
         <div className="history">
-          <h3>Historias</h3>
+          <h3 className="searchresults">Resultados</h3>
           <ul>
             {stories.data.map((s) => (
               <div key={s.id}>

@@ -5,7 +5,7 @@ import Navbar from "./Navbar";
 
 export default function Home() {
   return (
-    <div>
+    <div className="defaultHome">
       <h1> Bienvenido a </h1>
       <h2>Goodvibing</h2>
       <h1>La plataforma donde podrás compartir</h1>

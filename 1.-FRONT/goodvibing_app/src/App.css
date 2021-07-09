@@ -6,6 +6,13 @@ body {
   background-size: cover;
 }
 
+.defaultHome {
+  margin: 0;
+  padding: 0;
+  padding-top: 120px;
+  top: 0;
+}
+
 .btn-flotante {
   position: fixed;
   bottom: 5px;

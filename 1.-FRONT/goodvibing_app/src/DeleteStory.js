@@ -8,7 +8,6 @@ function DeleteStory() {
   const { id } = useParams();
   const history = useHistory();
   const dispatch = useDispatch();
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (window.confirm("¿Estás seguro de eliminar tu historia?")) {
@@ -35,23 +34,27 @@ function DeleteStory() {
       flexDirection: "column",
       alignItems: "center",
     },
+    submit: {
+      marginTop: "300px",
+      justifyContent: "center",
+      marginLeft: "600px",
+      background: "#84047e",
+      border: 0,
+      borderRadius: 4,
+      color: "white",
+      height: 48,
+      padding: "0 30px",
+      marginBottom: "200px",
+      width: "30%",
+      type: "submit",
+    },
   }));
   const classes = useStyles();
 
   return (
-    <div className={classes.paper}>
-      <form onSubmit={handleSubmit}>
-        <Button
-          style={{ margin: 200 }}
-          type="submit"
-          variant="contained"
-          color="primary"
-          className={classes.submit}
-        >
-          Eliminar historia
-        </Button>
-      </form>
-    </div>
+    <Button className={classes.submit} type="submit">
+      Eliminar historia
+    </Button>
   );
 }
 

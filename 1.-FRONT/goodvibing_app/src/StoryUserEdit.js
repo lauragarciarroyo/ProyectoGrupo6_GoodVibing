@@ -1,7 +1,7 @@
 import UseFetchToken from "./useFetchToken";
 import { useSelector } from "react-redux";
 
-import { Button, Container, CssBaseline, makeStyles } from "@material-ui/core";
+import { Container, CssBaseline, makeStyles } from "@material-ui/core";
 import React from "react";
 import { useParams } from "react-router";
 import { Link } from "react-router-dom";

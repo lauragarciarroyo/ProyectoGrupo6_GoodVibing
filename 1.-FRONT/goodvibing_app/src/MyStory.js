@@ -1,6 +1,5 @@
 import { Link, useParams } from "react-router-dom";
 import UseFetchToken from "./useFetchToken";
-import CreateVote from "./CreateVote";
 import CreateComment from "./CreateComment";
 import React from "react";
 import GetComments from "./GetComments";

@@ -39,6 +39,12 @@ function MyStory() {
       <div className="myname" align="center">
         <Link to={`/userinfo/${story.user_id}`}>{story.user_name}</Link>
       </div>
+      {story.image && (
+        <img
+          src={`http://localhost:4000/images/${story.image}`}
+          alt={story.title}
+        />
+      )}
       <div className="story">{story.body}</div>
       <div className="comment">
         <CreateComment />

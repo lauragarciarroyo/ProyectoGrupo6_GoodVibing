@@ -1,28 +1,12 @@
 import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import UserAvatar from "./UserAvatar";
-import Button from "@material-ui/core/Button";
-import { makeStyles } from "@material-ui/core/styles";
-
-const useStyle = makeStyles({
-  submit: {
-    background: "#84047e",
-    border: 0,
-    borderRadius: 3,
-    color: "white",
-    height: 48,
-    padding: "0 30px",
-    marginTop: "15px",
-    width: "30%",
-    type: "submit",
-  },
-});
 
 function UploadAvatar() {
   const [file, setFile] = useState();
   const { token, user } = useSelector((s) => s.user);
   const dispatch = useDispatch();
-  const classes = useStyle();
+
   const handleSubmit = async (e) => {
     try {
       if (!file) {
@@ -50,13 +34,19 @@ function UploadAvatar() {
 
   return (
     <form onSubmit={handleSubmit}>
-      <UserAvatar src={user.avatar} />
-      <label>
+      <img
+        className="avatar"
+        src={`http://localhost:4000/images/${user.avatar}`}
+        alt={user.name}
+      />
+      <p className="center">
         <input onChange={(e) => setFile(e.target.files[0])} type="file" />
-      </label>
-      <Button className={classes.submit} type="submit">
-        Enviar
-      </Button>
+      </p>
+      <p className="center">
+        <button className="action-button" type="submit">
+          Enviar
+        </button>
+      </p>
     </form>
   );
 }

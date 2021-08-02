@@ -30,6 +30,8 @@ function CreateStory() {
   const history = useHistory();
   const [title, setTitle] = useState("");
   const [body, setBody] = useState("");
+  const [image, setImage] = useState(null);
+
   const classes = useStyle();
   const token = useSelector((s) => s.user.token);
   const dispatch = useDispatch();
@@ -48,6 +50,20 @@ function CreateStory() {
     });
     const data = await res.json();
     if (res.ok) {
+      if (image) {
+        const id = data.data.id;
+        const payload = new FormData();
+        payload.append("image", image);
+
+        await fetch(`http://localhost:4000/api/stories/${id}/image`, {
+          method: "POST",
+          headers: {
+            Authorization: "Bearer " + token,
+          },
+          body: payload,
+        });
+      }
+
       history.push("/mystories");
     } else {
       dispatch({ type: "SET_ERROR", message: data.message });
@@ -60,6 +76,8 @@ function CreateStory() {
       <div className="preview">
         <h3>{title}</h3>
         <p>{body}</p>
+
+        {image && <img src={URL.createObjectURL(image)} alt={title} />}
       </div>
       <form className="create" onSubmit={handleSubmit}>
         <label>
@@ -70,7 +88,7 @@ function CreateStory() {
             onChange={(e) => setTitle(e.target.value)}
           />
         </label>
-        <p />
+
         <label>
           <input
             className="createbody"
@@ -79,7 +97,12 @@ function CreateStory() {
             placeholder="Escribe aquí tu historia..."
           />
         </label>
-        <p />
+
+        <label>
+          Imagen:
+          <input type="file" onChange={(e) => setImage(e.target.files[0])} />
+        </label>
+
         <div align="center">
           <Button className={classes.submit} type="submit">
             Publica

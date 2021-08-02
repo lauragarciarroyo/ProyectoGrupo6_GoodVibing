@@ -114,9 +114,11 @@ function Profile() {
                 />
               </label>
             </p>
-            <button className="action-button" type="submit">
-              Guardar cambios
-            </button>
+            <p className="center">
+              <button className="action-button" type="submit">
+                Guardar cambios
+              </button>
+            </p>
           </form>
         </div>
 

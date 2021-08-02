@@ -50,7 +50,7 @@ export default function Navbar() {
                   }
                 }}
               >
-                <div className="flexsearch--input-wrapper">
+                <div className="flexsearch--input-wrapper navbar-search">
                   <input
                     className="flexsearch--input"
                     placeholder="Busca una experiencia"
@@ -58,9 +58,9 @@ export default function Navbar() {
                       setSearch(e.target.value);
                     }}
                   ></input>
-                  <Button className={classes.submit} type="submit">
-                    Go!
-                  </Button>
+                  <button className="action-button" type="submit">
+                    ⇨
+                  </button>
                 </div>
               </form>
             </div>

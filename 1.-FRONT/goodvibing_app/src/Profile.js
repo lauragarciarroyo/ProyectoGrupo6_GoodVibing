@@ -1,31 +1,15 @@
 import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Redirect } from "react-router-dom";
-import Userinfo from "./Userinfo";
+//import Userinfo from "./Userinfo";
 import "./profile.css";
 import UploadAvatar from "./UploadAvatar";
-import Button from "@material-ui/core/Button";
-import { makeStyles } from "@material-ui/core/styles";
-
-const useStyle = makeStyles({
-  submit: {
-    background: "#84047e",
-    border: 0,
-    borderRadius: 3,
-    color: "white",
-    height: 48,
-    padding: "0 30px",
-    marginTop: "15px",
-    width: "20%",
-    type: "submit",
-    marginLeft: "700px",
-  },
-});
+import { Link } from "react-router-dom";
 
 function Profile() {
   const { token, user } = useSelector((state) => state.user);
   const dispatch = useDispatch();
-  const classes = useStyle();
+
   const [name, setName] = useState(user.name);
   const [email, setEmail] = useState(user.email);
   const [bio, setBio] = useState(user.bio || "");
@@ -64,89 +48,93 @@ function Profile() {
   }
 
   return (
-    <div>
-      <>
+    <div classname="container-profile App-profile">
+      {/*         
         <div className="info">
           <Userinfo user={user} />
-        </div>
-        <div className="avatar">
-          <UploadAvatar />
+        </div> 
+        */}
+
+      <div className="App-profile-data">
+        <div className="profile-form">
+          <h3>Editar datos</h3>
+          <form className="profile" onSubmit={handleSubmit}>
+            <p>
+              <label>
+                <input
+                  align="center"
+                  placeholder="User..."
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                />
+              </label>
+            </p>
+            <p>
+              <label>
+                <input
+                  placeholder="Email..."
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  type="email"
+                />
+              </label>
+            </p>
+            <p>
+              <label>
+                <input
+                  placeholder="Escribe algo sobre ti..."
+                  value={bio}
+                  onChange={(e) => setBio(e.target.value)}
+                  type="text"
+                />
+              </label>
+            </p>
+            <p>
+              <label>
+                <input
+                  value={
+                    birthdate && birthdate.length > 10
+                      ? birthdate.slice(0, 10)
+                      : birthdate
+                  }
+                  onChange={(e) => {
+                    setBirthdate(e.target.value);
+                  }}
+                  type="date"
+                />
+              </label>
+            </p>
+            <p>
+              <label>
+                <input
+                  placeholder="¿Dónde vives?"
+                  value={residence}
+                  onChange={(e) => setResidence(e.target.value)}
+                  type="text"
+                />
+              </label>
+            </p>
+            <button className="action-button" type="submit">
+              Guardar cambios
+            </button>
+          </form>
         </div>
 
-        <form className="profile" onSubmit={handleSubmit}>
-          <p>
-            <label>
-              <input
-                align="center"
-                placeholder="User..."
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-              />
-            </label>
-          </p>
-          <p>
-            <label>
-              <input
-                placeholder="Email..."
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                type="email"
-              />
-            </label>
-          </p>
-          <p>
-            <label>
-              <input
-                placeholder="Escribe algo sobre ti..."
-                value={bio}
-                onChange={(e) => setBio(e.target.value)}
-                type="text"
-              />
-            </label>
-          </p>
-          <p>
-            <label>
-              <input
-                value={
-                  birthdate && birthdate.length > 10
-                    ? birthdate.slice(0, 10)
-                    : birthdate
-                }
-                onChange={(e) => {
-                  setBirthdate(e.target.value);
-                }}
-                type="date"
-              />
-            </label>
-          </p>
-          <p>
-            <label>
-              <input
-                placeholder="¿Dónde vives?"
-                value={residence}
-                onChange={(e) => setResidence(e.target.value)}
-                type="text"
-              />
-            </label>
-          </p>
-          <p></p>
-          <Button className={classes.submit} type="submit">
-            Guardar cambios
-          </Button>
-        </form>
-        <p></p>
-        <Button className={classes.submit} type="submit" href="./deleteuser">
+        <div className="avatar-form">
+          <h3>Cambiar avatar</h3>
+          <UploadAvatar />
+        </div>
+      </div>
+
+      <div className="App-profile-actions">
+        <Link className="action-button" to="/deleteuser">
           Eliminar cuenta
-        </Button>
-        <p></p>
-        <Button
-          className={classes.submit}
-          type="submit"
-          href="./changepassword"
-        >
+        </Link>
+
+        <Link className="action-button" to="/changepassword">
           Cambiar contraseña
-        </Button>
-      </>
+        </Link>
+      </div>
     </div>
   );
 }

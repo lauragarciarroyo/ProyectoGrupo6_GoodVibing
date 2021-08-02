@@ -17,7 +17,10 @@ const userReducer = (state = null, action) => {
   }
 };
 
-const errorReducer = (state = { message: null }, action) => {
+const errorReducer = (
+  state = { message: "esto es un error de prueba" },
+  action
+) => {
   switch (action.type) {
     case "SET_ERROR":
       return { message: action.message };

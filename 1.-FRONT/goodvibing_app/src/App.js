@@ -48,113 +48,117 @@ const PrivateRoute = ({ children }) => {
 function App() {
   return (
     <div className="App">
-      <ErrorMesage />
-      <Navbar />
-      <Switch>
-        <Route path="/" exact>
-          <Home />
-        </Route>
-        <Route path="/storieshome" exact>
-          <StoriesHome />
-        </Route>
-        <Route path="/mystories" exact>
-          <PrivateRoute>
-            <MyStories />
-          </PrivateRoute>
-        </Route>
-        <Route path="/message" exact>
-          <PrivateRoute>
-            <Message />
-          </PrivateRoute>
-        </Route>
-        <Route path="/login" exact>
-          <Login />
-        </Route>
-        <Route path="/register" exact>
-          <Register />
-        </Route>
-        <Route path="/profile" exact>
-          <PrivateRoute>
-            <Profile />
-          </PrivateRoute>
-        </Route>
-        <Route path="/contact" exact>
-          <Contact />
-        </Route>
-        <Route path="/createstory" exact>
-          <PrivateRoute>
-            <CreateStory />
-          </PrivateRoute>
-        </Route>
-        <Route path="/deleteuser" exact>
-          <PrivateRoute>
-            <DeleteUser />
-          </PrivateRoute>
-        </Route>
-        <Route path="/changepassword" exact>
-          <Changepassword />
-        </Route>
-        <Route path="/viewstories/:id" exact>
-          <ViewStories />
-        </Route>
-        <Route path="/userinfoa/" exact>
-          <UserinfoA />
-        </Route>
-        <Route path="/randomstories/" exact>
-          <RandomStories />
-        </Route>
-        <Route path="/mystory/:id" exact>
-          <PrivateRoute>
-            <MyStory />
-          </PrivateRoute>
-        </Route>
-        <Route path="/editstory/:id" exact>
-          <PrivateRoute>
-            <EditStory />
-          </PrivateRoute>
-        </Route>
-        <Route path="/deletestory/:id" exact>
-          <PrivateRoute>
-            <DeleteStory />
-          </PrivateRoute>
-        </Route>
-        <Route path="/createcomment" exact>
-          <CreateComment />
-        </Route>
-        <Route path="/story/:id" exact>
-          <PrivateRoute>
-            <ViewStory />
-          </PrivateRoute>
-        </Route>
-        <Route path="/mycomments" exact>
-          <MyComments />
-        </Route>
-        <Route path="/userinfo/:id" exact>
-          <PrivateRoute>
-            <Userinfo />
-          </PrivateRoute>
-        </Route>
-        <Route path="/createvote" exact>
-          <CreateVote />
-        </Route>
-        <Route path="/deletecomment/:id" exact>
-          <DeleteComment />
-        </Route>
-        <Route path="/footer" exact>
-          <Footer />
-        </Route>
-        <Route path="/header" exact>
-          <Header />
-        </Route>
-        <Route path="/search" exact>
-          <Search />
-        </Route>
-        <Route path="*">
-          <h1>404 - Ruta no encontrada</h1>
-        </Route>
-      </Switch>
+      <header className="App-header">
+        <ErrorMesage />
+        <Navbar />
+      </header>
+      <main className="App-main">
+        <Switch>
+          <Route path="/" exact>
+            <Home />
+          </Route>
+          <Route path="/storieshome" exact>
+            <StoriesHome />
+          </Route>
+          <Route path="/mystories" exact>
+            <PrivateRoute>
+              <MyStories />
+            </PrivateRoute>
+          </Route>
+          <Route path="/message" exact>
+            <PrivateRoute>
+              <Message />
+            </PrivateRoute>
+          </Route>
+          <Route path="/login" exact>
+            <Login />
+          </Route>
+          <Route path="/register" exact>
+            <Register />
+          </Route>
+          <Route path="/profile" exact>
+            <PrivateRoute>
+              <Profile />
+            </PrivateRoute>
+          </Route>
+          <Route path="/contact" exact>
+            <Contact />
+          </Route>
+          <Route path="/createstory" exact>
+            <PrivateRoute>
+              <CreateStory />
+            </PrivateRoute>
+          </Route>
+          <Route path="/deleteuser" exact>
+            <PrivateRoute>
+              <DeleteUser />
+            </PrivateRoute>
+          </Route>
+          <Route path="/changepassword" exact>
+            <Changepassword />
+          </Route>
+          <Route path="/viewstories/:id" exact>
+            <ViewStories />
+          </Route>
+          <Route path="/userinfoa/" exact>
+            <UserinfoA />
+          </Route>
+          <Route path="/randomstories/" exact>
+            <RandomStories />
+          </Route>
+          <Route path="/mystory/:id" exact>
+            <PrivateRoute>
+              <MyStory />
+            </PrivateRoute>
+          </Route>
+          <Route path="/editstory/:id" exact>
+            <PrivateRoute>
+              <EditStory />
+            </PrivateRoute>
+          </Route>
+          <Route path="/deletestory/:id" exact>
+            <PrivateRoute>
+              <DeleteStory />
+            </PrivateRoute>
+          </Route>
+          <Route path="/createcomment" exact>
+            <CreateComment />
+          </Route>
+          <Route path="/story/:id" exact>
+            <PrivateRoute>
+              <ViewStory />
+            </PrivateRoute>
+          </Route>
+          <Route path="/mycomments" exact>
+            <MyComments />
+          </Route>
+          <Route path="/userinfo/:id" exact>
+            <PrivateRoute>
+              <Userinfo />
+            </PrivateRoute>
+          </Route>
+          <Route path="/createvote" exact>
+            <CreateVote />
+          </Route>
+          <Route path="/deletecomment/:id" exact>
+            <DeleteComment />
+          </Route>
+          <Route path="/footer" exact>
+            <Footer />
+          </Route>
+          <Route path="/header" exact>
+            <Header />
+          </Route>
+          <Route path="/search" exact>
+            <Search />
+          </Route>
+          <Route path="*">
+            <h1>404 - Ruta no encontrada</h1>
+          </Route>
+        </Switch>
+      </main>
 
-      <footer>
+      <footer className="App-footer">
         <Typography variant="body2" color="textSecondary" align="center">
           {"Copyright © "}
           <Link color="inherit" href="/">

@@ -32,40 +32,16 @@ export default function Navbar() {
   const history = useHistory();
   const classes = useStyle();
   return (
-    <div className="container" width={100}>
-      <div
-        className="flex-container"
-        display="flex"
-        flexDirection="row"
-        flexWrap="nowrap"
-        justifyContent="space-around"
-        alignContent="space-around"
-        alignItems="flex-start"
-        margin="0"
-        padding="10px 3px 3px 3px"
-        backgroundColor="white"
-      >
+    <div className="">
+      <div className="flex-container">
         <div className="buttonLogoHome">
           <Link to="/">
             <img src={logo} width={250} href="/" alt="home" />
           </Link>
         </div>
         <div className="flexsearch">
-          <div
-            className="flexsearch--wrapper"
-            height="auto"
-            width="auto"
-            maxWidth="90%"
-            overFlow="hidden"
-            backgroundColor="transparent"
-            margin="5px 10px"
-            position="static"
-          >
-            <div
-              className="flexsearch--form"
-              overFlow="hidden"
-              position="relative"
-            >
+          <div className="flexsearch--wrapper">
+            <div className="flexsearch--form">
               <form
                 onSubmit={(e) => {
                   e.preventDefault();
@@ -74,24 +50,9 @@ export default function Navbar() {
                   }
                 }}
               >
-                <div
-                  className="flexsearch--input-wrapper"
-                  padding="0 66px 0 0"
-                  overFlow="hidden"
-                >
+                <div className="flexsearch--input-wrapper">
                   <input
                     className="flexsearch--input"
-                    width="100"
-                    boxSizing="content-box"
-                    height="60px"
-                    padding="0 40px 0 10px"
-                    borderColor="#84047e"
-                    borderRadius="35px"
-                    borderStyle="solid"
-                    borderWidth="5px"
-                    marginTop="15px"
-                    color="#84047e"
-                    fontSize="15px"
                     placeholder="Busca una experiencia"
                     onChange={(e) => {
                       setSearch(e.target.value);
@@ -137,7 +98,6 @@ export default function Navbar() {
       </div>
 
       <div className="btn-flotante">
-        <NavLink to="/contact"></NavLink>
         <Link to="/contact">
           <img src={iconoSobre} width={50} alt="contact" />
         </Link>

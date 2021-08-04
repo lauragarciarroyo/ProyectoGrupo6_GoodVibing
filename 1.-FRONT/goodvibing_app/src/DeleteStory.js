@@ -52,9 +52,11 @@ function DeleteStory() {
   const classes = useStyles();
 
   return (
-    <Button className={classes.submit} type="submit">
-      Eliminar historia
-    </Button>
+    <form onSubmit={handleSubmit}>
+      <Button className={classes.submit} type="submit">
+        Eliminar historia
+      </Button>
+    </form>
   );
 }
 

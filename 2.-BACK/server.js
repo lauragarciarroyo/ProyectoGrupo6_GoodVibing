@@ -77,7 +77,7 @@ app.get("/api/users/:id/stories", StoriesController.getUserStories);
 
 //Ver una historia
 app.get(
-  "/api/stories/:id",
+  "/api/stories/:id_story",
   validateAuthorization,
   StoriesController.viewStories
 );

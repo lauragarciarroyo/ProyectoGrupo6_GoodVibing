@@ -37,14 +37,16 @@ async function createVotes(req, res, next) {
       throw err;
     }
 
-    const votedStory = await votesRepository.createVotes({
+    await votesRepository.createVotes({
       user_id: id,
       story_id,
     });
 
+    const allVotes = await votesRepository.getVotes({ story_id });
+
     res.send({
       status: "ok",
-      data: votedStory,
+      data: allVotes,
     });
   } catch (err) {
     next(err);
@@ -75,14 +77,16 @@ async function deleteVotes(req, res, next) {
       throw err;
     }
 
-    const votedStory = await votesRepository.deleteVotes({
+    await votesRepository.deleteVotes({
       story_id,
       user_id: id,
     });
 
+    const allVotes = await votesRepository.getVotes({ story_id });
+
     res.send({
       status: "ok",
-      data: votedStory,
+      data: allVotes,
     });
   } catch (err) {
     next(err);

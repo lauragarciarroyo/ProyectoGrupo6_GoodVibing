@@ -5,6 +5,7 @@ const {
   storiesRepository,
   usersRepository,
   commentsRepository,
+  votesRepository,
 } = require("../repositories");
 
 async function getStories(req, res, next) {
@@ -144,9 +145,10 @@ async function getUserStories(req, res, next) {
 //Ver una historia
 async function viewStories(req, res, next) {
   try {
-    const { id } = req.params;
+    const { id_story } = req.params;
+    const { id } = req.auth;
 
-    const story = await storiesRepository.findStoriesById({ id });
+    const story = await storiesRepository.findStoriesById({ id: id_story });
 
     if (!story) {
       const err = new Error("La historia no existe");
@@ -155,10 +157,20 @@ async function viewStories(req, res, next) {
     }
 
     const comments = await commentsRepository.getStoryComments({
-      story_id: id,
+      story_id: id_story,
+    });
+
+    const userVotes = await votesRepository.findVote({
+      user_id: id,
+      story_id: id_story,
     });
 
     story.comments = comments;
+    story.userVoted = userVotes.length > 0;
+
+    const allVotes = await votesRepository.getVotes({ story_id: id_story });
+
+    story.allVotes = allVotes;
 
     res.send({ status: "ok", data: story });
   } catch (err) {

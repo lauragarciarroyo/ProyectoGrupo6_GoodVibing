@@ -26,7 +26,7 @@ function useFetchToken(url) {
       .catch((error) => setError(error.message));
   }, [url, token]);
 
-  return [data, error];
+  return [data, error, setData];
 }
 
 export default useFetchToken;

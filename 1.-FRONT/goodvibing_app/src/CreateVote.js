@@ -1,38 +1,33 @@
-import { useState } from "react";
-import { useSelector } from "react-redux";
-import { useParams } from "react-router";
-import "fontsource-roboto";
-import { ContadorComponent } from "./ContadorVotes";
+import { Link } from "react-router-dom";
+import "./CreateVote.css";
 
-function CreateVote() {
-  const token = useSelector((s) => s.user?.token);
-  const { id } = useParams;
-  const [vote, setVote] = useState();
+function CreateVote({ votes, userVoted, addVote, removeVote, allVotes }) {
+  const lastVotes = allVotes.slice(0, 10);
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setVote({ ...vote, [e.vote]: e.target.checked });
-    const res = await fetch(
-      `http://localhost:4000/api/stories/${id}/vote`,
-
-      {
-        method: "POST",
-        body: JSON.stringify({ vote }),
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: "Bearer " + token,
-        },
-      }
-    );
-    if (res.ok) {
-      const data = await res.json();
-      console.log(data);
-    }
-  };
+  const voters = lastVotes.map((v, index, all) => (
+    <>
+      <Link key={v.id} to={`/userinfo/${v.user_id}`}>
+        {v.name}
+      </Link>
+      {index < all.length - 1 ? "," : null}
+    </>
+  ));
 
   return (
-    <div onSubmit={handleSubmit}>
-      <ContadorComponent />
+    <div className="votes">
+      <p>
+        {userVoted ? (
+          <button className="heart full" onClick={() => removeVote()}>
+            Quitar voto
+          </button>
+        ) : (
+          <button className="heart empty" onClick={() => addVote()}>
+            Votar
+          </button>
+        )}
+      </p>
+      <p className="total">{votes}</p>
+      <p className="voters">{voters}...</p>
     </div>
   );
 }

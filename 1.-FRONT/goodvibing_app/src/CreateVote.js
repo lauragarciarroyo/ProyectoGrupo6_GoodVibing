@@ -2,7 +2,6 @@ import { useState } from "react";
 import { useSelector } from "react-redux";
 import { useParams } from "react-router";
 import "fontsource-roboto";
-import DeleteVote from "./DeleteVote";
 import { ContadorComponent } from "./ContadorVotes";
 
 function CreateVote() {
@@ -32,9 +31,8 @@ function CreateVote() {
   };
 
   return (
-    <div>
+    <div onSubmit={handleSubmit}>
       <ContadorComponent />
-      <DeleteVote />
     </div>
   );
 }

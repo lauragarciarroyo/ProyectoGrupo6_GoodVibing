@@ -44,11 +44,7 @@ function Userinfo() {
       <p align="center">{user.email}</p>
       <p />
       <div className="App-userinfo-actions">
-        <Link
-          className="action-button"
-          type="submit"
-          href={`/viewstories/${id}`}
-        >
+        <Link className="action-button" type="submit" to={`/viewstories/${id}`}>
           Ver historias del usuario
         </Link>
       </div>

@@ -37,16 +37,12 @@ function MyStory() {
       </div>
 
       <div className="App-mystory-actions">
-        <Link className="action-button" type="submit" href={`/editstory/${id}`}>
+        <Link className="action-button" type="submit" to={`/editstory/${id}`}>
           Editar historia
         </Link>
       </div>
       <div className="App-mystory-actions">
-        <Link
-          className="action-button"
-          type="submit"
-          href={`/deletestory/${id}`}
-        >
+        <Link className="action-button" type="submit" to={`/deletestory/${id}`}>
           Eliminar historia
         </Link>
       </div>

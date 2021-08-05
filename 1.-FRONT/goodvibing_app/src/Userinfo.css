@@ -1,6 +1,15 @@
 .userinfo {
   margin: 0;
   padding: 0;
-  padding-top: 140px;
   top: 0;
+}
+
+.App-userinfo-actions {
+  margin: 4rem 0;
+  display: flex;
+  justify-content: center;
+}
+
+.App-userinfo-actions .action-button {
+  margin: 0 1rem;
 }

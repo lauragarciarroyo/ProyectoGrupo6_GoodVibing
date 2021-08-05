@@ -3,29 +3,11 @@ import UseFetchToken from "./useFetchToken";
 import CreateComment from "./CreateComment";
 import React from "react";
 import GetComments from "./GetComments";
-import { Button } from "@material-ui/core";
-import { makeStyles } from "@material-ui/core";
 import "./MyStory.css";
-
-const useStyle = makeStyles({
-  submit: {
-    background: "#84047e",
-    border: 0,
-    borderRadius: 3,
-    color: "white",
-    height: 48,
-    padding: "0 30px",
-    marginTop: "5px",
-    width: "30%",
-    type: "submit",
-    marginLeft: "590px",
-  },
-});
 
 function MyStory() {
   const { id } = useParams();
   const [story] = UseFetchToken(`http://localhost:4000/api/stories/${id}`);
-  const classes = useStyle();
   if (!story) {
     return <div>Cargando...</div>;
   }
@@ -54,23 +36,19 @@ function MyStory() {
         </div>
       </div>
 
-      <div>
-        <Button
-          className={classes.submit}
-          type="submit"
-          href={`/editstory/${id}`}
-        >
+      <div className="App-mystory-actions">
+        <Link className="action-button" type="submit" href={`/editstory/${id}`}>
           Editar historia
-        </Button>
+        </Link>
       </div>
-      <div>
-        <Button
-          className={classes.submit}
+      <div className="App-mystory-actions">
+        <Link
+          className="action-button"
           type="submit"
           href={`/deletestory/${id}`}
         >
           Eliminar historia
-        </Button>
+        </Link>
       </div>
     </div>
   );

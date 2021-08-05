@@ -1,14 +1,13 @@
 .author {
   color: #84047e;
+  text-decoration: none;
   font-family: "Open Sans", sans-serif;
   font-size: 30px;
   font-weight: bold;
-  margin-left: 800px;
 }
 
 .verhistoria {
   margin: 0;
   padding: 0;
-  padding-top: 140px;
   top: 0;
 }

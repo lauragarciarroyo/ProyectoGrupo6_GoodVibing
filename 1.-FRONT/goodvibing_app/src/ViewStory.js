@@ -28,7 +28,7 @@ function ViewStory() {
       <h3 className="verhistoria">{story.title}</h3>
 
       <p align="center ">{new Date(story.date).toLocaleDateString()}</p>
-      <div className="author">
+      <div className="author" align="center">
         <Link to={`/userinfo/${story.user_id}`}>{story.user_name} </Link>
       </div>
       <div className="story">

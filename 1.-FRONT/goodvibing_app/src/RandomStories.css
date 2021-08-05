@@ -1,12 +1,10 @@
 .explorerandom {
   margin: 0;
   padding: 0;
-  padding-top: 140px;
   top: 0;
 }
 
 .randomstories {
-  margin-top: 100px;
   display: flex;
   flex-direction: row;
   padding-top: 40px;

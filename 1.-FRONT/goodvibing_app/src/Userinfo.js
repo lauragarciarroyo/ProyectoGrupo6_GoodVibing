@@ -1,32 +1,14 @@
 import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { useParams } from "react-router-dom";
-import { Button } from "@material-ui/core";
-import { makeStyles } from "@material-ui/core";
+import { useParams, Link } from "react-router-dom";
 import Footer from "./Footer";
 import "./Userinfo.css";
-
-const useStyle = makeStyles({
-  submit: {
-    background: "#84047e",
-    border: 0,
-    borderRadius: 3,
-    color: "white",
-    height: 48,
-    padding: "0 30px",
-    marginTop: "15px",
-    width: "30%",
-    type: "submit",
-    marginLeft: "600px",
-  },
-});
 
 function Userinfo() {
   const { token } = useSelector((state) => state.user);
   const dispatch = useDispatch();
   const [user, setUser] = useState();
   const { id } = useParams();
-  const classes = useStyle();
 
   useEffect(() => {
     const loadUser = async () => {
@@ -61,14 +43,14 @@ function Userinfo() {
       <p align="center">{new Date(user.birthdate).toLocaleDateString()}</p>
       <p align="center">{user.email}</p>
       <p />
-      <div>
-        <Button
-          className={classes.submit}
+      <div className="App-userinfo-actions">
+        <Link
+          className="action-button"
           type="submit"
           href={`/viewstories/${id}`}
         >
           Ver historias del usuario
-        </Button>
+        </Link>
       </div>
     </div>
   );

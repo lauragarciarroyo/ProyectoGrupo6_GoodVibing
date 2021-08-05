@@ -4,27 +4,8 @@ import { Link } from "react-router-dom";
 import { Button, makeStyles } from "@material-ui/core";
 import "./MyStories.css";
 
-const useStyle = makeStyles({
-  buttonCreate: {
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-    background: "#84047e",
-    border: 0,
-    borderRadius: 3,
-    color: "white",
-    height: 48,
-    padding: "0 30px",
-    marginTop: "15px",
-    width: "25%",
-    type: "submit",
-    marginLeft: "600px",
-  },
-});
-
 function MyStories() {
   const { user } = useSelector((state) => state.user);
-  const classes = useStyle();
   const [results] = UseFetchToken(
     `http://localhost:4000/api/users/${user.id}/stories`
   );
@@ -47,9 +28,11 @@ function MyStories() {
 
       {!results.length && <i>No se han encontrado historias</i>}
 
-      <Button className={classes.buttonCreate} href="./createstory">
-        Crea tu historia
-      </Button>
+      <div className="App-mystories-actions">
+        <Link className="action-button" to="./createstory">
+          Crea tu historia
+        </Link>
+      </div>
     </div>
   );
 }

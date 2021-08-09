@@ -12,8 +12,12 @@ function StoriesHome() {
     <aside className="storieshome">
       {results.data.map((e) => (
         <div className="cajas" key={e.id}>
-          <Link to={`/story/${e.id}`}>{e.title}</Link>
-          <p>{e.body}</p>
+          <div className="titulo">
+            <Link className="title" to={`/story/${e.id}`}>
+              {e.title}
+            </Link>
+          </div>
+          <p className="body">{e.body}</p>
         </div>
       ))}
       {!results.data.length && <i>No se han encontrado historias</i>}

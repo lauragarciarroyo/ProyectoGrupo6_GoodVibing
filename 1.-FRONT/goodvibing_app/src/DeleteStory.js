@@ -52,7 +52,7 @@ function DeleteStory() {
 
   return (
     <form onSubmit={handleSubmit}>
-      <Button className={classes.submit} type="submit">
+      <Button className={classes.submit} type="submit" align="center">
         Eliminar historia
       </Button>
     </form>

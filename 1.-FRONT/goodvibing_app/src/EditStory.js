@@ -15,7 +15,7 @@ const useStyle = makeStyles({
     height: 48,
     padding: "0 30px",
     marginTop: "15px",
-    marginLeft: "700px",
+
     width: "10%",
     type: "submit",
   },

@@ -1,31 +1,15 @@
 import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useParams } from "react-router";
+import { Link } from "react-router-dom";
 import ImageStory from "./ImageStory";
-import { Button } from "@material-ui/core";
-import { makeStyles } from "@material-ui/core";
-
-const useStyle = makeStyles({
-  submit: {
-    background: "#84047e",
-    border: 0,
-    borderRadius: 3,
-    color: "white",
-    height: 48,
-    padding: "0 30px",
-    marginTop: "15px",
-    width: "10%",
-    type: "submit",
-    marginLeft: "1px",
-  },
-});
+import "./UploadImage.css";
 
 function UploadImage() {
   const [file, setFile] = useState();
   const token = useSelector((s) => s.user?.token);
   const { id } = useParams();
   const dispatch = useDispatch();
-  const classes = useStyle();
   const handleSubmit = async (e) => {
     try {
       if (!file) {
@@ -62,12 +46,14 @@ function UploadImage() {
       <ImageStory />
       <form onSubmit={handleSubmit}>
         <label>
-          Imagen:
+          <p className="textimage">Imagen:</p>
           <input onChange={(e) => setFile(e.target.files[0])} type="file" />
         </label>
-        <Button className={classes.submit} type="submit">
-          Enviar
-        </Button>
+        <p className="buttonEnviar">
+          <Link className="action-button" to="./uploadimage">
+            Enviar
+          </Link>
+        </p>
       </form>
     </div>
   );

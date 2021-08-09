@@ -1,7 +1,6 @@
 import UseFetchToken from "./useFetchToken";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { Button, makeStyles } from "@material-ui/core";
 import "./MyStories.css";
 
 function MyStories() {

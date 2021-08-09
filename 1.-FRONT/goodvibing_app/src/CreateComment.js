@@ -33,7 +33,7 @@ function CreateComment() {
   };
 
   return (
-    <div className="App-createcomment-data">
+    <div className="App-createcomment-data" align="center">
       <form className="comentario" onSubmit={handleSubmit}>
         <label>
           <input

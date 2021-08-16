@@ -33,6 +33,7 @@ import Search from "./Search";
 import Typography from "@material-ui/core/Typography";
 import Link from "@material-ui/core/Link";
 import StoriesHome from "./StoriesHome";
+import ViewStoriesUser from "./ViewStoriesUser";
 
 const PrivateRoute = ({ children }) => {
   const user = useSelector((state) => state.user);
@@ -99,6 +100,9 @@ function App() {
           </Route>
           <Route path="/viewstories/:id" exact>
             <ViewStories />
+          </Route>
+          <Route path="/viewstoriesuser/:id" exact>
+            <ViewStoriesUser />
           </Route>
           <Route path="/userinfoa/" exact>
             <UserinfoA />

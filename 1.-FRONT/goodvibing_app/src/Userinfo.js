@@ -47,7 +47,7 @@ function Userinfo() {
         <Link
           className="action-button"
           type="submit"
-          to={`/viewstories/${user.id}`}
+          to={`/viewstoriesuser/${user.id}`}
         >
           Ver historias del usuario
         </Link>

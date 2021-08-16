@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useParams, Link } from "react-router-dom";
-//import Footer from "./Footer";
 import "./Userinfo.css";
 
 function ViewStoriesUser() {

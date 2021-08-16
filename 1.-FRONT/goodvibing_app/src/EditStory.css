@@ -1,4 +1,4 @@
-.createstory {
+.App-editstory-data {
   margin: 0;
   padding: 0;
   top: 0;
@@ -29,12 +29,12 @@
   text-align: center;
   text-emphasis-color: #84047e;
 }
-.App-createstory-actions {
-  margin: 4rem 0;
+.App-editstory-actions {
+  margin-top: 20px;
   display: flex;
   justify-content: center;
 }
 
-.App-createstory-actions .action-button {
-  margin: 0 1rem;
+.App-editstory-actions .action-button {
+  margin-top: 5px;
 }

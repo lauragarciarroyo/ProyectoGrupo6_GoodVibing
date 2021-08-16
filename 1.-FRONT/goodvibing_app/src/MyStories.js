@@ -1,7 +1,6 @@
 import UseFetchToken from "./useFetchToken";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { Button, makeStyles } from "@material-ui/core";
 import "./MyStories.css";
 
 function MyStories() {
@@ -20,9 +19,11 @@ function MyStories() {
 
       {results.map((e) => (
         <div className="historias" key={e.id}>
-          <Link to={`/mystory/${e.id}`}>{e.title}</Link>
+          <Link className="title" to={`/mystory/${e.id}`}>
+            {e.title}
+          </Link>
 
-          <p>{e.body}</p>
+          <p className="body">{e.body}</p>
         </div>
       ))}
 

@@ -27,7 +27,7 @@ function CreateVote({ votes, userVoted, addVote, removeVote, allVotes }) {
         )}
       </p>
       <p className="total">{votes}</p>
-      <p className="voters">{voters}...</p>
+      <p className="voters">{voters} ...</p>
     </div>
   );
 }

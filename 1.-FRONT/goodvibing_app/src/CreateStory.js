@@ -1,38 +1,15 @@
 import React from "react";
 import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { useHistory } from "react-router-dom";
-import { Button } from "@material-ui/core";
-import { makeStyles } from "@material-ui/core";
+import { useHistory, Link } from "react-router-dom";
 import UploadImage from "./UploadImage";
 import "./CreateStory.css";
-
-const useStyle = makeStyles({
-  submit: {
-    background: "#84047e",
-    border: 0,
-    borderRadius: 3,
-    color: "white",
-    height: 48,
-    padding: "0 30px",
-    marginTop: "15px",
-    width: "30%",
-    type: "submit",
-    marginLeft: "600px",
-  },
-  title: {
-    fontFamily: "Open Sans, sans serif",
-    color: "#84047e",
-  },
-});
 
 function CreateStory() {
   const history = useHistory();
   const [title, setTitle] = useState("");
   const [body, setBody] = useState("");
   const [image, setImage] = useState(null);
-
-  const classes = useStyle();
   const token = useSelector((s) => s.user.token);
   const dispatch = useDispatch();
   const handleSubmit = async (e) => {
@@ -71,7 +48,7 @@ function CreateStory() {
   };
 
   return (
-    <div className="createstory">
+    <div className="App-createstory-data" align="center">
       <h3 className="blog">¡Bienvenid@ a tu blog!</h3>
       <div className="preview">
         <h3>{title}</h3>
@@ -83,6 +60,7 @@ function CreateStory() {
         <label>
           <input
             className="createtitle"
+            align="center"
             placeholder="Escribe aquí el título..."
             value={title}
             onChange={(e) => setTitle(e.target.value)}
@@ -99,14 +77,13 @@ function CreateStory() {
         </label>
 
         <label>
-          Imagen:
-          <input type="file" onChange={(e) => setImage(e.target.files[0])} />
+          <UploadImage />
         </label>
 
-        <div align="center">
-          <Button className={classes.submit} type="submit">
+        <div className="App-createstory-actions">
+          <Link className="action-button" to="./createstory">
             Publica
-          </Button>
+          </Link>
         </div>
       </form>
     </div>

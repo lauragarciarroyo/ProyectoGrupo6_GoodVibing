@@ -35,16 +35,15 @@ function DeleteStory() {
       alignItems: "center",
     },
     submit: {
-      marginTop: "300px",
       justifyContent: "center",
-      marginLeft: "600px",
+
       background: "#84047e",
       border: 0,
       borderRadius: 4,
       color: "white",
       height: 48,
       padding: "0 30px",
-      marginBottom: "200px",
+
       width: "30%",
       type: "submit",
     },
@@ -53,7 +52,7 @@ function DeleteStory() {
 
   return (
     <form onSubmit={handleSubmit}>
-      <Button className={classes.submit} type="submit">
+      <Button className={classes.submit} type="submit" align="center">
         Eliminar historia
       </Button>
     </form>

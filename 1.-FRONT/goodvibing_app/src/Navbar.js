@@ -1,6 +1,6 @@
 import React from "react";
 import { useState } from "react";
-import { Link, NavLink, useHistory } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { useSelector } from "react-redux";
 import UserAvatar from "./UserAvatar";
 import "./Navbar.css";
@@ -9,7 +9,6 @@ import dados from "./assets/img/dados.png";
 import login from "./assets/img/login.png";
 import register from "./assets/img/register.png";
 import iconoSobre from "./assets/img/iconoSobre.png";
-import Button from "@material-ui/core/Button";
 import { makeStyles } from "@material-ui/core/styles";
 
 const useStyle = makeStyles({

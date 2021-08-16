@@ -7,11 +7,14 @@ import reportWebVitals from "./reportWebVitals";
 import { Provider } from "react-redux";
 import store from "./store";
 import "fontsource-roboto";
+import { Context as ResponsiveContext } from "react-responsive";
 
 ReactDOM.render(
   <Router>
     <Provider store={store}>
-      <App />
+      <ResponsiveContext.Provider value={{ width: 500 }}>
+        <App />
+      </ResponsiveContext.Provider>
     </Provider>
   </Router>,
   document.getElementById("root")

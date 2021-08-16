@@ -12,7 +12,7 @@ import { Context as ResponsiveContext } from "react-responsive";
 ReactDOM.render(
   <Router>
     <Provider store={store}>
-      <ResponsiveContext.Provider value={{ width: 500 }}>
+      <ResponsiveContext.Provider value={{ width: 1000 }}>
         <App />
       </ResponsiveContext.Provider>
     </Provider>

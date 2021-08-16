@@ -9,15 +9,12 @@
   text-decoration: none;
 }
 
-.createstory {
-  background-color: #84047e;
-  color: white;
-  padding: 12px;
-  width: 30%;
-  border-radius: 15px;
-  border: 1px solid #ccc;
-  display: block;
-  text-align: center;
-  text-decoration: none;
+.App-viewstories-actions {
+  margin: 4rem 0;
+  display: flex;
   justify-content: center;
+}
+
+.App-createstory .action-button {
+  margin: 0 1rem;
 }

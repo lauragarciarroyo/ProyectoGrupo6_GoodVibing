@@ -24,14 +24,15 @@ function ViewStories() {
       ))}
       {!results.data.length && <i>No se han encontrado historias</i>}
 
-      <Link className="createstory" to="./createstory" align="center">
-        CREA TU HISTORIA
-      </Link>
+      <div className="App-viewstories-actions">
+        <div className="createstory">
+          <Link className="action-button" type="submit" to="./createstory">
+            CREA TU HISTORIA
+          </Link>
+        </div>
+      </div>
     </div>
   );
 }
 
 export default ViewStories;
-
-//Cada previsualización de una historia te lleva a la historia completa
-//Ver las historias de un usuario (la previsualización)

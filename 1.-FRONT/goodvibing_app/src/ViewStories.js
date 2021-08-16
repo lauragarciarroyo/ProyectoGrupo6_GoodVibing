@@ -26,7 +26,7 @@ function ViewStories() {
 
       <div className="App-viewstories-actions">
         <div className="createstory">
-          <Link className="action-button" type="submit" to="./createstory">
+          <Link className="action-button" type="submit" to={"/createstory"}>
             CREA TU HISTORIA
           </Link>
         </div>

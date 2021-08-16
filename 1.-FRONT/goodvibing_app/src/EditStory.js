@@ -1,31 +1,14 @@
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { useParams, useHistory } from "react-router-dom";
+import { useParams, useHistory, Link } from "react-router-dom";
 import StoryUserEdit from "./StoryUserEdit";
-import { Button } from "@material-ui/core";
-import { makeStyles } from "@material-ui/core";
 import UploadImage from "./UploadImage";
-
-const useStyle = makeStyles({
-  submit: {
-    background: "#84047e",
-    border: 0,
-    borderRadius: 3,
-    color: "white",
-    height: 48,
-    padding: "0 30px",
-    marginTop: "15px",
-
-    width: "10%",
-    type: "submit",
-  },
-});
+import "./EditStory.css";
 
 function EditStory({ story }) {
   const [body, setBody] = useState();
   const [title, settitle] = useState();
   const [date, setDate] = useState();
-  const classes = useStyle();
   const dispatch = useDispatch();
   const history = useHistory();
   const token = useSelector((s) => s.user?.token);
@@ -55,7 +38,7 @@ function EditStory({ story }) {
   };
 
   return (
-    <>
+    <div className="App-editstory-data" align="center">
       <div className="historia">
         <StoryUserEdit />
       </div>
@@ -73,6 +56,7 @@ function EditStory({ story }) {
         <p>
           <label>
             <input
+              className="createbody"
               placeholder="Escribe tu historia..."
               value={body}
               onChange={(e) => setBody(e.target.value)}
@@ -89,11 +73,13 @@ function EditStory({ story }) {
           </label>
           <UploadImage />
         </p>
-        <Button className={classes.submit} type="submit">
-          Publica
-        </Button>
+        <div className="App-editstory-actions">
+          <Link className="action-button" type="submit" to={"/editstory"}>
+            Publica
+          </Link>
+        </div>
       </form>
-    </>
+    </div>
   );
 }
 

@@ -39,14 +39,14 @@ function ViewStoriesUser() {
   return (
     <div className="viewstories">
       <h3 className="listahistorias">Historias</h3>
-      {stories.data.map((e) => (
+      {stories.map((e) => (
         <div className="historias" key={e.id}>
           <Link to={`/mystory/${e.id}`}>{e.title}</Link>
 
           <p>{e.body}</p>
         </div>
       ))}
-      {!stories.data.length && <i>No se han encontrado historias</i>}
+      {!stories.length && <i>No se han encontrado historias</i>}
     </div>
   );
 }

@@ -125,9 +125,6 @@ function App() {
               <DeleteStory />
             </PrivateRoute>
           </Route>
-          <Route path="/createcomment" exact>
-            <CreateComment />
-          </Route>
           <Route path="/story/:id" exact>
             <PrivateRoute>
               <ViewStory />

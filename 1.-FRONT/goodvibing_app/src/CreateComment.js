@@ -44,9 +44,7 @@ function CreateComment() {
           />
         </label>
         <div className="App-createcomment-actions">
-          <Link className="action-button" to="/createcomment">
-            Publica
-          </Link>
+          <button className="action-button">Publica</button>
         </div>
       </form>
     </div>

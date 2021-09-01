@@ -9,6 +9,8 @@ function EditStory({ story }) {
   const [body, setBody] = useState();
   const [title, settitle] = useState();
   const [date, setDate] = useState();
+
+  const [image, setImage] = useState();
   const dispatch = useDispatch();
   const history = useHistory();
   const token = useSelector((s) => s.user?.token);
@@ -31,6 +33,19 @@ function EditStory({ story }) {
     const data = await res.json();
 
     if (res.ok) {
+      if (image) {
+        const payload = new FormData();
+        payload.append("image", image);
+
+        await fetch(`http://localhost:4000/api/stories/${id}/image`, {
+          method: "POST",
+          headers: {
+            Authorization: "Bearer " + token,
+          },
+          body: payload,
+        });
+      }
+
       history.push(`/mystory/${id}`);
     } else {
       dispatch({ type: "SET_ERROR", message: data.message });
@@ -71,12 +86,17 @@ function EditStory({ story }) {
               type="date"
             />
           </label>
-          <UploadImage />
+        </p>
+        <p>
+          <label>
+            <p className="textimage">Imagen:</p>
+            <input onChange={(e) => setImage(e.target.files[0])} type="file" />
+          </label>
         </p>
         <div className="App-editstory-actions">
-          <Link className="action-button" type="submit" to={"/editstory"}>
+          <button className="action-button" type="submit">
             Publica
-          </Link>
+          </button>
         </div>
       </form>
     </div>

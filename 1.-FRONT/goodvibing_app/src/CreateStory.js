@@ -77,13 +77,14 @@ function CreateStory() {
         </label>
 
         <label>
-          <UploadImage />
+          <label>
+            <p className="textimage">Imagen:</p>
+            <input onChange={(e) => setImage(e.target.files[0])} type="file" />
+          </label>
         </label>
 
         <div className="App-createstory-actions">
-          <Link className="action-button" to="./createstory">
-            Publica
-          </Link>
+          <button className="action-button">Publica</button>
         </div>
       </form>
     </div>

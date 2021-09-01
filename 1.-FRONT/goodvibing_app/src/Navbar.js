@@ -66,8 +66,8 @@ export default function Navbar() {
           </div>
         </div>
         <div className="random">
-          <Link to="./RandomStories">
-            <img src={dados} width={150} href="./RandomStories" alt="random" />
+          <Link to="/RandomStories">
+            <img src={dados} width={150} alt="random" />
           </Link>
         </div>
 
